@@ -1,0 +1,32 @@
+{
+  "id": "camera-shake",
+  "term": { "en": "Camera shake", "zh-cn": "相机抖动" },
+  "aliases": {
+    "en": ["hand shake", "camera motion blur"],
+    "zh-cn": ["手抖", "机震", "相机运动模糊"]
+  },
+  "shortDefinition": {
+    "en": "Blur caused by camera movement during exposure, distinct from subject movement or missed focus.",
+    "zh-cn": "曝光期间相机移动造成的模糊，与主体运动或对焦错误不同。"
+  },
+  "misconceptions": {
+    "en": ["Image stabilization does not freeze a moving subject."],
+    "zh-cn": ["图像防抖不能凝固运动主体。"]
+  },
+  "example": {
+    "en": "A stationary background can show directional smear while the subject is also affected by the camera's motion.",
+    "zh-cn": "相机运动可能让静止背景出现方向性涂抹，主体也会受到影响。"
+  },
+  "articleKey": "shutter-speed",
+  "relatedTerms": ["shutter-speed", "ibis", "depth-of-field"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-shutter-speed.htm",
+      "title": "Camera Shutter Speed — Cambridge in Colour",
+      "locator": "Camera shake",
+      "accessedOn": "2026-10-28",
+      "supports": "Camera-shake visibility is distinct from subject motion."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "field-of-view",
+  "term": { "en": "Field of view", "zh-cn": "视角" },
+  "aliases": {
+    "en": ["angle of view", "FOV", "framing"],
+    "zh-cn": ["视场", "可视范围", "取景范围"]
+  },
+  "shortDefinition": {
+    "en": "The extent of the scene recorded by the camera, determined by the optical setup, recording dimensions, and geometry.",
+    "zh-cn": "相机记录场景的范围，由光学配置、记录尺寸和几何条件共同决定。"
+  },
+  "misconceptions": {
+    "en": ["Field of view and perspective are not interchangeable terms."],
+    "zh-cn": ["视角与透视不是可以互换的概念。"]
+  },
+  "example": {
+    "en": "A smaller sensor records a narrower view with the same lens and camera position.",
+    "zh-cn": "同一镜头和机位下，较小传感器记录更窄的视角。"
+  },
+  "articleKey": "equivalent-focal-length",
+  "relatedTerms": ["focal-length", "perspective", "crop-factor"],
+  "sources": [
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats",
+      "title": "The DX and FX Formats — Nikon",
+      "locator": "Lens and format field-of-view comparison",
+      "accessedOn": "2026-10-28",
+      "supports": "The effect of format and lens choice on the recorded view."
+    }
+  ],
+  "reviewStatus": "published"
+}

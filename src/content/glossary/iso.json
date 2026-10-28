@@ -1,0 +1,34 @@
+{
+  "id": "iso",
+  "term": { "en": "ISO", "zh-cn": "ISO" },
+  "aliases": {
+    "en": ["ISO setting", "nominal sensitivity"],
+    "zh-cn": ["ISO 感光度", "感光度设置", "标称感光度"]
+  },
+  "shortDefinition": {
+    "en": "A standardized setting in the capture-to-output mapping, not a mechanism that adds incoming photons.",
+    "zh-cn": "从捕获到输出映射中的标准化设置，不是增加入射光子的机制。"
+  },
+  "misconceptions": {
+    "en": [
+      "Raising ISO at fixed aperture and shutter time does not increase the light that reached the sensor."
+    ],
+    "zh-cn": ["固定光圈和快门时提高 ISO，不会增加已到达传感器的光。"]
+  },
+  "example": {
+    "en": "ISO 800 is one nominal output-mapping stop above ISO 400.",
+    "zh-cn": "ISO 800 比 ISO 400 高一档标称输出映射。"
+  },
+  "articleKey": "iso",
+  "relatedTerms": ["exposure", "image-noise", "raw"],
+  "sources": [
+    {
+      "url": "https://photographylife.com/what-is-iso-in-photography",
+      "title": "What Is ISO in Photography? — Photography Life",
+      "locator": "Common ISO myths",
+      "accessedOn": "2026-10-28",
+      "supports": "The distinction between output brightness mapping and photon collection."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,162 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import SourceLinks from '@components/directory/SourceLinks.astro';
+import { directoryCopy } from '@copy/directory';
+import { getArticleLinks, requiredArticle } from '@utils/catalog';
+import { localePath, type MarketingLocale } from '@utils/locale';
+
+type Camera = CollectionEntry<'cameras'>;
+type Lens = CollectionEntry<'lenses'>;
+interface Props {
+  locale: MarketingLocale;
+  kind: 'camera' | 'lens';
+  item: Camera | Lens;
+}
+const { locale, kind, item } = Astro.props;
+const t = directoryCopy[locale].gear;
+const common = directoryCopy[locale].common;
+const camera = kind === 'camera' ? (item as Camera) : undefined;
+const lens = kind === 'lens' ? (item as Lens) : undefined;
+const data = item.data;
+const articles = await getArticleLinks(locale);
+const specs = camera
+  ? [
+      [
+        t.sensor,
+        `${camera.data.sensor.widthMm} × ${camera.data.sensor.heightMm} mm (${camera.data.sensor.formatId})`,
+      ],
+      [t.mount, camera.data.mountId],
+      [
+        t.pixels,
+        camera.data.specifications.effectiveMegapixels
+          ? `${camera.data.specifications.effectiveMegapixels} MP`
+          : common.unknown,
+      ],
+      [
+        t.ibis,
+        camera.data.specifications.hasIBIS ? common.yes : common.unknown,
+      ],
+      [t.formats, camera.data.specifications.fileFormats.join(' · ')],
+    ]
+  : lens
+    ? [
+        [t.mount, lens.data.mountId],
+        [
+          t.focal,
+          `${lens.data.focalLengthMm.min}–${lens.data.focalLengthMm.max} mm`,
+        ],
+        [t.equivalent, '24–76 mm'],
+        [
+          t.maxAperture,
+          `F${lens.data.maximumAperture.wide}–F${lens.data.maximumAperture.tele}`,
+        ],
+        [
+          t.minAperture,
+          lens.data.minimumAperture
+            ? `F${lens.data.minimumAperture.wide}`
+            : common.unknown,
+        ],
+        [t.ois, t.notListed],
+      ]
+    : [];
+const lessons = camera
+  ? [t.cameraLessonOne, t.cameraLessonTwo, t.cameraLessonThree]
+  : [t.lensLessonOne];
+---
+
+<MainLayout
+  title={`${data.brand} ${data.model}`}
+  description={data.description[locale]}
+  section={t.title}
+>
+  <article class="mx-auto max-w-4xl py-12 sm:py-16">
+    <a
+      href={localePath(locale, '/gear/')}
+      class="text-sm font-semibold text-amber-700 hover:underline dark:text-amber-300"
+    >
+      ← {t.back}
+    </a>
+    <p class="mt-10 text-sm font-bold tracking-wide text-amber-700 uppercase dark:text-amber-300">
+      {camera ? t.camera : t.lens} · {data.brand}
+    </p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+      {data.model}
+    </h1>
+    <p class="mt-5 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
+      {data.description[locale]}
+    </p>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href={data.manufacturerUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-bold text-white dark:bg-amber-400 dark:text-neutral-950"
+      >
+        {t.official} ↗<span class="sr-only"> ({common.external})</span>
+      </a>
+      {camera && (
+        <a
+          href={camera.data.documentationUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full border border-neutral-400 px-5 py-2.5 text-sm font-bold dark:border-neutral-600"
+        >
+          {t.manual} ↗
+        </a>
+      )}
+    </div>
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold">{t.specifications}</h2>
+      <dl class="mt-5 divide-y divide-neutral-300 rounded-2xl border border-neutral-300 dark:divide-neutral-700 dark:border-neutral-700">
+        {specs.map(([label, value]) => (
+          <div class="grid gap-2 p-5 sm:grid-cols-[180px_1fr]">
+            <dt class="font-semibold text-neutral-600 dark:text-neutral-400">
+              {label}
+            </dt>
+            <dd class="text-neutral-900 dark:text-neutral-100">{value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
+        {t.checked}: {data.sources[0]?.accessedOn}
+      </p>
+    </section>
+    <section class="mt-12 rounded-2xl bg-neutral-100 p-7 dark:bg-neutral-900">
+      <h2 class="text-2xl font-bold">
+        {camera ? t.cameraLessonTitle : t.lensLessonTitle}
+      </h2>
+      <ul class="mt-5 list-disc space-y-4 pl-5 leading-7 text-neutral-700 dark:text-neutral-300">
+        {lessons.map(lesson => (
+          <li>{lesson}</li>
+        ))}
+      </ul>
+    </section>
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold">{t.learn}</h2>
+      <div class="mt-5 flex flex-wrap gap-3">
+        {data.articleKeys.map(key => {
+          const article = requiredArticle(articles, key);
+          return (
+            <a
+              href={article.path}
+              class="rounded-xl border border-neutral-300 px-4 py-3 font-semibold hover:border-amber-500 dark:border-neutral-700"
+            >
+              {article.title} →
+            </a>
+          );
+        })}
+      </div>
+    </section>
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold">{common.sources}</h2>
+      <div class="mt-5">
+        <SourceLinks
+          sources={data.sources}
+          checkedLabel={common.checked}
+          externalLabel={common.external}
+        />
+      </div>
+    </section>
+  </article>
+</MainLayout>

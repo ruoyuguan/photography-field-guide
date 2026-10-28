@@ -1,0 +1,32 @@
+{
+  "id": "photography-life-iso",
+  "title": {
+    "en": "What Is ISO in Photography?",
+    "zh-cn": "什么是摄影中的 ISO？"
+  },
+  "provider": "Photography Life",
+  "providerType": "independent",
+  "category": "tutorial",
+  "url": "https://photographylife.com/what-is-iso-in-photography",
+  "languages": ["en"],
+  "audience": ["beginner", "intermediate"],
+  "purpose": {
+    "en": "Read about ISO output brightness, common myths, and camera-setting examples.",
+    "zh-cn": "了解 ISO 输出亮度、常见误区和相机设置示例。"
+  },
+  "editorialNote": {
+    "en": "The guide uses the ISO-myth discussion but does not repeat the claim that the lowest ISO is always best.",
+    "zh-cn": "本站采用其中对 ISO 误区的讨论，但不照抄“最低 ISO 永远最好”的过度简化。"
+  },
+  "tags": ["iso", "noise", "exposure"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://photographylife.com/what-is-iso-in-photography",
+    "evidence": "The Common ISO Myths section distinguishes output mapping from increased photon collection."
+  },
+  "reviewStatus": "published"
+}

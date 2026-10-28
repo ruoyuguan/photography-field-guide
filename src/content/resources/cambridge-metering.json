@@ -1,0 +1,32 @@
+{
+  "id": "cambridge-metering",
+  "title": {
+    "en": "Camera Metering and Exposure",
+    "zh-cn": "相机测光与曝光教程"
+  },
+  "provider": "Cambridge in Colour",
+  "providerType": "independent",
+  "category": "tutorial",
+  "url": "https://www.cambridgeincolour.com/tutorials/camera-metering.htm",
+  "languages": ["en"],
+  "audience": ["beginner", "intermediate"],
+  "purpose": {
+    "en": "Understand reflected-light metering and why exposure compensation may be necessary.",
+    "zh-cn": "理解反射式测光，以及为什么可能需要曝光补偿。"
+  },
+  "editorialNote": {
+    "en": "Metering is an estimate for automatic exposure, not a verdict on the one correct artistic rendering.",
+    "zh-cn": "测光是自动曝光的估计，不是对唯一正确艺术呈现的裁决。"
+  },
+  "tags": ["metering", "exposure-compensation", "exposure"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.cambridgeincolour.com/tutorials/camera-metering.htm",
+    "evidence": "The page explains reflected-light metering and the use of exposure compensation."
+  },
+  "reviewStatus": "published"
+}

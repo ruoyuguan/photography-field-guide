@@ -1,0 +1,78 @@
+---
+title: RAW, JPEG, HEIF, and EXIF
+description: Separate sensor-oriented data, rendered image formats, and editable metadata when choosing and sharing files.
+translationKey: raw-jpeg-exif
+category: image-quality
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [digital-camera-works]
+relatedConcepts: [raw, jpeg, exif, iso]
+relatedTools: []
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.adobe.com/creativecloud/file-types/image/comparison/jpeg-vs-raw.html'
+    title: 'JPEG vs. RAW — Adobe'
+    locator: 'Compression, editing, and file-use comparison'
+    accessedOn: '2026-10-28'
+    supports: 'RAW workflows preserve data for later development, while JPEG provides a processed, broadly usable image with different compression and editing trade-offs.'
+  - url: 'https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html'
+    title: 'Metadata basics and actions — Adobe Lightroom Classic'
+    locator: 'Metadata editing; EXIF; GPS'
+    accessedOn: '2026-10-28'
+    supports: 'Metadata can be inspected and edited, and location metadata has privacy implications when sharing.'
+sidebar:
+  order: 1
+---
+
+A camera menu may offer RAW, JPEG, HEIF, or other outputs, while photo software talks about EXIF. These are related but not interchangeable.
+
+**Short answer:** RAW preserves sensor-oriented data for development; JPEG and HEIF are rendered image files with their own compression features; EXIF is metadata about a file, not an image format.
+
+## Four different questions
+
+| Term | What it answers                                                    | What it does not guarantee                               |
+| ---- | ------------------------------------------------------------------ | -------------------------------------------------------- |
+| RAW  | What sensor-oriented data is available for development?            | A universally viewable, unchanging, or finished image    |
+| JPEG | How is a rendered, widely supported image encoded?                 | All original capture information or unlimited re-editing |
+| HEIF | How can a rendered image be stored with HEIF-family features?      | Identical support in every app or website                |
+| EXIF | What settings, timestamps, identifiers, or locations are recorded? | Accuracy, completeness, authenticity, or privacy         |
+
+RAW is a family of camera-specific formats, not one universal file type. It often needs conversion before sharing. JPEG applies processed color and tone plus lossy compression; repeated edits and saves can accumulate losses. HEIF support and features depend on the producing camera and receiving software.
+
+## Example settings, three outputs
+
+Suppose the camera used **F4, 1/125 s, ISO 400**. Saving RAW plus JPEG does not create two different incoming-light exposures. The RAW development and in-camera JPEG rendering can later diverge in white balance, contrast, sharpening, and noise reduction. EXIF may record those nominal settings alongside both files, but fields can be missing, changed, or stripped.
+
+**Nominal camera settings are not a complete physical measurement.** They do not establish subject distance, exact light spectrum, focus accuracy, or whether a published gallery image was edited.
+
+## Why keep RAW?
+
+RAW can provide more freedom for later white balance and tonal development, depending on the capture and software. It usually requires more storage and a processing step. JPEG may be preferable when immediate delivery, small files, and compatibility matter. Choose the workflow rather than assuming one format is universally superior.
+
+The X-T5's specification lists JPEG, HEIF, RAW, and TIFF as still-image formats. That list does not imply each format stores the same information or behaves identically.
+
+## EXIF, learning, and privacy
+
+EXIF can help you review aperture, exposure time, ISO, and lens identity. Treat it as useful evidence with limits: it can be edited, software can remove it, and gallery captions may be manually supplied. An entry saying “EXIF shown” does not mean downloadable original files are offered.
+
+Before sharing, inspect location fields, serial numbers, and other identifying metadata. Remove location data where privacy requires it, using a tool whose behavior you have checked.
+
+## Common misconceptions
+
+- **RAW already contains a finished JPEG with the same editing latitude.** Embedded previews and RAW sensor data serve different purposes.
+- **EXIF proves every gallery caption.** It is evidence, not cryptographic proof, and may not survive export.
+- **JPEG and RAW are just different filename extensions.** Their data and processing workflows differ fundamentally.
+
+## Practice: compare the workflow, not just the file size
+
+Use a static scene and one example exposure to save RAW plus JPEG. Open both in software you trust, make a modest white-balance adjustment, and export separate copies. Record which file was edited and what metadata survived. Do not upload private originals to an unknown website just to inspect EXIF.
+
+## Continue
+
+Review [How a Digital Camera Works](../../getting-started/digital-camera-works/) and [ISO](../../exposure/iso/) to separate capture from rendering. For clearly labeled external samples, use the [gallery directory](../../../galleries/); it distinguishes displayed exposure details from original-file availability.
+
+## Sources
+
+- [Adobe: JPEG vs. RAW](https://www.adobe.com/creativecloud/file-types/image/comparison/jpeg-vs-raw.html)
+- [Adobe Lightroom Classic: Metadata basics and actions](https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html)

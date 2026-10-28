@@ -1,0 +1,34 @@
+{
+  "id": "background-blur",
+  "term": { "en": "Background blur", "zh-cn": "背景虚化" },
+  "aliases": {
+    "en": ["background defocus", "bokeh appearance"],
+    "zh-cn": ["背景散焦", "焦外表现"]
+  },
+  "shortDefinition": {
+    "en": "The appearance of out-of-focus background structure, influenced by distances, aperture, lens rendering, and framing.",
+    "zh-cn": "离焦背景结构的外观，受距离、光圈、镜头呈现和取景影响。"
+  },
+  "misconceptions": {
+    "en": [
+      "Two equal depth-of-field calculations do not guarantee identical background blur."
+    ],
+    "zh-cn": ["两个相同的景深计算结果不保证背景虚化相同。"]
+  },
+  "example": {
+    "en": "Moving the background farther away can change blur even when the subject focus range is similar.",
+    "zh-cn": "即使主体清晰范围相近，让背景更远也能改变虚化。"
+  },
+  "articleKey": "depth-of-field",
+  "relatedTerms": ["depth-of-field", "aperture", "focal-length"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/depth-of-field.htm",
+      "title": "Depth of Field — Cambridge in Colour",
+      "locator": "Background distance and depth of field",
+      "accessedOn": "2026-10-28",
+      "supports": "Background distance and acceptable-focus range are distinct parts of image appearance."
+    }
+  ],
+  "reviewStatus": "published"
+}

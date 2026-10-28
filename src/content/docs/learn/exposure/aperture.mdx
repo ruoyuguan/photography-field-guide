@@ -1,0 +1,91 @@
+---
+title: Aperture and F-Numbers
+description: Understand lens opening, light per unit area, depth of field, and the limits of equivalence.
+translationKey: aperture
+category: exposure
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [digital-camera-works]
+relatedConcepts: [aperture, f-number, depth-of-field, exposure]
+relatedTools: [exposure-stops]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/camera-exposure.htm'
+    title: 'Camera Exposure — Cambridge in Colour'
+    locator: 'Aperture; f-stop'
+    accessedOn: '2026-10-28'
+    supports: 'Aperture controls the lens opening and contributes to exposure together with shutter speed.'
+  - url: 'https://www.cambridgeincolour.com/tutorials/depth-of-field.htm'
+    title: 'Depth of Field — Cambridge in Colour'
+    locator: 'Aperture and depth of field'
+    accessedOn: '2026-10-28'
+    supports: 'Aperture affects depth of field, but focus distance, viewing conditions, and other variables also matter.'
+sidebar:
+  order: 1
+---
+
+Aperture is an opening in the lens. The f-number describes focal length divided by entrance-pupil diameter under the usual photographic model. A smaller f-number means a wider relative opening.
+
+**Short answer:** F2 admits more light per unit sensor area than F4 at the same shutter time and scene. It also changes depth of field and lens rendering. It is not a score where “wide open” always wins.
+
+## Why the numbers feel backwards
+
+At a given focal length, F4 has an entrance pupil half the diameter of F2. Area scales with diameter squared, so the idealized light per unit area changes by a factor of four: **two stops**. Nominal f-numbers such as F2.8 are rounded conveniences, not exact physical constants.
+
+<svg
+  viewBox="0 0 640 180"
+  role="img"
+  aria-label="A larger aperture opening at F2 compared with F4"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <circle cx="160" cy="90" r="65" fill="#404040" />
+  <circle cx="160" cy="90" r="48" fill="#fbbf24" />
+  <circle cx="480" cy="90" r="65" fill="#404040" />
+  <circle cx="480" cy="90" r="24" fill="#fbbf24" />
+  <text x="135" y="174" fill="white" font-size="18">
+    F2
+  </text>
+  <text x="455" y="174" fill="white" font-size="18">
+    F4
+  </text>
+</svg>
+
+The circles illustrate the area relationship, not the blade shape of a particular lens.
+
+## Aperture has more than one effect
+
+| Choice             | Potential benefit                                                           | Trade-off                                                                      |
+| ------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Wider aperture     | More light per unit area; shallower depth of field under matched conditions | Focus tolerance can become smaller; lens performance can change                |
+| Narrower aperture  | More depth of field under matched conditions                                | Less light per unit area; diffraction can soften fine detail at small openings |
+| Mid-range aperture | A practical balance for some lenses and scenes                              | No single setting is optimal for every lens                                    |
+
+## Worked example settings
+
+Suppose **50 mm, F4, 1/125 s, ISO 400** gives your desired rendering. Moving to **F2** while keeping time and ISO unchanged adds about two stops of exposure per unit area. To keep similar brightness, you might choose **1/500 s** instead. That changes motion rendering, so it is not a free improvement.
+
+For a group portrait, a wider aperture might leave one person outside the acceptable-focus range. Focus distance and output size matter too. Do not predict a portrait from the f-number alone.
+
+## What sensor equivalence does—and does not—mean
+
+The f-number written on a lens does not change when mounted on another sensor. **Do not multiply ordinary exposure settings by crop factor.** Format comparisons of depth of field, total light, or noise require matched framing, camera position or focus distance, output conditions, and other explicit assumptions. “Equivalent blur” is not one universal conversion.
+
+## Common misconceptions
+
+- **F2.8–F4.8 means the lens only offers those apertures.** On a variable-aperture zoom it names maximum values at the endpoints; narrower settings are available.
+- **The smallest aperture gives the sharpest image.** More depth of field does not cancel diffraction or missed focus.
+- **A wide aperture always gives beautiful background blur.** Lens design, distances, background structure, and framing also matter.
+
+## Practice: hold the framing constant
+
+Photograph a static scene at a fixed position with example settings F4 and F8. Keep shutter time and ISO constant for the first pair, then compensate shutter time for a second pair. Compare brightness, the near-to-far acceptable-focus range, and detail. Use your camera's actual available settings rather than forcing exact theoretical numbers.
+
+## Continue
+
+Read [Depth of Field and Background Blur](../../sensor-lens/depth-of-field/), then compare trade-offs in the [exposure-stops tool](../../../tools/exposure-stops/). The [XF16–50 equipment guide](../../../gear/fujifilm-xf16-50/) shows how to read a real lens name.
+
+## Sources
+
+- [Cambridge in Colour: Camera Exposure](https://www.cambridgeincolour.com/tutorials/camera-exposure.htm)
+- [Cambridge in Colour: Depth of Field](https://www.cambridgeincolour.com/tutorials/depth-of-field.htm)

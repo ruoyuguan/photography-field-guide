@@ -1,0 +1,81 @@
+---
+title: Depth of Field and Background Blur
+description: Understand acceptable focus, viewing conditions, aperture, distance, and why blur is not the same as depth of field.
+translationKey: depth-of-field
+category: sensor-lens
+difficulty: intermediate
+reviewStatus: published
+draft: false
+prerequisites: [aperture, equivalent-focal-length]
+relatedConcepts: [depth-of-field, aperture, focal-length, background-blur]
+relatedTools: [crop-factor]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/depth-of-field.htm'
+    title: 'Depth of Field — Cambridge in Colour'
+    locator: 'Circle of confusion; viewing conditions; controlling depth of field'
+    accessedOn: '2026-10-28'
+    supports: 'Depth of field is an acceptable-focus range tied to viewing assumptions; aperture, focus distance, focal length, and format comparisons require controlled conditions.'
+sidebar:
+  order: 3
+---
+
+**Depth of field** is the range of subject distances considered acceptably sharp in a specified viewing condition. It is not a wall where everything suddenly becomes blurred.
+
+**Short answer:** aperture matters, but focus distance, framing, focal length, sensor dimensions, and output viewing conditions also belong in the comparison. Background blur is a related appearance, not the same measurement.
+
+## Acceptably sharp—not perfectly sharp
+
+Only a focus plane is optically in focus under the simple model. Points in front of or behind it form blur discs. While those discs are small enough relative to the final display, we accept them as sharp. The **circle of confusion** describes this acceptable-blur criterion.
+
+```text
+near acceptable limit ─── focus plane ─── far acceptable limit
+             ←          depth of field          →
+```
+
+A large print viewed closely can reveal blur that looked acceptable in a small phone image. Therefore a depth-of-field number without output assumptions is incomplete.
+
+## What changes under matched conditions?
+
+| Change, with other relevant conditions held fixed                     | Typical result               |
+| --------------------------------------------------------------------- | ---------------------------- |
+| Wider aperture                                                        | Shallower depth of field     |
+| Closer focus distance                                                 | Shallower depth of field     |
+| Longer focal length with framing and viewpoint changes not controlled | Comparison becomes ambiguous |
+| Larger output or closer inspection                                    | Less blur appears acceptable |
+
+Do not say “longer focal length always has less depth of field” without stating whether subject magnification, framing, and camera position were held constant.
+
+## Depth of field is not background blur
+
+Two photographs can have the same calculated depth of field yet different background appearance because the background is at a different distance, has different detail, or is rendered by a different lens. A distant point of light may form a large blur disc while the acceptable-focus range remains narrow.
+
+Focus accuracy is separate again: shallow depth of field makes missed focus easier to notice, but stopping down cannot reliably correct a subject that moved or a shutter speed that was too slow.
+
+## Worked example settings
+
+Consider **50 mm, F1.8, 1/250 s, ISO 400** for a close portrait. These example settings may give a narrow acceptable-focus range at close distance. Changing to **F4** increases depth of field under otherwise matched conditions, but reduces light per unit area by more than two stops on the nominal scale. Compensating with time could reintroduce subject motion blur; compensating with ISO changes the output chain.
+
+No exact depth in centimeters is claimed here because focus distance, sensor, and viewing criteria were not specified.
+
+## What does “equivalent blur” mean?
+
+If you match framing between full frame and APS-C, you must say whether you changed focal length, camera position, or both. Matching depth of field may involve a different f-number, but that does **not** redefine the f-number for ordinary exposure. Background blur, total light, and noise require additional assumptions; a single crop-factor multiplication is not a complete simulator.
+
+## Common misconceptions
+
+- **A shallow depth of field is always desirable.** A group, product, or landscape may need more of the subject acceptably sharp.
+- **F8 guarantees a sharp landscape.** Focus placement, diffraction, motion, and lens performance still matter.
+- **The same f-number always gives the same background blur across formats.** Framing and distances must be controlled first.
+
+## Practice: change one distance
+
+Use a static detailed subject and a background with small lights or edges. Keep example settings and framing consistent, then change only aperture. Next, restore the aperture and change camera distance while recomposing deliberately. Compare at one fixed output size and note both acceptable-focus range and background appearance.
+
+## Continue
+
+Review [Aperture and F-Numbers](../../exposure/aperture/) and [Equivalent Focal Length](../equivalent-focal-length/). Use the [crop-factor tool](../../../tools/crop-factor/) only for its stated field-of-view calculation; it is not a full depth-of-field or background-blur simulator.
+
+## Sources
+
+- [Cambridge in Colour: Depth of Field](https://www.cambridgeincolour.com/tutorials/depth-of-field.htm)

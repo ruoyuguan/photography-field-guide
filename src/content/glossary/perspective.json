@@ -1,0 +1,34 @@
+{
+  "id": "perspective",
+  "term": { "en": "Perspective", "zh-cn": "透视" },
+  "aliases": {
+    "en": ["viewpoint", "spatial rendering"],
+    "zh-cn": ["视点", "空间透视关系"]
+  },
+  "shortDefinition": {
+    "en": "The relative sizes and positions of scene elements as seen from the camera's viewpoint.",
+    "zh-cn": "从相机视点观察时，场景元素之间的相对大小和位置关系。"
+  },
+  "misconceptions": {
+    "en": [
+      "Cropping to a narrower field of view does not itself move the camera or change perspective."
+    ],
+    "zh-cn": ["裁切成更窄视角本身不会移动相机，也不会改变透视。"]
+  },
+  "example": {
+    "en": "Moving back to restore framing changes perspective because the camera position changed.",
+    "zh-cn": "为了恢复取景而后退时，透视因机位变化而改变。"
+  },
+  "articleKey": "equivalent-focal-length",
+  "relatedTerms": ["field-of-view", "focal-length"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/depth-of-field.htm",
+      "title": "Depth of Field — Cambridge in Colour",
+      "locator": "Camera distance and framing",
+      "accessedOn": "2026-10-28",
+      "supports": "The role of camera distance and framing in controlled photographic comparisons."
+    }
+  ],
+  "reviewStatus": "published"
+}

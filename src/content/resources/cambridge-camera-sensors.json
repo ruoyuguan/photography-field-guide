@@ -1,0 +1,29 @@
+{
+  "id": "cambridge-camera-sensors",
+  "title": { "en": "Digital Camera Sensors", "zh-cn": "数码相机传感器教程" },
+  "provider": "Cambridge in Colour",
+  "providerType": "independent",
+  "category": "tutorial",
+  "url": "https://www.cambridgeincolour.com/tutorials/camera-sensors.htm",
+  "languages": ["en"],
+  "audience": ["beginner", "technical"],
+  "purpose": {
+    "en": "Explore photosites, photon collection, color filters, conversion, and demosaicing.",
+    "zh-cn": "了解感光单元、光子收集、色彩滤镜、转换与去马赛克。"
+  },
+  "editorialNote": {
+    "en": "Use the physical capture explanation without assuming every sensor shares one design or performance level.",
+    "zh-cn": "可用来理解物理捕获，但不能据此假定所有传感器设计和性能相同。"
+  },
+  "tags": ["sensor", "photons", "raw", "demosaic"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.cambridgeincolour.com/tutorials/camera-sensors.htm",
+    "evidence": "The tutorial covers photons, photosites, analog-to-digital conversion, color filters, and demosaicing."
+  },
+  "reviewStatus": "published"
+}

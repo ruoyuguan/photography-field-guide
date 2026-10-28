@@ -1,0 +1,95 @@
+---
+interface FilterOption {
+  key: string;
+  label: string;
+  options: { value: string; label: string }[];
+}
+interface Props {
+  queryLabel: string;
+  queryPlaceholder: string;
+  filters: FilterOption[];
+  allLabel: string;
+  resetLabel: string;
+  showingTemplate: string;
+  emptyMessage: string;
+  noScriptMessage: string;
+}
+const {
+  queryLabel,
+  queryPlaceholder,
+  filters,
+  allLabel,
+  resetLabel,
+  showingTemplate,
+  emptyMessage,
+  noScriptMessage,
+} = Astro.props;
+---
+
+<div data-directory data-showing={showingTemplate} data-empty={emptyMessage}>
+  <form
+    data-filter-form
+    hidden
+    class="rounded-2xl border border-neutral-300 bg-neutral-50 p-5 dark:border-neutral-700 dark:bg-neutral-900/60"
+  >
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <label class="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
+        {queryLabel}
+        <input
+          data-filter-query
+          type="search"
+          placeholder={queryPlaceholder}
+          autocomplete="off"
+          class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-100"
+        />
+      </label>
+      {filters.map(filter => (
+        <label class="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
+          {filter.label}
+          <select
+            data-filter-key={filter.key}
+            class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-100"
+          >
+            <option value="">{allLabel}</option>
+            {filter.options.map(option => (
+              <option value={option.value}>{option.label}</option>
+            ))}
+          </select>
+        </label>
+      ))}
+    </div>
+    <div class="mt-4 flex flex-wrap items-center gap-4">
+      <button
+        type="reset"
+        class="rounded-lg border border-neutral-400 px-4 py-2 text-sm font-semibold text-neutral-800 hover:border-amber-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200"
+      >
+        {resetLabel}
+      </button>
+      <p
+        data-filter-results
+        role="status"
+        class="text-sm text-neutral-600 dark:text-neutral-400"
+      ></p>
+    </div>
+  </form>
+  <noscript>
+    <p class="rounded-xl border border-neutral-300 bg-neutral-50 p-4 text-sm text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-300">
+      {noScriptMessage}
+    </p>
+  </noscript>
+  <div class="mt-8">
+    <slot />
+  </div>
+  <p
+    data-filter-empty
+    hidden
+    class="rounded-xl border border-amber-300 bg-amber-50 p-5 text-neutral-800 dark:border-amber-700 dark:bg-amber-950/30 dark:text-neutral-200"
+  >
+    {emptyMessage}
+  </p>
+</div>
+
+<script>
+  import { initializeDirectoryFilters } from './directory-filters';
+  initializeDirectoryFilters();
+</script>

@@ -1,0 +1,32 @@
+{
+  "id": "adobe-metadata",
+  "title": {
+    "en": "Metadata Basics and Actions in Lightroom Classic",
+    "zh-cn": "Lightroom Classic 元数据基础与操作"
+  },
+  "provider": "Adobe",
+  "providerType": "official",
+  "category": "manual",
+  "url": "https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html",
+  "languages": ["en"],
+  "audience": ["beginner", "intermediate"],
+  "purpose": {
+    "en": "Learn to inspect and edit metadata, and consider GPS privacy when sharing.",
+    "zh-cn": "学习查看和编辑元数据，并在分享时考虑 GPS 隐私。"
+  },
+  "editorialNote": {
+    "en": "Editable metadata is evidence with limitations, not cryptographic proof of shooting conditions.",
+    "zh-cn": "可编辑的元数据是有局限的证据，不是拍摄条件的密码学证明。"
+  },
+  "tags": ["exif", "metadata", "privacy", "gps"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html",
+    "evidence": "The documentation covers metadata inspection and editing and location-data privacy considerations."
+  },
+  "reviewStatus": "published"
+}

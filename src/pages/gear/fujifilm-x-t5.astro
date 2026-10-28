@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content';
+import GearDetailView from '@views/GearDetailView.astro';
+const item = await getEntry('cameras', 'fujifilm-x-t5');
+if (!item) throw new Error('Missing Fujifilm X-T5 entry');
+---
+
+<GearDetailView locale="en" kind="camera" item={item} />

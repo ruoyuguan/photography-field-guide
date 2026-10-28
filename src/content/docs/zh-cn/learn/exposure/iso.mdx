@@ -1,0 +1,67 @@
+---
+title: 不被误解的 ISO
+description: 把 ISO 放回捕获到输出的链路，而不是把它当作增加光线的办法。
+translationKey: iso
+category: exposure
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [aperture, shutter-speed]
+relatedConcepts: [iso, exposure, image-noise, raw]
+relatedTools: [exposure-stops]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://photographylife.com/what-is-iso-in-photography'
+    title: 'What Is ISO in Photography? — Photography Life'
+    locator: 'Common ISO myths; ISO and brightness'
+    accessedOn: '2026-10-28'
+    supports: 'ISO changes the mapping of the captured signal to output brightness rather than increasing the photons reaching the sensor.'
+sidebar:
+  order: 3
+---
+
+ISO 常被解释成“传感器感光度”，听起来像是传感器变亮并收集了额外的光。这种简化说法掩盖了**捕获的光**与**呈现的图像**之间的重要区别。
+
+**简短回答：**ISO 是相机从捕获到输出映射中的标准化环节。提高 ISO 可以让同一曝光产生更亮的输出，但不会增加光子。它与噪点的关系取决于整个捕获和处理链路。
+
+## 曝光不等于屏幕上的亮度
+
+对同一场景，光圈和快门时间塑造传感器处的曝光。ISO 相关增益或处理再影响信号及其呈现。不同相机的内部实现不同，RAW 软件也可能不同。不能只凭场景亮度、F 值、快门和 ISO 精确预测 JPEG 像素值。
+
+| 同一场景与相机        | 入射光       | 输出行为                           |
+| --------------------- | ------------ | ---------------------------------- |
+| F4、1/125 秒、ISO 400 | 由曝光决定   | 参考示例                           |
+| F4、1/125 秒、ISO 800 | 基本不变     | 通常是更亮的映射                   |
+| F4、1/250 秒、ISO 800 | 曝光时间减半 | 常见亮度补偿，但光子数不同于第一行 |
+
+## 为什么高 ISO 常显得噪点更多？
+
+弱光下，摄影者常缩短时间或受限于光圈，再提高 ISO 保持亮度。画面信噪比可能变差，是因为**捕获的光更少**，并不只是 ISO 数字大。固定光圈和快门时，ISO 与读出噪声、高光、处理之间的关系取决于相机。
+
+因此，“永远用最低 ISO”可能适得其反：它可能迫使快门慢到产生运动模糊，或造成之后需要大幅提亮的欠曝。
+
+## 示例设置
+
+假设静止主体在 **F2.8、1/60 秒、ISO 400** 下合适，而运动主体在你的示例条件下需要 **1/250 秒**。时间约减少两档，ISO 1600 是标称两档输出补偿。两次拍摄并不在物理上相同：较快曝光收集的光更少，运动呈现也不同。
+
+## 自动 ISO 仍然需要你做决定
+
+自动 ISO 让相机在限制内选择输出映射。通常可以设置最低快门速度或曝光补偿。要观察相机正在改变哪个参数，并依据主体和意图设限，而不是把自动 ISO 当作独立的曝光模式。
+
+## 常见误区
+
+- **ISO 增加传感器集光。**光圈、曝光时长、场景光和传感器面积决定集光，ISO 不增加光子。
+- **高 ISO 是噪点唯一原因。**光子散粒噪声、读出、温度、处理和观看尺寸都有影响。
+- **最低 ISO 永远最好。**它可能牺牲必要的凝固运动能力或可用亮度。
+
+## 练习：把光线与 ISO 分开
+
+拍摄静止主体，固定光圈和快门，用 ISO 400 与 1600 示例值各拍一张，观察亮度和高光裁切。接着缩短时间并提高 ISO，维持大致亮度，在相同观看尺寸下比较细节和噪点。不要根据一个 JPEG 预设推断所有传感器的表现。
+
+## 继续学习
+
+用[曝光档位工具](../../../tools/exposure-stops/)比较标称映射，再读 [RAW、JPEG 与 EXIF](../../image-quality/raw-jpeg-exif/) 了解输出显影的位置。运动问题可复习[快门速度](../shutter-speed/)。
+
+## 资料来源
+
+- [Photography Life：什么是摄影中的 ISO（英文）](https://photographylife.com/what-is-iso-in-photography)

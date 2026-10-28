@@ -1,0 +1,78 @@
+---
+title: RAW、JPEG、HEIF 与 EXIF
+description: 分清面向传感器的数据、已呈现的图像格式和可编辑的元数据。
+translationKey: raw-jpeg-exif
+category: image-quality
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [digital-camera-works]
+relatedConcepts: [raw, jpeg, exif, iso]
+relatedTools: []
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.adobe.com/creativecloud/file-types/image/comparison/jpeg-vs-raw.html'
+    title: 'JPEG vs. RAW — Adobe'
+    locator: 'Compression, editing, and file-use comparison'
+    accessedOn: '2026-10-28'
+    supports: 'RAW workflows preserve data for later development, while JPEG provides a processed, broadly usable image with different compression and editing trade-offs.'
+  - url: 'https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html'
+    title: 'Metadata basics and actions — Adobe Lightroom Classic'
+    locator: 'Metadata editing; EXIF; GPS'
+    accessedOn: '2026-10-28'
+    supports: 'Metadata can be inspected and edited, and location metadata has privacy implications when sharing.'
+sidebar:
+  order: 1
+---
+
+相机菜单可能提供 RAW、JPEG、HEIF 等输出，软件又会谈到 EXIF。它们相关，却不能互换。
+
+**简短回答：**RAW 保存用于显影的传感器导向数据；JPEG 与 HEIF 是具有各自压缩特性的已呈现图像；EXIF 是文件元数据，不是图像格式。
+
+## 四个不同的问题
+
+| 术语 | 回答什么？                             | 不能保证什么？                   |
+| ---- | -------------------------------------- | -------------------------------- |
+| RAW  | 有哪些传感器导向数据可供显影？         | 通用查看、永不改变或已成品的图像 |
+| JPEG | 怎样编码已呈现、广泛支持的图像？       | 全部原始信息或无限次重新编辑     |
+| HEIF | 怎样利用 HEIF 家族特性存储已呈现图像？ | 所有应用或网站都有相同支持       |
+| EXIF | 记录了哪些设置、时间、标识或位置？     | 准确、完整、真实或隐私安全       |
+
+RAW 是一组相机特定格式，不是单一通用文件类型，分享前通常需要转换。JPEG 已处理色彩和影调，并采用有损压缩；反复编辑保存可能累积损失。HEIF 的支持和功能取决于生成相机与接收软件。
+
+## 一组示例设置，三种输出
+
+假设相机使用 **F4、1/125 秒、ISO 400**。保存 RAW＋JPEG 不会产生两次不同的入射光曝光。之后 RAW 显影与机内 JPEG 可以在白平衡、反差、锐化和降噪上不同。EXIF 可能同时记录这些标称设置，但字段可能缺失、被修改或被移除。
+
+**标称相机设置不是完整的物理测量。**它不能确定主体距离、精确光谱、对焦准确性，也不能证明画廊图片是否经过编辑。
+
+## 为什么保留 RAW？
+
+根据捕获和软件条件，RAW 通常给后期白平衡与影调显影更多空间，但占用更多存储并需要处理。需要即时交付、小文件和兼容性时，JPEG 可能更合适。应按工作流程选择，不要认为一种格式永远更好。
+
+X-T5 规格列出 JPEG、HEIF、RAW 和 TIFF 静态图像格式，但这不表示它们存储的信息和行为完全相同。
+
+## EXIF、学习与隐私
+
+EXIF 可帮助复习光圈、时间、ISO 和镜头信息，但它是有局限的证据：可以编辑，软件可以移除，画廊说明也可能手工填写。条目标注“页面展示曝光信息”，不表示提供原始文件下载。
+
+分享前检查位置、序列号等身份信息。隐私需要时用已验证行为的工具移除位置元数据。
+
+## 常见误区
+
+- **RAW 中的预览与 RAW 数据有相同编辑空间。**内嵌预览与传感器数据用途不同。
+- **EXIF 能证明所有画廊说明。**它不是密码学证明，也可能在导出时丢失。
+- **JPEG 和 RAW 只是扩展名不同。**数据和处理流程有根本区别。
+
+## 练习：比较工作流程，不只是文件大小
+
+用静止场景和一组示例曝光保存 RAW＋JPEG，在可信软件中打开，做适度白平衡调整并导出副本。记录编辑了哪个文件、哪些元数据被保留。不要为了查看 EXIF 把私人原图上传到陌生网站。
+
+## 继续学习
+
+复习[数码相机如何工作](../../getting-started/digital-camera-works/)与 [ISO](../../exposure/iso/)，分清捕获和呈现。在[样片目录](../../../galleries/)查看有明确范围的外部样片；目录会区分页面曝光说明和原始文件可用性。
+
+## 资料来源
+
+- [Adobe：JPEG 与 RAW（英文）](https://www.adobe.com/creativecloud/file-types/image/comparison/jpeg-vs-raw.html)
+- [Adobe Lightroom Classic：元数据基础与操作（英文）](https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html)

@@ -1,0 +1,34 @@
+{
+  "id": "focal-length",
+  "term": { "en": "Focal length", "zh-cn": "焦距" },
+  "aliases": {
+    "en": ["actual focal length", "lens focal length"],
+    "zh-cn": ["实际焦距", "镜头焦距"]
+  },
+  "shortDefinition": {
+    "en": "A physical lens property expressed in millimeters; it does not change when the lens is used with another sensor format.",
+    "zh-cn": "以毫米表示的镜头物理属性，换用其他传感器画幅不会改变它。"
+  },
+  "misconceptions": {
+    "en": [
+      "Equivalent focal length does not replace or re-mark the lens's actual focal length."
+    ],
+    "zh-cn": ["等效焦距不会替代或改写镜头的实际焦距。"]
+  },
+  "example": {
+    "en": "The XF16–50 remains a 16–50 mm lens while its manufacturer lists a 24–76 mm equivalent view.",
+    "zh-cn": "XF16–50 厂商标注等效视角 24–76 mm，但实际焦距仍是 16–50 mm。"
+  },
+  "articleKey": "equivalent-focal-length",
+  "relatedTerms": ["field-of-view", "crop-factor", "perspective"],
+  "sources": [
+    {
+      "url": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/specifications/",
+      "title": "XF16-50mmF2.8-4.8 R LM WR Specifications",
+      "locator": "Focal length",
+      "accessedOn": "2026-10-28",
+      "supports": "The distinction between actual focal length and the stated full-frame equivalent."
+    }
+  ],
+  "reviewStatus": "published"
+}

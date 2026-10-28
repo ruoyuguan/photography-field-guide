@@ -1,0 +1,32 @@
+{
+  "id": "fujifilm-x-t5-manual",
+  "title": {
+    "en": "FUJIFILM X-T5 online manual",
+    "zh-cn": "富士 X-T5 在线说明书"
+  },
+  "provider": "FUJIFILM",
+  "providerType": "official",
+  "category": "manual",
+  "url": "https://fujifilm-dsc.com/en/manual/x-t5/",
+  "languages": ["en", "zh-cn"],
+  "audience": ["beginner", "intermediate"],
+  "purpose": {
+    "en": "Check camera controls, shutter modes, stabilization, file options, and model-specific limitations.",
+    "zh-cn": "查询相机控制、快门模式、防抖、文件选项和机型限制。"
+  },
+  "editorialNote": {
+    "en": "The online manual offers language selection, including Simplified Chinese. Menu options can vary by firmware and configuration.",
+    "zh-cn": "在线说明书提供包括简体中文在内的语言选择；菜单可能因固件和配置而不同。"
+  },
+  "tags": ["camera", "manual", "fujifilm-x-t5"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://fujifilm-dsc.com/en/manual/x-t5/",
+    "evidence": "The manufacturer's online X-T5 manual was opened and its language menu includes Simplified Chinese."
+  },
+  "reviewStatus": "published"
+}

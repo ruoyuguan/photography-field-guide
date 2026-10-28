@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import PageHeader from '@components/directory/PageHeader.astro';
+import { directoryCopy } from '@copy/directory';
+import { localePath, type MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+}
+const { locale } = Astro.props;
+const t = directoryCopy[locale].gear;
+const cameras = await getCollection(
+  'cameras',
+  ({ data }) => data.reviewStatus === 'published'
+);
+const lenses = await getCollection(
+  'lenses',
+  ({ data }) => data.reviewStatus === 'published'
+);
+const items = [
+  ...cameras.map(item => ({
+    id: item.id,
+    brand: item.data.brand,
+    model: item.data.model,
+    description: item.data.description[locale],
+    kind: t.camera,
+    detail: `${item.data.sensor.widthMm} × ${item.data.sensor.heightMm} mm · ${item.data.mountId}`,
+  })),
+  ...lenses.map(item => ({
+    id: item.id,
+    brand: item.data.brand,
+    model: item.data.model,
+    description: item.data.description[locale],
+    kind: t.lens,
+    detail: `${item.data.focalLengthMm.min}–${item.data.focalLengthMm.max} mm · F${item.data.maximumAperture.wide}–${item.data.maximumAperture.tele}`,
+  })),
+];
+---
+
+<MainLayout
+  title={t.metaTitle}
+  description={t.metaDescription}
+  section={t.title}
+>
+  <div class="mx-auto max-w-6xl py-12 sm:py-16">
+    <PageHeader eyebrow={t.eyebrow} title={t.title} intro={t.intro} />
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {items.map(item => (
+        <a
+          href={localePath(locale, `/gear/${item.id}/`)}
+          class="group rounded-3xl border border-neutral-300 bg-neutral-50 p-7 hover:border-amber-500 dark:border-neutral-700 dark:bg-neutral-900/60 sm:p-9"
+        >
+          <div class="flex justify-between gap-4">
+            <span class="text-xs font-bold tracking-widest text-amber-700 uppercase dark:text-amber-300">
+              {item.kind}
+            </span>
+            <span class="text-xs text-neutral-500 dark:text-neutral-400">
+              {item.brand}
+            </span>
+          </div>
+          <h2 class="mt-6 text-2xl font-bold text-neutral-900 group-hover:text-amber-700 dark:text-neutral-100 dark:group-hover:text-amber-300">
+            {item.model}
+          </h2>
+          <p class="mt-3 text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+            {item.detail}
+          </p>
+          <p class="mt-5 leading-7 text-neutral-600 dark:text-neutral-400">
+            {item.description}
+          </p>
+          <span class="mt-8 inline-block text-sm font-bold text-neutral-900 dark:text-neutral-100">
+            {t.open} →
+          </span>
+        </a>
+      ))}
+    </div>
+    {cameras.length > 0 && lenses.length > 0 && (
+      <section class="mt-12 rounded-3xl border border-neutral-300 bg-neutral-100 p-7 dark:border-neutral-700 dark:bg-neutral-900 sm:p-9">
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+          {t.pairTitle}
+        </h2>
+        <p class="mt-3 max-w-3xl leading-7 text-neutral-600 dark:text-neutral-400">
+          {t.pairIntro}
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <p class="rounded-xl bg-white p-5 text-sm leading-6 dark:bg-neutral-950">
+            {cameras[0].data.model}: {t.pairCamera}
+          </p>
+          <p class="rounded-xl bg-white p-5 text-sm leading-6 dark:bg-neutral-950">
+            {lenses[0].data.model}: {t.pairLens}
+          </p>
+        </div>
+        <a
+          href={localePath(locale, '/galleries/')}
+          class="mt-6 inline-block font-bold text-amber-700 hover:underline dark:text-amber-300"
+        >
+          {t.pairSamples} →
+        </a>
+      </section>
+    )}
+  </div>
+</MainLayout>

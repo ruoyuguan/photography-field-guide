@@ -37,7 +37,12 @@ export const en = {
     labels: {
       home: 'Home',
       learn: 'Learn',
+      glossary: 'Glossary',
       tools: 'Tools',
+      gear: 'Gear',
+      galleries: 'Galleries',
+      resources: 'Resources',
+      about: 'About',
     },
     footer: {
       /** Section titles and link labels for `footerSections` in `@data/navigation`, keyed by id. */
@@ -52,6 +57,11 @@ export const en = {
         exposureTriangle: 'Exposure triangle',
         cropFactorTool: 'Crop factor calculator',
         exposureStopsTool: 'Exposure stops calculator',
+        glossary: 'Bilingual glossary',
+        gear: 'Camera and lens guides',
+        galleries: 'External sample galleries',
+        resources: 'Verified learning resources',
+        about: 'About this project',
         repository: 'GitHub repository',
       },
       hiringBadge: "We're hiring!",

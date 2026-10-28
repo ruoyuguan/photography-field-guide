@@ -49,6 +49,7 @@ export default defineConfig({
               translations: { 'zh-CN': '从这里开始' },
               link: 'learn/',
             },
+            { autogenerate: { directory: 'learn/getting-started' } },
           ],
         },
         {
@@ -60,6 +61,11 @@ export default defineConfig({
           label: 'Exposure',
           translations: { 'zh-CN': '曝光基础' },
           items: [{ autogenerate: { directory: 'learn/exposure' } }],
+        },
+        {
+          label: 'Image Files',
+          translations: { 'zh-CN': '图像文件' },
+          items: [{ autogenerate: { directory: 'learn/image-quality' } }],
         },
       ],
       social: [

@@ -1,0 +1,91 @@
+---
+title: 光圈与 F 值
+description: 理解镜头开孔、单位面积进光、景深，以及等效比较的适用边界。
+translationKey: aperture
+category: exposure
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [digital-camera-works]
+relatedConcepts: [aperture, f-number, depth-of-field, exposure]
+relatedTools: [exposure-stops]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/camera-exposure.htm'
+    title: 'Camera Exposure — Cambridge in Colour'
+    locator: 'Aperture; f-stop'
+    accessedOn: '2026-10-28'
+    supports: 'Aperture controls the lens opening and contributes to exposure together with shutter speed.'
+  - url: 'https://www.cambridgeincolour.com/tutorials/depth-of-field.htm'
+    title: 'Depth of Field — Cambridge in Colour'
+    locator: 'Aperture and depth of field'
+    accessedOn: '2026-10-28'
+    supports: 'Aperture affects depth of field, but focus distance, viewing conditions, and other variables also matter.'
+sidebar:
+  order: 1
+---
+
+光圈是镜头内的开孔。在通常的摄影模型中，F 值表示焦距除以入瞳直径。数字越小，相对开孔越大。
+
+**简短回答：**同一场景、同一快门时间下，F2 比 F4 让单位传感器面积接收到更多光。它也会改变景深和镜头呈现。“全开”并不总是最好。
+
+## 为什么数字看起来是反的？
+
+在同一焦距下，F4 的入瞳直径是 F2 的一半。面积与直径平方相关，因此理想模型中的单位面积进光相差四倍，即**两档**。F2.8 等标称数值是便于使用的取整，不是精确物理常数。
+
+<svg
+  viewBox="0 0 640 180"
+  role="img"
+  aria-label="F2 的开孔面积大于 F4 的示意图"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <circle cx="160" cy="90" r="65" fill="#404040" />
+  <circle cx="160" cy="90" r="48" fill="#fbbf24" />
+  <circle cx="480" cy="90" r="65" fill="#404040" />
+  <circle cx="480" cy="90" r="24" fill="#fbbf24" />
+  <text x="135" y="174" fill="white" font-size="18">
+    F2
+  </text>
+  <text x="455" y="174" fill="white" font-size="18">
+    F4
+  </text>
+</svg>
+
+圆形仅说明面积关系，不表示某支镜头的真实光圈叶片形状。
+
+## 光圈不只有一个效果
+
+| 选择     | 可能的好处                           | 代价                                         |
+| -------- | ------------------------------------ | -------------------------------------------- |
+| 较大光圈 | 单位面积进光更多；相同条件下景深更浅 | 对焦容差可能更小；镜头成像表现也会改变       |
+| 较小光圈 | 相同条件下景深更大                   | 单位面积进光更少；过小开孔可能因衍射损失细节 |
+| 中间光圈 | 对某些镜头和场景是实用平衡           | 没有一个数值对所有镜头都最佳                 |
+
+## 示例设置
+
+假设 **50 mm、F4、1/125 秒、ISO 400** 已得到理想呈现。保持时间与 ISO 不变，改成 **F2**，单位面积曝光约增加两档。若改成 **1/500 秒**维持相近亮度，运动呈现也会改变，因此不是毫无代价的提升。
+
+拍多人合影时，大光圈可能让某个人落在可接受清晰范围之外。对焦距离和输出尺寸也会影响结果，不能只看 F 值预测人像效果。
+
+## 画幅等效能说明什么？
+
+镜头换到另一种传感器画幅，标称 F 值不会改变。**普通曝光设置不要乘画幅系数。**比较景深、总进光或噪点时，必须明确相同取景、机位或对焦距离、输出条件等前提。“等效虚化”不是一个可以脱离条件的通用换算。
+
+## 常见误区
+
+- **F2.8–F4.8 表示镜头只能使用这些光圈。**对于可变光圈变焦镜头，这是两端的最大光圈，仍可选择更小光圈。
+- **最小光圈一定最清晰。**更多景深不能抵消衍射或对焦偏差。
+- **大光圈一定带来漂亮背景虚化。**镜头设计、距离、背景结构与取景同样重要。
+
+## 练习：保持取景不变
+
+固定机位拍静止场景，使用 F4 和 F8 示例设置。第一组保持快门时间和 ISO 不变，第二组用快门时间补偿亮度。比较亮度、前后可接受清晰范围和细节。使用相机实际提供的档位，不必强行凑理论数值。
+
+## 继续学习
+
+阅读[景深与背景虚化](../../sensor-lens/depth-of-field/)，再用[曝光档位工具](../../../tools/exposure-stops/)比较取舍。[XF16–50 器材指南](../../../gear/fujifilm-xf16-50/)展示如何读懂真实镜头名称。
+
+## 资料来源
+
+- [Cambridge in Colour：相机曝光（英文）](https://www.cambridgeincolour.com/tutorials/camera-exposure.htm)
+- [Cambridge in Colour：景深（英文）](https://www.cambridgeincolour.com/tutorials/depth-of-field.htm)

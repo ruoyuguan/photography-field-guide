@@ -1,65 +1,115 @@
 ---
-title: Sensor Formats
-description: Understand full frame, APS-C, crop factor, and what sensor size does—and does not—change.
+title: Full Frame, APS-C, and Sensor Formats
+description: Compare physical recording areas, field of view, and total light without turning format names into quality scores.
 translationKey: sensor-formats
 category: sensor-lens
 difficulty: beginner
 reviewStatus: published
 draft: false
-prerequisites: [orientation]
-relatedConcepts: [crop-factor]
-relatedTools: []
+prerequisites: [digital-camera-works]
+relatedConcepts: [sensor, full-frame, aps-c, crop-factor, field-of-view]
+relatedTools: [crop-factor]
 lastReviewed: '2026-10-28'
 sources:
   - url: 'https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats'
     title: 'The DX and FX Formats — Nikon'
-    locator: 'What is camera format?; Can you use an FX lens on a DX camera body?'
+    locator: 'What is camera format?'
     accessedOn: '2026-10-28'
-    supports: 'Full-frame 36 × 24 mm dimensions, DX sensor dimensions, and the relationship between sensor area, crop factor, and field of view.'
+    supports: 'The 36 × 24 mm FX format, approximately 24 × 16 mm DX format, and the comparison of field of view.'
   - url: 'https://fujifilm-x.com/global/products/cameras/x-t5/specifications/'
     title: 'FUJIFILM X-T5 Specifications'
     locator: 'Image Sensor'
     accessedOn: '2026-10-28'
-    supports: 'The 23.5 × 15.7 mm APS-C sensor dimensions of this particular camera.'
+    supports: 'The 23.5 × 15.7 mm sensor dimensions of this specific APS-C camera.'
   - url: 'https://www.cambridgeincolour.com/tutorials/camera-sensors.htm'
-    title: 'How a Camera Sensor Works — Cambridge in Colour'
-    locator: 'Opening explanation of photosites and photon collection'
+    title: 'Digital Camera Sensors — Cambridge in Colour'
+    locator: 'Photosites and photon collection'
     accessedOn: '2026-10-28'
-    supports: 'The physical capture of photons during an exposure; not a claim that every sensor has the same design or noise performance.'
+    supports: 'Sensors collect photons at photosites; their physical design affects capture.'
 sidebar:
   order: 1
 ---
 
-A camera's **sensor format** describes the physical size of the area that captures light. “Full frame” and “APS-C” are format names, not measures of image quality by themselves.
+“Full frame” and “APS-C” describe physical recording formats. They are not letter grades, and APS-C is not one universal sensor dimension.
 
-| Format     | Approximate sensor dimensions            | Typical crop factor |
-| ---------- | ---------------------------------------- | ------------------- |
-| Full frame | 36 × 24 mm                               | 1×                  |
-| APS-C      | About 23.5 × 15.7 mm in the X-T5 example | About 1.5×          |
+**Short answer:** with the same lens and camera position, a smaller sensor records a smaller part of the projected image and therefore a narrower field of view. It does not change the lens's focal length or f-number.
 
-APS-C dimensions vary by manufacturer and sometimes by camera model. Use a specific camera's specifications when exact dimensions matter.
+## Start with real dimensions
 
-## What a smaller sensor changes
+| Example               | Dimensions       | Diagonal crop factor relative to 36 × 24 mm |
+| --------------------- | ---------------- | ------------------------------------------- |
+| Full-frame reference  | 36 × 24 mm       | 1×                                          |
+| Nikon DX example      | About 24 × 16 mm | About 1.5×                                  |
+| Fujifilm X-T5 example | 23.5 × 15.7 mm   | About 1.53×                                 |
 
-With the same lens and camera position, a smaller sensor records a smaller part of the image circle. The result is a **narrower field of view**, similar to cropping the full-frame image.
+Crop factor here compares diagonals for formats with matching aspect ratios. The X-T5 area is about 43% of the full-frame reference—not exactly half. “APS-C” alone is not enough for an exact calculation.
 
-At the same f-number and shutter speed, the smaller sensor also collects less total light because its area is smaller. This can affect noise performance and the range of depth-of-field effects you can achieve; it is not a rule that every smaller sensor is noisier in every comparison.
+<svg
+  viewBox="0 0 660 400"
+  role="img"
+  aria-label="Dimensionally proportional 36 by 24 and 23.5 by 15.7 millimeter sensor rectangles"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <rect
+    x="90"
+    y="45"
+    width="432"
+    height="288"
+    fill="#fbbf24"
+    fill-opacity=".15"
+    stroke="#fbbf24"
+    stroke-width="3"
+  />
+  <rect
+    x="185.4"
+    y="105.6"
+    width="282"
+    height="188.4"
+    fill="#38bdf8"
+    fill-opacity=".15"
+    stroke="#38bdf8"
+    stroke-width="3"
+  />
+  <text x="102" y="75" fill="#fbbf24" font-size="21">
+    36 × 24 mm
+  </text>
+  <text x="199" y="139" fill="#38bdf8" font-size="20">
+    23.5 × 15.7 mm
+  </text>
+  <text x="164" y="375" fill="white" font-size="17">
+    Same lens + same camera position → smaller recorded area
+  </text>
+</svg>
 
-## What it does not change
+## Four comparisons to keep separate
 
-- **The lens focal length stays the same.** A 50 mm lens is still a 50 mm lens.
-- **The f-number does not change.** f/2.8 does not become another physical aperture setting.
-- **Exposure settings are not multiplied by crop factor.** The same aperture, shutter speed, and ISO still produce the same exposure brightness under the same lighting, within normal camera metering differences.
-- **Perspective is not directly changed by sensor size.** Perspective depends on camera position. If you move to restore the same framing, the perspective changes because you moved.
+1. **Field of view:** a smaller recording area crops the view when position and lens stay fixed.
+2. **Total light:** at the same f-number and exposure time, the smaller area collects less total light in the simplified same-scene comparison. That is different from light per unit area.
+3. **Perspective:** it depends on camera position. Moving back to restore framing changes perspective because you moved.
+4. **Sensor performance:** pixel design, readout, processing, generation, and output conditions matter. Format alone does not rank every camera's noise or image quality.
 
-## The key distinction
+## Worked example settings
 
-Sensor size influences several things at once: field of view, total light captured, and the depth-of-field or background-blur results possible with a given setup. Keep those ideas separate before combining them under the word “equivalent.”
+Use **50 mm, F4, 1/125 s, ISO 400** on both formats without moving. The APS-C frame has a tighter view. Its actual lens remains 50 mm and its aperture remains F4. **Do not multiply ordinary exposure settings by crop factor.** Metering implementations can vary, but there is no universal exposure-format conversion.
 
-Next: [Equivalent focal length](../equivalent-focal-length/).
+If you instead choose a wider lens or move back to match framing, the comparison changes. Depth of field and total-light discussions now require those conditions to be explicit.
+
+## Common misconceptions
+
+- **APS-C means exactly half full-frame area.** Real dimensions vary; the X-T5 example is about 43% by area.
+- **A smaller sensor magnifies the lens.** It records a smaller region; focal length remains unchanged.
+- **Full frame is always better.** Formats involve size, lenses, cost, output, and photographic intent; “better” needs a use case.
+
+## Practice: crop without moving
+
+Photograph a static scene using one lens, fixed example settings, and a locked camera position. Crop a copy in software to the X-T5-to-full-frame linear proportion, or compare two cameras if available. Keep output display size consistent and note what changes in framing. Do not move closer for the first comparison.
+
+## Continue
+
+Next, learn [equivalent focal length](../equivalent-focal-length/) and try the [interactive crop-factor tool](../../../tools/crop-factor/). See the exact dimensions in the [X-T5 equipment guide](../../../gear/fujifilm-x-t5/). Depth of field gets its own explanation in [Depth of Field and Background Blur](../depth-of-field/).
 
 ## Sources
 
 - [Nikon: The DX and FX Formats](https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats)
 - [FUJIFILM X-T5: Specifications](https://fujifilm-x.com/global/products/cameras/x-t5/specifications/)
-- [Cambridge in Colour: How a Camera Sensor Works](https://www.cambridgeincolour.com/tutorials/camera-sensors.htm)
+- [Cambridge in Colour: Digital Camera Sensors](https://www.cambridgeincolour.com/tutorials/camera-sensors.htm)

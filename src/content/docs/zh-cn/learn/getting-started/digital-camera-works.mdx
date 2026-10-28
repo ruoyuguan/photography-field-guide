@@ -1,0 +1,69 @@
+---
+title: 数码相机如何工作？
+description: 跟随光线穿过镜头、传感器、信号处理，直到生成一张照片。
+translationKey: digital-camera-works
+category: getting-started
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [what-is-photography]
+relatedConcepts: [sensor, exposure, raw, iso]
+relatedTools: []
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/camera-sensors.htm'
+    title: 'Digital Camera Sensors — Cambridge in Colour'
+    locator: 'Sensor operation; photons; color filters; demosaicing'
+    accessedOn: '2026-10-28'
+    supports: 'Sensors sample light at photosites, convert the signal, and use color-filter information during image reconstruction.'
+sidebar:
+  order: 2
+---
+
+按下快门时，相机并不是简单地“保存镜头看到的画面”，而是完成一连串光学、机械、电子和计算步骤。
+
+**简短回答：**镜头投射光线，传感器采样，电子系统读出并转换信号，处理后得到 RAW 数据或已呈现的图像。
+
+## 一张照片的路径
+
+```text
+场景光线 → 镜头光圈 → 快门 → 传感器感光单元
+        → 读出与模数转换
+        → RAW 数据 → 去马赛克与图像处理 → JPEG／HEIF／TIFF
+```
+
+传感器上有许多感光位置，常称 photosites。典型彩色相机会利用色彩滤镜信息，通过去马赛克重建彩色图像。在所有处理语境下，感光单元并不天然等于最终图像的一个像素。
+
+## 每一步控制什么？
+
+- **光圈与快门时间**影响快门开放期间到达传感器的曝光。
+- **对焦**决定投射图像的哪些部分能在传感器平面上清晰成像。
+- **传感器尺寸**决定记录范围；使用同一镜头和机位时，它会影响视角。
+- **读出与转换**把捕获信号变成数字数据。
+- **ISO 相关处理和输出显影**影响信号呈现。ISO 不会创造更多入射光。
+
+## 跟着一组示例设置走一遍
+
+以 **F2.8、1/250 秒、ISO 800** 为例。光圈与 1/250 秒曝光作用于光线收集之前或期间；ISO 800 属于后续捕获／输出链路，具体实现因相机和模式而异。同一曝光可以产生 RAW 与 JPEG，但两者处理不同。EXIF 记录文件及设置相关信息，不是第二张图像，也不能证明全部实际条件。
+
+## 机械快门与电子快门
+
+机械快门使用运动的物理结构。电子快门通过电子方式读出传感器；某些实现会先后读取不同行，使高速运动变形，或与脉冲光源相互作用。请阅读具体机型说明书，不要假定所有电子快门行为相同。
+
+## 常见误区
+
+- **传感器像人眼一样直接看到颜色。**它采样经过滤镜的信号，还需重建与呈现。
+- **RAW 是已经可以直接用于所有用途的原图。**它保存面向传感器的数据，通常仍需显影，并非通用的成品图像格式。
+- **ISO 让传感器收集更多光子。**它不改变曝光期间已经到达的光线。
+
+## 练习：分开拍摄与显影
+
+使用静止主体和能得到正常画面的示例设置；如果相机支持，保存 RAW＋JPEG。保持同一曝光，再更改机内照片风格拍摄一张 JPEG。比较这些文件：场景和入射光没有改变，输出处理却不同。
+
+## 继续学习
+
+了解[传感器画幅](../../sensor-lens/sensor-formats/)为何改变记录范围，再分别学习[光圈](../../exposure/aperture/)、[快门](../../exposure/shutter-speed/)和 [ISO](../../exposure/iso/)。最后阅读 [RAW、JPEG 与 EXIF](../../image-quality/raw-jpeg-exif/)。
+
+## 资料来源
+
+- [Cambridge in Colour：数码相机传感器（英文）](https://www.cambridgeincolour.com/tutorials/camera-sensors.htm)

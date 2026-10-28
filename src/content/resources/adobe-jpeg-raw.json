@@ -1,0 +1,29 @@
+{
+  "id": "adobe-jpeg-raw",
+  "title": { "en": "JPEG vs. RAW", "zh-cn": "JPEG 与 RAW 对比" },
+  "provider": "Adobe",
+  "providerType": "official",
+  "category": "tutorial",
+  "url": "https://www.adobe.com/creativecloud/file-types/image/comparison/jpeg-vs-raw.html",
+  "languages": ["en"],
+  "audience": ["beginner"],
+  "purpose": {
+    "en": "Compare sensor-oriented RAW development with processed, compressed JPEG delivery.",
+    "zh-cn": "比较面向传感器的 RAW 显影与已处理、压缩的 JPEG 交付。"
+  },
+  "editorialNote": {
+    "en": "Adobe publishes imaging software; the comparison is a format overview, not a camera-independent image-quality test.",
+    "zh-cn": "Adobe 是影像软件厂商；该对比是格式概述，不是跨相机的画质测试。"
+  },
+  "tags": ["raw", "jpeg", "workflow", "compression"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.adobe.com/creativecloud/file-types/image/comparison/jpeg-vs-raw.html",
+    "evidence": "The article compares RAW development flexibility with JPEG compression and delivery."
+  },
+  "reviewStatus": "published"
+}

@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import PageHeader from '@components/directory/PageHeader.astro';
+import FilterBar from '@components/directory/FilterBar.astro';
+import SourceLinks from '@components/directory/SourceLinks.astro';
+import { directoryCopy } from '@copy/directory';
+import { getArticleLinks } from '@utils/catalog';
+import { type MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+}
+const { locale } = Astro.props;
+const t = directoryCopy[locale];
+const terms = (
+  await getCollection(
+    'glossary',
+    ({ data }) => data.reviewStatus === 'published'
+  )
+).sort((a, b) => a.data.term[locale].localeCompare(b.data.term[locale]));
+const articles = await getArticleLinks(locale);
+const labels = new Map(terms.map(term => [term.id, term.data.term[locale]]));
+---
+
+<MainLayout
+  title={t.glossary.metaTitle}
+  description={t.glossary.metaDescription}
+  section={t.glossary.title}
+>
+  <div class="mx-auto max-w-5xl py-12 sm:py-16">
+    <PageHeader
+      eyebrow={t.glossary.eyebrow}
+      title={t.glossary.title}
+      intro={t.glossary.intro}
+    />
+    <div class="mt-10">
+      <FilterBar
+        queryLabel={t.glossary.query}
+        queryPlaceholder={t.glossary.placeholder}
+        filters={[]}
+        allLabel={t.common.all}
+        resetLabel={t.common.reset}
+        showingTemplate={t.glossary.showing}
+        emptyMessage={t.glossary.empty}
+        noScriptMessage={t.common.noScript}
+      >
+        <div class="grid gap-5 md:grid-cols-2">
+          {terms.map(term => {
+            const data = term.data;
+            const article = data.articleKey
+              ? articles.get(data.articleKey)
+              : undefined;
+            return (
+              <article
+                data-filter-item
+                data-search={[
+                  data.term.en,
+                  data.term['zh-cn'],
+                  ...data.aliases.en,
+                  ...data.aliases['zh-cn'],
+                ].join(' ')}
+                class="rounded-2xl border border-neutral-300 bg-neutral-50 p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
+              >
+                <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+                  {data.term[locale]}
+                </h2>
+                <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+                  {data.aliases[locale].join(' · ')}
+                </p>
+                <p class="mt-4 leading-7 text-neutral-700 dark:text-neutral-300">
+                  {data.shortDefinition[locale]}
+                </p>
+                {data.misconceptions[locale].map(note => (
+                  <p class="mt-4 rounded-xl bg-amber-50 p-4 text-sm leading-6 text-neutral-700 dark:bg-amber-400/10 dark:text-neutral-300">
+                    <strong>{t.glossary.misconception}:</strong> {note}
+                  </p>
+                ))}
+                <p class="mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                  <strong>{t.glossary.example}:</strong> {data.example[locale]}
+                </p>
+                {article && (
+                  <a
+                    class="mt-5 inline-block text-sm font-bold text-amber-700 hover:underline dark:text-amber-300"
+                    href={article.path}
+                  >
+                    {t.glossary.read}: {article.title} →
+                  </a>
+                )}
+                {data.relatedTerms.length > 0 && (
+                  <p class="mt-4 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
+                    {t.glossary.related}:{' '}
+                    {data.relatedTerms
+                      .map(id => labels.get(id))
+                      .filter(Boolean)
+                      .join(' · ')}
+                  </p>
+                )}
+                <details class="mt-5 text-sm">
+                  <summary class="cursor-pointer font-semibold text-neutral-700 dark:text-neutral-300">
+                    {t.common.sources}
+                  </summary>
+                  <div class="mt-4">
+                    <SourceLinks
+                      sources={data.sources}
+                      checkedLabel={t.common.checked}
+                      externalLabel={t.common.external}
+                    />
+                  </div>
+                </details>
+              </article>
+            );
+          })}
+        </div>
+      </FilterBar>
+    </div>
+  </div>
+</MainLayout>

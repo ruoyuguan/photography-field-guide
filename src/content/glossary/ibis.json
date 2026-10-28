@@ -1,0 +1,34 @@
+{
+  "id": "ibis",
+  "term": { "en": "In-body image stabilization", "zh-cn": "机身图像防抖" },
+  "aliases": {
+    "en": ["IBIS", "sensor-shift stabilization"],
+    "zh-cn": ["机身防抖", "传感器位移防抖"]
+  },
+  "shortDefinition": {
+    "en": "A camera mechanism that moves the sensor to compensate for certain camera movements during capture.",
+    "zh-cn": "相机通过移动传感器补偿某些拍摄时相机运动的机构。"
+  },
+  "misconceptions": {
+    "en": [
+      "IBIS compensates for some camera motion; it cannot stop subject movement or guarantee focus."
+    ],
+    "zh-cn": ["机身防抖补偿某些相机运动，不能停止主体运动或保证对焦。"]
+  },
+  "example": {
+    "en": "The X-T5 specification lists a five-axis sensor-shift image-stabilization mechanism.",
+    "zh-cn": "X-T5 规格列出五轴传感器位移图像防抖机构。"
+  },
+  "articleKey": "shutter-speed",
+  "relatedTerms": ["camera-shake", "shutter-speed", "sensor"],
+  "sources": [
+    {
+      "url": "https://fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Stabilizer",
+      "accessedOn": "2026-10-28",
+      "supports": "The presence and mechanism of in-body stabilization in this specific camera."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,74 @@
+---
+title: 曝光档位与实际取舍
+description: 用档位比较光圈、快门与标称 ISO 映射，同时分清它们不同的物理效果。
+translationKey: exposure-stops
+category: exposure
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [aperture, shutter-speed, iso]
+relatedConcepts: [exposure, exposure-stop, aperture, shutter-speed, iso]
+relatedTools: [exposure-stops]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/camera-exposure.htm'
+    title: 'Camera Exposure — Cambridge in Colour'
+    locator: 'Aperture and shutter speed; exposure stops'
+    accessedOn: '2026-10-28'
+    supports: 'Exposure changes can be compared as doublings or halvings through aperture and exposure time.'
+sidebar:
+  order: 4
+---
+
+**一档**是以二倍为基准的比较。多一档表示讨论的量翻倍，少一档表示减半；多三档是 \(2^3 = 8\) 倍，不是三倍。
+
+**简短回答：**档位便于计算参数补偿，但亮度匹配并不代表两张照片在运动、清晰范围、噪点或呈现上相同。
+
+## 一个公式，三种语境
+
+**档位数 = log₂（新值 ÷ 参考值）**
+
+快门要代入时间：1/60 到 1/250 秒约少两档时间。光圈按面积比较：F2 到 F4 约少两档单位面积进光。ISO 比较的是标准化标称输出映射，不是声称光子翻倍。
+
+| 参考设置 | 改变后   | 约略变化           | 还改变了什么？               |
+| -------- | -------- | ------------------ | ---------------------------- |
+| F4       | F2.8     | 单位面积曝光 +1 档 | 景深与镜头呈现               |
+| 1/125 秒 | 1/500 秒 | 时间 −2 档         | 运动模糊与抖动可见程度       |
+| ISO 400  | ISO 1600 | 标称映射 +2 档     | 输出与噪点表现，不是额外光子 |
+
+这里使用取整后的摄影标称值。计算器对输入数值使用精确公式，不把标称档位当作物理常数。
+
+## 示例设置
+
+从 **F4、1/125 秒、ISO 400** 开始。若运动主体需要 **1/500 秒**，时间少两档；光圈改为 **F2.8**，补回约一档单位面积曝光；ISO 改为 **800**，补上另一档标称输出。
+
+结果可能亮度相近，但主体更凝固，景深不同。由于传感器处曝光不同，噪点也可能不同。这是**补偿**，不是所有结果的等效。
+
+## 测光与曝光补偿
+
+反射式测光根据场景反射的光估计曝光。很白或很黑的主体可能让自动曝光趋向中间结果。曝光补偿要求自动系统给出更亮或更暗的结果，它不能突破物理限制，也不保证相机会改变哪个参数。
+
+检查重要高光、阴影、运动与预期呈现。直方图是工具，不是要求每个场景都成为平均灰色的命令。
+
+## 画幅系数不参与这种补偿
+
+从全画幅换成 APS-C，普通曝光设置不需要把 F 值、快门或 ISO 乘画幅系数。总进光或景深的画幅等效讨论基于不同假设，不能混入这个计算器。
+
+## 常见误区
+
+- **一档就是参数加一。**它表示相关量翻倍或减半。
+- **ISO 更亮表示传感器多收到两档光。**它指代标称输出映射。
+- **补偿后的参数会得到完全相同照片。**运动、景深与噪点仍是独立结果。
+
+## 练习：两条路径获得相近亮度
+
+选择安全的静止场景和示例参考设置。先拍一张，再把快门曝光减少一档，并用一档标称 ISO 补偿。如果镜头允许，再用光圈重复。比较的不只是亮度，还有细节、噪点和可接受清晰范围。记录实际设置及相机取整。
+
+## 使用计算器
+
+打开[曝光档位比较](../../../tools/exposure-stops/)。启用 JavaScript 可交互计算；没有脚本时仍保留示例公式和前提。还可复习[光圈](../aperture/)、[快门](../shutter-speed/)和 [ISO](../iso/)，理解算术之外的效果。
+
+## 资料来源
+
+- [Cambridge in Colour：相机曝光（英文）](https://www.cambridgeincolour.com/tutorials/camera-exposure.htm)
+- [Cambridge in Colour：相机测光（英文）](https://www.cambridgeincolour.com/tutorials/camera-metering.htm)

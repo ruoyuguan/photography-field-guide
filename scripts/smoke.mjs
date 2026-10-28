@@ -8,24 +8,37 @@ const BASE = process.env.SITE_BASE
   : '/';
 const withBase = route =>
   BASE === '/' ? route : `${BASE}${route === '/' ? '/' : route}`;
-const GUIDE_ROUTES = [
+const LOCALIZED_ROUTES = [
+  '/',
   '/learn/',
+  '/learn/getting-started/what-is-photography/',
+  '/learn/getting-started/digital-camera-works/',
   '/learn/sensor-lens/sensor-formats/',
   '/learn/sensor-lens/equivalent-focal-length/',
+  '/learn/sensor-lens/depth-of-field/',
+  '/learn/exposure/aperture/',
+  '/learn/exposure/shutter-speed/',
+  '/learn/exposure/iso/',
+  '/learn/exposure/exposure-stops/',
   '/learn/exposure/exposure-triangle/',
-];
-const TOOL_ROUTES = [
+  '/learn/image-quality/raw-jpeg-exif/',
   '/tools/',
   '/tools/crop-factor/',
   '/tools/exposure-stops/',
+  '/glossary/',
+  '/gear/',
+  '/gear/fujifilm-x-t5/',
+  '/gear/fujifilm-xf16-50/',
+  '/galleries/',
+  '/resources/',
+  '/about/',
 ];
 const ROUTES = [
-  '/',
+  ...LOCALIZED_ROUTES,
   '/zh-cn/',
-  ...GUIDE_ROUTES,
-  ...GUIDE_ROUTES.map(route => `/zh-cn${route}`),
-  ...TOOL_ROUTES,
-  ...TOOL_ROUTES.map(route => `/zh-cn${route}`),
+  ...LOCALIZED_ROUTES.filter(route => route !== '/').map(
+    route => `/zh-cn${route}`
+  ),
   '/404',
   '/zh-cn/404/',
 ];
@@ -48,7 +61,7 @@ const EXPECTATIONS = {
     'Understand your camera.',
     'data-sensor-diagram="36x24:23.5x15.7"',
     'width="360" height="240"',
-    'width="235" height="156"',
+    'width="235" height="157"',
   ],
   '/zh-cn/': [
     '<html lang="zh-CN"',
@@ -70,7 +83,10 @@ const EXPECTATIONS = {
     `href="${withBase('/zh-cn/learn/sensor-lens/sensor-formats/')}"`,
   ],
   '/learn/sensor-lens/sensor-formats/': ['Sensor Formats', '36 × 24 mm'],
-  '/zh-cn/learn/sensor-lens/sensor-formats/': ['传感器与画幅', '36 × 24 mm'],
+  '/zh-cn/learn/sensor-lens/sensor-formats/': [
+    '全画幅、APS-C 与传感器画幅',
+    '36 × 24 mm',
+  ],
   '/learn/sensor-lens/equivalent-focal-length/': ['50 mm × 1.5 = 75 mm'],
   '/zh-cn/learn/sensor-lens/equivalent-focal-length/': [
     '50 mm × 1.5 = 全画幅上的 75 mm',
@@ -117,9 +133,45 @@ const EXPECTATIONS = {
     '这一帧暂时是空的。',
     'noindex, nofollow',
   ],
+  '/glossary/': [
+    'Photography glossary',
+    'data-filter-item',
+    'half the full-frame area',
+  ],
+  '/zh-cn/glossary/': ['摄影术语词典', 'data-filter-query', '全画幅的一半'],
+  '/gear/': ['Camera and lens guides', 'FUJIFILM X mount'],
+  '/zh-cn/gear/': ['相机与镜头指南', '原生卡口兼容'],
+  '/gear/fujifilm-x-t5/': [
+    '23.5 × 15.7 mm',
+    'https://fujifilm-dsc.com/en/manual/x-t5/',
+  ],
+  '/zh-cn/gear/fujifilm-x-t5/': ['五轴传感器位移防抖', '传感器与画幅'],
+  '/gear/fujifilm-xf16-50/': ['16–50 mm', 'F2.8–F4.8', '24–76 mm'],
+  '/zh-cn/gear/fujifilm-xf16-50/': ['实际焦距', '最小光圈', '等效焦距'],
+  '/galleries/': [
+    'External sample galleries',
+    'data-filter-key="scope"',
+    'specifically captioned sample',
+  ],
+  '/zh-cn/galleries/': [
+    '外部样片画廊',
+    '具体机身／镜头证据',
+    '不主张转载或再分发许可',
+  ],
+  '/resources/': [
+    'Learning resources',
+    'data-filter-key="audience"',
+    'What Is ISO in Photography?',
+  ],
+  '/zh-cn/resources/': ['摄影学习资源', '核查日期', 'Lightroom Classic'],
+  '/about/': [
+    'About this project',
+    'Quality and scientific limits',
+    'link-only',
+  ],
+  '/zh-cn/about/': ['关于这个项目', '质量原则与科学边界', '仅提供链接'],
 };
 const FORBIDDEN = [
-  'ScrewFast',
   'Equip Your Projects',
   'Construction Industry Blog',
   '/start-here/',

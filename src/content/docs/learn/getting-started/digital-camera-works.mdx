@@ -1,0 +1,69 @@
+---
+title: How a Digital Camera Works
+description: Follow light from the lens to the sensor, signal processing, and a finished photograph.
+translationKey: digital-camera-works
+category: getting-started
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [what-is-photography]
+relatedConcepts: [sensor, exposure, raw, iso]
+relatedTools: []
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/camera-sensors.htm'
+    title: 'Digital Camera Sensors — Cambridge in Colour'
+    locator: 'Sensor operation; photons; color filters; demosaicing'
+    accessedOn: '2026-10-28'
+    supports: 'Sensors sample light at photosites, convert the signal, and use color-filter information during image reconstruction.'
+sidebar:
+  order: 2
+---
+
+When you press the shutter button, the camera does not simply “save what the lens sees.” It performs a chain of optical, mechanical, electronic, and computational steps.
+
+**Short answer:** the lens projects light, the sensor samples it, electronics read and convert the signal, and processing produces RAW data or a rendered image.
+
+## The path of a photograph
+
+```text
+scene light → lens aperture → shutter → sensor photosites
+            → readout and analog-to-digital conversion
+            → RAW data → demosaic and image processing → JPEG / HEIF / TIFF
+```
+
+The sensor is covered by many light-sensitive locations, often called photosites. In a typical color camera, color-filter information is reconstructed into a color image during demosaicing. A photosite is not automatically identical to a finished image pixel in every processing context.
+
+## What each stage controls
+
+- **Aperture and shutter time** influence the exposure reaching the sensor while the shutter is open.
+- **Focus** determines which parts of the projected image are sharply resolved at the sensor plane.
+- **Sensor size** sets the recording area, affecting field of view with a given lens and camera position.
+- **Readout and conversion** turn the captured signal into digital data.
+- **ISO-related processing and output development** influence the rendered signal. ISO does not create more incoming light.
+
+## Example settings, followed through the camera
+
+Consider **F2.8, 1/250 s, ISO 800**. The aperture and 1/250-second exposure act before or during light collection. ISO 800 belongs to the subsequent capture/output chain; its exact implementation varies by camera and mode. A RAW file and a JPEG can come from the same exposure but receive different processing. EXIF records information about the file and settings; it is not a second image or proof of every physical condition.
+
+## Mechanical and electronic shutters
+
+A mechanical shutter uses moving physical elements. Electronic shutter modes read the sensor electronically; some implementations read rows at different times, which can skew fast motion or interact with pulsing lights. Read your model's manual rather than assuming every electronic shutter behaves identically.
+
+## Common misconceptions
+
+- **The sensor sees color exactly like a human eye.** It samples filtered signals; reconstruction and rendering are required.
+- **RAW is an unprocessed photograph ready for every use.** It preserves sensor-oriented data that usually requires development and is not a universal finished-image format.
+- **ISO makes the sensor collect more photons.** It does not change the light that arrived during the exposure.
+
+## Practice: separate capture from development
+
+Use a stationary subject and example settings that give a usable image. Save RAW plus JPEG if your camera supports it. Keep the same exposure and make one JPEG with a different in-camera picture style, if available. Compare the files: the scene and incoming light did not change, but output processing did.
+
+## Continue
+
+Learn why [sensor format](../../sensor-lens/sensor-formats/) changes the recording area, then investigate [aperture](../../exposure/aperture/), [shutter speed](../../exposure/shutter-speed/), and [ISO](../../exposure/iso/). Finish with [RAW, JPEG, and EXIF](../../image-quality/raw-jpeg-exif/).
+
+## Sources
+
+- [Cambridge in Colour: Digital Camera Sensors](https://www.cambridgeincolour.com/tutorials/camera-sensors.htm)

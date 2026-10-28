@@ -1,0 +1,38 @@
+---
+interface Source {
+  url: string;
+  title: string;
+  locator?: string;
+  accessedOn: string;
+}
+interface Props {
+  sources: Source[];
+  checkedLabel: string;
+  externalLabel: string;
+}
+const { sources, checkedLabel, externalLabel } = Astro.props;
+---
+
+<ul class="space-y-4">
+  {sources.map(source => (
+    <li class="border-l-2 border-amber-500 pl-4">
+      <a
+        href={source.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-semibold text-neutral-900 underline decoration-neutral-400 underline-offset-4 hover:text-amber-700 dark:text-neutral-100 dark:hover:text-amber-300"
+      >
+        {source.title}
+        <span class="sr-only"> ({externalLabel})</span>
+      </a>
+      {source.locator && (
+        <span class="mt-1 block text-sm text-neutral-600 dark:text-neutral-400">
+          {source.locator}
+        </span>
+      )}
+      <span class="mt-1 block text-xs text-neutral-500 dark:text-neutral-400">
+        {checkedLabel}: {source.accessedOn}
+      </span>
+    </li>
+  ))}
+</ul>

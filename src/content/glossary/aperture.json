@@ -1,0 +1,29 @@
+{
+  "id": "aperture",
+  "term": { "en": "Aperture", "zh-cn": "光圈" },
+  "aliases": { "en": ["lens opening", "iris"], "zh-cn": ["镜头开孔", "光孔"] },
+  "shortDefinition": {
+    "en": "The adjustable lens opening that influences light per unit sensor area and depth of field.",
+    "zh-cn": "镜头中可调节的开孔，影响单位传感器面积进光与景深。"
+  },
+  "misconceptions": {
+    "en": ["The maximum aperture is not the only aperture a lens can use."],
+    "zh-cn": ["最大光圈不是镜头唯一能使用的光圈。"]
+  },
+  "example": {
+    "en": "Changing F4 to F2 increases light per unit area by two stops in the idealized comparison.",
+    "zh-cn": "在理想比较中，F4 改为 F2 使单位面积进光增加两档。"
+  },
+  "articleKey": "aperture",
+  "relatedTerms": ["f-number", "depth-of-field", "exposure"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
+      "title": "Camera Exposure — Cambridge in Colour",
+      "locator": "Aperture",
+      "accessedOn": "2026-10-28",
+      "supports": "Aperture's role in exposure and lens light transmission."
+    }
+  ],
+  "reviewStatus": "published"
+}

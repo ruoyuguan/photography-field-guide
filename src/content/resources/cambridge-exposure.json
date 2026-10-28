@@ -1,0 +1,29 @@
+{
+  "id": "cambridge-exposure",
+  "title": { "en": "Camera Exposure", "zh-cn": "相机曝光教程" },
+  "provider": "Cambridge in Colour",
+  "providerType": "independent",
+  "category": "tutorial",
+  "url": "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
+  "languages": ["en"],
+  "audience": ["beginner", "intermediate"],
+  "purpose": {
+    "en": "Study aperture, shutter time, exposure trade-offs, and stop-based comparisons.",
+    "zh-cn": "学习光圈、快门时间、曝光取舍与档位比较。"
+  },
+  "editorialNote": {
+    "en": "This guide does not adopt the source's simplified ISO language as evidence that ISO adds photons.",
+    "zh-cn": "本站不把该资料对 ISO 的简化说法当作 ISO 增加光子的物理依据。"
+  },
+  "tags": ["exposure", "aperture", "shutter-speed", "stops"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
+    "evidence": "The page explains aperture and shutter-duration exposure and their image trade-offs."
+  },
+  "reviewStatus": "published"
+}

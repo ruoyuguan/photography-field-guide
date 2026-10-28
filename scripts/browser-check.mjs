@@ -5,6 +5,7 @@ import { mkdtemp, rm } from 'node:fs/promises';
 import { createServer } from 'node:net';
 import { resolve } from 'node:path';
 import { checkTools } from './browser-tool-checks.mjs';
+import { checkDirectories } from './browser-directory-checks.mjs';
 
 /**
  * Optional real-browser checks using an installed Chrome and Node's WebSocket.
@@ -295,7 +296,7 @@ try {
   );
   assert.deepEqual(dimensions, [
     { id: 'full-frame', width: 360, height: 240 },
-    { id: 'aps-c', width: 235, height: 156 },
+    { id: 'aps-c', width: 235, height: 157 },
   ]);
   await noOverflow('/');
   await viewport(390, 844);
@@ -319,7 +320,9 @@ try {
   const chineseNavigation = await evaluate(
     `[...document.querySelectorAll('a')].filter(a => a.getAttribute('href')?.startsWith('/zh-cn/learn/')).map(a => a.textContent.trim())`
   );
-  assert.ok(chineseNavigation.some(text => text.includes('传感器与画幅')));
+  assert.ok(
+    chineseNavigation.some(text => text.includes('全画幅、APS-C 与传感器画幅'))
+  );
   assert.ok(chineseNavigation.some(text => text.includes('曝光三角')));
   assert.equal(
     await evaluate(`!!document.querySelector('a[href="/learn/"]')`),
@@ -332,6 +335,20 @@ try {
     '/zh-cn/learn/sensor-lens/sensor-formats/'
   );
   await search('/learn/', 'ISO', '/learn/exposure/exposure-triangle/');
+  await search(
+    '/zh-cn/learn/',
+    '景深',
+    '/zh-cn/learn/sensor-lens/depth-of-field/'
+  );
+  await checkDirectories({
+    call,
+    click,
+    evaluate,
+    navigate,
+    noOverflow,
+    until,
+    viewport,
+  });
   await checkTools({
     call,
     click,

@@ -1,0 +1,34 @@
+{
+  "id": "sensor",
+  "term": { "en": "Image sensor", "zh-cn": "图像传感器" },
+  "aliases": {
+    "en": ["sensor", "digital sensor"],
+    "zh-cn": ["传感器", "感光元件"]
+  },
+  "shortDefinition": {
+    "en": "The electronic component that samples incoming light at many photosites and produces signals for digital conversion.",
+    "zh-cn": "通过许多感光单元采样入射光，并产生可供数字转换信号的电子元件。"
+  },
+  "misconceptions": {
+    "en": [
+      "A sensor does not simply save a human-like view of color; reconstruction and processing are required."
+    ],
+    "zh-cn": ["传感器不是直接保存人眼式色彩画面，还需要重建与处理。"]
+  },
+  "example": {
+    "en": "The X-T5 specification lists a 23.5 × 15.7 mm sensor.",
+    "zh-cn": "X-T5 规格列出 23.5 × 15.7 mm 传感器。"
+  },
+  "articleKey": "digital-camera-works",
+  "relatedTerms": ["full-frame", "aps-c", "raw"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-sensors.htm",
+      "title": "Digital Camera Sensors — Cambridge in Colour",
+      "locator": "Photosites and digital conversion",
+      "accessedOn": "2026-10-28",
+      "supports": "Photosite light sampling and conversion into digital information."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "jpeg",
+  "term": { "en": "JPEG", "zh-cn": "JPEG 图像" },
+  "aliases": { "en": ["JPG", "JPEG image"], "zh-cn": ["JPG", "JPEG 格式"] },
+  "shortDefinition": {
+    "en": "A widely supported rendered-image format that normally uses lossy compression and processed color and tone.",
+    "zh-cn": "广泛支持的已呈现图像格式，通常使用有损压缩和已处理的色彩与影调。"
+  },
+  "misconceptions": {
+    "en": [
+      "JPEG is not merely a different extension for the same data as RAW."
+    ],
+    "zh-cn": ["JPEG 不是仅把 RAW 数据换了一个扩展名。"]
+  },
+  "example": {
+    "en": "In-camera JPEG processing can choose a picture style, sharpening, and noise reduction before delivery.",
+    "zh-cn": "机内 JPEG 处理可在交付前选择照片风格、锐化与降噪。"
+  },
+  "articleKey": "raw-jpeg-exif",
+  "relatedTerms": ["raw", "exif"],
+  "sources": [
+    {
+      "url": "https://www.adobe.com/creativecloud/file-types/image/comparison/jpeg-vs-raw.html",
+      "title": "JPEG vs. RAW — Adobe",
+      "locator": "JPEG compression and use",
+      "accessedOn": "2026-10-28",
+      "supports": "JPEG's rendered-image workflow and lossy-compression trade-offs."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -4,12 +4,25 @@
  * (`copy.nav.labels`, `copy.nav.footer.sections`), so translators never touch
  * a path and code never keys on a translated label.
  */
-export type NavLinkId = 'home' | 'learn' | 'tools';
+export type NavLinkId =
+  | 'home'
+  | 'learn'
+  | 'glossary'
+  | 'tools'
+  | 'gear'
+  | 'galleries'
+  | 'resources'
+  | 'about';
 
 export const navLinks: { id: NavLinkId; path: string }[] = [
   { id: 'home', path: '/' },
   { id: 'learn', path: '/learn/' },
+  { id: 'glossary', path: '/glossary/' },
   { id: 'tools', path: '/tools/' },
+  { id: 'gear', path: '/gear/' },
+  { id: 'galleries', path: '/galleries/' },
+  { id: 'resources', path: '/resources/' },
+  { id: 'about', path: '/about/' },
 ];
 
 export type FooterSectionId = 'learn' | 'project';
@@ -20,6 +33,11 @@ export type FooterLinkId =
   | 'exposureTriangle'
   | 'cropFactorTool'
   | 'exposureStopsTool'
+  | 'glossary'
+  | 'gear'
+  | 'galleries'
+  | 'resources'
+  | 'about'
   | 'repository';
 
 export const footerSections: {
@@ -46,6 +64,11 @@ export const footerSections: {
   {
     id: 'project',
     links: [
+      { id: 'glossary', path: '/glossary/' },
+      { id: 'gear', path: '/gear/' },
+      { id: 'galleries', path: '/galleries/' },
+      { id: 'resources', path: '/resources/' },
+      { id: 'about', path: '/about/' },
       {
         id: 'repository',
         path: 'https://github.com/ruoyuguan/photography-field-guide',

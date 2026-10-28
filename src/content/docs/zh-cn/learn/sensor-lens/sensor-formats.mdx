@@ -1,65 +1,115 @@
 ---
-title: 传感器与画幅
-description: 理解全画幅、APS-C、裁切系数，以及传感器尺寸会改变和不会改变的内容。
+title: 全画幅、APS-C 与传感器画幅
+description: 比较物理记录范围、视角与总进光，不把画幅名称当成画质评分。
 translationKey: sensor-formats
 category: sensor-lens
 difficulty: beginner
 reviewStatus: published
 draft: false
-prerequisites: [orientation]
-relatedConcepts: [crop-factor]
-relatedTools: []
+prerequisites: [digital-camera-works]
+relatedConcepts: [sensor, full-frame, aps-c, crop-factor, field-of-view]
+relatedTools: [crop-factor]
 lastReviewed: '2026-10-28'
 sources:
   - url: 'https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats'
     title: 'The DX and FX Formats — Nikon'
-    locator: 'What is camera format?; Can you use an FX lens on a DX camera body?'
+    locator: 'What is camera format?'
     accessedOn: '2026-10-28'
-    supports: '全画幅 36 × 24 mm、DX 传感器尺寸，以及传感器面积、裁切系数和视角之间的关系。'
+    supports: 'The 36 × 24 mm FX format, approximately 24 × 16 mm DX format, and the comparison of field of view.'
   - url: 'https://fujifilm-x.com/global/products/cameras/x-t5/specifications/'
     title: 'FUJIFILM X-T5 Specifications'
     locator: 'Image Sensor'
     accessedOn: '2026-10-28'
-    supports: '这一具体机型的 23.5 × 15.7 mm APS-C 传感器尺寸。'
+    supports: 'The 23.5 × 15.7 mm sensor dimensions of this specific APS-C camera.'
   - url: 'https://www.cambridgeincolour.com/tutorials/camera-sensors.htm'
-    title: 'How a Camera Sensor Works — Cambridge in Colour'
-    locator: 'Opening explanation of photosites and photon collection'
+    title: 'Digital Camera Sensors — Cambridge in Colour'
+    locator: 'Photosites and photon collection'
     accessedOn: '2026-10-28'
-    supports: '曝光过程中收集光子的物理过程；不代表所有传感器都具有相同设计或噪点表现。'
+    supports: 'Sensors collect photons at photosites; their physical design affects capture.'
 sidebar:
   order: 1
 ---
 
-相机的**传感器画幅**描述的是接收光线并形成图像的物理区域大小。“全画幅”和“APS-C”是画幅名称，本身并不等于画质高低的结论。
+“全画幅”和“APS-C”描述物理记录画幅，不是画质等级，APS-C 也不是一个统一尺寸。
 
-| 画幅   | 大致传感器尺寸                    | 常见裁切系数 |
-| ------ | --------------------------------- | ------------ |
-| 全画幅 | 36 × 24 mm                        | 1×           |
-| APS-C  | 以 X-T5 为例，约为 23.5 × 15.7 mm | 约 1.5×      |
+**简短回答：**同一镜头、同一机位下，较小传感器记录投射图像中较小的范围，因此视角更窄。镜头的焦距和 F 值都没有改变。
 
-APS-C 的准确尺寸会因厂商、有时也因机型而不同。需要精确数据时，请查看具体相机规格。
+## 从真实尺寸开始
 
-## 较小传感器改变了什么
+| 示例           | 尺寸           | 相对于 36 × 24 mm 的对角线画幅系数 |
+| -------------- | -------------- | ---------------------------------- |
+| 全画幅参考     | 36 × 24 mm     | 1×                                 |
+| 尼康 DX 示例   | 约 24 × 16 mm  | 约 1.5×                            |
+| 富士 X-T5 示例 | 23.5 × 15.7 mm | 约 1.53×                           |
 
-使用同一支镜头并保持相机位置不变时，较小的传感器只记录成像圈中较小的一部分，因此得到**更窄的视角**，效果类似于裁切全画幅画面。
+这里的画幅系数比较宽高比一致画幅的对角线。X-T5 示例的面积约为全画幅参考的 43%，并不恰好是一半。只说“APS-C”不足以做精确计算。
 
-在光圈 f 值和快门速度相同的情况下，较小传感器由于面积更小，接收的**总光量**也更少。这可能影响噪点表现，以及你所能获得的景深和虚化效果范围；但不能由此推导“小传感器在任何比较中都噪点更多”。
+<svg
+  viewBox="0 0 660 400"
+  role="img"
+  aria-label="按真实尺寸比例绘制的 36×24 与 23.5×15.7 毫米传感器矩形"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <rect
+    x="90"
+    y="45"
+    width="432"
+    height="288"
+    fill="#fbbf24"
+    fill-opacity=".15"
+    stroke="#fbbf24"
+    stroke-width="3"
+  />
+  <rect
+    x="185.4"
+    y="105.6"
+    width="282"
+    height="188.4"
+    fill="#38bdf8"
+    fill-opacity=".15"
+    stroke="#38bdf8"
+    stroke-width="3"
+  />
+  <text x="102" y="75" fill="#fbbf24" font-size="21">
+    36 × 24 mm
+  </text>
+  <text x="199" y="139" fill="#38bdf8" font-size="20">
+    23.5 × 15.7 mm
+  </text>
+  <text x="164" y="375" fill="white" font-size="17">
+    同一镜头＋同一机位 → 记录范围更小
+  </text>
+</svg>
 
-## 它没有改变什么
+## 四种比较必须分开
 
-- **镜头焦距不变。** 50 mm 镜头仍然是 50 mm 镜头。
-- **光圈 f 值不变。** f/2.8 不会因为画幅不同而变成另一个实际光圈值。
-- **曝光设置不需要乘裁切系数。** 在相同光线条件下，相同光圈、快门和 ISO 仍会产生基本相同的曝光亮度，相机测光差异另计。
-- **透视不是由传感器尺寸直接改变的。** 透视取决于相机位置。如果你为了恢复相同构图而移动相机，透视改变是因为相机移动了。
+1. **视角：**机位和镜头不变时，较小记录范围裁掉了部分画面。
+2. **总进光：**相同 F 值和时间的简化同场景比较中，较小面积收集的总光更少。这与单位面积进光不同。
+3. **透视：**透视取决于机位。为了恢复取景而后退时，透视因机位移动而改变。
+4. **传感器表现：**像素设计、读出、处理、代际和输出条件都很重要，不能只按画幅给所有相机噪点或画质排名。
 
-## 最关键的区别
+## 示例设置
 
-传感器尺寸会同时影响视角、接收的总光量，以及特定设置下可获得的景深和背景虚化。先把这些概念分清，再讨论“等效”，才不容易误解。
+不移动机位，在两种画幅上使用 **50 mm、F4、1/125 秒、ISO 400**。APS-C 画面视角更窄，镜头仍是 50 mm、光圈仍是 F4。**普通曝光设置不要乘画幅系数。**测光实现可能不同，但没有通用的曝光画幅换算。
 
-下一篇：[等效焦距](../equivalent-focal-length/)。
+如果改用更广的镜头或后退匹配取景，比较条件就改变了。讨论景深和总进光时必须明确这些条件。
 
-## 参考来源
+## 常见误区
 
-- [Nikon：DX 与 FX 画幅](https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats)
+- **APS-C 面积恰好是全画幅一半。**实际尺寸有差异，X-T5 示例面积约为 43%。
+- **小传感器把镜头放大了。**它只是记录较小范围，焦距没有改变。
+- **全画幅永远更好。**画幅涉及体积、镜头、成本、输出和拍摄目的，“更好”必须结合用途。
+
+## 练习：不移动的裁切
+
+固定机位，用同一镜头和示例设置拍摄静止场景。在软件中把副本按 X-T5 相对全画幅的线性比例裁切，或比较两台相机。保持输出显示尺寸一致，观察取景变化。第一轮不要走近主体。
+
+## 继续学习
+
+接着学习[等效焦距](../equivalent-focal-length/)，试用[画幅系数互动工具](../../../tools/crop-factor/)。在 [X-T5 器材指南](../../../gear/fujifilm-x-t5/)查看具体尺寸；[景深与背景虚化](../depth-of-field/)则单独解释另一个概念。
+
+## 资料来源
+
+- [Nikon：DX 与 FX 画幅（英文）](https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats)
 - [富士 X-T5：官方规格](https://fujifilm-x.com/global/products/cameras/x-t5/specifications/)
-- [Cambridge in Colour：相机传感器的工作原理](https://www.cambridgeincolour.com/tutorials/camera-sensors.htm)
+- [Cambridge in Colour：数码相机传感器（英文）](https://www.cambridgeincolour.com/tutorials/camera-sensors.htm)

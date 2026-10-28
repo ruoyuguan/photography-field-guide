@@ -1,0 +1,67 @@
+---
+title: ISO Without the Myths
+description: Understand ISO as part of the capture-to-output chain, not as a way to create more light.
+translationKey: iso
+category: exposure
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [aperture, shutter-speed]
+relatedConcepts: [iso, exposure, image-noise, raw]
+relatedTools: [exposure-stops]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://photographylife.com/what-is-iso-in-photography'
+    title: 'What Is ISO in Photography? — Photography Life'
+    locator: 'Common ISO myths; ISO and brightness'
+    accessedOn: '2026-10-28'
+    supports: 'ISO changes the mapping of the captured signal to output brightness rather than increasing the photons reaching the sensor.'
+sidebar:
+  order: 3
+---
+
+ISO is often introduced as “sensor sensitivity,” which makes it sound like a brighter sensor collecting extra light. That shortcut hides the important distinction between **light captured** and **image rendered**.
+
+**Short answer:** ISO is a standardized part of the camera's capture-to-output mapping. Raising it can make an output brighter from the same exposure, but does not add photons. Its noise consequences depend on the whole capture and processing chain.
+
+## Exposure is not the same as displayed brightness
+
+For a given scene, aperture and shutter duration shape the exposure at the sensor. ISO-related gain or processing then influences the signal and its rendering. Cameras differ internally, and RAW converters can interpret the same file differently. You cannot predict exact JPEG pixel values from scene luminance, F-number, shutter time, and ISO alone.
+
+| Same scene and camera | Incoming light              | Output behavior                                                              |
+| --------------------- | --------------------------- | ---------------------------------------------------------------------------- |
+| F4, 1/125 s, ISO 400  | Established by the exposure | Reference example                                                            |
+| F4, 1/125 s, ISO 800  | Essentially unchanged       | Typically a brighter mapping                                                 |
+| F4, 1/250 s, ISO 800  | Half the exposure duration  | A common brightness compensation, not the same photon count as the first row |
+
+## Why higher ISO often looks noisier
+
+In low light, photographers often shorten time or narrow the usable aperture and then raise ISO to maintain brightness. The image can have a poorer signal-to-noise ratio because **less light was captured**, not simply because the ISO digits are large. At a fixed aperture and shutter time, the relationship between ISO, read noise, highlights, and processing is camera-dependent.
+
+The advice “always use the lowest ISO” can therefore be counterproductive if it forces a motion-blurring shutter speed or an underexposure you later brighten dramatically.
+
+## Worked example settings
+
+Suppose a static subject works at **F2.8, 1/60 s, ISO 400**, but a moving subject needs **1/250 s** in your example conditions. That is about two stops less time. ISO 1600 is the nominal two-stop output compensation. It does not make the two captures physically identical: the faster exposure collects less light, and motion rendering differs.
+
+## Auto ISO is still a decision
+
+Auto ISO lets the camera choose an output mapping within your constraints. You can often set minimum shutter speed or exposure compensation. Inspect which setting the camera is changing, and set limits based on subject and intent rather than treating Auto ISO as an independent exposure mode.
+
+## Common misconceptions
+
+- **ISO increases sensor light collection.** Aperture, exposure duration, scene light, and sensor area determine light collection; ISO does not add photons.
+- **High ISO is the sole cause of noise.** Photon shot noise, readout, temperature, processing, and viewing size all contribute.
+- **The lowest ISO always gives the best picture.** It may sacrifice necessary motion freezing or usable brightness.
+
+## Practice: separate light from ISO
+
+With a stationary subject, keep aperture and shutter time fixed and make example frames at ISO 400 and 1600. Observe brightness and highlight clipping. Next, shorten exposure time while increasing ISO to maintain approximate brightness. Compare detail and noise at the same viewing size. Avoid drawing universal sensor conclusions from one JPEG preset.
+
+## Continue
+
+Use the [exposure-stops tool](../../../tools/exposure-stops/) to compare nominal mappings, and read [RAW, JPEG, and EXIF](../../image-quality/raw-jpeg-exif/) to see where output development fits. For motion, revisit [Shutter Speed](../shutter-speed/).
+
+## Sources
+
+- [Photography Life: What Is ISO in Photography?](https://photographylife.com/what-is-iso-in-photography)

@@ -1,0 +1,34 @@
+{
+  "id": "full-frame",
+  "term": { "en": "Full frame", "zh-cn": "全画幅" },
+  "aliases": {
+    "en": ["35 mm format", "FX"],
+    "zh-cn": ["135 全画幅", "35 mm 画幅"]
+  },
+  "shortDefinition": {
+    "en": "A digital camera format with a nominal 36 × 24 mm recording area, commonly used as an equivalence reference.",
+    "zh-cn": "标称记录范围为 36 × 24 mm 的数码相机画幅，常作为等效比较参考。"
+  },
+  "misconceptions": {
+    "en": [
+      "Full frame is a physical format, not a guarantee of better photographs in every situation."
+    ],
+    "zh-cn": ["全画幅是物理画幅，不保证在任何情况下都拍出更好的照片。"]
+  },
+  "example": {
+    "en": "A 75 mm full-frame lens can provide a reference view for a 50 mm lens on a nominal 1.5× APS-C camera.",
+    "zh-cn": "标称 1.5× APS-C 上的 50 mm 镜头，可用全画幅 75 mm 视角作比较。"
+  },
+  "articleKey": "sensor-formats",
+  "relatedTerms": ["aps-c", "sensor", "crop-factor"],
+  "sources": [
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats",
+      "title": "The DX and FX Formats — Nikon",
+      "locator": "What is camera format?",
+      "accessedOn": "2026-10-28",
+      "supports": "The nominal 36 × 24 mm full-frame format."
+    }
+  ],
+  "reviewStatus": "published"
+}

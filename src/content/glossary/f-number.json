@@ -1,0 +1,34 @@
+{
+  "id": "f-number",
+  "term": { "en": "F-number", "zh-cn": "F 值" },
+  "aliases": {
+    "en": ["f-stop", "f/number", "aperture value"],
+    "zh-cn": ["光圈值", "光圈系数", "f 值"]
+  },
+  "shortDefinition": {
+    "en": "Focal length divided by entrance-pupil diameter under the usual photographic model; smaller numbers indicate wider relative openings.",
+    "zh-cn": "在通常摄影模型中为焦距除以入瞳直径，数值越小表示相对开孔越大。"
+  },
+  "misconceptions": {
+    "en": [
+      "The physical f-number does not change merely because the sensor format changes."
+    ],
+    "zh-cn": ["仅仅更换传感器画幅，不会改变实际 F 值。"]
+  },
+  "example": {
+    "en": "F4 describes half the entrance-pupil diameter of F2 at a given focal length.",
+    "zh-cn": "在给定焦距下，F4 的入瞳直径是 F2 的一半。"
+  },
+  "articleKey": "aperture",
+  "relatedTerms": ["aperture", "exposure-stop", "depth-of-field"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
+      "title": "Camera Exposure — Cambridge in Colour",
+      "locator": "F-stop and aperture area",
+      "accessedOn": "2026-10-28",
+      "supports": "The inverse f-number scale and its relationship to aperture area."
+    }
+  ],
+  "reviewStatus": "published"
+}

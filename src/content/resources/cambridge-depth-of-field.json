@@ -1,0 +1,29 @@
+{
+  "id": "cambridge-depth-of-field",
+  "title": { "en": "Depth of Field", "zh-cn": "景深教程" },
+  "provider": "Cambridge in Colour",
+  "providerType": "independent",
+  "category": "tutorial",
+  "url": "https://www.cambridgeincolour.com/tutorials/depth-of-field.htm",
+  "languages": ["en"],
+  "audience": ["intermediate", "technical"],
+  "purpose": {
+    "en": "Explore acceptable sharpness, circle of confusion, viewing conditions, and distance.",
+    "zh-cn": "了解可接受清晰度、容许弥散圆、观看条件与距离。"
+  },
+  "editorialNote": {
+    "en": "Depth-of-field comparisons need stated viewing and framing conditions; background blur is not the same metric.",
+    "zh-cn": "景深比较需声明观看与取景条件，背景虚化不是同一测量。"
+  },
+  "tags": ["depth-of-field", "aperture", "circle-of-confusion"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.cambridgeincolour.com/tutorials/depth-of-field.htm",
+    "evidence": "The tutorial defines acceptable focus and explains viewing criteria and aperture/distance variables."
+  },
+  "reviewStatus": "published"
+}

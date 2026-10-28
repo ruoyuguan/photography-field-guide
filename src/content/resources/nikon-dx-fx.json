@@ -1,0 +1,32 @@
+{
+  "id": "nikon-dx-fx",
+  "title": {
+    "en": "The DX and FX Formats",
+    "zh-cn": "Nikon DX 与 FX 画幅说明"
+  },
+  "provider": "Nikon",
+  "providerType": "official",
+  "category": "tutorial",
+  "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats",
+  "languages": ["en"],
+  "audience": ["beginner"],
+  "purpose": {
+    "en": "Compare 36 × 24 mm full frame with Nikon DX and see a 1.5× field-of-view example.",
+    "zh-cn": "比较 36 × 24 mm 全画幅与尼康 DX，并查看 1.5× 视角示例。"
+  },
+  "editorialNote": {
+    "en": "Nikon dimensions are one manufacturer's examples, not a definition of every APS-C camera.",
+    "zh-cn": "尼康尺寸是该厂商示例，不是所有 APS-C 相机的定义。"
+  },
+  "tags": ["sensor", "full-frame", "aps-c", "crop-factor"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats",
+    "evidence": "The Nikon page describes 36 × 24 mm FX, approximately 24 × 16 mm DX, and a 1.5× view comparison."
+  },
+  "reviewStatus": "published"
+}

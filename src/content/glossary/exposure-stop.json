@@ -1,0 +1,34 @@
+{
+  "id": "exposure-stop",
+  "term": { "en": "Stop", "zh-cn": "档" },
+  "aliases": {
+    "en": ["exposure stop", "EV step", "f-stop change"],
+    "zh-cn": ["曝光档", "曝光档位", "档位"]
+  },
+  "shortDefinition": {
+    "en": "A factor-of-two comparison: one stop more doubles the specified quantity and one stop less halves it.",
+    "zh-cn": "以二倍为基准的比较：多一档使指定量翻倍，少一档使其减半。"
+  },
+  "misconceptions": {
+    "en": [
+      "Equal brightness compensation does not make motion, depth of field, and noise identical."
+    ],
+    "zh-cn": ["相同的亮度补偿不会让运动、景深与噪点完全相同。"]
+  },
+  "example": {
+    "en": "Two stops less exposure time means one quarter of the original duration.",
+    "zh-cn": "少两档曝光时间表示时长变为原来的四分之一。"
+  },
+  "articleKey": "exposure-stops",
+  "relatedTerms": ["exposure", "aperture", "shutter-speed", "iso"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
+      "title": "Camera Exposure — Cambridge in Colour",
+      "locator": "Exposure stops",
+      "accessedOn": "2026-10-28",
+      "supports": "Doubling and halving as the basis of exposure-stop comparisons."
+    }
+  ],
+  "reviewStatus": "published"
+}

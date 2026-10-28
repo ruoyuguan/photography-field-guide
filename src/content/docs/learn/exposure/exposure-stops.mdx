@@ -1,0 +1,74 @@
+---
+title: Exposure Stops and Practical Trade-Offs
+description: Use stops to compare aperture, shutter time, and nominal ISO mappings without confusing different physical effects.
+translationKey: exposure-stops
+category: exposure
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [aperture, shutter-speed, iso]
+relatedConcepts: [exposure, exposure-stop, aperture, shutter-speed, iso]
+relatedTools: [exposure-stops]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/camera-exposure.htm'
+    title: 'Camera Exposure — Cambridge in Colour'
+    locator: 'Aperture and shutter speed; exposure stops'
+    accessedOn: '2026-10-28'
+    supports: 'Exposure changes can be compared as doublings or halvings through aperture and exposure time.'
+sidebar:
+  order: 4
+---
+
+A **stop** is a factor-of-two comparison. One stop more means twice the quantity under discussion; one stop less means half. Three stops more means \(2^3 = 8\) times, not three times.
+
+**Short answer:** stops make settings easy to compensate arithmetically, but matching brightness does not make two photographs identical in motion, focus range, noise, or rendering.
+
+## One formula, three contexts
+
+**Stops = log₂(new value ÷ reference value)**
+
+For shutter time, use the duration directly: 1/60 to 1/250 is about two stops less time. For aperture area, two nominal f-number steps such as F2 to F4 represent about two stops less light per unit area. For ISO, compare the standardized nominal output mapping, not an assertion that photons doubled.
+
+| Reference | Changed setting | Approximate change        | What else changes?                           |
+| --------- | --------------- | ------------------------- | -------------------------------------------- |
+| F4        | F2.8            | +1 stop exposure per area | Depth of field, lens rendering               |
+| 1/125 s   | 1/500 s         | −2 stops time             | Motion blur and camera-shake visibility      |
+| ISO 400   | ISO 1600        | +2 nominal mapping stops  | Output and noise behavior, not extra photons |
+
+The table uses rounded photographic values. The calculator uses exact formulas on the numbers you enter rather than pretending the nominal scale is a physical constant.
+
+## Worked example settings
+
+Start with **F4, 1/125 s, ISO 400**. If the moving subject needs **1/500 s**, you lose two stops of time. Opening to **F2.8** returns about one stop per unit area; moving to **ISO 800** supplies the other nominal output stop.
+
+The result may have similar brightness, but the subject is more frozen and depth of field differs from the reference. Noise may differ because the exposure at the sensor differs. This is a **compensation**, not equivalence of every outcome.
+
+## Metering and exposure compensation
+
+A reflected-light meter estimates exposure from light reflected by the scene. A bright white subject or dark black subject can lead automatic exposure toward a middling result. Exposure compensation asks for a brighter or darker automatic outcome; it does not override physical limits or tell you which parameter the camera will change.
+
+Check important highlights, shadows, motion, and the intended interpretation. A histogram is a tool, not an instruction to make every scene average gray.
+
+## Crop factor is not part of this compensation
+
+Changing from full frame to APS-C does not require multiplying F-number, shutter time, or ISO by crop factor for ordinary exposure settings. Format equivalence discussions about total light or depth of field use different assumptions and should not be imported into this calculator.
+
+## Common misconceptions
+
+- **One stop means adding one to the setting.** It means doubling or halving the relevant quantity.
+- **A brighter ISO setting means two extra stops of light reached the sensor.** It refers to nominal output mapping.
+- **Balanced settings produce identical photographs.** Motion, depth of field, and noise remain separate outcomes.
+
+## Practice: two routes to the same brightness
+
+Choose a safe static scene and example reference settings. Make one frame, then reduce shutter exposure by one stop and compensate with one nominal ISO stop. Repeat using aperture instead if your lens allows. Compare not only brightness but detail, noise, and acceptable focus. Record the actual settings, including any camera rounding.
+
+## Try the calculator
+
+Open the [exposure-stops comparison](../../../tools/exposure-stops/). Enable JavaScript for interactive results; the worked formula and assumptions remain available without it. Then review [aperture](../aperture/), [shutter speed](../shutter-speed/), and [ISO](../iso/) for the effects the arithmetic cannot capture.
+
+## Sources
+
+- [Cambridge in Colour: Camera Exposure](https://www.cambridgeincolour.com/tutorials/camera-exposure.htm)
+- [Cambridge in Colour: Camera Metering](https://www.cambridgeincolour.com/tutorials/camera-metering.htm)

@@ -1,0 +1,32 @@
+{
+  "id": "fujifilm-xf16-50-specifications",
+  "title": {
+    "en": "XF16-50mmF2.8-4.8 R LM WR specifications",
+    "zh-cn": "富士 XF16-50mmF2.8-4.8 R LM WR 官方规格"
+  },
+  "provider": "FUJIFILM",
+  "providerType": "official",
+  "category": "specification",
+  "url": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/specifications/",
+  "languages": ["en"],
+  "audience": ["beginner", "intermediate"],
+  "purpose": {
+    "en": "Verify actual focal-length endpoints, full-frame equivalent range, and endpoint aperture specifications.",
+    "zh-cn": "核实实际焦距端点、全画幅等效范围和端点光圈规格。"
+  },
+  "editorialNote": {
+    "en": "Only endpoint maximum apertures are listed; intermediate values are not inferred by interpolation.",
+    "zh-cn": "规格仅列出两端最大光圈，本站不通过插值推断中间焦距数值。"
+  },
+  "tags": ["lens", "focal-length", "aperture", "fujifilm-xf16-50"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/specifications/",
+    "evidence": "The official specification lists 16–50 mm, 24–76 mm equivalent, F2.8–F4.8 maximum, and F22 minimum aperture."
+  },
+  "reviewStatus": "published"
+}

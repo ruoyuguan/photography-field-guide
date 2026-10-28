@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content';
+import GearDetailView from '@views/GearDetailView.astro';
+const item = await getEntry('lenses', 'fujifilm-xf16-50');
+if (!item) throw new Error('Missing Fujifilm XF16-50 entry');
+---
+
+<GearDetailView locale="en" kind="lens" item={item} />

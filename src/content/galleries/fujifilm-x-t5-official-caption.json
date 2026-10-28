@@ -1,0 +1,27 @@
+{
+  "id": "fujifilm-x-t5-official-caption",
+  "resourceId": "fujifilm-xf16-50-samples",
+  "scope": { "type": "camera", "cameraId": "fujifilm-x-t5" },
+  "subjectTags": ["official-samples", "specific-caption"],
+  "hasExif": "yes",
+  "hasOriginalFiles": "unknown",
+  "imageRightsNote": {
+    "en": "Link only. This entry refers to a specifically captioned X-T5 sample, not every image on the lens page. No reuse rights are claimed.",
+    "zh-cn": "仅提供链接。此条目仅指明确标注 X-T5 的样片，不涵盖镜头页面全部照片；不主张转载许可。"
+  },
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "scopeEvidence": "Nikola Krstic's caption on the official lens page identifies FUJIFILM X-T5, 16 mm, F4.5, 1/1250 s, ISO 400, and XF16-50mmF2.8-4.8 R LM WR. This is one explicitly evidenced sample.",
+    "rights": {
+      "use": "link-only",
+      "evidence": "The source photograph remains only on the manufacturer's website."
+    },
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/",
+    "evidence": "A specific X-T5 sample and displayed exposure caption were read on the lens product page; no whole-page camera claim or original-file availability was established."
+  },
+  "reviewStatus": "published"
+}

@@ -1,0 +1,198 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import PageHeader from '@components/directory/PageHeader.astro';
+import FilterBar from '@components/directory/FilterBar.astro';
+import { directoryCopy } from '@copy/directory';
+import { localePath, type MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+}
+const { locale } = Astro.props;
+const t = directoryCopy[locale];
+const galleries = await getCollection(
+  'galleries',
+  ({ data }) => data.reviewStatus === 'published'
+);
+const [resources, cameras, lenses] = await Promise.all([
+  getCollection('resources'),
+  getCollection('cameras'),
+  getCollection('lenses'),
+]);
+const items = galleries.map(gallery => {
+  const resource = resources.find(item => item.id === gallery.data.resourceId);
+  if (!resource)
+    throw new Error(`Missing gallery resource ${gallery.data.resourceId}`);
+  const scope = gallery.data.scope;
+  const camera =
+    'cameraId' in scope
+      ? cameras.find(item => item.id === scope.cameraId)
+      : undefined;
+  const lens =
+    'lensId' in scope
+      ? lenses.find(item => item.id === scope.lensId)
+      : undefined;
+  return { gallery, resource, scope, camera, lens };
+});
+const options = (values: string[], labels: Record<string, string> = {}) =>
+  [...new Set(values)]
+    .sort()
+    .map(value => ({ value, label: labels[value] ?? value }));
+const scopeOptions = options(
+  items.map(item => item.scope.type),
+  t.galleries.scopes
+);
+const filters = [
+  { key: 'scope', label: t.galleries.scope, options: scopeOptions },
+  {
+    key: 'camera',
+    label: t.galleries.camera,
+    options: options(items.map(item => item.camera?.id ?? '').filter(Boolean)),
+  },
+  {
+    key: 'lens',
+    label: t.galleries.lens,
+    options: options(items.map(item => item.lens?.id ?? '').filter(Boolean)),
+  },
+  {
+    key: 'subject',
+    label: t.galleries.subject,
+    options: options(items.flatMap(item => item.gallery.data.subjectTags)),
+  },
+  {
+    key: 'provider',
+    label: t.galleries.provider,
+    options: options(
+      items.map(item => item.resource.data.providerType),
+      t.common
+    ),
+  },
+  {
+    key: 'exif',
+    label: t.galleries.exif,
+    options: options(['yes', 'no', 'unknown'], t.common),
+  },
+  {
+    key: 'originals',
+    label: t.galleries.originals,
+    options: options(['yes', 'no', 'unknown'], t.common),
+  },
+];
+---
+
+<MainLayout
+  title={t.galleries.metaTitle}
+  description={t.galleries.metaDescription}
+  section={t.galleries.title}
+>
+  <div class="mx-auto max-w-6xl py-12 sm:py-16">
+    <PageHeader
+      eyebrow={t.galleries.eyebrow}
+      title={t.galleries.title}
+      intro={t.galleries.intro}
+    />
+    <div class="mt-10">
+      <FilterBar
+        queryLabel={t.galleries.query}
+        queryPlaceholder={t.galleries.placeholder}
+        filters={filters}
+        allLabel={t.common.all}
+        resetLabel={t.common.reset}
+        showingTemplate={t.galleries.showing}
+        emptyMessage={t.galleries.empty}
+        noScriptMessage={t.common.noScript}
+      >
+        <div class="grid gap-6 lg:grid-cols-2">
+          {items.map(({ gallery, resource, scope, camera, lens }) => (
+            <article
+              data-filter-item
+              data-search={`${resource.data.title.en} ${resource.data.title['zh-cn']} ${gallery.data.subjectTags.join(' ')}`}
+              data-scope={scope.type}
+              data-camera={camera?.id ?? ''}
+              data-lens={lens?.id ?? ''}
+              data-subject={gallery.data.subjectTags.join(' ')}
+              data-provider={resource.data.providerType}
+              data-exif={gallery.data.hasExif}
+              data-originals={gallery.data.hasOriginalFiles}
+              class="rounded-2xl border border-neutral-300 bg-neutral-50 p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
+            >
+              <p class="text-xs font-bold tracking-wide text-amber-700 uppercase dark:text-amber-300">
+                {t.galleries.scopes[scope.type]} · {resource.data.provider}
+              </p>
+              <h2 class="mt-3 text-xl font-bold">
+                {resource.data.title[locale]}
+              </h2>
+              <p class="mt-3 text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+                {[camera?.data.model, lens?.data.model]
+                  .filter(Boolean)
+                  .join(' + ') || resource.data.provider}
+              </p>
+              <p class="mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                {resource.data.editorialNote[locale]}
+              </p>
+              {scope.type !== 'lens' && (
+                <p class="mt-4 rounded-xl bg-amber-50 p-4 text-xs leading-5 text-neutral-700 dark:bg-amber-400/10 dark:text-neutral-300">
+                  {t.galleries.limitedScope}
+                </p>
+              )}
+              <dl class="mt-5 grid grid-cols-2 gap-3 text-xs">
+                <div>
+                  <dt class="text-neutral-500">{t.galleries.exif}</dt>
+                  <dd class="mt-1 font-bold">
+                    {t.common[gallery.data.hasExif]}
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-neutral-500">{t.galleries.originals}</dt>
+                  <dd class="mt-1 font-bold">
+                    {t.common[gallery.data.hasOriginalFiles]}
+                  </dd>
+                </div>
+              </dl>
+              <details class="mt-5 text-sm">
+                <summary class="cursor-pointer font-semibold">
+                  {t.common.sources}
+                </summary>
+                <p class="mt-3 leading-6 text-neutral-600 dark:text-neutral-400">
+                  {gallery.data.verification.scopeEvidence}
+                </p>
+                <p class="mt-3 text-xs leading-5 text-neutral-500">
+                  {gallery.data.imageRightsNote[locale]} {t.common.checked}:{' '}
+                  {gallery.data.verification.lastChecked}
+                </p>
+              </details>
+              <div class="mt-6 flex flex-wrap gap-4 text-sm font-bold">
+                <a
+                  href={resource.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-amber-700 hover:underline dark:text-amber-300"
+                >
+                  {t.galleries.visit} ↗
+                  <span class="sr-only"> ({t.common.external})</span>
+                </a>
+                {camera && (
+                  <a
+                    href={localePath(locale, `/gear/${camera.id}/`)}
+                    class="hover:underline"
+                  >
+                    {camera.data.model}
+                  </a>
+                )}
+                {lens && (
+                  <a
+                    href={localePath(locale, `/gear/${lens.id}/`)}
+                    class="hover:underline"
+                  >
+                    {lens.data.model}
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </FilterBar>
+    </div>
+  </div>
+</MainLayout>

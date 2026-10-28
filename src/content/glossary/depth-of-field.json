@@ -1,0 +1,34 @@
+{
+  "id": "depth-of-field",
+  "term": { "en": "Depth of field", "zh-cn": "景深" },
+  "aliases": {
+    "en": ["DOF", "acceptable-focus range"],
+    "zh-cn": ["清晰范围", "可接受清晰范围"]
+  },
+  "shortDefinition": {
+    "en": "The subject-distance range that appears acceptably sharp under specified viewing conditions.",
+    "zh-cn": "在指定观看条件下，看起来足够清晰的主体距离范围。"
+  },
+  "misconceptions": {
+    "en": [
+      "Depth of field is not identical to background blur or a guarantee of correct focus."
+    ],
+    "zh-cn": ["景深不等于背景虚化，也不保证对焦准确。"]
+  },
+  "example": {
+    "en": "A close portrait at a wide aperture can have a narrower acceptable-focus range than a distant scene.",
+    "zh-cn": "近距离人像使用大光圈时，可接受清晰范围可能比远景更窄。"
+  },
+  "articleKey": "depth-of-field",
+  "relatedTerms": ["background-blur", "aperture", "f-number"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/depth-of-field.htm",
+      "title": "Depth of Field — Cambridge in Colour",
+      "locator": "Definition and circle of confusion",
+      "accessedOn": "2026-10-28",
+      "supports": "Acceptable sharpness and the role of viewing conditions."
+    }
+  ],
+  "reviewStatus": "published"
+}

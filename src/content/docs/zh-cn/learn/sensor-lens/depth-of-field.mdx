@@ -1,0 +1,81 @@
+---
+title: 景深与背景虚化
+description: 理解可接受清晰范围、观看条件、光圈和距离，以及为什么虚化不等于景深。
+translationKey: depth-of-field
+category: sensor-lens
+difficulty: intermediate
+reviewStatus: published
+draft: false
+prerequisites: [aperture, equivalent-focal-length]
+relatedConcepts: [depth-of-field, aperture, focal-length, background-blur]
+relatedTools: [crop-factor]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/depth-of-field.htm'
+    title: 'Depth of Field — Cambridge in Colour'
+    locator: 'Circle of confusion; viewing conditions; controlling depth of field'
+    accessedOn: '2026-10-28'
+    supports: 'Depth of field is an acceptable-focus range tied to viewing assumptions; aperture, focus distance, focal length, and format comparisons require controlled conditions.'
+sidebar:
+  order: 3
+---
+
+**景深**是在指定观看条件下，被认为足够清晰的主体距离范围。它不是一道墙，墙内全清晰、墙外突然模糊。
+
+**简短回答：**光圈很重要，但对焦距离、取景、焦距、传感器尺寸和输出观看条件也必须纳入比较。背景虚化是相关的视觉表现，不是同一个测量值。
+
+## 可接受清晰，不是绝对清晰
+
+在简化模型中，只有对焦平面严格合焦。平面前后的点形成模糊圆。当这些圆相对最终显示足够小时，我们会接受为清晰。**容许弥散圆**描述这种可接受模糊标准。
+
+```text
+近端可接受界限 ─── 对焦平面 ─── 远端可接受界限
+             ←        景深        →
+```
+
+近距离观看大照片，可能看出手机小图上不明显的模糊。因此没有输出条件的景深数值并不完整。
+
+## 在相同条件下，什么会改变？
+
+| 只改变这一项，其他相关条件保持一致 | 通常结果         |
+| ---------------------------------- | ---------------- |
+| 更大光圈                           | 景深更浅         |
+| 更近对焦距离                       | 景深更浅         |
+| 更长焦距，但不控制取景与视点       | 比较变得不明确   |
+| 更大输出或更近观看                 | 可接受的模糊减少 |
+
+不要脱离主体放大率、取景和机位是否固定，就说“焦距越长景深越浅”。
+
+## 景深不是背景虚化
+
+即使两张照片计算景深相同，背景距离、细节或镜头不同，也会呈现不同背景。远处光点可能形成很大的虚化圆，而可接受清晰范围仍然很窄。
+
+对焦准确性又是另一件事：浅景深让对焦偏差更显眼，但收小光圈不能可靠纠正主体移动或快门过慢。
+
+## 示例设置
+
+近距离人像使用 **50 mm、F1.8、1/250 秒、ISO 400**，示例条件下可接受清晰范围可能很窄。其他条件不变时改为 **F4**，景深增大，但单位面积进光按标称档位减少超过两档。用时间补偿可能重新引入主体运动模糊，用 ISO 补偿则改变输出链路。
+
+这里没有声称精确到厘米的景深，因为没有指定对焦距离、传感器和观看标准。
+
+## “等效虚化”是什么意思？
+
+全画幅与 APS-C 匹配取景时，必须说明改变了焦距、机位还是两者。匹配景深可能涉及不同 F 值，但这**不会**改变 F 值在普通曝光中的定义。背景虚化、总进光和噪点还需要其他假设；一次画幅系数乘法不是完整模拟器。
+
+## 常见误区
+
+- **浅景深永远更好。**合影、产品或风景可能需要更多主体范围足够清晰。
+- **F8 保证风景清晰。**对焦位置、衍射、运动和镜头表现仍有影响。
+- **相同 F 值在不同画幅上总有相同背景虚化。**必须先控制取景和距离。
+
+## 练习：一次只改一个距离
+
+拍摄有细节的静止主体，背景包含小光点或边缘。保持示例设置和取景，只改变光圈。接着恢复光圈并改变拍摄距离，有意识地重新构图。在固定输出尺寸下比较可接受清晰范围与背景表现。
+
+## 继续学习
+
+复习[光圈与 F 值](../../exposure/aperture/)及[等效焦距](../equivalent-focal-length/)。[画幅系数工具](../../../tools/crop-factor/)只用于其声明的视角计算，不是完整景深或背景虚化模拟器。
+
+## 资料来源
+
+- [Cambridge in Colour：景深（英文）](https://www.cambridgeincolour.com/tutorials/depth-of-field.htm)

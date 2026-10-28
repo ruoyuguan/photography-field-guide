@@ -1,0 +1,34 @@
+{
+  "id": "shutter-speed",
+  "term": { "en": "Shutter speed", "zh-cn": "快门速度" },
+  "aliases": {
+    "en": ["exposure time", "shutter duration"],
+    "zh-cn": ["曝光时间", "快门时间"]
+  },
+  "shortDefinition": {
+    "en": "The duration over which the camera collects light for an exposure, affecting motion rendering and exposure.",
+    "zh-cn": "相机为一次曝光收集光线的持续时间，影响运动呈现和曝光。"
+  },
+  "misconceptions": {
+    "en": [
+      "A fast shutter value does not guarantee correct focus or simultaneous readout of every sensor row."
+    ],
+    "zh-cn": ["很快的快门数值不保证对焦正确，也不保证每行传感器同时读出。"]
+  },
+  "example": {
+    "en": "Changing 1/125 s to 1/250 s halves the exposure duration.",
+    "zh-cn": "从 1/125 秒改为 1/250 秒，曝光时间减半。"
+  },
+  "articleKey": "shutter-speed",
+  "relatedTerms": ["exposure", "camera-shake", "ibis"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-shutter-speed.htm",
+      "title": "Camera Shutter Speed — Cambridge in Colour",
+      "locator": "Exposure duration and motion",
+      "accessedOn": "2026-10-28",
+      "supports": "The relationship between shutter duration and motion rendering."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "exposure",
+  "term": { "en": "Exposure", "zh-cn": "曝光" },
+  "aliases": {
+    "en": ["sensor exposure", "light exposure"],
+    "zh-cn": ["传感器曝光", "曝光量"]
+  },
+  "shortDefinition": {
+    "en": "The light delivered to a recording area over the exposure duration; displayed brightness also depends on output processing.",
+    "zh-cn": "曝光持续时间内传递到记录区域的光；显示亮度还取决于输出处理。"
+  },
+  "misconceptions": {
+    "en": [
+      "Exposure and final JPEG brightness are related but not interchangeable."
+    ],
+    "zh-cn": ["曝光与最终 JPEG 亮度相关，但不能混为一谈。"]
+  },
+  "example": {
+    "en": "Aperture and shutter duration shape exposure before ISO-related output mapping is applied.",
+    "zh-cn": "光圈与快门时间先塑造曝光，之后才是 ISO 相关输出映射。"
+  },
+  "articleKey": "exposure-stops",
+  "relatedTerms": ["aperture", "shutter-speed", "iso"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
+      "title": "Camera Exposure — Cambridge in Colour",
+      "locator": "Aperture and shutter speed",
+      "accessedOn": "2026-10-28",
+      "supports": "The physical contributions of aperture and exposure duration."
+    }
+  ],
+  "reviewStatus": "published"
+}

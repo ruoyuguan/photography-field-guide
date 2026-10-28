@@ -1,0 +1,34 @@
+{
+  "id": "image-noise",
+  "term": { "en": "Image noise", "zh-cn": "图像噪点" },
+  "aliases": {
+    "en": ["noise", "photon shot noise", "read noise"],
+    "zh-cn": ["噪点", "光子散粒噪声", "读出噪声"]
+  },
+  "shortDefinition": {
+    "en": "Unwanted variation in the recorded or rendered image, influenced by light statistics, electronics, and processing.",
+    "zh-cn": "记录或呈现图像中的非预期变化，受光的统计特性、电子系统和处理影响。"
+  },
+  "misconceptions": {
+    "en": [
+      "The ISO number alone is not a complete physical explanation of noise."
+    ],
+    "zh-cn": ["ISO 数字本身不是噪点的完整物理原因。"]
+  },
+  "example": {
+    "en": "A shorter exposure can reduce collected light and worsen signal-to-noise ratio even when ISO compensates brightness.",
+    "zh-cn": "较短曝光可能减少集光并降低信噪比，即使 ISO 补偿了亮度。"
+  },
+  "articleKey": "iso",
+  "relatedTerms": ["iso", "exposure", "sensor"],
+  "sources": [
+    {
+      "url": "https://photographylife.com/what-is-iso-in-photography",
+      "title": "What Is ISO in Photography? — Photography Life",
+      "locator": "ISO, brightness, and noise discussion",
+      "accessedOn": "2026-10-28",
+      "supports": "Noise is not explained simply as ISO adding light or being its sole cause."
+    }
+  ],
+  "reviewStatus": "published"
+}

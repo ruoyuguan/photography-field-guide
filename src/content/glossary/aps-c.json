@@ -1,0 +1,32 @@
+{
+  "id": "aps-c",
+  "term": { "en": "APS-C", "zh-cn": "APS-C 画幅" },
+  "aliases": {
+    "en": ["crop sensor", "DX"],
+    "zh-cn": ["半画幅", "残幅", "截幅"]
+  },
+  "shortDefinition": {
+    "en": "A family of sensor formats smaller than 36 × 24 mm; exact dimensions and nominal crop factor vary.",
+    "zh-cn": "一类小于 36 × 24 mm 的传感器画幅，具体尺寸和标称画幅系数会有差异。"
+  },
+  "misconceptions": {
+    "en": ["APS-C does not mean exactly half the full-frame area."],
+    "zh-cn": ["APS-C 不表示面积恰好是全画幅的一半。"]
+  },
+  "example": {
+    "en": "The Fujifilm X-T5 uses a 23.5 × 15.7 mm APS-C sensor, about 43% of 36 × 24 mm by area.",
+    "zh-cn": "富士 X-T5 使用 23.5 × 15.7 mm APS-C 传感器，面积约为 36 × 24 mm 的 43%。"
+  },
+  "articleKey": "sensor-formats",
+  "relatedTerms": ["full-frame", "crop-factor", "sensor"],
+  "sources": [
+    {
+      "url": "https://fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor",
+      "accessedOn": "2026-10-28",
+      "supports": "The dimensions of one specific APS-C sensor, not every APS-C camera."
+    }
+  ],
+  "reviewStatus": "published"
+}

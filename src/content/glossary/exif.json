@@ -1,0 +1,34 @@
+{
+  "id": "exif",
+  "term": { "en": "EXIF", "zh-cn": "EXIF 元数据" },
+  "aliases": {
+    "en": ["metadata", "shooting metadata"],
+    "zh-cn": ["元数据", "拍摄参数", "拍摄信息"]
+  },
+  "shortDefinition": {
+    "en": "Metadata fields that can describe a file's settings, timestamps, equipment, and other information.",
+    "zh-cn": "可描述文件设置、时间、器材和其他信息的元数据字段。"
+  },
+  "misconceptions": {
+    "en": [
+      "EXIF can be missing or edited; it is not proof of every shooting condition or original-file availability."
+    ],
+    "zh-cn": ["EXIF 可能缺失或被编辑，不能证明全部拍摄条件或原始文件可用。"]
+  },
+  "example": {
+    "en": "A gallery caption may show focal length and ISO without offering an original downloadable file.",
+    "zh-cn": "画廊说明可以展示焦距和 ISO，但不提供原始文件下载。"
+  },
+  "articleKey": "raw-jpeg-exif",
+  "relatedTerms": ["raw", "jpeg", "focal-length"],
+  "sources": [
+    {
+      "url": "https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html",
+      "title": "Metadata basics and actions — Adobe Lightroom Classic",
+      "locator": "Metadata editing and GPS",
+      "accessedOn": "2026-10-28",
+      "supports": "Metadata inspection, editing, and privacy considerations."
+    }
+  ],
+  "reviewStatus": "published"
+}

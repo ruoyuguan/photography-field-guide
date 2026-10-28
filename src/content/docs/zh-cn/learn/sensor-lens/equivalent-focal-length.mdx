@@ -1,13 +1,13 @@
 ---
-title: 等效焦距
-description: 学习如何用裁切系数比较视角，同时正确理解镜头本身并未改变。
+title: 等效焦距与视角
+description: 跨画幅比较取景，同时不改变实际焦距、透视和普通曝光设置。
 translationKey: equivalent-focal-length
 category: sensor-lens
 difficulty: beginner
 reviewStatus: published
 draft: false
 prerequisites: [sensor-formats]
-relatedConcepts: [crop-factor]
+relatedConcepts: [crop-factor, focal-length, field-of-view, perspective]
 relatedTools: [crop-factor]
 lastReviewed: '2026-10-28'
 sources:
@@ -15,53 +15,70 @@ sources:
     title: 'The DX and FX Formats — Nikon'
     locator: 'Can you use an FX lens on a DX camera body?'
     accessedOn: '2026-10-28'
-    supports: '24 mm 镜头用于 1.5× DX 传感器可获得约 36 mm 的全画幅视角；比较的是视角。'
+    supports: 'A 24 mm lens on a 1.5× DX camera gives an approximately 36 mm full-frame field of view.'
   - url: 'https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/specifications/'
     title: 'XF16-50mmF2.8-4.8 R LM WR Specifications'
     locator: 'Focal length (35mm format equivalent)'
     accessedOn: '2026-10-28'
-    supports: '实际焦距范围 16–50 mm 及厂商标注的 24–76 mm 全画幅等效范围。'
+    supports: 'The physical 16–50 mm range and manufacturer-stated 24–76 mm full-frame equivalent.'
 sidebar:
   order: 2
 ---
 
-**等效焦距**是用全画幅作为共同参考来描述视角的方法。它回答的是一个实用问题：
+**等效焦距**是使用共同参考描述视角的方法。它回答：“在相同机位，全画幅相机需要哪档焦距才能获得相近画面？”
 
-> 在相同拍摄位置，全画幅相机需要使用哪一档焦距，才能获得相近的视角？
+**简短回答：**在宽高比相同的前提下，用实际焦距乘画幅系数，估算能产生相近视角的全画幅焦距。实际镜头并没有改变。
 
-在画幅宽高比相同的前提下，计算关系是：
+## 比较公式
 
-**全画幅等效焦距 = 实际焦距 × 裁切系数**
+**全画幅等效焦距 = 实际焦距 × 画幅系数**
 
-## 示例
-
-一支 50 mm 镜头用于裁切系数为 1.5× 的 APS-C 相机时，其视角大致相当于：
+50 mm 镜头用于标称 1.5× 画幅系数的 APS-C 相机时，视角大致相当于：
 
 **50 mm × 1.5 = 全画幅上的 75 mm**
 
-镜头并没有变成 75 mm 镜头。它的光学设计和标称焦距仍然是 50 mm，“75 mm 等效”只描述最终视角。
+镜头仍是 50 mm 光学设计。“75 mm 等效”说的是取景，不是镜头内部完成了光学转换。
 
-一个实际的厂商示例是 XF16–50mmF2.8–4.8：它的实际焦距范围是 16–50 mm，富士标注的全画幅等效范围是 24–76 mm。
+| 比较                         | 什么保持不变？ | 比较的是什么？           |
+| ---------------------------- | -------------- | ------------------------ |
+| 同一镜头、小传感器、同一机位 | 镜头与透视     | 记录下来的视角           |
+| 小传感器配更广镜头、同一机位 | 机位           | 不同实际焦距产生相近取景 |
+| 同一镜头，拍摄者后退         | 镜头           | 取景与**已改变的透视**   |
 
-## 常见裁切系数
+## 示例设置
 
-- 尼康和富士 APS-C：通常约为 **1.5×**
-- 其他 APS-C 机型和传感器画幅可能不同。需要精确比较时，请查看具体传感器规格。
+XF16–50 在 **16 mm** 端，厂商标注全画幅等效视角约 **24 mm**；在 **50 mm** 端约 **76 mm**。这些端点数值来自富士；需要精确比较时，不要根据取整宣传数字推断所有中间焦距。
 
-## 不要混淆这些概念
+同一支镜头在 APS-C 上使用 **F4、1/125 秒、ISO 400**，普通曝光并不会变成“F6 等效”。实际 F 值不变，ISO 与快门时间也保持设定值。
 
-- **焦距：**镜头的物理属性。
-- **视角：**相机记录画面范围的大小，与焦距、传感器尺寸及几何条件有关。
-- **透视：**物体之间相对大小与位置的关系，取决于相机位置。
-- **光圈 f 值：**把镜头装到另一画幅上，并不会改变它的 f 值。
+## “等效”不是一个万能计算
 
-“等效”是一种比较工具，不是镜头内部真的完成了焦距转换。
+- **等效视角：**本文讨论的画幅系数比较。
+- **等效景深：**需要匹配取景和观看条件，并明确对焦距离或机位假设。
+- **等效总进光／噪点：**需要另一种严格控制的比较。
+- **普通曝光设置：**F 值、时间或 ISO 不乘画幅系数。
 
-**动手试一试：**使用[画幅系数与等效焦距计算器](../../../tools/crop-factor/)，比较真实尺寸计算与常用的 1.5× 近似结果。
+“等效光圈”经常混淆这些语境。计算之前先说清你指哪一种结果。
 
-下一篇：[曝光三角](../../exposure/exposure-triangle/)。
+## 焦距、视角与透视
 
-## 参考来源
+焦距是镜头属性；视角描述相机记录的范围；透视描述从某个视点看到的物体相对大小和位置。裁切不会移动视点。更窄视角看似“更长焦”，却不能重现退远拍摄所改变的透视。
 
-- [Nikon：DX 与 FX 画幅](https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats)
+## 常见误区
+
+- **画幅系数改变镜头上刻的数值。**并不会。
+- **等效焦距可以告诉你背景虚化。**它还需要距离、光圈、取景和输出条件。
+- **所有 APS-C 都恰好是 1.5×。**近似标称有差别，精确比较应使用传感器尺寸。
+
+## 练习：不移动的比较
+
+选择静止场景和示例焦距。拍一张全画幅参考或不裁切宽画面，再在不改变机位的情况下裁切模拟小传感器。与同一位置使用计算所得更长焦距拍摄的画面比较：取景应相近，透视仍由机位决定。
+
+## 使用互动比较
+
+打开[画幅系数与等效焦距工具](../../../tools/crop-factor/)，比较标称 1.5× 与真实传感器对角线计算。JavaScript 启用滑块与计算；没有脚本时仍可阅读公式与示例。再把[景深](../depth-of-field/)作为另一个独立比较来学习。
+
+## 资料来源
+
+- [Nikon：DX 与 FX 画幅（英文）](https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats)
 - [富士 XF16–50mmF2.8–4.8：官方规格](https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/specifications/)

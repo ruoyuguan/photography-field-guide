@@ -6,24 +6,38 @@ const ORIGIN = (
   process.env.SITE_ORIGIN ?? 'https://ruoyuguan.github.io'
 ).replace(/\/+$/, '');
 const BASE = normalizeBase(process.env.SITE_BASE);
-const PUBLIC_ROUTES = [
+const LOCALIZED_ROUTES = [
   '/',
   '/learn/',
+  '/learn/getting-started/what-is-photography/',
+  '/learn/getting-started/digital-camera-works/',
   '/learn/sensor-lens/sensor-formats/',
   '/learn/sensor-lens/equivalent-focal-length/',
+  '/learn/sensor-lens/depth-of-field/',
+  '/learn/exposure/aperture/',
+  '/learn/exposure/shutter-speed/',
+  '/learn/exposure/iso/',
+  '/learn/exposure/exposure-stops/',
   '/learn/exposure/exposure-triangle/',
+  '/learn/image-quality/raw-jpeg-exif/',
   '/tools/',
   '/tools/crop-factor/',
   '/tools/exposure-stops/',
-  '/404.html',
+  '/glossary/',
+  '/gear/',
+  '/gear/fujifilm-x-t5/',
+  '/gear/fujifilm-xf16-50/',
+  '/galleries/',
+  '/resources/',
+  '/about/',
+];
+const PUBLIC_ROUTES = [
+  ...LOCALIZED_ROUTES,
   '/zh-cn/',
-  '/zh-cn/learn/',
-  '/zh-cn/learn/sensor-lens/sensor-formats/',
-  '/zh-cn/learn/sensor-lens/equivalent-focal-length/',
-  '/zh-cn/learn/exposure/exposure-triangle/',
-  '/zh-cn/tools/',
-  '/zh-cn/tools/crop-factor/',
-  '/zh-cn/tools/exposure-stops/',
+  ...LOCALIZED_ROUTES.filter(route => route !== '/').map(
+    route => `/zh-cn${route}`
+  ),
+  '/404.html',
   '/zh-cn/404/',
 ];
 const errors = [];
