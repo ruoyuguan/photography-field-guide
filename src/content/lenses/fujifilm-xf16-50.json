@@ -12,7 +12,7 @@
     "zh-cn": "一支 16–50 mm 的 X 卡口变焦镜头。厂商标注其全画幅等效视角为 24–76 mm，实际焦距范围仍为 16–50 mm。"
   },
   "manufacturerUrl": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/",
-  "articleKeys": ["equivalent-focal-length"],
+  "articleKeys": ["equivalent-focal-length", "autofocus"],
   "sources": [
     {
       "url": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/specifications/",

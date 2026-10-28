@@ -1,0 +1,36 @@
+{
+  "id": "metering",
+  "term": { "en": "Metering", "zh-cn": "测光" },
+  "aliases": {
+    "en": ["light metering", "TTL metering", "reflected-light meter"],
+    "zh-cn": ["相机测光", "反射式测光", "TTL 测光"]
+  },
+  "shortDefinition": {
+    "en": "The camera's measurement and interpretation of scene light to inform an exposure proposal or indicator.",
+    "zh-cn": "相机测量并解释场景光线，为曝光建议或曝光指示提供信息的过程。"
+  },
+  "misconceptions": {
+    "en": [
+      "A reflected-light meter does not know the intended tone or importance of every subject."
+    ],
+    "zh-cn": [
+      "反射式测光并不知道每个主体应有的影调，也不知道它对拍摄者的重要程度。"
+    ]
+  },
+  "example": {
+    "en": "A bright subject occupying much of the frame can influence an automatic exposure proposal, so review the result and compensate deliberately.",
+    "zh-cn": "占据大部分画面的明亮主体可能影响自动曝光建议，因此要检查结果并有意进行补偿。"
+  },
+  "articleKey": "exposure-compensation",
+  "relatedTerms": ["exposure", "exposure-compensation", "exposure-mode"],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-metering.htm",
+      "title": "Camera Metering — Cambridge in Colour",
+      "locator": "Incident vs. reflected light; metering options",
+      "accessedOn": "2026-10-28",
+      "supports": "Reflected-light metering and the influence of subject reflectance and metering regions."
+    }
+  ],
+  "reviewStatus": "published"
+}

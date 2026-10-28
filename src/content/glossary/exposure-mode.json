@@ -1,0 +1,54 @@
+{
+  "id": "exposure-mode",
+  "term": { "en": "Exposure Mode", "zh-cn": "曝光模式" },
+  "aliases": {
+    "en": [
+      "PASM",
+      "shooting mode",
+      "aperture priority",
+      "shutter priority",
+      "program AE",
+      "manual exposure"
+    ],
+    "zh-cn": [
+      "拍摄模式",
+      "PASM",
+      "光圈优先",
+      "快门优先",
+      "程序自动",
+      "手动曝光"
+    ]
+  },
+  "shortDefinition": {
+    "en": "A rule for dividing control of exposure variables—especially aperture and shutter speed—between photographer and camera.",
+    "zh-cn": "在摄影师与相机之间分配曝光变量控制权的规则，尤其涉及光圈与快门速度。"
+  },
+  "misconceptions": {
+    "en": [
+      "Manual exposure does not necessarily mean ISO and every other camera function are manual."
+    ],
+    "zh-cn": ["手动曝光不一定意味着 ISO 和其他所有相机功能也都是手动。"]
+  },
+  "example": {
+    "en": "In aperture priority with fixed ISO, you choose the aperture while the camera proposes shutter speed.",
+    "zh-cn": "在固定 ISO 的光圈优先模式下，你选择光圈，相机给出快门速度。"
+  },
+  "articleKey": "pasm-modes",
+  "relatedTerms": [
+    "exposure",
+    "aperture",
+    "shutter-speed",
+    "iso",
+    "exposure-compensation"
+  ],
+  "sources": [
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/shooting_mode/",
+      "title": "P, S, A, and M Modes — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "Mode P; Mode S; Mode A; Mode M",
+      "accessedOn": "2026-10-28",
+      "supports": "The division of aperture and shutter-speed control in P, A, S, and M modes."
+    }
+  ],
+  "reviewStatus": "published"
+}

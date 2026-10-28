@@ -1,0 +1,34 @@
+{
+  "id": "af-c",
+  "term": { "en": "Continuous Autofocus", "zh-cn": "连续自动对焦" },
+  "aliases": {
+    "en": ["AF-C", "continuous AF", "AI Servo"],
+    "zh-cn": ["AF-C", "连续对焦", "连续 AF"]
+  },
+  "shortDefinition": {
+    "en": "On an X-T5 with normal half-press operation, autofocus continually adjusts to changes in subject distance.",
+    "zh-cn": "在 X-T5 正常半按快门操作时，自动对焦随主体距离变化持续调整。"
+  },
+  "misconceptions": {
+    "en": [
+      "Continuous autofocus does not freeze motion or guarantee that every tracked frame will be sharp."
+    ],
+    "zh-cn": ["连续自动对焦不能冻结运动，也不保证每一张跟踪照片都清晰。"]
+  },
+  "example": {
+    "en": "Use AF-C with an appropriate focus area when a person walks toward the camera.",
+    "zh-cn": "人物向相机走来时，可配合适当对焦区域使用 AF-C。"
+  },
+  "articleKey": "autofocus",
+  "relatedTerms": ["autofocus", "af-s", "focus-area", "shutter-speed"],
+  "sources": [
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/autofocus/",
+      "title": "Autofocus — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "Focus Mode C (AF-C)",
+      "accessedOn": "2026-10-28",
+      "supports": "Continuous-AF adjustment for changes in subject distance."
+    }
+  ],
+  "reviewStatus": "published"
+}

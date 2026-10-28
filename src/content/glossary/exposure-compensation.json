@@ -1,0 +1,47 @@
+{
+  "id": "exposure-compensation",
+  "term": { "en": "Exposure Compensation", "zh-cn": "曝光补偿" },
+  "aliases": {
+    "en": ["EC", "exposure bias", "plus minus EV"],
+    "zh-cn": ["曝光偏移", "补偿曝光", "EV 补偿"]
+  },
+  "shortDefinition": {
+    "en": "An offset that asks an automatic exposure system for a brighter or darker target than its unmodified proposal.",
+    "zh-cn": "要求自动曝光系统采用比原始建议更亮或更暗目标的偏移量。"
+  },
+  "misconceptions": {
+    "en": [
+      "Positive compensation does not always add light; the result depends on which settings remain automatic."
+    ],
+    "zh-cn": ["正补偿不一定增加进光；结果取决于哪些设置仍处于自动状态。"]
+  },
+  "example": {
+    "en": "In aperture priority with fixed ISO, +1 EV commonly produces a longer shutter time for a brighter target.",
+    "zh-cn": "在固定 ISO 的光圈优先模式下，+1 EV 通常会通过更长快门时间实现更亮目标。"
+  },
+  "articleKey": "exposure-compensation",
+  "relatedTerms": [
+    "exposure",
+    "exposure-stop",
+    "exposure-mode",
+    "metering",
+    "iso"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-metering.htm",
+      "title": "Camera Metering — Cambridge in Colour",
+      "locator": "Exposure compensation",
+      "accessedOn": "2026-10-28",
+      "supports": "Exposure compensation as an offset to the automatic exposure target."
+    },
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/exposure/",
+      "title": "Exposure Compensation — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "Exposure compensation",
+      "accessedOn": "2026-10-28",
+      "supports": "X-T5 exposure-compensation control and mode-dependent limits."
+    }
+  ],
+  "reviewStatus": "published"
+}

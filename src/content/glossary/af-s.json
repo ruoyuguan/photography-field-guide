@@ -1,0 +1,34 @@
+{
+  "id": "af-s",
+  "term": { "en": "Single Autofocus", "zh-cn": "单次自动对焦" },
+  "aliases": {
+    "en": ["AF-S", "single AF", "one-shot AF"],
+    "zh-cn": ["AF-S", "单次对焦", "单次 AF"]
+  },
+  "shortDefinition": {
+    "en": "On an X-T5 with normal half-press operation, autofocus locks while the shutter button is held halfway.",
+    "zh-cn": "在 X-T5 正常半按快门操作时，自动对焦在半按保持期间锁定。"
+  },
+  "misconceptions": {
+    "en": [
+      "AF-S behavior can be changed by lens switches, button customization, and options such as Pre-AF."
+    ],
+    "zh-cn": ["镜头开关、自定义按键和 Pre-AF 等选项会改变 AF-S 的细节行为。"]
+  },
+  "example": {
+    "en": "Use AF-S as a starting point for a stationary building, with the focus point on the intended surface.",
+    "zh-cn": "拍摄静止建筑时可从 AF-S 开始，并把对焦点放在目标表面上。"
+  },
+  "articleKey": "autofocus",
+  "relatedTerms": ["autofocus", "af-c", "manual-focus", "focus-area"],
+  "sources": [
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/autofocus/",
+      "title": "Autofocus — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "Focus Mode S (AF-S)",
+      "accessedOn": "2026-10-28",
+      "supports": "Single-AF focus locking and its intended use for stationary subjects."
+    }
+  ],
+  "reviewStatus": "published"
+}

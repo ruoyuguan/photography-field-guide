@@ -1,0 +1,34 @@
+{
+  "id": "focus-area",
+  "term": { "en": "Focus Area", "zh-cn": "对焦区域" },
+  "aliases": {
+    "en": ["AF point", "focus point", "AF zone", "tracking area"],
+    "zh-cn": ["对焦点", "对焦框", "AF 区域", "跟踪区域"]
+  },
+  "shortDefinition": {
+    "en": "The selected point or region of the frame that the camera uses for focusing or tracking.",
+    "zh-cn": "相机用于对焦或跟踪的所选画面点位或区域。"
+  },
+  "misconceptions": {
+    "en": [
+      "A larger area increases coverage but does not tell the camera which subject matters most to you."
+    ],
+    "zh-cn": ["更大区域扩大了覆盖范围，却不能告诉相机哪个主体对你最重要。"]
+  },
+  "example": {
+    "en": "A single point can target one building detail, while a zone allows a moving subject more room in a selected region.",
+    "zh-cn": "单点可瞄准建筑的一处细节，区域则让运动主体在选定范围内有更多活动空间。"
+  },
+  "articleKey": "autofocus",
+  "relatedTerms": ["autofocus", "af-s", "af-c", "manual-focus"],
+  "sources": [
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/autofocus/",
+      "title": "Autofocus — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "Autofocus Options (AF Mode); Focus-Point Selection",
+      "accessedOn": "2026-10-28",
+      "supports": "Single-point, zone, wide and tracking behavior, and focus-area selection."
+    }
+  ],
+  "reviewStatus": "published"
+}

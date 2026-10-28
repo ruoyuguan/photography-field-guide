@@ -335,10 +335,21 @@ try {
     '/zh-cn/learn/sensor-lens/sensor-formats/'
   );
   await search('/learn/', 'ISO', '/learn/exposure/exposure-triangle/');
+  await search('/learn/', 'aperture priority', '/learn/exposure/pasm-modes/');
   await search(
     '/zh-cn/learn/',
     '景深',
     '/zh-cn/learn/sensor-lens/depth-of-field/'
+  );
+  await search(
+    '/zh-cn/learn/',
+    '曝光补偿',
+    '/zh-cn/learn/exposure/exposure-compensation/'
+  );
+  await search(
+    '/zh-cn/learn/',
+    '自动对焦',
+    '/zh-cn/learn/image-quality/autofocus/'
   );
   await checkDirectories({
     call,

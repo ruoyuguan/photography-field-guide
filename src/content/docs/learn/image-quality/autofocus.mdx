@@ -1,0 +1,146 @@
+---
+title: Autofocus, Focus Modes, and Focus Areas
+description: Choose when and where the camera should focus while keeping focus, depth of field, and motion blur distinct.
+translationKey: autofocus
+category: image-quality
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [digital-camera-works, depth-of-field]
+relatedConcepts:
+  [autofocus, af-s, af-c, manual-focus, focus-area, depth-of-field]
+relatedTools: []
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/autofocus/'
+    title: 'Autofocus — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'Focus Mode; Autofocus Options (AF Mode); Focus-Point Selection'
+    accessedOn: '2026-10-28'
+    supports: 'AF-S, AF-C and manual-focus behavior; single-point, zone, wide and tracking areas; focus-point controls and difficult subjects.'
+sidebar:
+  order: 2
+---
+
+Why is the background sharp when the person is not, even though the focus box turned green? A focus confirmation is not a promise that the whole picture will be sharp—or that the camera chose the subject you intended.
+
+**Short answer:** autofocus adjusts the lens for a subject distance. Focus modes determine **how focusing behaves over time**, while focus areas determine **where the camera looks**. Accurate focus, sufficient depth of field, and freedom from motion blur are separate requirements.
+
+## Three different questions
+
+1. **When should the camera adjust or hold focus?** This is the focus-mode decision: AF-S, AF-C, or manual focus on an X-T5.
+2. **Which part of the frame should it use?** This is the focus-area decision: a point, zone, or wider tracking area.
+3. **What will look acceptably sharp in the final image?** This also depends on depth of field, subject and camera motion, lens performance, and viewing size.
+
+Do not use a larger aperture number as a substitute for choosing the right subject. More depth of field can increase the acceptable-focus range, but it cannot repair every focus error.
+
+## Focus behavior over time
+
+| X-T5 focus mode | Normal half-press behavior                                               | A useful starting situation                          |
+| --------------- | ------------------------------------------------------------------------ | ---------------------------------------------------- |
+| **S (AF-S)**    | Single AF locks focus while the shutter is held halfway                  | Stationary or nearly stationary subjects             |
+| **C (AF-C)**    | Continuous AF adjusts for changes in subject distance while held halfway | Subjects moving toward or away from the camera       |
+| **M (Manual)**  | You focus using the lens focus ring                                      | Deliberate manual control or difficult AF conditions |
+
+Names and controls vary by manufacturer. Button customization, lens switches, and options such as Pre-AF can alter the detailed behavior, so read the camera display and manual rather than relying only on the letter.
+
+## Focus area: where the camera should look
+
+- **Single point:** you select a small area for precise placement. It is useful when the intended subject is specific, but a point placed on the background can focus the background.
+- **Zone:** a group of points gives the subject more room within a selected region. It can help with predictable motion, but another high-contrast object inside the zone may compete.
+- **Wide or tracking:** the available behavior depends on whether AF-S or AF-C is active. On the X-T5, AF-S offers Wide and AF-C offers Tracking; these are not interchangeable labels for one universal algorithm.
+- **Face, eye, or subject detection:** a separate assistance option on supported cameras. Detection and focus-area configuration still need inspection; a detected subject is not guaranteed to remain sharply focused.
+
+<svg
+  viewBox="0 0 720 210"
+  role="img"
+  aria-label="AF-S is a starting point for stationary subjects while AF-C continually adjusts for changing subject distance"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <g font-size="17">
+    <text x="28" y="38" fill="#fbbf24">
+      AF-S · stationary subject
+    </text>
+    <rect
+      x="46"
+      y="58"
+      width="48"
+      height="48"
+      rx="5"
+      fill="none"
+      stroke="#fbbf24"
+      stroke-width="3"
+    />
+    <circle cx="70" cy="82" r="10" fill="white" />
+    <text x="124" y="88" fill="#d4d4d4">
+      focus, hold, then verify before recomposing
+    </text>
+    <text x="28" y="145" fill="#fbbf24">
+      AF-C · changing distance
+    </text>
+    <rect
+      x="46"
+      y="155"
+      width="48"
+      height="48"
+      rx="5"
+      fill="none"
+      stroke="#fbbf24"
+      stroke-width="3"
+    />
+    <circle cx="70" cy="179" r="10" fill="white" />
+    <circle cx="136" cy="179" r="10" fill="#737373" />
+    <circle cx="202" cy="179" r="10" fill="#404040" />
+    <path
+      d="M 104 179 H 122 M 170 179 H 188"
+      stroke="#d4d4d4"
+      stroke-width="2"
+    />
+    <text x="240" y="185" fill="#d4d4d4">
+      focus adjusts; keep the subject in the active area
+    </text>
+  </g>
+</svg>
+
+This is a conceptual behavior diagram, not a tracking simulation. The manual describes how the selected mode and area work on an actual camera.
+
+## Worked examples
+
+**Static architecture:** AF-S with a carefully placed single point is a clear starting choice. Check that the point covers the intended surface rather than a distant object behind glass.
+
+**A person walking toward you:** AF-C with an appropriate zone or tracking area gives the camera an opportunity to update focus. You still need a shutter speed that controls subject motion and an active area that keeps the person included.
+
+**Low contrast or obstructions:** the X-T5 manual lists low-contrast subjects, shiny surfaces, subjects behind reflective material, and competing high-contrast objects as difficult cases. Change the area or viewpoint, find a more usable target at the same distance, or use manual focus with magnification when appropriate.
+
+## A sharpness diagnosis is not just an AF diagnosis
+
+- **Intended subject soft, another distance sharp:** inspect focus placement and depth of field.
+- **Everything streaked in one direction:** consider camera movement or subject motion, not just missed focus.
+- **Near and far details both soft:** inspect focus, motion, lens settings, and output viewing conditions.
+- **Focus hunts or switches to another object:** reconsider contrast, focus-area size, obstructions, and the selected focus behavior.
+
+Autofocus cannot freeze a moving person, and a fast shutter cannot move the focus distance onto the person.
+
+## X-T5 control sequence
+
+1. Set the focus-mode selector to **S**, **C**, or **M**.
+2. For autofocus, choose **AF/MF SETTING → AF MODE**.
+3. Select the focus area with the focus stick and adjust its size as described in the manual.
+4. Half-press while watching the selected area and focus indicator, then review important frames at useful magnification.
+
+The official manual notes that enabling **Pre-AF** makes the camera adjust focus continuously in S and C even without a shutter half-press. That is why a generic “AF-S always waits” rule is incomplete.
+
+## Practice: isolate time and area
+
+First, use a stationary high-contrast object with fixed exposure and framing. Compare AF-S and AF-C using the same single point; record whether the results differ in this controlled situation.
+
+Next, ask a person to walk toward you at a safe, repeatable pace. Use AF-C, keep the active area on the person, and make a short sequence. Inspect the intended face rather than judging only the thumbnail. Repeat with an unsuitable point aimed at the background to demonstrate why area selection matters.
+
+Finally, try a low-contrast stationary object. If autofocus struggles, change the target or use manual-focus assistance. Record the limitation instead of treating every missed frame as user failure.
+
+## Continue
+
+Review [Depth of Field and Background Blur](../../sensor-lens/depth-of-field/) for acceptable focus range, [Shutter Speed](../../exposure/shutter-speed/) for motion, and [P, A, S, and M modes](../../exposure/pasm-modes/) for the separate exposure decision. The [X-T5 equipment guide](../../../gear/fujifilm-x-t5/) links to the manufacturer’s documentation.
+
+## Sources
+
+- [FUJIFILM X-T5 Owner’s Manual: Autofocus](https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/autofocus/)

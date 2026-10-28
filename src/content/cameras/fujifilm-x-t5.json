@@ -15,7 +15,12 @@
   },
   "manufacturerUrl": "https://fujifilm-x.com/global/products/cameras/x-t5/",
   "documentationUrl": "https://fujifilm-dsc.com/en/manual/x-t5/",
-  "articleKeys": ["sensor-formats"],
+  "articleKeys": [
+    "sensor-formats",
+    "pasm-modes",
+    "exposure-compensation",
+    "autofocus"
+  ],
   "sources": [
     {
       "url": "https://fujifilm-x.com/global/products/cameras/x-t5/specifications/",

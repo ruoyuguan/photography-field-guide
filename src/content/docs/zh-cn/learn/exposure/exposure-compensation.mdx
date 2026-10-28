@@ -1,0 +1,122 @@
+---
+title: 不靠猜测的曝光补偿
+description: 调整自动曝光目标，同时看清测光、参数联动和物理限制。
+translationKey: exposure-compensation
+category: exposure
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [pasm-modes]
+relatedConcepts: [exposure-compensation, metering, exposure, exposure-stop]
+relatedTools: [exposure-stops]
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/camera-metering.htm'
+    title: 'Camera Metering — Cambridge in Colour'
+    locator: 'Incident vs. reflected light; exposure compensation'
+    accessedOn: '2026-10-28'
+    supports: 'Reflected-light metering, subject reflectance, and compensation as a change to the metered exposure target.'
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/exposure/'
+    title: 'Exposure Compensation — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'Exposure compensation; C (Custom)'
+    accessedOn: '2026-10-28'
+    supports: 'X-T5 exposure-compensation controls, mode-dependent range, and preview limitations.'
+sidebar:
+  order: 6
+---
+
+为什么雪景有时拍成灰色，逆光人物有时太暗？相机测量的是反射光，却不知道哪些影调和细节对你最重要。
+
+**简短回答：**曝光补偿要求自动曝光系统采用更亮或更暗的目标。正值请求更亮的结果，负值请求更暗的结果。它并不总改变同一个参数，也无法越过镜头、快门、ISO 或现场光线的限制。
+
+## 补偿的是目标，不是固定拨盘
+
+机内反射式测光系统评估从场景反射回来的光。主体反射率、取景范围和测光算法都会影响它给出的结果。在同一照明下，白色物体比深色物体反射更多光；相机不能只凭亮度知道你想保留什么影调。
+
+曝光补偿给自动目标增加偏移。**+1 EV** 请求比原自动目标多一档曝光或标称输出；**−1 EV** 请求少一档。物理上究竟改变什么，取决于哪些变量仍处于自动状态。
+
+| 情况                   | 对 +1 EV 的一种典型响应            | 需要观察                 |
+| ---------------------- | ---------------------------------- | ------------------------ |
+| P、固定 ISO            | 另一组光圈—快门组合                | 运动与景深               |
+| A、固定 ISO            | 更长快门时间                       | 相机抖动和主体运动       |
+| S、固定 ISO            | 更大光圈                           | 可用光圈范围与景深       |
+| M、光圈快门 ISO 均固定 | 没有剩余自动变量，需要直接调整设置 | 测光指示与预期结果       |
+| 任意模式配合自动 ISO   | ISO 可能参与，取决于机型与配置     | 噪点、高光余量和实际设置 |
+
+表格描述常见行为，不是所有相机统一的规格。请检查自己的相机实际改变了哪些设置。
+
+<svg
+  viewBox="0 0 720 190"
+  role="img"
+  aria-label="负、零、正曝光补偿分别请求更暗、不变和更亮的自动目标"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <g text-anchor="middle" font-size="18">
+    <rect x="38" y="42" width="180" height="86" rx="12" fill="#404040" />
+    <text x="128" y="79" fill="white">
+      −1 EV
+    </text>
+    <text x="128" y="108" fill="#d4d4d4" font-size="16">
+      更暗目标
+    </text>
+    <rect x="270" y="42" width="180" height="86" rx="12" fill="#737373" />
+    <text x="360" y="79" fill="white">
+      0 EV
+    </text>
+    <text x="360" y="108" fill="white" font-size="16">
+      测光目标
+    </text>
+    <rect x="502" y="42" width="180" height="86" rx="12" fill="#d4d4d4" />
+    <text x="592" y="79" fill="#171717">
+      +1 EV
+    </text>
+    <text x="592" y="108" fill="#171717" font-size="16">
+      更亮目标
+    </text>
+  </g>
+  <text x="360" y="165" fill="#d4d4d4" font-size="16" text-anchor="middle">
+    概念目标，不预测实际像素值
+  </text>
+</svg>
+
+## 有理由地使用补偿
+
+- **雪景或白色墙面：**若自动结果让重要白色区域比预期更暗，可尝试正补偿，并检查高光细节。
+- **占据大部分画面的深色主体：**若自动结果比预期更亮，可尝试负补偿，而不是要求每张画面都接近中灰。
+- **逆光人物：**正补偿可能让人物更亮，也可能牺牲背景高光。改变测光区域、光线、机位或曝光决策可能更合适。
+- **有意低调或高调呈现：**用补偿支持表达，而不是一味把相机“纠正”到平均亮度。
+
+没有适用于所有雪景或人像的固定补偿数字。从控制变量的对比开始，检查画面中真正重要的部分。
+
+## X-T5 示例与预览限制
+
+转动专用曝光补偿拨盘。拨盘设到 **C** 时，可用前指令拨盘选择 **−5 至 +5 EV**；可用范围取决于拍摄模式。说明书还指出，超过 **±3 EV** 或采用某些动态范围设置时，拍摄显示可能无法准确反映效果。预览是判断信息，不是对最终文件的保证。
+
+当 M 模式的光圈、快门和 ISO 都固定时，没有剩余自动曝光变量去追求补偿目标。使用自动 ISO 或自定义控件时，应核实具体机型行为，不要默认 M 一定启用或一定禁用补偿。
+
+## 常见误区
+
+- **“+1 EV 总能让光子翻倍。”**在现场照明不变时，补偿只有通过改变光圈或快门才能增加光曝光；如果自动系统只改变 ISO，收集到的光子不会翻倍。
+- **“零补偿就是正确曝光。”**它只是未经修改的自动目标，不一定符合主体和表达意图。
+- **“负补偿只是让 JPEG 变暗。”**它可能改变拍摄设置，从而影响传感器曝光、运动、清晰范围或噪点。
+- **“补偿能消除所有高光溢出。”**若场景和可用设置无法容纳高光，补偿也无法把它们保留下来。
+
+## 练习：拍一组三张对比
+
+选择同时具有亮部和暗部细节的静态场景。使用 A 模式、固定 ISO，保持对焦和构图不变，从中间光圈开始。
+
+1. 分别以 **−1 EV、0 EV、+1 EV** 拍摄。
+2. 记录三张实际使用的光圈、快门和 ISO。
+3. 比较重要高光、阴影和整体观感，辨认相机改变了哪个设置。
+4. 换成浅色主体，再换成深色主体重复练习，不默认两者需要相同补偿。
+
+思考：变化是帮助了主体，还是只让画面平均更亮？整体亮度之外还出现了什么取舍？
+
+## 继续学习
+
+复习[P、A、S、M 模式](../pasm-modes/)，预测相机会调整哪个自动变量；阅读[曝光档位](../exposure-stops/)，分清光曝光与 ISO 标称输出。使用[曝光档位工具](../../../tools/exposure-stops/)做控制变量的数值比较。
+
+## 资料来源
+
+- [Cambridge in Colour：相机测光（英文）](https://www.cambridgeincolour.com/tutorials/camera-metering.htm)
+- [富士 X-T5 官方说明书：曝光补偿（英文）](https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/exposure/)

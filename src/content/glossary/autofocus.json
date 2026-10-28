@@ -1,0 +1,37 @@
+{
+  "id": "autofocus",
+  "term": { "en": "Autofocus", "zh-cn": "自动对焦" },
+  "aliases": { "en": ["AF", "auto focus"], "zh-cn": ["AF", "自动聚焦"] },
+  "shortDefinition": {
+    "en": "Camera-controlled lens focusing for a selected subject or focus area.",
+    "zh-cn": "由相机控制镜头，针对所选主体或对焦区域进行对焦。"
+  },
+  "misconceptions": {
+    "en": [
+      "A focus confirmation does not prevent motion blur or guarantee that the intended subject was selected."
+    ],
+    "zh-cn": ["对焦确认不能防止运动模糊，也不保证相机选中了你想拍的主体。"]
+  },
+  "example": {
+    "en": "AF-S can be a starting point for a building, while AF-C can help with a person changing distance.",
+    "zh-cn": "拍摄建筑可从 AF-S 开始，人物距离不断变化时可尝试 AF-C。"
+  },
+  "articleKey": "autofocus",
+  "relatedTerms": [
+    "af-s",
+    "af-c",
+    "manual-focus",
+    "focus-area",
+    "depth-of-field"
+  ],
+  "sources": [
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/autofocus/",
+      "title": "Autofocus — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "Autofocus; Focus Mode; Focus-Point Selection",
+      "accessedOn": "2026-10-28",
+      "supports": "Autofocus operation, focus modes, focus areas, and their limitations."
+    }
+  ],
+  "reviewStatus": "published"
+}

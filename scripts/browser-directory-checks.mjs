@@ -31,7 +31,7 @@ export async function checkDirectories({
   );
   await evaluate(`document.querySelector('[data-filter-form]').reset()`);
   await until(
-    `[...document.querySelectorAll('[data-filter-item]')].filter(item => !item.hidden).length === 21`
+    `[...document.querySelectorAll('[data-filter-item]')].filter(item => !item.hidden).length === 29`
   );
   console.log('OK bilingual glossary aliases and native reset');
 
@@ -112,6 +112,10 @@ export async function checkDirectories({
     '/gear/fujifilm-xf16-50/',
     '/zh-cn/resources/',
     '/learn/getting-started/digital-camera-works/',
+    '/learn/exposure/pasm-modes/',
+    '/zh-cn/learn/exposure/exposure-compensation/',
+    '/learn/image-quality/autofocus/',
+    '/zh-cn/learn/image-quality/autofocus/',
     '/zh-cn/learn/image-quality/raw-jpeg-exif/',
   ]) {
     await navigate(path);
