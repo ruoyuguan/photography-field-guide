@@ -1,0 +1,169 @@
+---
+title: 胶片模拟、配方与 RAW 显影
+description: 分清富士胶片模拟、社区配方、RAW 显影、LUT 与软件预设，再选择适合自己的呈现流程。
+translationKey: film-simulations
+category: image-quality
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [raw-jpeg-exif, white-balance]
+relatedConcepts:
+  [film-simulation, film-simulation-recipe, raw, jpeg, white-balance, lut]
+relatedTools: []
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/'
+    title: 'IMAGE QUALITY SETTING (Still Photography) — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'FILM SIMULATION; GRAIN EFFECT; WHITE BALANCE; TONE CURVE; COLOR; SHARPNESS'
+    accessedOn: '2026-10-28'
+    supports: 'Fujifilm’s camera-side film-simulation choices and their coexistence with separate tone, color, sharpness, grain, and white-balance settings.'
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/playback/menu_playback/'
+    title: 'The Playback Menu — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'RAW CONVERSION; Saving RAW Pictures in Another Format'
+    accessedOn: '2026-10-28'
+    supports: 'X-T5 RAW conversion and its adjustable film simulation, white-balance, tone, color, and output settings.'
+  - url: 'https://fujixweekly.com/fujifilm-x-trans-v-recipes/'
+    title: 'Fujifilm X-Trans V Recipes — Fuji X Weekly'
+    locator: 'Compatibility statement and community recipe directory'
+    accessedOn: '2026-10-28'
+    supports: 'A third-party collection organized for stated camera generations, including X-T5; suggested adaptation of selected earlier-generation recipes rather than universal compatibility.'
+  - url: 'https://helpx.adobe.com/photoshop/desktop/save-and-export/export-files-to-different-formats/export-color-lookup-tables.html'
+    title: 'Export color lookup tables in Photoshop — Adobe'
+    locator: 'Color lookup tables; application and color-mode requirements'
+    accessedOn: '2026-10-28'
+    supports: 'LUTs as a way to save and apply color grades in compatible applications, with format and color-mode dependencies.'
+sidebar:
+  order: 4
+---
+
+为什么两张光圈、快门和 ISO 相同的 JPEG 看起来完全不同？曝光设置只描述了结果的一部分。色彩、影调、锐度和颗粒可能接受了不同的呈现决策。
+
+**简短回答：** 富士 **Film Simulation（胶片模拟）** 是相机内一个已命名的呈现选项；第三方 **Film Simulation Recipe（胶片模拟配方）** 则是以这些选项为基础的一组相机设置建议。RAW 显影是在之后产生新的呈现，LUT 与软件预设是另一些软件侧工具，不是相机菜单的同义词。
+
+## 先分清五件事
+
+| 术语               | 在哪里起作用？                                         | 应核查什么？                                     |
+| ------------------ | ------------------------------------------------------ | ------------------------------------------------ |
+| **富士胶片模拟**   | 兼容富士相机图像呈现流程中的一个已命名选项             | 相机型号、所选选项及关联图像质量设置             |
+| **胶片模拟配方**   | 第三方建议的一组相机设置                               | 适用代际／型号、每个菜单项、假设条件与自己的测试 |
+| **RAW 显影／转换** | 把传感器导向数据处理成已呈现图像，可在机内或软件中完成 | 转换器、可用控制、输入数据与输出色彩管理         |
+| **LUT（查找表）**  | 兼容软件或设备使用的颜色数值映射                       | 输入／输出预期、色彩空间、应用与设计用途         |
+| **软件预设**       | 编辑应用中保存的指令或调整                             | 支持的应用／版本、可用控制和底层图像             |
+
+所以，一种“风格”不是通用文件格式。把配方数字抄进无关软件，或把 LUT 当作富士菜单设置，都跳过了让这些指令有意义的系统。
+
+## 内置选项到底做什么？
+
+X-T5 说明书列出 **PROVIA/STANDARD**、**Velvia/VIVID**、**ASTIA/SOFT**、**CLASSIC CHROME**、**REALA ACE**、黑白选项等胶片模拟。说明书描述其呈现特征，例如更鲜艳或更柔和的色彩与反差，并建议根据主体与创作意图选择调色风格。
+
+这些是厂商的呈现指导，不保证所有显示器上结果一致，也不是某选项客观最适合某题材的证明。胶片模拟能与独立的影调、锐度设置组合；白平衡、颗粒、色彩效果等其他图像质量控制也会继续改变交付图像。
+
+<svg
+  viewBox="0 0 760 330"
+  role="img"
+  aria-label="四条独立呈现路径：相机内置胶片模拟、一组配方设置、后期 RAW 显影，以及兼容软件中的 LUT"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <g font-size="17">
+    <text x="26" y="34" fill="#fbbf24">
+      内置胶片模拟
+    </text>
+    <text x="26" y="61" fill="#d4d4d4">
+      相机中一个已命名的呈现选项
+    </text>
+    <path d="M 282 52 H 320" stroke="#fbbf24" stroke-width="2" />
+    <text x="336" y="59" fill="#ffffff">
+      机内 JPEG／HEIF
+    </text>
+    <text x="26" y="109" fill="#fbbf24">
+      第三方配方
+    </text>
+    <text x="26" y="136" fill="#d4d4d4">
+      模拟＋白平衡＋影调＋其他设置
+    </text>
+    <path d="M 336 127 H 374" stroke="#fbbf24" stroke-width="2" />
+    <text x="390" y="134" fill="#ffffff">
+      一整套待测试的配置
+    </text>
+    <text x="26" y="184" fill="#fbbf24">
+      RAW 显影
+    </text>
+    <text x="26" y="211" fill="#d4d4d4">
+      拍摄后处理传感器导向数据
+    </text>
+    <path d="M 282 202 H 320" stroke="#fbbf24" stroke-width="2" />
+    <text x="336" y="209" fill="#ffffff">
+      新呈现的副本
+    </text>
+    <text x="26" y="259" fill="#fbbf24">
+      兼容软件中的 LUT
+    </text>
+    <text x="26" y="286" fill="#d4d4d4">
+      定义输入颜色 → 映射输出颜色
+    </text>
+    <text x="390" y="276" fill="#a3a3a3">
+      不同路径，不是等价文件。
+    </text>
+    <text x="26" y="316" fill="#a3a3a3">
+      仅为流程概念图，不是色彩或胶片匹配模拟。
+    </text>
+  </g>
+</svg>
+
+图中路径并不必须互斥。例如，机内图像仍可后期编辑，RAW 转换也可以提供胶片模拟控制。图的重点是：**风格名称不能描述完整处理路径。**
+
+## 配方是一个待检验的假设
+
+Fuji X Weekly 有一个面向第五代富士相机的配方目录，并明确列出 X-T5。这是**该第三方对其目录所作的兼容性说明**，不证明所有配方适用于每台富士相机，也不证明不同传感器和固件上呈现一致。
+
+尝试配方前，记录：
+
+1. 作者与精确配方网址，不只依赖转载截图。
+2. 适用相机代际与型号，以及声明的例外或替代项。
+3. 每项必要设置：胶片模拟、白平衡与白平衡偏移、影调曲线、色彩、颗粒及其他指定选项。
+4. 拍摄假设，例如光线、曝光方法、ISO 相关限制，以及示例是 JPEG 还是经过后期。
+5. 自己的相机实际提供哪些选项。不要悄悄替换缺失设置，还把结果称为同一配方。
+
+配方名称可能让人想到真实胶片，但名称本身不是与胶片实测匹配的证据。传感器数据、照明、处理、输出媒介和观看条件仍然不同。
+
+## 示例：分离一个呈现变量
+
+这是**建议的比较**，不是样片或推荐风格。在 X-T5 上，用稳定光线拍摄静止场景，其中放入肤色倾向、绿色和中性物体。固定光圈、快门时间、ISO、对焦、构图与白平衡。
+
+先选 **PROVIA/STANDARD** 作为有文档的基线，保存 JPEG。随后只把胶片模拟改为 **ASTIA/SOFT**，保持影调曲线、色彩、锐度、颗粒与白平衡不变。比较两份输出，描述实际观察到的区别，不要由此推断所有风景或人像都必须用其中某项。
+
+如果同时保存了 RAW，在 X-T5 播放菜单中打开 **RAW CONVERSION（RAW 转换）**。说明书列出胶片模拟、白平衡、WB Shift、影调曲线、色彩、锐度等控制，用于创建转换副本。一次只改一个变量，保存标注清楚的独立副本，保留原始捕获以便继续处理。
+
+这些控制的可用性和行为是相机特定的。其他厂商可能把机内风格称为照片风格、创意外观等；共用一个宣传词不代表处理相同。
+
+## LUT 与软件预设的位置
+
+LUT 按既定表格映射颜色数值。有些 LUT 用于技术变换，有些保存创意调色。Adobe 文档说明导出 LUT 涉及应用、格式和色彩模式条件。同一文件不会自动成为有效相机配方，也不必然适合校正每种输入图像。
+
+软件预设则可能保存滑块、曲线、配置文件或其他应用特定调整。有些预设系统内部使用 LUT，但二者不是同义词。应用之前，确认预期输入、输出色彩空间、软件，以及它是为 JPEG、Log 视频还是某种 RAW 转换流程设计的。
+
+## 常见误区
+
+- **“胶片模拟改变到达传感器的实际光线。”**它是呈现选择；光圈、快门时间、照明与 ISO 仍需分别分析。
+- **“配方只是胶片模拟的名称。”**配方通常依赖多项设置，包括白平衡偏移与影调控制。
+- **“配方以胶片命名，就证明与胶片效果相同。”**创意名称不是等价性的测量。
+- **“所有配方都兼容所有富士相机代际。”**菜单选项和声明兼容性不同，应核查每个来源和机型。
+- **“LUT、预设和胶片模拟只是不同软件里的同一件事。”**它们属于不同处理系统和输入假设。
+- **“保存 RAW 后，机内风格就没意义。”**即时 JPEG 仍有用途，RAW 则保留另一条显影路径，选择取决于需要的工作流程。
+
+## 练习：先比较，再收集风格
+
+使用上面的固定场景，做两份只有**一个**呈现变量不同的输出。记录完整设置和观看条件，分别用一句话描述色彩、亮部／暗部反差，以及结果是否符合你的目的。能描述第一组比较之前，不要同时添加颗粒或改变白平衡。
+
+若想测试社区配方，选一个明确说明支持你相机代际的配方。沿署名链接核查每项设置，并在同一照明下与基线比较。缺少控制时停止并记录不兼容，不要猜。学习这些区别不需要下载应用或购买合集。
+
+## 继续学习
+
+复习[白平衡与色温](../white-balance/)分离重要的色彩变量，复习 [RAW、JPEG、HEIF 与 EXIF](../raw-jpeg-exif/)分清数据与已呈现文件。捕获的亮度方面可阅读[曝光档位](../../exposure/exposure-stops/)。[X-T5 器材指南](../../../gear/fujifilm-x-t5/)提供官方说明书入口。
+
+## 资料来源
+
+- [富士 X-T5 官方说明书：图像质量设置——胶片模拟（英文）](https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/)
+- [富士 X-T5 官方说明书：播放菜单——RAW 转换（英文）](https://fujifilm-dsc.com/en/manual/x-t5/playback/menu_playback/)
+- [Fuji X Weekly：Fujifilm X-Trans V 配方（英文）](https://fujixweekly.com/fujifilm-x-trans-v-recipes/)——第三方配方目录及其兼容性声明
+- [Adobe：在 Photoshop 中导出颜色查找表（英文）](https://helpx.adobe.com/photoshop/desktop/save-and-export/export-files-to-different-formats/export-color-lookup-tables.html)

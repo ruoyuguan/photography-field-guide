@@ -23,6 +23,8 @@ const LOCALIZED_ROUTES = [
   '/learn/exposure/exposure-triangle/',
   '/learn/image-quality/raw-jpeg-exif/',
   '/learn/image-quality/autofocus/',
+  '/learn/image-quality/white-balance/',
+  '/learn/image-quality/film-simulations/',
   '/tools/',
   '/tools/crop-factor/',
   '/tools/exposure-stops/',

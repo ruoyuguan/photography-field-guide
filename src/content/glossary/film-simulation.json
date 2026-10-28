@@ -1,0 +1,42 @@
+{
+  "id": "film-simulation",
+  "term": { "en": "Film Simulation", "zh-cn": "胶片模拟" },
+  "aliases": {
+    "en": ["Fujifilm simulation", "film look"],
+    "zh-cn": ["富士胶片模拟", "胶片风格"]
+  },
+  "shortDefinition": {
+    "en": "Fujifilm's named in-camera rendering options for interpreting color and tone with different creative palettes.",
+    "zh-cn": "富士相机内已命名的呈现选项，用不同创意调色风格解释色彩与影调。"
+  },
+  "misconceptions": {
+    "en": [
+      "A Film Simulation is not a third-party recipe, a universal software LUT, or proof of an identical match to a named film stock."
+    ],
+    "zh-cn": [
+      "胶片模拟不是第三方配方、通用软件 LUT，也不证明与某款胶片完全一致。"
+    ]
+  },
+  "example": {
+    "en": "On an X-T5, a Film Simulation can be combined with separate tone, sharpness, grain, and white-balance settings.",
+    "zh-cn": "X-T5 上，胶片模拟可与独立的影调、锐度、颗粒和白平衡设置组合。"
+  },
+  "articleKey": "film-simulations",
+  "relatedTerms": [
+    "film-simulation-recipe",
+    "white-balance",
+    "raw",
+    "jpeg",
+    "lut"
+  ],
+  "sources": [
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/",
+      "title": "IMAGE QUALITY SETTING (Still Photography) — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "FILM SIMULATION",
+      "accessedOn": "2026-10-28",
+      "supports": "The camera's film-simulation palette and its combination with other rendering controls."
+    }
+  ],
+  "reviewStatus": "published"
+}

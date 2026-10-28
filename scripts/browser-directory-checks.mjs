@@ -31,7 +31,7 @@ export async function checkDirectories({
   );
   await evaluate(`document.querySelector('[data-filter-form]').reset()`);
   await until(
-    `[...document.querySelectorAll('[data-filter-item]')].filter(item => !item.hidden).length === 29`
+    `[...document.querySelectorAll('[data-filter-item]')].filter(item => !item.hidden).length === 34`
   );
   console.log('OK bilingual glossary aliases and native reset');
 
@@ -117,6 +117,10 @@ export async function checkDirectories({
     '/learn/image-quality/autofocus/',
     '/zh-cn/learn/image-quality/autofocus/',
     '/zh-cn/learn/image-quality/raw-jpeg-exif/',
+    '/learn/image-quality/white-balance/',
+    '/zh-cn/learn/image-quality/white-balance/',
+    '/learn/image-quality/film-simulations/',
+    '/zh-cn/learn/image-quality/film-simulations/',
   ]) {
     await navigate(path);
     await noOverflow(path);

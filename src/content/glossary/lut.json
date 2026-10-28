@@ -1,0 +1,36 @@
+{
+  "id": "lut",
+  "term": { "en": "LUT (Lookup Table)", "zh-cn": "LUT（查找表）" },
+  "aliases": {
+    "en": ["color lookup table", "3D LUT", "3DLUT"],
+    "zh-cn": ["颜色查找表", "色彩查找表", "3D LUT"]
+  },
+  "shortDefinition": {
+    "en": "A table that maps input color values to output values for a technical or creative transformation in a compatible system.",
+    "zh-cn": "在兼容系统中把输入颜色值映射为输出值、用于技术或创意变换的表格。"
+  },
+  "misconceptions": {
+    "en": [
+      "A LUT is not automatically a camera Film Simulation Recipe or a universal preset for every input, application, and color space."
+    ],
+    "zh-cn": [
+      "LUT 不会自动成为相机胶片模拟配方，也不是适合所有输入、应用和色彩空间的通用预设。"
+    ]
+  },
+  "example": {
+    "en": "A compatible editing application can use an exported LUT to apply a color grade; its intended input and output conditions still matter.",
+    "zh-cn": "兼容编辑应用可使用导出的 LUT 应用调色，但仍须考虑其预期输入和输出条件。"
+  },
+  "articleKey": "film-simulations",
+  "relatedTerms": ["film-simulation", "film-simulation-recipe", "raw", "jpeg"],
+  "sources": [
+    {
+      "url": "https://helpx.adobe.com/photoshop/desktop/save-and-export/export-files-to-different-formats/export-color-lookup-tables.html",
+      "title": "Export color lookup tables in Photoshop — Adobe",
+      "locator": "Color lookup tables; available export formats",
+      "accessedOn": "2026-10-28",
+      "supports": "LUT-based color grades and their application, format, and color-mode dependencies."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "white-balance",
+  "term": { "en": "White Balance", "zh-cn": "白平衡" },
+  "aliases": {
+    "en": ["WB", "auto white balance", "AWB"],
+    "zh-cn": ["WB", "AWB", "自动白平衡"]
+  },
+  "shortDefinition": {
+    "en": "A color-rendering adjustment that compensates for illumination to support a chosen neutral or creative appearance.",
+    "zh-cn": "补偿照明颜色、服务于预期中性或创意外观的色彩呈现调整。"
+  },
+  "misconceptions": {
+    "en": [
+      "White balance does not change the light that reached the sensor, and one global setting cannot neutralize every mixed-light region."
+    ],
+    "zh-cn": [
+      "白平衡不改变到达传感器的光，一个全局设置也不能让所有混合光区域都中性。"
+    ]
+  },
+  "example": {
+    "en": "AWB can be a starting point; a custom measurement can use a white reference under the actual illumination.",
+    "zh-cn": "可从 AWB 开始，也可用实际照明下的白色参考物测量自定义白平衡。"
+  },
+  "articleKey": "white-balance",
+  "relatedTerms": [
+    "color-temperature",
+    "raw",
+    "jpeg",
+    "exposure-compensation",
+    "film-simulation"
+  ],
+  "sources": [
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/",
+      "title": "IMAGE QUALITY SETTING (Still Photography) — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "WHITE BALANCE; Custom White Balance",
+      "accessedOn": "2026-10-28",
+      "supports": "Automatic, source-specific, and custom white-balance rendering choices."
+    }
+  ],
+  "reviewStatus": "published"
+}

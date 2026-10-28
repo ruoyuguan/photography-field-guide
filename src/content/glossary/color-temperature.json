@@ -1,0 +1,34 @@
+{
+  "id": "color-temperature",
+  "term": { "en": "Color Temperature", "zh-cn": "色温" },
+  "aliases": {
+    "en": ["kelvin", "Kelvin setting", "K value"],
+    "zh-cn": ["开尔文", "K 值", "色温值"]
+  },
+  "shortDefinition": {
+    "en": "A kelvin-scale description of a light source's color, distinct from the result of compensating for an assumed source in a camera.",
+    "zh-cn": "以开尔文表示的光源颜色属性，与相机根据假设光源进行补偿后的画面结果不同。"
+  },
+  "misconceptions": {
+    "en": [
+      "Increasing the camera's Kelvin setting does not universally mean the resulting image becomes warmer; distinguish source color from compensation."
+    ],
+    "zh-cn": ["相机 K 值调高不总是意味着画面更暖；应区分光源颜色与相机的补偿。"]
+  },
+  "example": {
+    "en": "The X-T5's white-balance menu provides 2500–10000 K selection; this is a documented camera setting range, not a definition of every possible light source.",
+    "zh-cn": "X-T5 白平衡菜单提供 2500–10000 K 选择；这是该机设置范围，不是所有光源可能色温的定义。"
+  },
+  "articleKey": "white-balance",
+  "relatedTerms": ["white-balance", "raw", "jpeg"],
+  "sources": [
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/",
+      "title": "IMAGE QUALITY SETTING (Still Photography) — FUJIFILM X-T5 Owner’s Manual",
+      "locator": "Color Temperature",
+      "accessedOn": "2026-10-28",
+      "supports": "Kelvin source-color descriptions, the X-T5 setting range, and white-balance adjustment."
+    }
+  ],
+  "reviewStatus": "published"
+}

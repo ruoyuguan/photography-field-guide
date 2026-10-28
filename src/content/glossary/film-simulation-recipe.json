@@ -1,0 +1,39 @@
+{
+  "id": "film-simulation-recipe",
+  "term": {
+    "en": "Film Simulation Recipe",
+    "zh-cn": "胶片模拟配方"
+  },
+  "aliases": {
+    "en": ["Fujifilm recipe", "film recipe"],
+    "zh-cn": ["富士配方", "胶片配方"]
+  },
+  "shortDefinition": {
+    "en": "A third-party collection of suggested camera settings centered on a Film Simulation and complementary image-rendering controls.",
+    "zh-cn": "第三方围绕胶片模拟及互补图像呈现控制提出的一组相机设置建议。"
+  },
+  "misconceptions": {
+    "en": [
+      "A recipe name is not a guarantee of film equivalence or compatibility with every camera generation; the complete settings and intended camera matter."
+    ],
+    "zh-cn": [
+      "配方名称不保证与胶片等效，也不保证兼容所有相机代际；完整设置和适用机型很重要。"
+    ]
+  },
+  "example": {
+    "en": "A recipe may combine Film Simulation, white-balance shift, tone curve, color, and grain; verify each option on the intended camera.",
+    "zh-cn": "配方可能组合胶片模拟、白平衡偏移、影调曲线、色彩和颗粒；应在适用机型上核查每项。"
+  },
+  "articleKey": "film-simulations",
+  "relatedTerms": ["film-simulation", "white-balance", "raw", "jpeg"],
+  "sources": [
+    {
+      "url": "https://fujixweekly.com/fujifilm-x-trans-v-recipes/",
+      "title": "Fujifilm X-Trans V Recipes — Fuji X Weekly",
+      "locator": "Compatibility statement and community recipe directory",
+      "accessedOn": "2026-10-28",
+      "supports": "Third-party recipes organized by stated camera generation and model, not universal interchangeability."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,158 @@
+---
+title: White Balance and Color Temperature
+description: Choose automatic, preset, custom, or Kelvin white balance by understanding the light, the compensation, and the output workflow.
+translationKey: white-balance
+category: image-quality
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [digital-camera-works, raw-jpeg-exif]
+relatedConcepts:
+  [white-balance, color-temperature, raw, jpeg, exposure-compensation]
+relatedTools: []
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/'
+    title: 'IMAGE QUALITY SETTING (Still Photography) — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'WHITE BALANCE; Fine-Tuning White Balance; Custom White Balance; Color Temperature'
+    accessedOn: '2026-10-28'
+    supports: 'Automatic, preset, custom and Kelvin white-balance choices; 2500–10000 K selection and fine-tuning; white-reference measurement; source color-temperature descriptions.'
+sidebar:
+  order: 3
+---
+
+Why does the same white wall look warm beside a lamp, blue in the shade, and different again on your phone? The light changed, and your camera and display also make choices about how to render it.
+
+**Short answer:** white balance is a color-rendering adjustment that compensates for the color of the illumination. Start with auto white balance, use a preset for a known light source, or measure a custom reference when consistency matters. A Kelvin setting is not a universal “warmth” slider, and white balance does not replace exposure compensation.
+
+## Neutral is a relationship, not a fixed color
+
+A white object reflects different illumination differently. Human vision adapts remarkably well, so we may still experience it as white; a camera needs a rendering decision to produce the intended neutral appearance. White balance changes the relative color response during rendering, rather than changing the spectrum that reached the sensor.
+
+This is why there is no single white balance that is correct for every intention. You may want a white shirt to look neutral, preserve the warm atmosphere of a restaurant, or deliberately create a color cast. Those are different goals, not three exposure settings.
+
+**White balance and exposure answer different questions.** Exposure compensation changes the camera's brightness target through the exposure controls available in the current mode. White balance changes color rendering. A warm-looking photograph is not necessarily overexposed, and a blue-looking one is not necessarily underexposed.
+
+## Four useful ways to choose
+
+| Approach                               | What you decide                                                  | A useful starting situation                                    |
+| -------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Auto white balance (AWB)**           | Let the camera estimate a rendering from the scene               | Changing light or a first frame before you evaluate the result |
+| **Source preset**                      | Select daylight, shade, incandescent, or another named condition | A known, reasonably consistent light source                    |
+| **Custom white balance**               | Measure a reference under the actual illumination                | Product photography or a repeatable neutral reference          |
+| **Kelvin / color-temperature setting** | Specify the source-temperature assumption used for compensation  | Controlled testing or a deliberately repeatable starting point |
+
+These are starting methods, not a ranking. Automatic behavior differs between cameras and modes; presets cannot identify every real lamp; a custom reference must actually be illuminated by the light you want to reference.
+
+On the X-T5, automatic options include **AUTO**, **WHITE PRIORITY**, and **AMBIENCE PRIORITY**. The manual describes the latter two as favoring whiter or warmer whites respectively under incandescent lighting. “Auto” therefore need not mean only one possible interpretation of the scene.
+
+## What the Kelvin number means
+
+Color temperature describes a property of a light source in kelvin (K). In the X-T5 manual's description, lower-temperature light has a yellow or red cast, while higher-temperature light is tinged blue. This statement is about **the light**, not a promise that raising the camera's Kelvin number always moves every image in one simple direction.
+
+When you select a Kelvin value, you are giving the camera a source assumption to compensate for. The resulting appearance depends on the relationship between that assumption and the actual illumination. Fine-tuning axes and mixed sources add further degrees of freedom.
+
+For a concrete menu example, the X-T5 offers **2500–10000 K**, adjustable in 10 K increments with the rear command dial, plus white-balance fine-tuning. That documented range belongs to this camera and menu; do not transfer it automatically to another model or to software with different controls.
+
+<svg
+  viewBox="0 0 760 300"
+  role="img"
+  aria-label="Conceptual white-balance diagram: illumination and white balance are separate inputs to a rendered image; exposure brightness is a separate control"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <g font-size="17">
+    <text x="28" y="35" fill="#fbbf24">
+      1 · illuminate a reference
+    </text>
+    <rect x="40" y="59" width="128" height="68" rx="8" fill="#c89355" />
+    <text x="51" y="101" fill="#171717">
+      warm light
+    </text>
+    <rect x="210" y="59" width="128" height="68" rx="8" fill="#afc6d9" />
+    <text x="230" y="101" fill="#171717">
+      cool light
+    </text>
+    <text x="404" y="100" fill="#d4d4d4">
+      light is captured
+    </text>
+    <path d="M 368 93 H 390" stroke="#fbbf24" stroke-width="2" />
+    <text x="28" y="168" fill="#fbbf24">
+      2 · choose a rendering decision
+    </text>
+    <rect
+      x="40"
+      y="188"
+      width="202"
+      height="54"
+      rx="8"
+      fill="none"
+      stroke="#d4d4d4"
+      stroke-width="2"
+    />
+    <text x="58" y="222" fill="#ffffff">
+      AWB / preset / custom / K
+    </text>
+    <path d="M 263 215 H 295" stroke="#fbbf24" stroke-width="2" />
+    <rect x="313" y="188" width="203" height="54" rx="8" fill="#f4f1e9" />
+    <text x="351" y="222" fill="#171717">
+      intended rendering
+    </text>
+    <text x="557" y="208" fill="#d4d4d4">
+      Separate decision:
+    </text>
+    <text x="557" y="235" fill="#ffffff">
+      exposure brightness
+    </text>
+    <text x="28" y="279" fill="#a3a3a3">
+      Concept illustration only — not a measured color transformation.
+    </text>
+  </g>
+</svg>
+
+The two patches indicate different illumination, not scientifically calibrated color-temperature swatches. The important distinction is the order of decisions: light reaches the sensor; white balance participates in interpreting it; brightness is not a synonym for either one.
+
+## A repeatable X-T5 example
+
+Suppose you photograph a white product card under one steady desk lamp. This is a **proposed test setup**, not a supplied photograph or a claim about a particular lamp.
+
+1. Save RAW plus JPEG so you can compare an in-camera rendering with later development.
+2. Begin with **AWB** and inspect the white card and nearby materials, not just the camera's brightness preview.
+3. Select a custom slot under **IMAGE QUALITY SETTING → WHITE BALANCE**. Following the X-T5 manual, fill the measurement target with a white reference under the same lamp and complete the measurement. If the camera reports UNDER or OVER, follow its exposure instruction and measure again.
+4. Make another frame with that custom value, then test a source preset or a Kelvin value. Record the complete choice, including fine-tuning, instead of recording only “K.”
+5. Compare the outputs at a consistent display setting. Ask whether you want neutral materials, preserved ambience, or a deliberate cast.
+
+A white reference need not be an expensive accessory for an informal test, but paper varies in color, brightness, and fluorescence. Do not treat a convenient sheet of paper as a certified color-calibration target.
+
+## Mixed light and difficult scenes
+
+A face lit by a window and a tungsten lamp receives two different kinds of illumination. One global white-balance choice cannot make both light sources spectrally identical. You can change the lighting, move the subject, choose which source matters most, or accept the difference as part of the scene.
+
+Automatic white balance can also be influenced by a dominant colored subject or limited scene information. If it does not deliver your intention, the X-T5 manual specifically allows custom measurement or a suitable source option as alternatives. Avoid judging a setting solely from an uncalibrated screen or a small thumbnail.
+
+## RAW, JPEG, and editing latitude
+
+With an in-camera JPEG, white balance is part of the delivered rendering. With RAW, you normally have more freedom to revisit it during development because you are reinterpreting sensor-oriented data. That does not mean RAW gives unlimited recovery, nor that every converter will produce the camera's exact JPEG look.
+
+If consistent color matters, get the illumination and capture reference as close to your intention as practical even when saving RAW. Record the light, reference, and processing choice; a Kelvin number alone does not document all of them.
+
+## Common misconceptions
+
+- **“Higher K always means a warmer image.”** The description of source color temperature and the result of compensating for an assumed source are different statements. Test the complete setting against the actual light.
+- **“AWB measures the true color of every light source.”** It makes a scene-dependent estimate and may offer intentional interpretations such as preserving ambience.
+- **“White balance can fix an exposure problem.”** It changes color rendering, not the amount of light that reached the sensor. Diagnose brightness and color separately.
+- **“One setting neutralizes mixed lighting everywhere.”** A global adjustment cannot make differently illuminated regions share one source spectrum.
+- **“RAW makes capture white balance irrelevant.”** Later flexibility does not eliminate practical limits, consistency needs, or the usefulness of a reference.
+
+## Practice: isolate illumination, setting, and intention
+
+Use one stationary, light-colored object and one constant lamp. Keep aperture, exposure time, ISO, camera position, and composition fixed. Save RAW plus JPEG, then compare AWB, a matching preset, and a custom white-balance result. Do not adjust exposure compensation during the color comparison.
+
+Write down which option best serves **neutral recording** and which best serves **atmospheric interpretation**. They need not be the same. Then introduce a second light at a safe distance, repeat the comparison, and identify which parts of the frame each option changes. This is an observation exercise, not a test of which preset is universally best.
+
+## Continue
+
+Review [RAW, JPEG, HEIF, and EXIF](../raw-jpeg-exif/) for the rendering workflow and [Exposure Compensation](../../exposure/exposure-compensation/) for the separate brightness decision. Continue to [Film Simulations, Recipes, and RAW Development](../film-simulations/) to see how white balance fits alongside other image-rendering choices.
+
+## Sources
+
+- [FUJIFILM X-T5 Owner’s Manual: IMAGE QUALITY SETTING — WHITE BALANCE](https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/)

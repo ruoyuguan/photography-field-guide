@@ -267,18 +267,32 @@ try {
       input.value = ${JSON.stringify(query)};
       input.dispatchEvent(new Event('input', { bubbles: true }));
     })()`);
+    const hasTarget = `[...document.querySelectorAll('dialog[open] .pagefind-ui__result-link')].some(a => new URL(a.href, location.origin).pathname === ${JSON.stringify(expectedPath)})`;
     await until(
       `document.querySelectorAll('dialog[open] .pagefind-ui__result-link').length > 0`
     );
-    const results = await evaluate(
-      `[...document.querySelectorAll('dialog[open] .pagefind-ui__result-link')].map(a => ({ text: a.textContent, href: a.getAttribute('href') }))`
-    );
-    const match = results.find(
-      result => new URL(result.href, origin).pathname === expectedPath
-    );
+    let results = [];
+    let match;
+    for (let page = 0; page < 4 && !match; page++) {
+      results = await evaluate(
+        `[...document.querySelectorAll('dialog[open] .pagefind-ui__result-link')].map(a => ({ text: a.textContent, href: a.getAttribute('href') }))`
+      );
+      match = results.find(
+        result => new URL(result.href, origin).pathname === expectedPath
+      );
+      if (match) break;
+      const hasMore = await evaluate(
+        `!!document.querySelector('dialog[open] .pagefind-ui__button')`
+      );
+      if (!hasMore) break;
+      await click('dialog[open] .pagefind-ui__button');
+      await until(
+        `${hasTarget} || document.querySelectorAll('dialog[open] .pagefind-ui__result-link').length > ${results.length}`
+      );
+    }
     assert.ok(
       match,
-      `No search result for ${query} points to ${expectedPath}: ${JSON.stringify(results)}`
+      `No search result for ${query} points to ${expectedPath} after loading up to four pages: ${JSON.stringify(results)}. Search UI: ${await evaluate(`document.querySelector('dialog[open]')?.innerText`)}`
     );
     await evaluate(`(() => {
       const link = [...document.querySelectorAll('dialog[open] .pagefind-ui__result-link')].find(a => new URL(a.href, location.origin).pathname === ${JSON.stringify(expectedPath)});
@@ -350,6 +364,16 @@ try {
     '/zh-cn/learn/',
     '自动对焦',
     '/zh-cn/learn/image-quality/autofocus/'
+  );
+  await search(
+    '/zh-cn/learn/',
+    '白平衡',
+    '/zh-cn/learn/image-quality/white-balance/'
+  );
+  await search(
+    '/zh-cn/learn/',
+    '胶片模拟',
+    '/zh-cn/learn/image-quality/film-simulations/'
   );
   await checkDirectories({
     call,

@@ -25,6 +25,8 @@ const LOCALIZED_ROUTES = [
   '/learn/exposure/exposure-triangle/',
   '/learn/image-quality/raw-jpeg-exif/',
   '/learn/image-quality/autofocus/',
+  '/learn/image-quality/white-balance/',
+  '/learn/image-quality/film-simulations/',
   '/tools/',
   '/tools/crop-factor/',
   '/tools/exposure-stops/',
@@ -96,6 +98,28 @@ const EXPECTATIONS = {
   ],
   '/learn/exposure/exposure-triangle/': ['The Exposure Triangle'],
   '/zh-cn/learn/exposure/exposure-triangle/': ['曝光三角'],
+  '/learn/image-quality/white-balance/': [
+    'White Balance and Color Temperature',
+    '2500–10000 K',
+    'role="img"',
+  ],
+  '/zh-cn/learn/image-quality/white-balance/': [
+    '白平衡与色温',
+    '白平衡与曝光回答不同的问题',
+    '<strong>简短回答：</strong>',
+    '仅为概念插图，不代表实测色彩变换。',
+  ],
+  '/learn/image-quality/film-simulations/': [
+    'Film Simulations, Recipes, and RAW Development',
+    'A recipe is a hypothesis to test',
+    'RAW CONVERSION',
+  ],
+  '/zh-cn/learn/image-quality/film-simulations/': [
+    '胶片模拟、配方与 RAW 显影',
+    '配方是一个待检验的假设',
+    '<strong>简短回答：</strong>',
+    '不是色彩或胶片匹配模拟',
+  ],
   '/tools/': [
     'Interactive photography tools',
     `href="${withBase('/tools/crop-factor/')}"`,

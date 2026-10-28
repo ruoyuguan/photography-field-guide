@@ -19,7 +19,9 @@
     "sensor-formats",
     "pasm-modes",
     "exposure-compensation",
-    "autofocus"
+    "autofocus",
+    "white-balance",
+    "film-simulations"
   ],
   "sources": [
     {

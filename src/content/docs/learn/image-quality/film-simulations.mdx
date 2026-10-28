@@ -1,0 +1,169 @@
+---
+title: Film Simulations, Recipes, and RAW Development
+description: Distinguish Fujifilm film simulations, community recipes, RAW development, LUTs, and software presets before choosing a rendering workflow.
+translationKey: film-simulations
+category: image-quality
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [raw-jpeg-exif, white-balance]
+relatedConcepts:
+  [film-simulation, film-simulation-recipe, raw, jpeg, white-balance, lut]
+relatedTools: []
+lastReviewed: '2026-10-28'
+sources:
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/'
+    title: 'IMAGE QUALITY SETTING (Still Photography) — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'FILM SIMULATION; GRAIN EFFECT; WHITE BALANCE; TONE CURVE; COLOR; SHARPNESS'
+    accessedOn: '2026-10-28'
+    supports: 'Fujifilm’s camera-side film-simulation choices and their coexistence with separate tone, color, sharpness, grain, and white-balance settings.'
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/playback/menu_playback/'
+    title: 'The Playback Menu — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'RAW CONVERSION; Saving RAW Pictures in Another Format'
+    accessedOn: '2026-10-28'
+    supports: 'X-T5 RAW conversion and its adjustable film simulation, white-balance, tone, color, and output settings.'
+  - url: 'https://fujixweekly.com/fujifilm-x-trans-v-recipes/'
+    title: 'Fujifilm X-Trans V Recipes — Fuji X Weekly'
+    locator: 'Compatibility statement and community recipe directory'
+    accessedOn: '2026-10-28'
+    supports: 'A third-party collection organized for stated camera generations, including X-T5; suggested adaptation of selected earlier-generation recipes rather than universal compatibility.'
+  - url: 'https://helpx.adobe.com/photoshop/desktop/save-and-export/export-files-to-different-formats/export-color-lookup-tables.html'
+    title: 'Export color lookup tables in Photoshop — Adobe'
+    locator: 'Color lookup tables; application and color-mode requirements'
+    accessedOn: '2026-10-28'
+    supports: 'LUTs as a way to save and apply color grades in compatible applications, with format and color-mode dependencies.'
+sidebar:
+  order: 4
+---
+
+Why can two JPEGs with the same aperture, shutter speed, and ISO look completely different? The exposure settings describe only part of the result. Color, tone, sharpness, and grain may have received different rendering decisions.
+
+**Short answer:** a Fujifilm **Film Simulation** is a named in-camera rendering option. A third-party **Film Simulation Recipe** is a proposed collection of camera settings built around those options. RAW development produces a new rendering later, while LUTs and software presets are other software-side tools—not interchangeable names for the camera menu.
+
+## Start with five different things
+
+| Term                             | Where does it act?                                                              | What should you verify?                                                    |
+| -------------------------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **Fujifilm Film Simulation**     | A named option in a compatible Fujifilm camera's image-rendering pipeline       | The camera model, selected option, and related image-quality settings      |
+| **Film Simulation Recipe**       | A third-party set of suggested camera settings                                  | Intended generation/model, every menu item, assumptions, and your own test |
+| **RAW development / conversion** | Processing sensor-oriented data into a rendered image, in-camera or in software | Converter, available controls, input data, and output color management     |
+| **LUT (lookup table)**           | A color-value mapping used by compatible software or devices                    | Input/output expectations, color space, application, and intended purpose  |
+| **Software preset**              | Saved instructions or adjustments within an editing application                 | Supported application/version, available controls, and underlying image    |
+
+A “look” is therefore not one universal file format. Copying a number from a recipe into unrelated software, or applying a LUT as if it were a Fujifilm menu setting, skips the system that gives the instruction meaning.
+
+## What the built-in option actually does
+
+The X-T5 manual lists Film Simulation choices including **PROVIA/STANDARD**, **Velvia/VIVID**, **ASTIA/SOFT**, **CLASSIC CHROME**, **REALA ACE**, black-and-white options, and others. It describes their rendering characters—for example, more vibrant or softer color and contrast—and says to choose a palette according to subject and creative intent.
+
+Those descriptions are the manufacturer's rendering guidance, not a promise of identical output on every display or objective proof that one is best for a genre. Film Simulation can be combined with separate tone and sharpness settings. White balance, grain, Color Chrome options, and other image-quality controls can further change the delivered image.
+
+<svg
+  viewBox="0 0 760 330"
+  role="img"
+  aria-label="Four separate rendering paths: a built-in camera simulation, a collection of recipe settings, later RAW development, and a LUT in compatible software"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <g font-size="17">
+    <text x="26" y="34" fill="#fbbf24">
+      Built-in Film Simulation
+    </text>
+    <text x="26" y="61" fill="#d4d4d4">
+      One named camera rendering option
+    </text>
+    <path d="M 260 52 H 298" stroke="#fbbf24" stroke-width="2" />
+    <text x="314" y="59" fill="#ffffff">
+      camera JPEG / HEIF
+    </text>
+    <text x="26" y="109" fill="#fbbf24">
+      Third-party recipe
+    </text>
+    <text x="26" y="136" fill="#d4d4d4">
+      Simulation + WB + tone + other settings
+    </text>
+    <path d="M 418 127 H 456" stroke="#fbbf24" stroke-width="2" />
+    <text x="472" y="134" fill="#ffffff">
+      a complete setup to test
+    </text>
+    <text x="26" y="184" fill="#fbbf24">
+      RAW development
+    </text>
+    <text x="26" y="211" fill="#d4d4d4">
+      Sensor-oriented data processed after capture
+    </text>
+    <path d="M 386 202 H 424" stroke="#fbbf24" stroke-width="2" />
+    <text x="440" y="209" fill="#ffffff">
+      a newly rendered copy
+    </text>
+    <text x="26" y="259" fill="#fbbf24">
+      LUT in compatible software
+    </text>
+    <text x="26" y="286" fill="#d4d4d4">
+      Defined input colors → mapped output colors
+    </text>
+    <text x="448" y="276" fill="#a3a3a3">
+      Different paths; not equivalent files.
+    </text>
+    <text x="26" y="316" fill="#a3a3a3">
+      Workflow concept only — not a color or film-match simulation.
+    </text>
+  </g>
+</svg>
+
+The diagram does not imply that these routes must be mutually exclusive. For example, a camera-generated image can later be edited, and a RAW conversion can offer a film-simulation control. It shows why the **name of the look does not describe the entire processing path**.
+
+## A recipe is a hypothesis to test
+
+Fuji X Weekly organizes one recipe directory for fifth-generation Fujifilm cameras and explicitly lists the X-T5. That is a **third-party compatibility statement for that collection**, not proof that every recipe works on every Fujifilm camera or renders identically across sensors and firmware.
+
+Before trying a recipe, record:
+
+1. The author and exact recipe URL, rather than relying on a reposted screenshot.
+2. The intended camera generation and model, plus any stated exceptions or substitutions.
+3. Every required setting: Film Simulation, white balance and WB shift, tone curve, color, grain, and other named options.
+4. Capture assumptions such as lighting, exposure approach, ISO-related restrictions, and whether the examples show JPEGs or later edits.
+5. Which options your own camera actually provides. Do not silently replace an unavailable setting and still call the result the same recipe.
+
+A recipe name may evoke a real film stock, but the name alone is not evidence of a measured match to film. Sensor data, illumination, processing, output medium, and viewing conditions remain different.
+
+## Example: isolate one rendering choice
+
+This is a **proposed comparison**, not a sample photograph or a recommended look. On an X-T5, photograph a stationary scene with skin-tone-colored, green, and neutral objects under steady light. Keep aperture, exposure time, ISO, focus, framing, and white balance fixed.
+
+First choose **PROVIA/STANDARD** as a documented baseline. Save a JPEG, then change only Film Simulation to **ASTIA/SOFT**, leaving tone curve, color, sharpness, grain, and white balance unchanged. Compare the two outputs and describe the actual differences you can observe. Do not infer that all landscapes or portraits must use either option.
+
+Next, if you saved RAW, open the playback menu's **RAW CONVERSION** on the X-T5. The manual lists Film Simulation, White Balance, WB Shift, Tone Curve, Color, Sharpness, and other controls for creating a converted copy. Change one variable at a time, save separately labeled copies, and retain the original capture for further work.
+
+The availability and behavior of these controls are camera-specific. Other manufacturers may call their camera-side looks Picture Styles, Creative Looks, or something else; a shared marketing word does not establish matching processing.
+
+## Where LUTs and software presets fit
+
+A LUT maps color values according to a defined table. Some LUTs serve technical transforms; others store a creative color grade. Adobe's documentation notes application, format, and color-mode considerations for exported LUTs. The same file is not automatically a valid camera recipe or a meaningful correction for every input image.
+
+A software preset may instead save sliders, curves, profiles, or other application-specific adjustments. Some preset systems use LUTs internally, but the terms are not synonymous. Before applying either, identify the expected input, output color space, software, and whether it was designed for a JPEG, a log video, or a particular RAW conversion workflow.
+
+## Common misconceptions
+
+- **“Film Simulation changes the physical light reaching the sensor.”** It is a rendering choice. Aperture, exposure time, illumination, and ISO need their own analysis.
+- **“A recipe is just the Film Simulation name.”** Recipes commonly depend on several settings, including white-balance shift and tone controls.
+- **“A recipe with a film name proves a film-identical result.”** A creative name is not a measurement of equivalence.
+- **“All recipes are compatible across every Fujifilm generation.”** Menu options and stated compatibility differ; check each source and camera.
+- **“A LUT, a preset, and a Film Simulation are the same thing in different apps.”** They belong to different processing systems and input assumptions.
+- **“Saving RAW makes the in-camera look meaningless.”** An immediate JPEG can be useful, while RAW preserves a separate development route. The choice depends on the workflow you need.
+
+## Practice: compare before you collect looks
+
+Use the fixed scene above and create two outputs that differ in **one** rendering choice. Note the complete settings and the viewing conditions. Write one sentence about color, one about highlight/shadow contrast, and one about whether the result fits your purpose. Avoid adding grain or changing white balance until you can describe the first comparison.
+
+If you want to test a community recipe, choose one that explicitly addresses your camera generation. Follow its attribution link, check every setting, and compare it with your baseline under the same illumination. If a control is missing, stop and record the incompatibility instead of guessing. There is no need to download an app or pay for a collection to learn the distinction.
+
+## Continue
+
+Review [White Balance and Color Temperature](../white-balance/) to isolate a major color variable and [RAW, JPEG, HEIF, and EXIF](../raw-jpeg-exif/) to distinguish data from rendered files. For the brightness side of the capture, use [Exposure Stops](../../exposure/exposure-stops/). The [X-T5 equipment guide](../../../gear/fujifilm-x-t5/) provides the official documentation entry point.
+
+## Sources
+
+- [FUJIFILM X-T5 Owner’s Manual: IMAGE QUALITY SETTING — FILM SIMULATION](https://fujifilm-dsc.com/en/manual/x-t5/menu_shooting/image_quality_setting/)
+- [FUJIFILM X-T5 Owner’s Manual: Playback Menu — RAW CONVERSION](https://fujifilm-dsc.com/en/manual/x-t5/playback/menu_playback/)
+- [Fuji X Weekly: Fujifilm X-Trans V Recipes](https://fujixweekly.com/fujifilm-x-trans-v-recipes/) — third-party recipe directory and its own compatibility statement
+- [Adobe: Export color lookup tables in Photoshop](https://helpx.adobe.com/photoshop/desktop/save-and-export/export-files-to-different-formats/export-color-lookup-tables.html)
