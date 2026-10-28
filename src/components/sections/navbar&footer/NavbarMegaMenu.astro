@@ -2,18 +2,13 @@
 //Import relevant dependencies
 import ThemeIcon from '@components/ThemeIcon.astro';
 import NavLink from '@components/ui/links/NavLink.astro';
-import MegaMenuLink from '@components/ui/links/MegaMenuLink.astro';
-import Authentication from '../misc/Authentication.astro';
 import BrandLogo from '@components/BrandLogo.astro';
 import LanguagePicker from '@components/ui/LanguagePicker.astro';
 import NavbarToggle from '@components/ui/buttons/NavbarToggle.astro';
 import { navLinks } from '@data/navigation';
 import { localePath } from '@utils/locale';
 
-/**
- * Alternative navbar with a mega menu on the Services link (data in
- * `@data/mega_link`). Swap it for `Navbar` in `MainLayout.astro` to use it.
- */
+/** Optional wide-layout navbar using the same real navigation as Navbar. */
 const { locale, copy: t } = Astro.locals;
 ---
 
@@ -46,19 +41,12 @@ const { locale, copy: t } = Astro.locals;
     >
       {/* Navigation links container */}
       <div class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 md:gap-y-0 md:ps-7 lg:gap-x-7">
-        {/* Navigation links and Authentication component */}
-        {navLinks.map(link =>
-          link.id === 'services' ? (
-            <MegaMenuLink title={t.nav.labels[link.id]} />
-          ) : (
-            <NavLink
-              url={localePath(locale, link.path)}
-              name={t.nav.labels[link.id]}
-            />
-          )
-        )}
-
-        <Authentication />
+        {navLinks.map(link => (
+          <NavLink
+            url={localePath(locale, link.path)}
+            name={t.nav.labels[link.id]}
+          />
+        ))}
         <LanguagePicker />
         {/* ThemeIcon component specifically for larger screens */}
         <span class="hidden md:inline-block">

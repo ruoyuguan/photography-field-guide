@@ -1,0 +1,31 @@
+{
+  "id": "crop-factor",
+  "term": { "en": "Crop factor", "zh-cn": "裁切系数" },
+  "aliases": { "en": ["focal length multiplier"], "zh-cn": ["焦距转换系数"] },
+  "shortDefinition": {
+    "en": "The diagonal of a 36 × 24 mm reference frame divided by the diagonal of the format being compared, used to compare field of view rather than to alter a lens's focal length.",
+    "zh-cn": "以 36 × 24 mm 参考画幅的对角线除以待比较画幅的对角线，用于比较视角，而不是改变镜头的实际焦距。"
+  },
+  "misconceptions": {
+    "en": [
+      "Crop factor does not physically multiply the focal length or f-number of a lens."
+    ],
+    "zh-cn": ["裁切系数不会实际改变镜头的焦距或光圈 f 值。"]
+  },
+  "example": {
+    "en": "A 50 mm lens on a camera with a crop factor of about 1.5 gives a field of view similar to a 75 mm lens on full frame, from the same position.",
+    "zh-cn": "在相同拍摄位置，50 mm 镜头用于裁切系数约为 1.5 的相机，其视角大致相当于全画幅上的 75 mm 镜头。"
+  },
+  "articleKey": "equivalent-focal-length",
+  "relatedTerms": [],
+  "sources": [
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats",
+      "title": "The DX and FX Formats — Nikon",
+      "locator": "Can you use an FX lens on a DX camera body?",
+      "accessedOn": "2026-10-28",
+      "supports": "The DX/FX comparison, 1.5× crop factor, and the example that a 24 mm lens on DX gives an approximate 36 mm view."
+    }
+  ],
+  "reviewStatus": "published"
+}

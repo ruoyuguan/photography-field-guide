@@ -5,9 +5,8 @@ import { getCopy } from '@/copy';
 import { localePath, type MarketingLocale } from '@utils/locale';
 
 /**
- * The 404 page in one locale. Static output can only serve one `404.html`
- * (the English one); `/fr/404/` is built as well so the host can rewrite
- * missing `/fr/…` paths to it (see `vercel.json` and the README).
+ * The root static host serves the English 404 for missing paths. The Chinese
+ * page is also built at /zh-cn/404/ so hosts with locale routing can use it.
  */
 interface Props {
   locale: MarketingLocale;
@@ -17,7 +16,7 @@ const { locale } = Astro.props;
 const copy = getCopy(locale).notFound;
 ---
 
-<MainLayout title={copy.title} hideFooter>
+<MainLayout title={copy.title} hideFooter noIndex>
   <section class="min-h-[calc(100svh-5.5rem)]" aria-labelledby="subtitle">
     <div class="pointer-events-none fixed inset-0 z-10 grid place-content-center px-4">
       <div class="pointer-events-auto mx-auto max-w-(--breakpoint-sm) text-center">

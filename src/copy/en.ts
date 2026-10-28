@@ -7,20 +7,20 @@ import pricing from '@data/pricing.json';
  * satisfy (see `Copy` in `./index.ts`), so a missing translation fails
  * `astro check` instead of leaking English onto a localised page.
  *
- * Paths are unlocalised (`/products`, not `/fr/products`); callers run them
- * through `localePath()` from `@utils/locale`.
+ * Paths are unlocalised (`/learn/`, not `/zh-cn/learn/`); callers
+ * run them through `localePath()` from `@utils/locale`.
  */
 export const en = {
   site: {
     /** Default `<meta name="description">` when a page sets none. */
     description:
-      'ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs. Start exploring and contact our sales team for superior quality and reliability.',
+      'Learn photography fundamentals through clear bilingual guides, visual explanations, and interactive experiments for sensor formats, focal length, and exposure.',
     /** schema.org `WebSite.description` in every page's `isPartOf`. */
     descriptionShort:
-      'ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.',
-    ogTitle: 'ScrewFast: Hardware Tools & Construction Services',
+      'A bilingual field guide for learning photography through clear explanations and visual experiments.',
+    ogTitle: 'Photography Field Guide: Understand Your Camera',
     ogDescription:
-      "Equip your projects with ScrewFast's top-quality hardware tools and expert construction services. Trusted by industry leaders, ScrewFast offers simplicity, affordability, and reliability. Experience the difference with user-centric design and cutting-edge tools. Start exploring now!",
+      'Build a solid photography foundation with practical guides to sensor sizes, equivalent focal length, aperture, shutter speed, and ISO.',
   },
 
   layout: {
@@ -36,31 +36,26 @@ export const en = {
     /** Labels for `navLinks` in `@data/navigation`, keyed by id. */
     labels: {
       home: 'Home',
-      products: 'Products',
-      services: 'Services',
-      blog: 'Blog',
-      contact: 'Contact',
+      learn: 'Learn',
     },
     footer: {
       /** Section titles and link labels for `footerSections` in `@data/navigation`, keyed by id. */
       sectionTitles: {
-        ecosystem: 'Ecosystem',
-        company: 'Company',
+        learn: 'Explore',
+        project: 'Resources',
       },
       links: {
-        documentation: 'Documentation',
-        tools: 'Tools & Equipment',
-        services: 'Construction Services',
-        about: 'About us',
-        blog: 'Blog',
-        careers: 'Careers',
-        customers: 'Customers',
+        orientation: 'Start here',
+        sensorFormats: 'Sensor formats',
+        equivalentFocalLength: 'Equivalent focal length',
+        exposureTriangle: 'Exposure triangle',
+        repository: 'GitHub repository',
       },
       hiringBadge: "We're hiring!",
-      stayUpToDate: 'Stay up to date',
+      stayUpToDate: 'Photography Field Guide',
       stayUpToDateContent:
-        'Stay updated with the latest tools and exclusive deals.',
-      craftedBy: 'Crafted by',
+        'Clear, practical photography fundamentals in English and Chinese, with visual explanations designed for curious beginners.',
+      craftedBy: 'An open learning project.',
       newsletterDemoMessage:
         'Thanks! (Demo only — wire an email service to collect real subscribers.)',
     },
@@ -185,101 +180,71 @@ export const en = {
 
   notFound: {
     title: 'Page Not Found',
-    subTitle: "Oops, this isn't the tool you were looking for!",
+    subTitle: 'This frame is empty.',
     content:
-      "Don't let this hiccup slow you down. Let's get you back to building your masterpiece.",
+      'The page may have moved, but your photography learning path is still right here.',
     goHome: 'Go Home',
     goBack: 'Go Back',
   },
 
   home: {
-    banner: 'Explore ScrewFast on GitHub',
+    heroAlt: {
+      title: 'Photography, explained visually.',
+      subTitle: 'Learn the camera fundamentals that shape every photograph.',
+      btn: 'Start learning',
+    },
+    eyebrow: 'A practical bilingual guide for new photographers',
     hero: {
       title:
-        'Equip Your Projects with <span class="text-yellow-500 dark:text-yellow-400">ScrewFast</span>',
+        'Understand your camera.<br /><span class="text-amber-500 dark:text-amber-400">See the light.</span>',
       subTitle:
-        'Top-quality hardware tools and expert construction services for every project need.',
-      primaryBtn: 'Start Exploring',
-      secondaryBtn: 'Contact Sales Team',
-      rating: '<span class="font-bold">4.8</span> / 5',
-      reviews: 'From Over <span class="font-bold">12.8k</span> Reviews',
-      imageAlt:
-        'Stack of ScrewFast product boxes containing assorted hardware tools',
+        'Clear explanations and visual experiments help you connect sensor size, focal length, aperture, shutter speed, and ISO—without the jargon wall.',
+      primaryBtn: 'Start learning',
+      secondaryBtn: 'Compare sensor sizes',
     },
-    clients: {
-      title: 'Trusted by Industry Leaders',
-      subTitle: 'Experience the reliability chosen by industry giants.',
+    sensor: {
+      title: 'One lens. Different fields of view.',
+      caption:
+        'A dimensionally proportional crop with the same lens and camera position',
+      fullFrame: 'Full frame',
+      apsc: 'APS-C',
+      fullFrameSize: '36 × 24 mm',
+      apscSize: '23.5 × 15.7 mm (Fujifilm X-T5)',
+      note: 'Drawn to scale: 10 SVG units represent 1 mm. The APS-C rectangle is an X-T5 example, not a universal APS-C size. The diagram compares sensor areas; it does not change the lens focal length.',
     },
-    featuresGeneral: {
-      title: 'Meeting Industry Demands',
+    pathways: {
+      title: 'Start with the fundamentals',
       subTitle:
-        "At ScrewFast, we tackle the unique challenges encountered in the hardware and construction sectors. From cutting-edge tools to expert services, we're dedicated to helping you overcome obstacles and achieve your goals.",
-      imageAlt: 'ScrewFast products in floating boxes',
-    },
-    featuresNavs: {
-      title:
-        'Customize <span class="text-yellow-500 dark:text-yellow-400">ScrewFast</span>\'s offerings to perfectly suit your hardware and construction needs.',
-      tabs: {
-        tools: {
-          heading: 'Cutting-Edge Tools',
-          content:
-            "Empower your projects with ScrewFast's cutting-edge tools. Experience enhanced efficiency in construction management with our sophisticated automated solutions.",
-          alt: 'Yellow and black heavy equipment on brown grass field',
-        },
-        dashboard: {
-          heading: 'Intuitive Dashboards',
-          content:
-            "Navigate with ease using ScrewFast's intuitive dashboards. Set up and oversee your projects seamlessly, with user-friendly interfaces designed for quick and effective workflow management.",
-          alt: 'A screenshot or graphic representation of the intuitive dashboard',
-        },
-        features: {
-          heading: 'Robust Features',
-          content:
-            "Minimize complexity, maximize productivity. ScrewFast's robust features are engineered to streamline your construction process, delivering results that stand out for their excellence.",
-          alt: 'Gray metal building frame near tower crane during daytime',
-        },
-      },
-    },
-    testimonials: {
-      title: 'Fast-Track Your Projects',
-      subTitle:
-        'At ScrewFast, we ensure a swift start with instant account setup. Experience the speed of construction redefined.',
-      quotes: [
+        'Follow a short path from sensor size to exposure. Each guide builds on the previous one and gives you concepts you can test with your own camera.',
+      items: [
         {
-          content:
-            'ScrewFast dramatically boosted our project efficiency. Setup was instant, and their rapid response times are phenomenal. Truly a game-changer in hardware and construction support!',
-          author: 'Samantha Ruiz',
-          role: 'Chief Operating Officer | ConstructIt Inc.',
-        },
-      ],
-      statistics: [
-        {
-          count: '70k+',
+          id: 'sensors',
+          title: 'Sensor formats',
           description:
-            'customers equipped – from DIY to major construction firms',
+            'See what full frame and APS-C actually change—and what they do not.',
+          linkText: 'Explore sensor sizes',
         },
         {
-          count: '35%',
+          id: 'focal',
+          title: 'Equivalent focal length',
           description:
-            'uptick in project efficiency with ScrewFast tools and services',
+            'Learn why the same lens can produce a tighter field of view on a smaller sensor.',
+          linkText: 'Understand crop factor',
         },
         {
-          count: '15.3%',
+          id: 'exposure',
+          title: 'The exposure triangle',
           description:
-            'reduction in maintenance costs reported by long-term clients',
-        },
-        {
-          count: '2x',
-          description: 'quicker assembly using innovative fastening solutions',
+            'Separate image brightness from depth of field, motion blur, and the light reaching the sensor.',
+          linkText: 'Learn aperture, shutter & ISO',
         },
       ],
     },
-    faqTitle: 'Frequently<br />asked questions',
-    heroAlt: {
-      title: "Let's Build Together",
+    cta: {
+      title: 'Build understanding before buying more gear.',
       subTitle:
-        'ScrewFast is an open-source template, meticulously crafted with Astro, Tailwind CSS, and Preline UI frameworks.',
-      btn: 'Continue with Github',
+        'Start with a short orientation, then explore the basics at your own pace in English or Chinese.',
+      button: 'Read the orientation',
     },
   },
 

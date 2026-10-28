@@ -3,7 +3,10 @@ import Meta from '@components/Meta.astro';
 import Navbar from '@components/sections/navbar&footer/Navbar.astro';
 import FooterSection from '@components/sections/navbar&footer/FooterSection.astro';
 import { buildPageMetadata, type PageKind } from '@utils/metadata';
+import { validateContent } from '@utils/content-validation';
 import '@styles/global.css';
+
+await validateContent();
 
 /**
  * Marketing-page layout. A page tells it what the page *is* (title,
@@ -21,6 +24,7 @@ interface Props {
   section?: string;
   kind?: PageKind;
   hideFooter?: boolean;
+  noIndex?: boolean;
 }
 
 const {
@@ -30,6 +34,7 @@ const {
   section,
   kind,
   hideFooter = false,
+  noIndex = false,
 } = Astro.props;
 const { locale, copy: t } = Astro.locals;
 
@@ -41,6 +46,7 @@ const metadata = buildPageMetadata({
   ogTitle,
   section,
   kind,
+  noIndex,
 });
 ---
 

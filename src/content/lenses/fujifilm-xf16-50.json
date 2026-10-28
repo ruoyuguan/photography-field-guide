@@ -1,0 +1,26 @@
+{
+  "id": "fujifilm-xf16-50",
+  "brand": "FUJIFILM",
+  "model": "XF16-50mmF2.8-4.8 R LM WR",
+  "mountId": "fujifilm-x",
+  "imageCircleFormatId": "aps-c",
+  "focalLengthMm": { "min": 16, "max": 50 },
+  "maximumAperture": { "wide": 2.8, "tele": 4.8 },
+  "minimumAperture": { "wide": 22, "tele": 22 },
+  "description": {
+    "en": "A 16–50 mm X-mount zoom. The manufacturer lists a 24–76 mm full-frame-equivalent field of view; the physical focal-length range remains 16–50 mm.",
+    "zh-cn": "一支 16–50 mm 的 X 卡口变焦镜头。厂商标注其全画幅等效视角为 24–76 mm，实际焦距范围仍为 16–50 mm。"
+  },
+  "manufacturerUrl": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/",
+  "articleKeys": ["equivalent-focal-length"],
+  "sources": [
+    {
+      "url": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/specifications/",
+      "title": "XF16-50mmF2.8-4.8 R LM WR Specifications",
+      "locator": "Focal length (35mm format equivalent); Max. aperture; Min. aperture",
+      "accessedOn": "2026-10-28",
+      "supports": "The 16–50 mm focal-length range, manufacturer-stated 24–76 mm equivalence, F2.8–F4.8 maximum aperture, and F22 minimum aperture."
+    }
+  ],
+  "reviewStatus": "published"
+}

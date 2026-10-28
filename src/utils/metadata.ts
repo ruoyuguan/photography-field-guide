@@ -1,5 +1,6 @@
 import { SITE } from '@data/constants';
 import { getCopy } from '@/copy';
+import { absoluteSiteUrl } from '@utils/deployment';
 import {
   LOCALE_INFO,
   MARKETING_LOCALES,
@@ -48,6 +49,8 @@ export interface PageMetadataInput {
    */
   section?: string;
   kind?: PageKind;
+  /** Prevent indexing of error pages and other non-content routes. */
+  noIndex?: boolean;
 }
 
 export interface PageMetadata {
@@ -60,11 +63,12 @@ export interface PageMetadata {
   canonical: string;
   alternates: { hreflang: string; href: string }[];
   jsonLd: Record<string, unknown>;
+  noIndex: boolean;
 }
 
-/** Absolute URL on the marketing site; the root has no trailing slash. */
+/** Absolute public URL, including the configured deployment base. */
 export function absoluteUrl(path: string): string {
-  return path === '/' ? SITE.url : `${SITE.url}${path}`;
+  return absoluteSiteUrl(path);
 }
 
 export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
@@ -80,9 +84,8 @@ export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
       ? `${input.title} | ${input.section} | ${SITE.title}`
       : copy.site.ogTitle);
   const ogDescription = input.description ?? copy.site.ogDescription;
-  const canonical = absoluteUrl(pathname);
-
   const paths = alternatePaths(pathname);
+  const canonical = absoluteUrl(paths[locale]);
   const alternates = MARKETING_LOCALES.map(alt => ({
     hreflang: LOCALE_INFO[alt].lang,
     href: absoluteUrl(paths[alt]),
@@ -91,7 +94,7 @@ export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
   const publisher = {
     '@type': 'Organization',
     name: SITE.title,
-    logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.ico` },
+    logo: { '@type': 'ImageObject', url: absoluteSiteUrl('/favicon.ico') },
   };
 
   let jsonLd: Record<string, unknown>;
@@ -152,6 +155,7 @@ export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
     ogLocale: info.ogLocale,
     canonical,
     alternates,
+    noIndex: Boolean(input.noIndex),
     jsonLd: {
       '@context': 'https://schema.org',
       ...jsonLd,

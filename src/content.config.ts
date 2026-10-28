@@ -2,9 +2,17 @@
 
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { docsLoader } from '@astrojs/starlight/loaders';
-import { docsSchema } from '@astrojs/starlight/schema';
+import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
+import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 import { glob } from 'astro/loaders';
+import {
+  articleMetadataSchema,
+  cameraSchema,
+  gallerySchema,
+  glossarySchema,
+  lensSchema,
+  resourceSchema,
+} from '@utils/content-schema';
 
 const productsCollection = defineCollection({
   loader: glob({
@@ -104,7 +112,31 @@ const insightsCollection = defineCollection({
 });
 
 export const collections = {
-  docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
+  docs: defineCollection({
+    loader: docsLoader(),
+    schema: docsSchema({ extend: articleMetadataSchema }),
+  }),
+  i18n: defineCollection({ loader: i18nLoader(), schema: i18nSchema() }),
+  glossary: defineCollection({
+    loader: glob({ pattern: '**/*.json', base: './src/content/glossary' }),
+    schema: glossarySchema,
+  }),
+  cameras: defineCollection({
+    loader: glob({ pattern: '**/*.json', base: './src/content/cameras' }),
+    schema: cameraSchema,
+  }),
+  lenses: defineCollection({
+    loader: glob({ pattern: '**/*.json', base: './src/content/lenses' }),
+    schema: lensSchema,
+  }),
+  resources: defineCollection({
+    loader: glob({ pattern: '**/*.json', base: './src/content/resources' }),
+    schema: resourceSchema,
+  }),
+  galleries: defineCollection({
+    loader: glob({ pattern: '**/*.json', base: './src/content/galleries' }),
+    schema: gallerySchema,
+  }),
   products: productsCollection,
   blog: blogCollection,
   insights: insightsCollection,

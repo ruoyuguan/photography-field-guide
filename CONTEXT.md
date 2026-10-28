@@ -1,35 +1,43 @@
-# ScrewFast domain glossary
+# Photography Field Guide domain glossary
 
-Names for the concepts this codebase is built around. Use these terms in code, docs and reviews.
+Use these terms consistently in code, documentation, and reviews.
 
 ## Marketing site
 
-The Astro pages under `src/pages/` (landing, services, contact, blog, products, insights) plus their French twins under `src/pages/fr/`. Distinct from the **Docs**, which are Starlight pages under `src/content/docs/` with their own locale handling.
+The Astro pages under `src/pages/`, currently the home and localised 404 pages. This is distinct from the **Guides**, which are Starlight pages sourced from `src/content/docs/`.
 
-## Marketing Locale
+## Marketing locale
 
-One of the languages the marketing site is published in: `en` (default, no URL prefix) or `fr` (`/fr/…`). Owned by `src/utils/locale.ts`, which is the only place that knows the locale list, how to resolve a locale from a request, how to localise a path, and how to find the same page in another locale. Exposed per request as `Astro.locals.locale`.
+A language used by the marketing site: `en` (default, no URL prefix) or `zh-cn` (`/zh-cn/…`). `src/utils/locale.ts` owns locale resolution, URL localisation, and alternate-page paths. Request code reads `Astro.locals.locale`.
 
-## Copy Table
+## Copy table
 
-The typed table of every user-facing string for one Marketing Locale (`src/copy/en.ts`, `src/copy/fr.ts`). The English table defines the shape (`Copy`); other locales must satisfy it, so a missing translation is a type error. Exposed per request as `Astro.locals.copy`. Logic keys on stable ids in the table (e.g. `badge: 'hiring'`), never on translated labels.
+The typed collection of user-facing strings for a marketing locale. `src/copy/en.ts` defines the shape; `src/copy/zh-cn.ts` supplies Simplified Chinese for all active pages. Request code reads `Astro.locals.copy` or calls `getCopy(locale)`.
 
 ## View
 
-The implementation of one route for any locale (`src/views/*View.astro`). Its interface is the locale (or a Content Entry, whose locale is its own). The route files in `src/pages/` and `src/pages/fr/` are one-line shells that render the view for their locale.
+The shared implementation of a localised marketing route, such as `src/views/HomeView.astro`. Files in `src/pages/` are thin route shells and should not duplicate page markup.
 
-## Content Entry
+## Guide
 
-A Markdown/MDX document in one of the localised collections (`blog`, `insights`, `products`), stored as `src/content/<collection>/<locale>/<slug>.md`. `src/utils/content.ts` owns the rule that an entry's id is `<locale>/<slug>`, the route each collection is served from, and each collection's default ordering; callers ask it for an entry's locale, slug, path and siblings.
+A photography tutorial authored in MDX under `src/content/docs/`. English and Chinese guides use matching relative slugs, with the Chinese version under `zh-cn/`. Starlight owns guide navigation, search, and locale switching.
 
-## Page Metadata
+## Sensor format
 
-Everything a page's `<head>` needs (title, description, Open Graph, canonical, hreflang alternates, schema.org JSON-LD), derived by `src/utils/metadata.ts` from the five things a page knows about itself: locale, path, title, description and **Page Kind** (`WebPage`, `BlogPosting`, `Article`, `Product`). Rendered by `Meta.astro`.
+The physical dimensions of a camera's light-sensitive area, such as full frame or APS-C. It is not, by itself, a measure of image quality.
 
-## Demo Form
+## Crop factor
 
-A placeholder form in the template (contact, newsletter, sign-in/up/recover) that is not wired to a backend. `DemoForm.astro` owns the behaviour: it intercepts submit, validates, shows a locale-specific success message and resets.
+A ratio used to compare sensor dimensions and fields of view with a reference format, normally full frame. It does not physically change a lens or its marked f-number.
 
-## Icon
+## Equivalent focal length
 
-A named SVG glyph from `src/components/ui/icons/icons.ts`, holding geometry only. The call site decides size, colour (via `text-*` classes) and state classes. Names are typed (`IconName`).
+A comparison of **field of view** with full frame: actual focal length multiplied by crop factor. It does not rename the lens or directly convert aperture, shutter speed, or ISO.
+
+## Exposure triangle
+
+A learning model connecting aperture, shutter speed, and ISO. Aperture and shutter speed affect light reaching the sensor; ISO affects signal amplification/processing. Depth of field, motion blur, image brightness, and total light must be discussed as distinct concepts.
+
+## Page metadata
+
+The title, description, canonical URL, Open Graph fields, alternate-language links, and JSON-LD assembled by `src/utils/metadata.ts` and rendered by `Meta.astro` for marketing pages.

@@ -1,0 +1,29 @@
+{
+  "id": "fujifilm-x-t5",
+  "brand": "FUJIFILM",
+  "model": "X-T5",
+  "mountId": "fujifilm-x",
+  "sensor": { "formatId": "aps-c", "widthMm": 23.5, "heightMm": 15.7 },
+  "specifications": {
+    "effectiveMegapixels": 40.2,
+    "hasIBIS": true,
+    "fileFormats": ["JPEG", "HEIF", "RAW", "TIFF"]
+  },
+  "description": {
+    "en": "An APS-C X-mount camera used as a concrete sensor-dimension example, not as a generic definition of every APS-C camera.",
+    "zh-cn": "一台采用 APS-C 传感器的 X 卡口相机，用于提供具体尺寸示例，不代表所有 APS-C 相机的统一尺寸。"
+  },
+  "manufacturerUrl": "https://fujifilm-x.com/global/products/cameras/x-t5/",
+  "documentationUrl": "https://fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+  "articleKeys": ["sensor-formats"],
+  "sources": [
+    {
+      "url": "https://fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor; Number Of Effective Pixels; Lens Mount; Image Stabilizer; File Format Of Still Image",
+      "accessedOn": "2026-10-28",
+      "supports": "The 23.5 × 15.7 mm sensor, 40.2 million effective pixels, X mount, sensor-shift stabilization, and listed still-image formats."
+    }
+  ],
+  "reviewStatus": "published"
+}

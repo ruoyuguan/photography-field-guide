@@ -2,112 +2,76 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
-
 import mdx from '@astrojs/mdx';
+import {
+  DEFAULT_SITE_ORIGIN,
+  absoluteSiteUrl,
+  normalizeBase,
+} from './src/utils/deployment.ts';
 
-// https://astro.build/config
+const site = process.env.SITE_ORIGIN ?? DEFAULT_SITE_ORIGIN;
+const base = normalizeBase(process.env.SITE_BASE);
+const socialImage = absoluteSiteUrl('/social.webp', site, base);
+
 export default defineConfig({
-  // https://docs.astro.build/en/guides/images/#authorizing-remote-images
-  site: 'https://screwfast.uk',
+  site,
+  base,
   image: {
     domains: ['images.unsplash.com'],
   },
-  // i18n: {
-  //   defaultLocale: "en",
-  //   locales: ["en", "fr"],
-  //   fallback: {
-  //     fr: "en",
-  //   },
-  //   routing: {
-  //     prefixDefaultLocale: false,
-  //   },
-  // },
   prefetch: true,
   integrations: [
     sitemap({
       i18n: {
-        defaultLocale: 'en', // All urls that don't contain language prefix will be treated as default locale
+        defaultLocale: 'en',
         locales: {
-          en: 'en', // The `defaultLocale` value must present in `locales` keys
-          fr: 'fr',
+          en: 'en',
+          'zh-cn': 'zh-CN',
         },
       },
     }),
     starlight({
-      title: 'ScrewFast Docs',
-      // https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md
-      // If no Astro and Starlight i18n configurations are provided, the built-in default locale is used in Starlight and a matching Astro i18n configuration is generated/used.
-      // If only a Starlight i18n configuration is provided, an equivalent Astro i18n configuration is generated/used.
-      // If only an Astro i18n configuration is provided, the Starlight i18n configuration is updated to match it.
-      // If both an Astro and Starlight i18n configurations are provided, an error is thrown.
+      title: 'Photography Field Guide',
       locales: {
         root: {
           label: 'English',
           lang: 'en',
         },
-        de: { label: 'Deutsch', lang: 'de' },
-        es: { label: 'Español', lang: 'es' },
-        fa: { label: 'Persian', lang: 'fa', dir: 'rtl' },
-        fr: { label: 'Français', lang: 'fr' },
-        ja: { label: '日本語', lang: 'ja' },
         'zh-cn': { label: '简体中文', lang: 'zh-CN' },
       },
-      // https://starlight.astro.build/guides/sidebar/
       sidebar: [
         {
-          label: 'Quick Start Guides',
-          translations: {
-            de: 'Schnellstartanleitungen',
-            es: 'Guías de Inicio Rápido',
-            fa: 'راهنمای شروع سریع',
-            fr: 'Guides de Démarrage Rapide',
-            ja: 'クイックスタートガイド',
-            'zh-cn': '快速入门指南',
-          },
-          items: [{ autogenerate: { directory: 'guides' } }],
-        },
-        {
-          label: 'Tools & Equipment',
-          // Translated guide intros exist per locale; these pages fall back to English.
-          translations: {
-            de: 'Werkzeuge & Ausrüstung',
-            es: 'Herramientas y Equipo',
-            fa: 'ابزار و تجهیزات',
-            fr: 'Outils et Équipement',
-            ja: 'ツールと機材',
-            'zh-cn': '工具与设备',
-          },
+          label: 'Getting Started',
+          translations: { 'zh-CN': '从零开始' },
           items: [
-            { label: 'Tool Guides', link: 'tools/tool-guides/' },
-            { label: 'Equipment Care', link: 'tools/equipment-care/' },
+            {
+              label: 'Start Here',
+              translations: { 'zh-CN': '从这里开始' },
+              link: 'learn/',
+            },
           ],
         },
         {
-          label: 'Construction Services',
-          translations: {
-            de: 'Baudienstleistungen',
-            es: 'Servicios de Construcción',
-            fa: 'خدمات ساخت‌وساز',
-            fr: 'Services de Construction',
-            ja: '建設サービス',
-            'zh-cn': '施工服务',
-          },
-          items: [{ autogenerate: { directory: 'construction' } }],
+          label: 'Sensor & Lens',
+          translations: { 'zh-CN': '传感器与镜头' },
+          items: [{ autogenerate: { directory: 'learn/sensor-lens' } }],
         },
         {
-          label: 'Advanced Topics',
-          items: [{ autogenerate: { directory: 'advanced' } }],
+          label: 'Exposure',
+          translations: { 'zh-CN': '曝光基础' },
+          items: [{ autogenerate: { directory: 'learn/exposure' } }],
         },
       ],
       social: [
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/mearashadowfax/ScrewFast',
+          href: 'https://github.com/ruoyuguan/photography-field-guide',
         },
       ],
       disable404Route: true,
       customCss: ['./src/assets/styles/starlight.css'],
+      // Starlight applies Astro's base to this logical public asset path.
       favicon: '/favicon.ico',
       components: {
         SiteTitle: './src/components/ui/starlight/SiteTitle.astro',
@@ -119,17 +83,11 @@ export default defineConfig({
       head: [
         {
           tag: 'meta',
-          attrs: {
-            property: 'og:image',
-            content: 'https://screwfast.uk' + '/social.webp',
-          },
+          attrs: { property: 'og:image', content: socialImage },
         },
         {
           tag: 'meta',
-          attrs: {
-            property: 'twitter:image',
-            content: 'https://screwfast.uk' + '/social.webp',
-          },
+          attrs: { property: 'twitter:image', content: socialImage },
         },
       ],
     }),

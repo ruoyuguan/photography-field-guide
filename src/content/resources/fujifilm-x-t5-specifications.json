@@ -1,0 +1,32 @@
+{
+  "id": "fujifilm-x-t5-specifications",
+  "title": {
+    "en": "FUJIFILM X-T5 specifications",
+    "zh-cn": "富士 X-T5 官方规格"
+  },
+  "provider": "FUJIFILM",
+  "providerType": "official",
+  "category": "specification",
+  "url": "https://fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+  "languages": ["en"],
+  "audience": ["beginner", "intermediate"],
+  "purpose": {
+    "en": "Check model-specific sensor dimensions and camera specifications.",
+    "zh-cn": "查询该机型的传感器尺寸及相机规格。"
+  },
+  "editorialNote": {
+    "en": "Model-specific facts are not a specification for all APS-C cameras.",
+    "zh-cn": "具体机型的参数不代表所有 APS-C 相机的统一规格。"
+  },
+  "tags": ["camera", "sensor", "fujifilm-x-t5"],
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+    "evidence": "The manufacturer page identifies the X-T5 and lists its sensor, mount, stabilization, and still-image formats."
+  },
+  "reviewStatus": "published"
+}

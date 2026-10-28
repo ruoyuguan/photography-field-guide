@@ -4,53 +4,51 @@
  * (`copy.nav.labels`, `copy.nav.footer.sections`), so translators never touch
  * a path and code never keys on a translated label.
  */
-export type NavLinkId = 'home' | 'products' | 'services' | 'blog' | 'contact';
+export type NavLinkId = 'home' | 'learn';
 
 export const navLinks: { id: NavLinkId; path: string }[] = [
   { id: 'home', path: '/' },
-  { id: 'products', path: '/products' },
-  { id: 'services', path: '/services' },
-  { id: 'blog', path: '/blog' },
-  { id: 'contact', path: '/contact' },
+  { id: 'learn', path: '/learn/' },
 ];
 
-export type FooterSectionId = 'ecosystem' | 'company';
+export type FooterSectionId = 'learn' | 'project';
 export type FooterLinkId =
-  | 'documentation'
-  | 'tools'
-  | 'services'
-  | 'about'
-  | 'blog'
-  | 'careers'
-  | 'customers';
+  | 'orientation'
+  | 'sensorFormats'
+  | 'equivalentFocalLength'
+  | 'exposureTriangle'
+  | 'repository';
 
 export const footerSections: {
   id: FooterSectionId;
   links: { id: FooterLinkId; path: string; badge?: 'hiring' }[];
 }[] = [
   {
-    id: 'ecosystem',
+    id: 'learn',
     links: [
-      { id: 'documentation', path: '/welcome-to-docs/' },
-      { id: 'tools', path: '/products' },
-      { id: 'services', path: '/services' },
+      { id: 'orientation', path: '/learn/' },
+      { id: 'sensorFormats', path: '/learn/sensor-lens/sensor-formats/' },
+      {
+        id: 'equivalentFocalLength',
+        path: '/learn/sensor-lens/equivalent-focal-length/',
+      },
+      {
+        id: 'exposureTriangle',
+        path: '/learn/exposure/exposure-triangle/',
+      },
     ],
   },
   {
-    id: 'company',
+    id: 'project',
     links: [
-      { id: 'about', path: '#' },
-      { id: 'blog', path: '/blog' },
-      { id: 'careers', path: '#', badge: 'hiring' },
-      { id: 'customers', path: '#' },
+      {
+        id: 'repository',
+        path: 'https://github.com/ruoyuguan/photography-field-guide',
+      },
     ],
   },
 ];
 
 export const socialLinks = {
-  facebook: 'https://www.facebook.com/',
-  x: 'https://twitter.com/',
-  github: 'https://github.com/mearashadowfax/ScrewFast',
-  google: 'https://www.google.com/',
-  slack: 'https://slack.com/',
+  github: 'https://github.com/ruoyuguan/photography-field-guide',
 };

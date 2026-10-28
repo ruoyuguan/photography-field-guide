@@ -1,14 +1,14 @@
 import ogImageSrc from '@images/social.png';
 
 export const SITE = {
-  title: 'ScrewFast',
-  tagline: 'Top-quality Hardware Tools',
+  title: 'Photography Field Guide',
+  tagline: 'Understand your camera. See the light.',
   description:
-    'ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs. Start exploring and contact our sales team for superior quality and reliability.',
+    'A bilingual, interactive field guide that helps new photographers understand sensor formats, focal length, exposure, cameras, and lenses.',
   description_short:
-    'ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.',
-  url: 'https://screwfast.uk',
-  author: 'Emil Gulamov',
+    'A bilingual field guide for learning photography fundamentals through clear explanations and visual experiments.',
+  url: 'https://ruoyuguan.github.io',
+  author: 'Photography Field Guide',
 };
 
 // Per-locale titles, descriptions and Open Graph text live in `src/copy/`;

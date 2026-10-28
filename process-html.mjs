@@ -1,27 +1,8 @@
 import fs from 'node:fs/promises';
 import { minify } from 'html-minifier-terser';
 
-// Prefer Vercel adapter output when present; otherwise minify Astro's default `dist/`.
-async function resolveOutputPath() {
-  const candidates = ['./.vercel/output/static', './dist'];
-  for (const candidate of candidates) {
-    try {
-      await fs.access(candidate);
-      return candidate;
-    } catch {
-      // try next
-    }
-  }
-  return null;
-}
-
-const path = await resolveOutputPath();
-if (!path) {
-  console.log(
-    'No build output found to minify (checked .vercel/output/static and dist).'
-  );
-  process.exit(0);
-}
+// Always process the output produced by the current static Astro build.
+const path = './dist';
 
 const files = await Array.fromAsync(fs.glob(`${path}/**/*.html`));
 if (files.length === 0) {

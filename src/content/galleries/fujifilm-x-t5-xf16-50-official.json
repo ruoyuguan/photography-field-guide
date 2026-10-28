@@ -1,0 +1,31 @@
+{
+  "id": "fujifilm-x-t5-xf16-50-official",
+  "resourceId": "fujifilm-xf16-50-samples",
+  "scope": {
+    "type": "combination",
+    "cameraId": "fujifilm-x-t5",
+    "lensId": "fujifilm-xf16-50"
+  },
+  "subjectTags": ["official-samples"],
+  "hasExif": "yes",
+  "hasOriginalFiles": "unknown",
+  "imageRightsNote": {
+    "en": "Link only. Photographs remain on the manufacturer's website; no reuse or redistribution rights are claimed.",
+    "zh-cn": "仅提供链接。照片保留在厂商网站，本项目不主张转载或再分发许可。"
+  },
+  "verification": {
+    "availability": "accessible",
+    "identity": "confirmed",
+    "scopeEvidence": "The official lens page includes a sample explicitly captioned FUJIFILM X-T5 with the XF16-50mmF2.8-4.8 R LM WR, including focal length, aperture, shutter speed, and ISO.",
+    "rights": {
+      "use": "link-only",
+      "evidence": "No image is copied into this project."
+    },
+    "status": "verified",
+    "lastChecked": "2026-10-28",
+    "lastVerified": "2026-10-28",
+    "resolvedUrl": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/",
+    "evidence": "The camera/lens combination and displayed exposure metadata were checked on the manufacturer page; original downloadable files were not established."
+  },
+  "reviewStatus": "published"
+}

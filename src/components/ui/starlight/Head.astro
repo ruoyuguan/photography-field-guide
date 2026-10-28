@@ -1,7 +1,9 @@
 ---
-import type { Props } from '@astrojs/starlight/props';
 import StarlightHead from '@astrojs/starlight/components/Head.astro';
 import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
+import { validateContent } from '@utils/content-validation';
+
+await validateContent();
 ---
 
 <VtbotStarlight {...Astro.props} viewTransitionsFallback="animate">

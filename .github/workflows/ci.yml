@@ -16,11 +16,11 @@ jobs:
 
       - uses: pnpm/action-setup@v6
         with:
-          version: 9
+          version: 10.34.9
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 24.22.1
           cache: pnpm
 
       - name: Install dependencies
@@ -34,3 +34,14 @@ jobs:
 
       - name: Smoke tests
         run: pnpm test:smoke
+
+      - name: Build artifact checks
+        run: pnpm test:build
+
+      - name: Build at a GitHub Pages subpath
+        run: SITE_BASE=/photography-field-guide pnpm build
+
+      - name: Test the subpath build
+        run: |
+          SITE_BASE=/photography-field-guide pnpm test:smoke
+          SITE_BASE=/photography-field-guide pnpm test:build
