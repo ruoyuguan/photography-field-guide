@@ -1,0 +1,72 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import CropFactorTool from './CropFactorTool.astro';
+import ExposureStopsTool from './ExposureStopsTool.astro';
+import { toolsCopy } from '@copy/tools';
+import { localePath, type MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+  tool: 'crop-factor' | 'exposure-stops';
+}
+const { locale, tool } = Astro.props;
+const copy = toolsCopy[locale];
+const t = tool === 'crop-factor' ? copy.crop : copy.exposure;
+---
+
+<MainLayout
+  title={t.metaTitle}
+  description={t.metaDescription}
+  section={copy.index.title}
+>
+  <article class="mx-auto max-w-7xl py-12 sm:py-16">
+    <a
+      href={localePath(locale, '/tools/')}
+      class="text-sm font-semibold text-neutral-600 underline decoration-neutral-400 underline-offset-4 hover:text-amber-700 dark:text-neutral-400 dark:hover:text-amber-300"
+    >
+      ← {copy.common.back}
+    </a>
+    <header class="mt-8 max-w-3xl">
+      <p class="text-sm font-semibold tracking-wide text-amber-700 uppercase dark:text-amber-300">
+        {copy.index.title}
+      </p>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl dark:text-neutral-100">
+        {t.title}
+      </h1>
+      <p class="mt-5 text-base leading-7 text-neutral-600 sm:text-lg dark:text-neutral-400">
+        {t.intro}
+      </p>
+    </header>
+    <div class="mt-10 rounded-3xl border border-neutral-300 bg-neutral-100/60 p-5 sm:p-7 dark:border-neutral-700 dark:bg-neutral-900/40">
+      {tool === 'crop-factor' ? (
+        <CropFactorTool locale={locale} />
+      ) : (
+        <ExposureStopsTool locale={locale} />
+      )}
+    </div>
+    <div class="mt-12 grid gap-8 lg:grid-cols-2">
+      <section class="rounded-2xl border border-neutral-300 bg-neutral-50 p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
+        <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">
+          {t.formulaTitle}
+        </h2>
+        <div class="mt-5 space-y-3">
+          {t.formulas.map(formula => (
+            <p class="wrap-anywhere rounded-lg bg-white p-3 font-mono text-sm leading-6 text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200">
+              {formula}
+            </p>
+          ))}
+        </div>
+      </section>
+      <section class="rounded-2xl border border-neutral-300 bg-neutral-50 p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
+        <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">
+          {t.assumptionsTitle}
+        </h2>
+        <ul class="mt-5 list-disc space-y-3 ps-5 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+          {t.assumptions.map(assumption => (
+            <li>{assumption}</li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </article>
+</MainLayout>

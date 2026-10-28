@@ -12,12 +12,18 @@ const PUBLIC_ROUTES = [
   '/learn/sensor-lens/sensor-formats/',
   '/learn/sensor-lens/equivalent-focal-length/',
   '/learn/exposure/exposure-triangle/',
+  '/tools/',
+  '/tools/crop-factor/',
+  '/tools/exposure-stops/',
   '/404.html',
   '/zh-cn/',
   '/zh-cn/learn/',
   '/zh-cn/learn/sensor-lens/sensor-formats/',
   '/zh-cn/learn/sensor-lens/equivalent-focal-length/',
   '/zh-cn/learn/exposure/exposure-triangle/',
+  '/zh-cn/tools/',
+  '/zh-cn/tools/crop-factor/',
+  '/zh-cn/tools/exposure-stops/',
   '/zh-cn/404/',
 ];
 const errors = [];

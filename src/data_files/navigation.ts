@@ -4,11 +4,12 @@
  * (`copy.nav.labels`, `copy.nav.footer.sections`), so translators never touch
  * a path and code never keys on a translated label.
  */
-export type NavLinkId = 'home' | 'learn';
+export type NavLinkId = 'home' | 'learn' | 'tools';
 
 export const navLinks: { id: NavLinkId; path: string }[] = [
   { id: 'home', path: '/' },
   { id: 'learn', path: '/learn/' },
+  { id: 'tools', path: '/tools/' },
 ];
 
 export type FooterSectionId = 'learn' | 'project';
@@ -17,6 +18,8 @@ export type FooterLinkId =
   | 'sensorFormats'
   | 'equivalentFocalLength'
   | 'exposureTriangle'
+  | 'cropFactorTool'
+  | 'exposureStopsTool'
   | 'repository';
 
 export const footerSections: {
@@ -36,6 +39,8 @@ export const footerSections: {
         id: 'exposureTriangle',
         path: '/learn/exposure/exposure-triangle/',
       },
+      { id: 'cropFactorTool', path: '/tools/crop-factor/' },
+      { id: 'exposureStopsTool', path: '/tools/exposure-stops/' },
     ],
   },
   {

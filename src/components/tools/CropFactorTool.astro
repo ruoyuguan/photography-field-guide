@@ -1,0 +1,399 @@
+---
+import NumberField from './NumberField.astro';
+import { toolsCopy } from '@copy/tools';
+import type { MarketingLocale } from '@utils/locale';
+import { PHOTOGRAPHY_LIMITS as limits } from '@utils/photography/validation';
+
+interface Props {
+  locale: MarketingLocale;
+  instanceId?: string;
+}
+const { locale, instanceId = `crop-${locale}` } = Astro.props;
+const t = toolsCopy[locale].crop;
+const common = toolsCopy[locale].common;
+const dimension = limits.sensorDimensionMm;
+---
+
+<section
+  data-crop-tool
+  data-locale={locale}
+  aria-labelledby={`${instanceId}-title`}
+>
+  <h2
+    id={`${instanceId}-title`}
+    class="text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+  >
+    {t.interactiveTitle}
+  </h2>
+  <div data-interactive hidden class="mt-6">
+    <form
+      data-tool-form
+      class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+    >
+      <div class="space-y-6 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
+        <fieldset>
+          <legend class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+            {t.referenceHeading}
+          </legend>
+          <label
+            for={`${instanceId}-reference-preset`}
+            class="mt-4 block text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+          >
+            {t.preset}
+          </label>
+          <select
+            id={`${instanceId}-reference-preset`}
+            data-preset-for="reference"
+            class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
+          >
+            <option value="fullFrame">{t.presets.fullFrame}</option>
+            <option value="fujifilmApsC">{t.presets.fujifilmApsC}</option>
+            <option value="custom">{t.presets.custom}</option>
+          </select>
+          <div class="mt-4 grid gap-5 sm:grid-cols-2">
+            <NumberField
+              idPrefix={instanceId}
+              name="referenceWidth"
+              label={t.width}
+              value="36"
+              min={dimension.min}
+              max={dimension.max}
+              rangeValue={36}
+              rangeMin={dimension.min}
+              rangeMax={dimension.max}
+              rangeStep={0.1}
+              unit={common.millimeters}
+              customPreset="reference"
+            />
+            <NumberField
+              idPrefix={instanceId}
+              name="referenceHeight"
+              label={t.height}
+              value="24"
+              min={dimension.min}
+              max={dimension.max}
+              rangeValue={24}
+              rangeMin={dimension.min}
+              rangeMax={dimension.max}
+              rangeStep={0.1}
+              unit={common.millimeters}
+              customPreset="reference"
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+            {t.targetHeading}
+          </legend>
+          <label
+            for={`${instanceId}-target-preset`}
+            class="mt-4 block text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+          >
+            {t.preset}
+          </label>
+          <select
+            id={`${instanceId}-target-preset`}
+            data-preset-for="target"
+            class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
+          >
+            <option value="fullFrame">{t.presets.fullFrame}</option>
+            <option value="fujifilmApsC" selected>
+              {t.presets.fujifilmApsC}
+            </option>
+            <option value="custom">{t.presets.custom}</option>
+          </select>
+          <div class="mt-4 grid gap-5 sm:grid-cols-2">
+            <NumberField
+              idPrefix={instanceId}
+              name="targetWidth"
+              label={t.width}
+              value="23.5"
+              min={dimension.min}
+              max={dimension.max}
+              rangeValue={23.5}
+              rangeMin={dimension.min}
+              rangeMax={dimension.max}
+              rangeStep={0.1}
+              unit={common.millimeters}
+              customPreset="target"
+            />
+            <NumberField
+              idPrefix={instanceId}
+              name="targetHeight"
+              label={t.height}
+              value="15.6"
+              min={dimension.min}
+              max={dimension.max}
+              rangeValue={15.6}
+              rangeMin={dimension.min}
+              rangeMax={dimension.max}
+              rangeStep={0.1}
+              unit={common.millimeters}
+              customPreset="target"
+            />
+          </div>
+        </fieldset>
+
+        <NumberField
+          idPrefix={instanceId}
+          name="focalLength"
+          label={t.focalLength}
+          value="16"
+          min={limits.focalLengthMm.min}
+          max={limits.focalLengthMm.max}
+          rangeValue={16}
+          rangeMin={limits.focalLengthMm.min}
+          rangeMax={limits.focalLengthMm.max}
+          rangeStep={0.1}
+          unit={common.millimeters}
+        />
+        <NumberField
+          idPrefix={instanceId}
+          name="distance"
+          label={t.distance}
+          value="2"
+          min={limits.distanceM.min}
+          max={limits.distanceM.max}
+          rangeValue={2}
+          rangeMin={limits.distanceM.min}
+          rangeMax={limits.distanceM.max}
+          rangeStep={0.1}
+          unit={common.meters}
+        />
+        <div>
+          <label
+            for={`${instanceId}-axis`}
+            class="block text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+          >
+            {t.axis}
+          </label>
+          <select
+            id={`${instanceId}-axis`}
+            data-axis
+            class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
+          >
+            <option value="horizontal">{t.axes.horizontal}</option>
+            <option value="vertical">{t.axes.vertical}</option>
+            <option value="diagonal">{t.axes.diagonal}</option>
+          </select>
+        </div>
+        <button
+          type="button"
+          data-reset
+          class="rounded-lg border border-neutral-400 px-4 py-2 text-sm font-semibold text-neutral-800 transition hover:border-amber-500 hover:text-amber-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200 dark:hover:text-amber-300"
+        >
+          {common.reset}
+        </button>
+        <p
+          data-error-summary
+          hidden
+          role="alert"
+          class="rounded-lg border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-950/40 dark:text-red-200"
+        ></p>
+      </div>
+
+      <div
+        data-results
+        hidden
+        class="min-w-0 space-y-5"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="rounded-2xl bg-neutral-900 p-6 text-white dark:bg-neutral-950">
+          <h3 class="text-sm font-semibold text-neutral-300">{t.results}</h3>
+          <p class="mt-4 text-sm text-neutral-300">{t.equivalent}</p>
+          <p class="mt-1 text-4xl font-bold tracking-tight">
+            <span data-result="equivalent"></span>{' '}
+            <span class="text-xl font-medium">{common.millimeters}</span>
+          </p>
+          <dl class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <dt class="text-xs text-neutral-400">{t.cropFactor}</dt>
+              <dd class="mt-1 text-lg font-semibold">
+                <span data-result="crop-factor"></span>×
+              </dd>
+            </div>
+            <div>
+              <dt class="text-xs text-neutral-400">{t.nominal}</dt>
+              <dd class="mt-1 text-lg font-semibold">
+                <span data-result="nominal-equivalent"></span>{' '}
+                {common.millimeters}
+              </dd>
+            </div>
+          </dl>
+          <p class="mt-4 text-xs leading-5 text-neutral-400">{t.nominalNote}</p>
+        </div>
+        <dl class="grid gap-3 rounded-2xl border border-neutral-300 bg-white p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+          <div class="flex flex-wrap justify-between gap-2">
+            <dt class="text-sm text-neutral-600 dark:text-neutral-400">
+              {t.angleHorizontal}
+            </dt>
+            <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
+              <span data-result="horizontal-angle"></span>
+              {common.degrees}
+            </dd>
+          </div>
+          <div class="flex flex-wrap justify-between gap-2">
+            <dt class="text-sm text-neutral-600 dark:text-neutral-400">
+              {t.angleVertical}
+            </dt>
+            <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
+              <span data-result="vertical-angle"></span>
+              {common.degrees}
+            </dd>
+          </div>
+          <div class="flex flex-wrap justify-between gap-2">
+            <dt class="text-sm text-neutral-600 dark:text-neutral-400">
+              {t.angleDiagonal}
+            </dt>
+            <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
+              <span data-result="diagonal-angle"></span>
+              {common.degrees}
+            </dd>
+          </div>
+          <div class="flex flex-wrap justify-between gap-2 border-t border-neutral-200 pt-3 dark:border-neutral-700">
+            <dt class="text-sm text-neutral-600 dark:text-neutral-400">
+              {t.fieldWidth}
+            </dt>
+            <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
+              <span data-result="field-width"></span> {common.meters}
+            </dd>
+          </div>
+        </dl>
+        <div class="space-y-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+          <p>{t.physical}</p>
+          <p>{t.aspect}</p>
+        </div>
+      </div>
+    </form>
+
+    <div data-results-visual hidden class="mt-8 grid gap-6 lg:grid-cols-2">
+      <figure class="min-w-0 rounded-2xl border border-neutral-300 bg-white p-4 text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-300">
+        <figcaption class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+          {t.sensorDiagram}
+        </figcaption>
+        <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
+          {t.sensorDiagramDescription}
+        </p>
+        <svg
+          data-sensor-visual
+          viewBox="0 0 360 290"
+          role="img"
+          aria-labelledby={`${instanceId}-sensor-title ${instanceId}-sensor-desc`}
+          class="mt-3 h-auto w-full"
+        >
+          <title id={`${instanceId}-sensor-title`}>{t.sensorDiagram}</title>
+          <desc id={`${instanceId}-sensor-desc`}>
+            {t.sensorDiagramDescription}
+          </desc>
+          <rect
+            data-reference-sensor
+            x="30"
+            y="40"
+            width="300"
+            height="200"
+            fill="none"
+            stroke="#78716c"
+            stroke-width="2"
+          />
+          <rect
+            data-target-sensor
+            x="62.5"
+            y="70"
+            width="235"
+            height="156"
+            fill="rgba(245,158,11,0.12)"
+            stroke="#d97706"
+            stroke-width="2"
+            stroke-dasharray="6 4"
+          />
+          <text
+            data-reference-label
+            x="180"
+            y="258"
+            text-anchor="middle"
+            fill="currentColor"
+            font-size="12"
+          >
+            {t.referenceLegend}
+          </text>
+          <text
+            data-target-label
+            x="180"
+            y="278"
+            text-anchor="middle"
+            fill="currentColor"
+            font-size="12"
+          >
+            {t.targetLegend}
+          </text>
+        </svg>
+      </figure>
+      <figure class="min-w-0 rounded-2xl border border-neutral-300 bg-white p-4 text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-300">
+        <figcaption class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+          {t.angleDiagram}
+        </figcaption>
+        <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
+          {t.angleDiagramDescription}
+        </p>
+        <svg
+          data-angle-visual
+          viewBox="0 0 420 280"
+          role="img"
+          aria-labelledby={`${instanceId}-angle-title ${instanceId}-angle-desc`}
+          class="mt-3 h-auto w-full"
+        >
+          <title id={`${instanceId}-angle-title`}>{t.angleDiagram}</title>
+          <desc id={`${instanceId}-angle-desc`}>
+            {t.angleDiagramDescription}
+          </desc>
+          <text
+            data-angle-value
+            x="210"
+            y="34"
+            text-anchor="middle"
+            fill="currentColor"
+            font-size="16"
+            font-weight="700"
+          ></text>
+          <line
+            x1="30"
+            y1="145"
+            x2="390"
+            y2="145"
+            stroke="#78716c"
+            stroke-dasharray="4 5"
+          />
+          <path
+            data-angle-wedge
+            d="M30 145 L370 95 L370 195 Z"
+            fill="rgba(245,158,11,0.12)"
+            stroke="#d97706"
+            stroke-width="2"
+          />
+          <circle cx="30" cy="145" r="7" fill="#44403c" />
+          <text
+            x="18"
+            y="174"
+            text-anchor="start"
+            fill="currentColor"
+            font-size="11"
+          >
+            {t.camera}
+          </text>
+        </svg>
+      </figure>
+    </div>
+  </div>
+  <noscript>
+    <p class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
+      {t.noScript}
+    </p>
+  </noscript>
+</section>
+
+<script>
+  import { initializeCropFactorTools } from './crop-factor-controller';
+  initializeCropFactorTools();
+</script>

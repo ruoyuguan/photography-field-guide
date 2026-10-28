@@ -4,6 +4,7 @@ import { once } from 'node:events';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { createServer } from 'node:net';
 import { resolve } from 'node:path';
+import { checkTools } from './browser-tool-checks.mjs';
 
 /**
  * Optional real-browser checks using an installed Chrome and Node's WebSocket.
@@ -331,6 +332,15 @@ try {
     '/zh-cn/learn/sensor-lens/sensor-formats/'
   );
   await search('/learn/', 'ISO', '/learn/exposure/exposure-triangle/');
+  await checkTools({
+    call,
+    click,
+    evaluate,
+    navigate,
+    noOverflow,
+    until,
+    viewport,
+  });
 
   await viewport(390, 844);
   for (const path of [

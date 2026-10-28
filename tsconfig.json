@@ -4,6 +4,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
+      "@copy/*": ["./src/copy/*"],
+      "@layouts/*": ["./src/layouts/*"],
       "@content/*": ["./src/content/*"],
       "@data/*": ["./src/data_files/*"],
       "@images/*": ["./src/images/*"],

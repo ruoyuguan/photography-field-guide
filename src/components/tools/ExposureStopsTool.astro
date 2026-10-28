@@ -1,0 +1,300 @@
+---
+import NumberField from './NumberField.astro';
+import { toolsCopy } from '@copy/tools';
+import type { MarketingLocale } from '@utils/locale';
+import { PHOTOGRAPHY_LIMITS as limits } from '@utils/photography/validation';
+
+interface Props {
+  locale: MarketingLocale;
+  instanceId?: string;
+}
+const { locale, instanceId = `exposure-${locale}` } = Astro.props;
+const t = toolsCopy[locale].exposure;
+const common = toolsCopy[locale].common;
+const apertureRange = {
+  min: Math.log2(limits.fNumber.min),
+  max: Math.log2(limits.fNumber.max),
+};
+const shutterRange = {
+  min: Math.log2(limits.shutterSeconds.min),
+  max: Math.log2(limits.shutterSeconds.max),
+};
+const isoRange = {
+  min: Math.log2(limits.iso.min),
+  max: Math.log2(limits.iso.max),
+};
+---
+
+<section
+  data-exposure-tool
+  data-locale={locale}
+  aria-labelledby={`${instanceId}-title`}
+>
+  <h2
+    id={`${instanceId}-title`}
+    class="text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+  >
+    {t.interactiveTitle}
+  </h2>
+  <div data-interactive hidden class="mt-6">
+    <form data-tool-form>
+      <div class="grid gap-6 lg:grid-cols-2">
+        {(['before', 'after'] as const).map(group => (
+          <fieldset class="min-w-0 space-y-6 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
+            <legend class="rounded-full bg-neutral-900 px-4 py-1.5 text-sm font-bold text-white dark:bg-neutral-100 dark:text-neutral-900">
+              {t[group]}
+            </legend>
+            <NumberField
+              idPrefix={instanceId}
+              name={`${group}.fNumber`}
+              label={t.aperture}
+              value="2.8"
+              min={limits.fNumber.min}
+              max={limits.fNumber.max}
+              rangeValue={Math.log2(2.8)}
+              rangeMin={apertureRange.min}
+              rangeMax={apertureRange.max}
+              rangeStep={1 / 3}
+              scale="log2"
+              prefix="f/"
+            />
+            <NumberField
+              idPrefix={instanceId}
+              name={`${group}.shutterSeconds`}
+              label={t.shutter}
+              value="1/125"
+              min={limits.shutterSeconds.min}
+              max={limits.shutterSeconds.max}
+              rangeValue={Math.log2(1 / 125)}
+              rangeMin={shutterRange.min}
+              rangeMax={shutterRange.max}
+              rangeStep={1 / 3}
+              scale="log2"
+              unit="s"
+              format="shutter"
+              fraction
+            />
+            <NumberField
+              idPrefix={instanceId}
+              name={`${group}.iso`}
+              label={t.iso}
+              value={group === 'before' ? '400' : '800'}
+              min={limits.iso.min}
+              max={limits.iso.max}
+              rangeValue={group === 'before' ? Math.log2(400) : Math.log2(800)}
+              rangeMin={isoRange.min}
+              rangeMax={isoRange.max}
+              rangeStep={1 / 3}
+              scale="log2"
+            />
+          </fieldset>
+        ))}
+      </div>
+      <div class="mt-5 flex flex-wrap items-center gap-4">
+        <button
+          type="button"
+          data-reset
+          class="rounded-lg border border-neutral-400 px-4 py-2 text-sm font-semibold text-neutral-800 transition hover:border-amber-500 hover:text-amber-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200 dark:hover:text-amber-300"
+        >
+          {common.reset}
+        </button>
+      </div>
+      <p
+        data-error-summary
+        hidden
+        role="alert"
+        class="mt-4 rounded-lg border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-950/40 dark:text-red-200"
+      ></p>
+    </form>
+
+    <div data-results hidden class="mt-8" aria-live="polite" aria-atomic="true">
+      <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">
+        {t.results}
+      </h3>
+      <div class="mt-4 grid gap-5 lg:grid-cols-2">
+        <section class="rounded-2xl border border-neutral-300 bg-white p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+          <h4 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+            {t.sensorExposure}
+          </h4>
+          <p class="mt-3 text-4xl font-bold text-neutral-900 dark:text-neutral-100">
+            <span data-result="sensor-stops"></span>{' '}
+            <span class="text-lg font-medium">{t.stops}</span>
+          </p>
+          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+            {t.ratio}: <strong data-result="sensor-ratio"></strong>
+          </p>
+          <p class="mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+            {t.sensorExposureNote}
+          </p>
+        </section>
+        <section class="rounded-2xl bg-neutral-900 p-5 text-white dark:bg-neutral-950">
+          <h4 class="text-sm font-semibold text-neutral-300">
+            {t.nominalOutput}
+          </h4>
+          <p class="mt-3 text-4xl font-bold">
+            <span data-result="output-stops"></span>{' '}
+            <span class="text-lg font-medium">{t.stops}</span>
+          </p>
+          <p class="mt-2 text-sm text-neutral-300">
+            {t.ratio}: <strong data-result="output-ratio"></strong>
+          </p>
+          <p class="mt-4 text-sm leading-6 text-neutral-400">
+            {t.nominalOutputNote}
+          </p>
+        </section>
+      </div>
+      <dl class="mt-5 grid gap-3 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 sm:grid-cols-3 dark:border-neutral-700 dark:bg-neutral-900/60">
+        <div>
+          <dt class="text-xs text-neutral-500 dark:text-neutral-400">
+            {t.apertureChange}
+          </dt>
+          <dd class="mt-1 font-semibold text-neutral-900 dark:text-neutral-100">
+            <span data-result="aperture-stops"></span> {t.stops}
+          </dd>
+        </div>
+        <div>
+          <dt class="text-xs text-neutral-500 dark:text-neutral-400">
+            {t.shutterChange}
+          </dt>
+          <dd class="mt-1 font-semibold text-neutral-900 dark:text-neutral-100">
+            <span data-result="shutter-stops"></span> {t.stops}
+          </dd>
+        </div>
+        <div>
+          <dt class="text-xs text-neutral-500 dark:text-neutral-400">
+            {t.isoMapping}
+          </dt>
+          <dd class="mt-1 font-semibold text-neutral-900 dark:text-neutral-100">
+            <span data-result="iso-stops"></span> {t.stops}
+          </dd>
+        </div>
+      </dl>
+      <p class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
+        {t.isoTruth}
+      </p>
+
+      <figure class="mt-6 min-w-0 rounded-2xl border border-neutral-300 bg-white p-4 text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-300">
+        <figcaption class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+          {t.scale}
+        </figcaption>
+        <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
+          {t.scaleNote}
+        </p>
+        <svg
+          data-exposure-visual
+          viewBox="0 0 760 210"
+          role="img"
+          aria-labelledby={`${instanceId}-scale-title ${instanceId}-scale-desc`}
+          class="mt-3 h-auto w-full"
+        >
+          <title id={`${instanceId}-scale-title`}>{t.scale}</title>
+          <desc id={`${instanceId}-scale-desc`} data-exposure-desc>
+            {t.scaleNote}
+          </desc>
+          <text x="24" y="80" fill="currentColor" font-size="14">
+            {t.sensorTrack}
+          </text>
+          <text x="24" y="155" fill="currentColor" font-size="14">
+            {t.outputTrack}
+          </text>
+          {[75, 150].map(y => (
+            <g>
+              <line
+                x1="170"
+                y1={y}
+                x2="690"
+                y2={y}
+                stroke="#a8a29e"
+                stroke-width="2"
+              />
+              <line
+                x1="430"
+                y1={y - 14}
+                x2="430"
+                y2={y + 14}
+                stroke="#78716c"
+              />
+              <text
+                x="170"
+                y={y + 31}
+                text-anchor="middle"
+                fill="currentColor"
+                font-size="11"
+              >
+                −4
+              </text>
+              <text
+                x="430"
+                y={y + 31}
+                text-anchor="middle"
+                fill="currentColor"
+                font-size="11"
+              >
+                0
+              </text>
+              <text
+                x="690"
+                y={y + 31}
+                text-anchor="middle"
+                fill="currentColor"
+                font-size="11"
+              >
+                +4
+              </text>
+            </g>
+          ))}
+          <g data-sensor-marker transform="translate(430 75)">
+            <text
+              data-sensor-marker-text
+              x="0"
+              y="-22"
+              text-anchor="middle"
+              fill="currentColor"
+              font-size="13"
+              font-weight="700"
+            ></text>
+            <line
+              x1="0"
+              y1="-15"
+              x2="0"
+              y2="15"
+              stroke="#d97706"
+              stroke-width="3"
+            />
+            <circle r="6" fill="#d97706" />
+          </g>
+          <g data-output-marker transform="translate(495 150)">
+            <text
+              data-output-marker-text
+              x="0"
+              y="-22"
+              text-anchor="middle"
+              fill="currentColor"
+              font-size="13"
+              font-weight="700"
+            ></text>
+            <line
+              x1="0"
+              y1="-15"
+              x2="0"
+              y2="15"
+              stroke="#d97706"
+              stroke-width="3"
+            />
+            <circle r="6" fill="#d97706" />
+          </g>
+        </svg>
+      </figure>
+    </div>
+  </div>
+  <noscript>
+    <p class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
+      {t.noScript}
+    </p>
+  </noscript>
+</section>
+
+<script>
+  import { initializeExposureStopsTools } from './exposure-stops-controller';
+  initializeExposureStopsTools();
+</script>

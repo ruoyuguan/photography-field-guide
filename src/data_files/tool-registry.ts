@@ -1,5 +1,5 @@
-/**
- * IDs of tools that have a real public implementation.
- * Empty until Phase 2B: planned calculators must not be linked as live tools.
- */
-export const publicToolIds: readonly string[] = [];
+/** IDs of tools with a real bilingual public implementation. */
+export const publicToolIds: readonly string[] = [
+  'crop-factor',
+  'exposure-stops',
+];

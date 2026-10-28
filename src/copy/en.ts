@@ -37,6 +37,7 @@ export const en = {
     labels: {
       home: 'Home',
       learn: 'Learn',
+      tools: 'Tools',
     },
     footer: {
       /** Section titles and link labels for `footerSections` in `@data/navigation`, keyed by id. */
@@ -49,6 +50,8 @@ export const en = {
         sensorFormats: 'Sensor formats',
         equivalentFocalLength: 'Equivalent focal length',
         exposureTriangle: 'Exposure triangle',
+        cropFactorTool: 'Crop factor calculator',
+        exposureStopsTool: 'Exposure stops calculator',
         repository: 'GitHub repository',
       },
       hiringBadge: "We're hiring!",

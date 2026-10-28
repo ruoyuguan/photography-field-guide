@@ -11,18 +11,22 @@ The project is based on the open-source [ScrewFast](https://github.com/mearashad
 - Localized navigation, metadata, 404 pages, language switching, documentation search, and Pagefind interface text.
 - Build-time article metadata, cross-entity validation, and a small set of sourced glossary, camera, lens, resource, and gallery records.
 - Original aperture branding, favicons, and social-sharing artwork.
+- Two bilingual interactive tools: crop factor / equivalent focal length and exposure stops, with pure formula tests, accessible native controls, original SVG diagrams, input validation, and no-JavaScript explanations.
 
-Interactive optics experiments and public gear/gallery directories are planned for later phases. Structured gallery records are not yet a public gallery page. Planned tools are not linked as finished features.
+Public gear/gallery directories are planned for later phases. Structured gallery records are not yet a public gallery page.
 
 ### Routes
 
-| Content                 | English                                       | 简体中文                                            |
-| ----------------------- | --------------------------------------------- | --------------------------------------------------- |
-| Home                    | `/`                                           | `/zh-cn/`                                           |
-| Orientation             | `/learn/`                                     | `/zh-cn/learn/`                                     |
-| Sensor formats          | `/learn/sensor-lens/sensor-formats/`          | `/zh-cn/learn/sensor-lens/sensor-formats/`          |
-| Equivalent focal length | `/learn/sensor-lens/equivalent-focal-length/` | `/zh-cn/learn/sensor-lens/equivalent-focal-length/` |
-| Exposure triangle       | `/learn/exposure/exposure-triangle/`          | `/zh-cn/learn/exposure/exposure-triangle/`          |
+| Content                   | English                                       | 简体中文                                            |
+| ------------------------- | --------------------------------------------- | --------------------------------------------------- |
+| Home                      | `/`                                           | `/zh-cn/`                                           |
+| Orientation               | `/learn/`                                     | `/zh-cn/learn/`                                     |
+| Sensor formats            | `/learn/sensor-lens/sensor-formats/`          | `/zh-cn/learn/sensor-lens/sensor-formats/`          |
+| Equivalent focal length   | `/learn/sensor-lens/equivalent-focal-length/` | `/zh-cn/learn/sensor-lens/equivalent-focal-length/` |
+| Exposure triangle         | `/learn/exposure/exposure-triangle/`          | `/zh-cn/learn/exposure/exposure-triangle/`          |
+| Tools                     | `/tools/`                                     | `/zh-cn/tools/`                                     |
+| Crop factor calculator    | `/tools/crop-factor/`                         | `/zh-cn/tools/crop-factor/`                         |
+| Exposure stops calculator | `/tools/exposure-stops/`                      | `/zh-cn/tools/exposure-stops/`                      |
 
 ## Local development
 
@@ -49,14 +53,15 @@ npm exec --yes --package=pnpm@10.34.9 -- pnpm dev
 
 ```bash
 pnpm format:check
+pnpm test:unit
 pnpm build
 pnpm test:smoke
 pnpm test:build
 ```
 
-`pnpm build` runs type checking, validates content, creates the static site in `dist/`, and minifies its HTML. The smoke test checks the 12 public pages and retired/unknown routes. The artifact test checks internal links and assets, canonical/hreflang URLs, 404 `noindex`, manifest, robots, sitemap, and search artifacts.
+`pnpm test:unit` checks the photography formulas, unit consistency, representative examples, and invalid or boundary inputs. `pnpm build` runs type checking, validates content, creates the static site in `dist/`, and minifies its HTML. The smoke test checks the 18 public pages and retired/unknown routes. The artifact test checks internal links and assets, canonical/hreflang URLs, 404 `noindex`, manifest, robots, sitemap, and search artifacts.
 
-After a root-path production build, an optional real-browser check verifies the language menu, Chinese navigation, English and Chinese search, proportional sensor diagram, and mobile overflow:
+After a root-path production build, an optional real-browser check verifies the language menu, Chinese navigation, English and Chinese search, proportional sensor diagram, calculator results, slider/input synchronization, keyboard operation, reset and error states, no-JavaScript fallbacks, and mobile overflow:
 
 ```bash
 pnpm build
@@ -83,8 +88,11 @@ Run the ordinary root-path build again after a subpath test so `dist/` matches t
 - `src/utils/content-schema.ts` — shared Zod schemas and strict ISO-date validation.
 - `src/utils/content-validation.ts` — bilingual pairing, publishing, reference, prerequisite, mount, and resource-verification checks.
 - `src/content/i18n/zh-CN.yml` — localized Starlight/Pagefind interface text.
+- `src/components/tools/` and `src/views/ToolsIndexView.astro` — localized tool interfaces and client controllers.
+- `src/utils/photography/` and `tests/photography/` — pure photography calculations and formula tests.
 - `src/utils/deployment.ts` and `src/utils/locale.ts` — deployment-aware URLs and language routes.
 - `scripts/smoke.mjs` and `scripts/check-build.mjs` — local production-output checks.
+- `scripts/browser-check.mjs` and `scripts/browser-tool-checks.mjs` — temporary-preview browser checks.
 - `docs/` — original requirements, repository audit, architecture, content, resource, and roadmap documents.
 
 Published non-orientation articles need real sources and a review date. Unpublished drafts must use `draft: true`; they are not production routes. Public external resources require verified targets and evidence. Network availability is intentionally separate from offline builds.

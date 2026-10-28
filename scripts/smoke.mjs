@@ -14,11 +14,18 @@ const GUIDE_ROUTES = [
   '/learn/sensor-lens/equivalent-focal-length/',
   '/learn/exposure/exposure-triangle/',
 ];
+const TOOL_ROUTES = [
+  '/tools/',
+  '/tools/crop-factor/',
+  '/tools/exposure-stops/',
+];
 const ROUTES = [
   '/',
   '/zh-cn/',
   ...GUIDE_ROUTES,
   ...GUIDE_ROUTES.map(route => `/zh-cn${route}`),
+  ...TOOL_ROUTES,
+  ...TOOL_ROUTES.map(route => `/zh-cn${route}`),
   '/404',
   '/zh-cn/404/',
 ];
@@ -70,6 +77,40 @@ const EXPECTATIONS = {
   ],
   '/learn/exposure/exposure-triangle/': ['The Exposure Triangle'],
   '/zh-cn/learn/exposure/exposure-triangle/': ['曝光三角'],
+  '/tools/': [
+    'Interactive photography tools',
+    `href="${withBase('/tools/crop-factor/')}"`,
+    `href="${withBase('/tools/exposure-stops/')}"`,
+  ],
+  '/zh-cn/tools/': [
+    '交互摄影工具',
+    `href="${withBase('/zh-cn/tools/crop-factor/')}"`,
+    `href="${withBase('/zh-cn/tools/exposure-stops/')}"`,
+  ],
+  '/tools/crop-factor/': [
+    'Crop factor &amp; equivalent focal length',
+    'data-crop-tool',
+    'data-interactive hidden',
+    'data-field="focalLength"',
+    'crop factor c =',
+  ],
+  '/zh-cn/tools/crop-factor/': [
+    '画幅系数与等效焦距',
+    'data-crop-tool',
+    '当前无法使用 JavaScript',
+  ],
+  '/tools/exposure-stops/': [
+    'Exposure stops comparison',
+    'data-exposure-tool',
+    'data-field="before.fNumber"',
+    'nominal ISO mapping stops',
+    'data-results hidden',
+  ],
+  '/zh-cn/tools/exposure-stops/': [
+    '曝光档位比较',
+    'data-exposure-tool',
+    '当前无法使用 JavaScript',
+  ],
   '/404': ['<html lang="en"', 'This frame is empty.', 'noindex, nofollow'],
   '/zh-cn/404/': [
     '<html lang="zh-CN"',

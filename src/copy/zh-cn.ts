@@ -30,6 +30,7 @@ export const zhCN: Copy = {
       ...en.nav.labels,
       home: '首页',
       learn: '学习',
+      tools: '工具',
     },
     footer: {
       ...en.nav.footer,
@@ -42,6 +43,8 @@ export const zhCN: Copy = {
         sensorFormats: '传感器与画幅',
         equivalentFocalLength: '等效焦距',
         exposureTriangle: '曝光三角',
+        cropFactorTool: '画幅系数计算器',
+        exposureStopsTool: '曝光档位计算器',
         repository: 'GitHub 仓库',
       },
       stayUpToDate: '摄影入门指南',
