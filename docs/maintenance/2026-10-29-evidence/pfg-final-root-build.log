@@ -1,0 +1,183 @@
+
+> photography-field-guide@0.0.1 build /Users/ruoyu/photography-field-guide
+> astro check && astro build && node process-html.mjs
+
+09:19:56 [content] Syncing content
+09:19:56 [content] Astro config changed
+09:19:56 [content] Clearing content store
+09:19:56 [content] Synced content
+09:19:56 [types] Generated 278ms
+09:19:56 [check] Getting diagnostics for Astro files in /Users/ruoyu/photography-field-guide...
+[96msrc/components/sections/insights/InsightDetail.astro[0m:[93m150[0m:[93m49[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m150[0m   document.addEventListener('DOMContentLoaded', event => {
+[7m   [0m [93m                                                ~~~~~[0m
+
+[96msrc/components/sections/pricing/PricingSection.astro[0m:[93m21[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'PricingSectionProps' is declared but never used.
+
+[7m21[0m interface PricingSectionProps {
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/buttons/Bookmark.astro[0m:[93m18[0m:[93m25[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'dataAttrValue' is declared but its value is never read.
+
+[7m18[0m     constructor(private dataAttrValue: string) {
+[7m  [0m [93m                        ~~~~~~~~~~~~~[0m
+
+Result (173 files): 
+- 0 errors
+- 0 warnings
+- 3 hints
+
+09:19:58 [content] Syncing content
+09:19:58 [content] Synced content
+09:19:58 [types] Generated 247ms
+09:19:58 [build] output: "static"
+09:19:58 [build] mode: "static"
+09:19:58 [build] directory: /Users/ruoyu/photography-field-guide/dist/
+09:19:58 [build] Collecting build info...
+09:19:58 [build] ✓ Completed in 319ms.
+09:19:58 [build] Building static entrypoints...
+09:19:59 [vite] ✓ built in 519ms
+09:19:59 [vite] ✓ built in 54ms
+09:19:59 [build] Rearranging server assets...
+
+ generating static routes 
+09:19:59   ├─ /404.html[content] 34 articles and 52 structured entries validated.
+ (+10ms) 
+09:19:59   ├─ /about/index.html (+3ms) 
+09:19:59   ├─ /favicon.ico (+23ms) 
+09:19:59   ├─ /galleries/index.html (+9ms) 
+09:19:59   ├─ /gear/fujifilm-x-t5/index.html (+2ms) 
+09:19:59   ├─ /gear/fujifilm-xf16-50/index.html (+1ms) 
+09:19:59   ├─ /gear/index.html (+1ms) 
+09:19:59   ├─ /glossary/index.html (+2ms) 
+09:19:59   ├─ /manifest.json (+1ms) 
+09:19:59   ├─ /resources/index.html (+2ms) 
+09:19:59   ├─ /robots.txt (+1ms) 
+09:19:59   ├─ /tools/crop-factor/index.html (+2ms) 
+09:19:59   ├─ /tools/exposure-stops/index.html (+1ms) 
+09:19:59   ├─ /tools/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/404/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/about/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/galleries/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/gear/fujifilm-x-t5/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/gear/fujifilm-xf16-50/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/gear/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/glossary/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/resources/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/tools/crop-factor/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/tools/exposure-stops/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/tools/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/index.html (+2ms) 
+09:19:59   ├─ /index.html (+1ms) 
+09:19:59   ├─ /learn/index.html (+7ms) 
+09:19:59   ├─ /learn/exposure/aperture/index.html (+2ms) 
+09:19:59   ├─ /learn/exposure/exposure-compensation/index.html (+2ms) 
+09:19:59   ├─ /learn/exposure/exposure-stops/index.html (+2ms) 
+09:19:59   ├─ /learn/exposure/exposure-triangle/index.html (+2ms) 
+09:19:59   ├─ /learn/exposure/iso/index.html (+2ms) 
+09:19:59   ├─ /learn/exposure/pasm-modes/index.html (+2ms) 
+09:19:59   ├─ /learn/exposure/shutter-speed/index.html (+2ms) 
+09:19:59   ├─ /learn/getting-started/digital-camera-works/index.html (+2ms) 
+09:19:59   ├─ /learn/getting-started/what-is-photography/index.html (+2ms) 
+09:19:59   ├─ /learn/image-quality/autofocus/index.html (+2ms) 
+09:19:59   ├─ /learn/image-quality/film-simulations/index.html (+2ms) 
+09:19:59   ├─ /learn/image-quality/raw-jpeg-exif/index.html (+2ms) 
+09:19:59   ├─ /learn/image-quality/white-balance/index.html (+2ms) 
+09:19:59   ├─ /learn/sensor-lens/depth-of-field/index.html (+7ms) 
+09:19:59   ├─ /learn/sensor-lens/equivalent-focal-length/index.html (+3ms) 
+09:19:59   ├─ /learn/sensor-lens/sensor-formats/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/exposure/aperture/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/exposure/exposure-compensation/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/exposure/exposure-stops/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/exposure/exposure-triangle/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/exposure/iso/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/learn/exposure/pasm-modes/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/learn/exposure/shutter-speed/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/learn/getting-started/digital-camera-works/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/getting-started/what-is-photography/index.html (+1ms) 
+09:19:59   ├─ /zh-cn/learn/image-quality/autofocus/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/image-quality/film-simulations/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/image-quality/raw-jpeg-exif/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/image-quality/white-balance/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/sensor-lens/depth-of-field/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/sensor-lens/equivalent-focal-length/index.html (+2ms) 
+09:19:59   ├─ /zh-cn/learn/sensor-lens/sensor-formats/index.html (+2ms) 
+09:19:59 ✓ Completed in 171ms.
+
+ generating optimized images 
+09:19:59   ▶ /_astro/icon.3ih38xtz_LQeXu.svg (reused cache entry) (+0ms) (1/7)
+09:19:59   ▶ /_astro/icon.rJ6j6E4__1RcTMw.png (reused cache entry) (+0ms) (2/7)
+09:19:59   ▶ /_astro/icon-maskable.DHRBUiSL_Z1mcP2l.png (reused cache entry) (+1ms) (3/7)
+09:19:59   ▶ /_astro/social.Cv7MYzLa_ZiJaW3.webp (reused cache entry) (+1ms) (4/7)
+09:19:59   ▶ /_astro/icon.rJ6j6E4__1C8C9p.png (reused cache entry) (+0ms) (5/7)
+09:19:59   ▶ /_astro/icon-maskable.DHRBUiSL_1mngOn.png (reused cache entry) (+0ms) (6/7)
+09:19:59   ▶ /_astro/icon.rJ6j6E4__Z1sHDK.png (reused cache entry) (+1ms) (7/7)
+09:19:59 ✓ Completed in 2ms.
+
+09:19:59 [build] ✓ Completed in 771ms.
+09:19:59 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+09:19:59 [starlight:pagefind] Building search index with Pagefind...
+09:19:59 [starlight:pagefind] Found 58 HTML files.
+09:19:59 [starlight:pagefind] Finished building search index in 136ms.
+09:19:59 [build] 58 page(s) built in 1.24s
+09:19:59 [build] Complete!
+Processing file: dist/404.html
+Processing file: dist/index.html
+Processing file: dist/zh-cn/index.html
+Processing file: dist/zh-cn/tools/index.html
+Processing file: dist/zh-cn/tools/exposure-stops/index.html
+Processing file: dist/zh-cn/tools/crop-factor/index.html
+Processing file: dist/zh-cn/resources/index.html
+Processing file: dist/zh-cn/learn/index.html
+Processing file: dist/zh-cn/learn/sensor-lens/sensor-formats/index.html
+Processing file: dist/zh-cn/learn/sensor-lens/equivalent-focal-length/index.html
+Processing file: dist/zh-cn/learn/sensor-lens/depth-of-field/index.html
+Processing file: dist/zh-cn/learn/image-quality/white-balance/index.html
+Processing file: dist/zh-cn/learn/image-quality/raw-jpeg-exif/index.html
+Processing file: dist/zh-cn/learn/image-quality/film-simulations/index.html
+Processing file: dist/zh-cn/learn/image-quality/autofocus/index.html
+Processing file: dist/zh-cn/learn/getting-started/what-is-photography/index.html
+Processing file: dist/zh-cn/learn/getting-started/digital-camera-works/index.html
+Processing file: dist/zh-cn/learn/exposure/shutter-speed/index.html
+Processing file: dist/zh-cn/learn/exposure/pasm-modes/index.html
+Processing file: dist/zh-cn/learn/exposure/iso/index.html
+Processing file: dist/zh-cn/learn/exposure/exposure-triangle/index.html
+Processing file: dist/zh-cn/learn/exposure/exposure-stops/index.html
+Processing file: dist/zh-cn/learn/exposure/exposure-compensation/index.html
+Processing file: dist/zh-cn/learn/exposure/aperture/index.html
+Processing file: dist/zh-cn/glossary/index.html
+Processing file: dist/zh-cn/gear/index.html
+Processing file: dist/zh-cn/gear/fujifilm-xf16-50/index.html
+Processing file: dist/zh-cn/gear/fujifilm-x-t5/index.html
+Processing file: dist/zh-cn/galleries/index.html
+Processing file: dist/zh-cn/about/index.html
+Processing file: dist/zh-cn/404/index.html
+Processing file: dist/tools/index.html
+Processing file: dist/tools/exposure-stops/index.html
+Processing file: dist/tools/crop-factor/index.html
+Processing file: dist/resources/index.html
+Processing file: dist/learn/index.html
+Processing file: dist/learn/sensor-lens/sensor-formats/index.html
+Processing file: dist/learn/sensor-lens/equivalent-focal-length/index.html
+Processing file: dist/learn/sensor-lens/depth-of-field/index.html
+Processing file: dist/learn/image-quality/white-balance/index.html
+Processing file: dist/learn/image-quality/raw-jpeg-exif/index.html
+Processing file: dist/learn/image-quality/film-simulations/index.html
+Processing file: dist/learn/image-quality/autofocus/index.html
+Processing file: dist/learn/getting-started/what-is-photography/index.html
+Processing file: dist/learn/getting-started/digital-camera-works/index.html
+Processing file: dist/learn/exposure/shutter-speed/index.html
+Processing file: dist/learn/exposure/pasm-modes/index.html
+Processing file: dist/learn/exposure/iso/index.html
+Processing file: dist/learn/exposure/exposure-triangle/index.html
+Processing file: dist/learn/exposure/exposure-stops/index.html
+Processing file: dist/learn/exposure/exposure-compensation/index.html
+Processing file: dist/learn/exposure/aperture/index.html
+Processing file: dist/glossary/index.html
+Processing file: dist/gear/index.html
+Processing file: dist/gear/fujifilm-xf16-50/index.html
+Processing file: dist/gear/fujifilm-x-t5/index.html
+Processing file: dist/galleries/index.html
+Processing file: dist/about/index.html

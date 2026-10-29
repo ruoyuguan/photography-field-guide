@@ -1,0 +1,67 @@
+OK   /photography-field-guide/ → 200
+OK   /photography-field-guide/learn/ → 200
+OK   /photography-field-guide/learn/getting-started/what-is-photography/ → 200
+OK   /photography-field-guide/learn/getting-started/digital-camera-works/ → 200
+OK   /photography-field-guide/learn/sensor-lens/sensor-formats/ → 200
+OK   /photography-field-guide/learn/sensor-lens/equivalent-focal-length/ → 200
+OK   /photography-field-guide/learn/sensor-lens/depth-of-field/ → 200
+OK   /photography-field-guide/learn/exposure/aperture/ → 200
+OK   /photography-field-guide/learn/exposure/shutter-speed/ → 200
+OK   /photography-field-guide/learn/exposure/iso/ → 200
+OK   /photography-field-guide/learn/exposure/exposure-stops/ → 200
+OK   /photography-field-guide/learn/exposure/pasm-modes/ → 200
+OK   /photography-field-guide/learn/exposure/exposure-compensation/ → 200
+OK   /photography-field-guide/learn/exposure/exposure-triangle/ → 200
+OK   /photography-field-guide/learn/image-quality/raw-jpeg-exif/ → 200
+OK   /photography-field-guide/learn/image-quality/autofocus/ → 200
+OK   /photography-field-guide/learn/image-quality/white-balance/ → 200
+OK   /photography-field-guide/learn/image-quality/film-simulations/ → 200
+OK   /photography-field-guide/tools/ → 200
+OK   /photography-field-guide/tools/crop-factor/ → 200
+OK   /photography-field-guide/tools/exposure-stops/ → 200
+OK   /photography-field-guide/glossary/ → 200
+OK   /photography-field-guide/gear/ → 200
+OK   /photography-field-guide/gear/fujifilm-x-t5/ → 200
+OK   /photography-field-guide/gear/fujifilm-xf16-50/ → 200
+OK   /photography-field-guide/galleries/ → 200
+OK   /photography-field-guide/resources/ → 200
+OK   /photography-field-guide/about/ → 200
+OK   /photography-field-guide/zh-cn/ → 200
+OK   /photography-field-guide/zh-cn/learn/ → 200
+OK   /photography-field-guide/zh-cn/learn/getting-started/what-is-photography/ → 200
+OK   /photography-field-guide/zh-cn/learn/getting-started/digital-camera-works/ → 200
+OK   /photography-field-guide/zh-cn/learn/sensor-lens/sensor-formats/ → 200
+OK   /photography-field-guide/zh-cn/learn/sensor-lens/equivalent-focal-length/ → 200
+OK   /photography-field-guide/zh-cn/learn/sensor-lens/depth-of-field/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/aperture/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/shutter-speed/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/iso/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/exposure-stops/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/pasm-modes/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/exposure-compensation/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/exposure-triangle/ → 200
+OK   /photography-field-guide/zh-cn/learn/image-quality/raw-jpeg-exif/ → 200
+OK   /photography-field-guide/zh-cn/learn/image-quality/autofocus/ → 200
+OK   /photography-field-guide/zh-cn/learn/image-quality/white-balance/ → 200
+OK   /photography-field-guide/zh-cn/learn/image-quality/film-simulations/ → 200
+OK   /photography-field-guide/zh-cn/tools/ → 200
+OK   /photography-field-guide/zh-cn/tools/crop-factor/ → 200
+OK   /photography-field-guide/zh-cn/tools/exposure-stops/ → 200
+OK   /photography-field-guide/zh-cn/glossary/ → 200
+OK   /photography-field-guide/zh-cn/gear/ → 200
+OK   /photography-field-guide/zh-cn/gear/fujifilm-x-t5/ → 200
+OK   /photography-field-guide/zh-cn/gear/fujifilm-xf16-50/ → 200
+OK   /photography-field-guide/zh-cn/galleries/ → 200
+OK   /photography-field-guide/zh-cn/resources/ → 200
+OK   /photography-field-guide/zh-cn/about/ → 200
+OK   /photography-field-guide/404 → 200
+OK   /photography-field-guide/zh-cn/404/ → 200
+OK   /photography-field-guide/does-not-exist/ → 404 noindex
+OK   /photography-field-guide/zh-cn/does-not-exist/ → 404 noindex
+OK   /photography-field-guide/start-here/ → 404 noindex
+OK   /photography-field-guide/basics/sensor-formats/ → 404 noindex
+OK   /photography-field-guide/basics/equivalent-focal-length/ → 404 noindex
+OK   /photography-field-guide/basics/exposure-triangle/ → 404 noindex
+OK   /photography-field-guide/zh-cn/start-here/ → 404 noindex
+OK   /photography-field-guide/zh-cn/basics/sensor-formats/ → 404 noindex
+OK smoke: 58 pages and 8 missing/retired routes (base /photography-field-guide).

@@ -24,6 +24,9 @@ const en = {
     millimeters: 'mm',
     meters: 'm',
     degrees: '°',
+    advanced: 'Advanced settings',
+    dimensions: 'Custom sensor dimensions',
+    moreResults: 'More measurements and model notes',
     errors: {
       required: 'Enter a value; this field cannot be empty.',
       invalid: 'Use a decimal number or a simple fraction such as 1/125.',
@@ -48,7 +51,7 @@ const en = {
     preset: 'Sensor preset',
     presets: {
       fullFrame: 'Full frame — 36 × 24 mm',
-      fujifilmApsC: 'Fujifilm X-T5 APS-C — 23.5 × 15.6 mm',
+      fujifilmApsC: 'APS-C example — 23.5 × 15.6 mm',
       nikonDx: 'Nikon DX example — 23.5 × 15.7 mm',
       canonApsC: 'Canon APS-C example — 22.3 × 14.9 mm',
       microFourThirds: 'Micro Four Thirds — 17.3 × 13 mm',
@@ -89,7 +92,7 @@ const en = {
     camera: 'Camera position',
     noScript:
       'JavaScript is unavailable, so the controls are hidden. Static example: a 16 mm lens on a 1.5× APS-C sensor has a field of view similar to 24 mm on full frame. For real dimensions, crop factor = reference diagonal ÷ target diagonal.',
-    formulaTitle: 'The model in three equations',
+    formulaTitle: 'How the calculation works',
     formulas: [
       'crop factor c = √(wᵣ² + hᵣ²) ÷ √(wₜ² + hₜ²)',
       'equivalent focal length = actual focal length × c',
@@ -182,6 +185,9 @@ const zhCN: ToolsCopy = {
     millimeters: 'mm',
     meters: 'm',
     degrees: '°',
+    advanced: '高级设置',
+    dimensions: '自定义传感器尺寸',
+    moreResults: '更多数值与模型说明',
     errors: {
       required: '请输入数值，此字段不能为空。',
       invalid: '请输入十进制数值或 1/125 这样的简单分数。',
@@ -205,7 +211,7 @@ const zhCN: ToolsCopy = {
     preset: '传感器预设',
     presets: {
       fullFrame: '全画幅——36 × 24 mm',
-      fujifilmApsC: '富士 X-T5 APS-C——23.5 × 15.6 mm',
+      fujifilmApsC: 'APS-C 示例——23.5 × 15.6 mm',
       nikonDx: '尼康 DX 示例——23.5 × 15.7 mm',
       canonApsC: '佳能 APS-C 示例——22.3 × 14.9 mm',
       microFourThirds: 'M4/3——17.3 × 13 mm',

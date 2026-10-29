@@ -1,0 +1,120 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import { missions, practiceCopy, type PracticeLocale } from '@data/practice';
+import { localePath } from '@utils/locale';
+
+interface Props {
+  locale: PracticeLocale;
+}
+const { locale } = Astro.props;
+const t = practiceCopy[locale];
+---
+
+<MainLayout
+  title={t.metaTitle}
+  description={t.metaDescription}
+  section={t.title}
+>
+  <div
+    data-practice-index
+    data-locale={locale}
+    class="mx-auto max-w-6xl py-10 sm:py-14"
+  >
+    <header class="max-w-3xl">
+      <p class="text-sm font-semibold tracking-wide text-amber-700 uppercase dark:text-amber-300">
+        {t.eyebrow}
+      </p>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl dark:text-neutral-100">
+        {t.title}
+      </h1>
+      <p class="mt-5 text-base leading-7 text-neutral-600 sm:text-lg dark:text-neutral-400">
+        {t.intro}
+      </p>
+    </header>
+    <noscript>
+      <p class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
+        {t.noScript}
+      </p>
+    </noscript>
+    <div class="mt-8 grid gap-5">
+      {missions.map(mission => {
+        const copy = mission.copy[locale];
+        const number = String(mission.number).padStart(2, '0');
+        return (
+          <article
+            data-practice-card={mission.id}
+            class="rounded-3xl border border-neutral-300 bg-neutral-50 p-6 sm:p-8 dark:border-neutral-700 dark:bg-neutral-900/60"
+          >
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p class="text-xs font-bold tracking-wide text-amber-700 uppercase dark:text-amber-300">
+                  {locale === 'en' ? `Mission ${number}` : `任务 ${number}`} ·{' '}
+                  {copy.lessonTitle}
+                </p>
+                <h2 class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+                  {copy.title}
+                </h2>
+              </div>
+              <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+                {copy.duration}
+              </span>
+            </div>
+            <p class="mt-3 max-w-3xl text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+              {copy.intro}
+            </p>
+            <p class="mt-3 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+              <strong>{copy.title}:</strong> {copy.goal}
+            </p>
+            <div class="mt-5 flex flex-wrap items-center gap-4">
+              <a
+                href={localePath(locale, `/practice/${mission.id}/`)}
+                class="rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-bold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:bg-amber-400 dark:text-neutral-950"
+              >
+                {t.open} →
+              </a>
+              <a
+                href={localePath(locale, mission.articlePath)}
+                class="text-sm font-semibold text-amber-700 underline decoration-amber-400 underline-offset-4 dark:text-amber-300"
+              >
+                {locale === 'en' ? 'Read the lesson first' : '先阅读教程'}
+              </a>
+            </div>
+            <p
+              data-practice-interactive
+              hidden
+              class="mt-4 text-xs font-semibold text-neutral-600 dark:text-neutral-400"
+            >
+              {t.progress}: <span data-card-status>{t.notStarted}</span>
+            </p>
+          </article>
+        );
+      })}
+    </div>
+    <div
+      data-practice-interactive
+      hidden
+      class="mt-8 rounded-2xl border border-neutral-300 p-4 dark:border-neutral-700"
+    >
+      <p
+        data-storage-notice
+        class="text-xs leading-5 text-neutral-500 dark:text-neutral-400"
+      ></p>
+      <button
+        type="button"
+        data-clear-all
+        class="mt-3 rounded-lg border border-neutral-400 px-4 py-2 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200"
+      >
+        {t.clearAll}
+      </button>
+      <p
+        data-clear-feedback
+        role="status"
+        class="mt-2 text-sm text-neutral-700 dark:text-neutral-300"
+      ></p>
+    </div>
+  </div>
+  <script>
+    import { initializePracticeIndex } from '@components/practice/practice-controller';
+    initializePracticeIndex();
+  </script>
+</MainLayout>

@@ -37,6 +37,8 @@ export const en = {
     labels: {
       home: 'Home',
       learn: 'Learn',
+      practice: 'Practice',
+      explore: 'Explore',
       glossary: 'Glossary',
       tools: 'Tools',
       gear: 'Gear',
@@ -52,6 +54,7 @@ export const en = {
       },
       links: {
         orientation: 'Start here',
+        practice: 'Photography missions',
         sensorFormats: 'Sensor formats',
         equivalentFocalLength: 'Equivalent focal length',
         exposureTriangle: 'Exposure triangle',

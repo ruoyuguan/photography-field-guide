@@ -7,6 +7,7 @@
 export type NavLinkId =
   | 'home'
   | 'learn'
+  | 'practice'
   | 'glossary'
   | 'tools'
   | 'gear'
@@ -15,10 +16,13 @@ export type NavLinkId =
   | 'about';
 
 export const navLinks: { id: NavLinkId; path: string }[] = [
-  { id: 'home', path: '/' },
   { id: 'learn', path: '/learn/' },
-  { id: 'glossary', path: '/glossary/' },
+  { id: 'practice', path: '/practice/' },
   { id: 'tools', path: '/tools/' },
+];
+
+export const exploreLinks: { id: NavLinkId; path: string }[] = [
+  { id: 'glossary', path: '/glossary/' },
   { id: 'gear', path: '/gear/' },
   { id: 'galleries', path: '/galleries/' },
   { id: 'resources', path: '/resources/' },
@@ -28,6 +32,7 @@ export const navLinks: { id: NavLinkId; path: string }[] = [
 export type FooterSectionId = 'learn' | 'project';
 export type FooterLinkId =
   | 'orientation'
+  | 'practice'
   | 'sensorFormats'
   | 'equivalentFocalLength'
   | 'exposureTriangle'
@@ -48,6 +53,7 @@ export const footerSections: {
     id: 'learn',
     links: [
       { id: 'orientation', path: '/learn/' },
+      { id: 'practice', path: '/practice/' },
       { id: 'sensorFormats', path: '/learn/sensor-lens/sensor-formats/' },
       {
         id: 'equivalentFocalLength',

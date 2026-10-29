@@ -1,18 +1,22 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { once } from 'node:events';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { createServer } from 'node:net';
+import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { checkTools } from './browser-tool-checks.mjs';
 import { checkDirectories } from './browser-directory-checks.mjs';
+import { checkPractice } from './browser-practice-checks.mjs';
+import { checkFraming } from './browser-framing-checks.mjs';
+import { checkStory } from './browser-story-checks.mjs';
+import { checkPhotoReview } from './browser-review-checks.mjs';
 
 /**
  * Optional real-browser checks using an installed Chrome and Node's WebSocket.
  * No package or browser download is needed. Run a root-path production build
  * first: Starlight intentionally disables Pagefind in the development server.
- * The Astro child is killed in all outcomes; no preview server is left running
- * after this script returns.
+ * Temporary resources are cleaned up on completion, errors, SIGINT, and
+ * SIGTERM; the user's existing browser and preview processes are untouched.
  */
 const ROOT = resolve(new URL('../', import.meta.url).pathname);
 const CHROME =
@@ -30,17 +34,52 @@ async function freePort() {
   return port;
 }
 async function stop(child) {
-  if (!child || child.exitCode !== null || child.signalCode !== null) return;
-  child.kill('SIGTERM');
-  const timer = setTimeout(() => child.kill('SIGKILL'), 3000);
-  timer.unref();
-  await once(child, 'exit');
-  clearTimeout(timer);
+  // A failed spawn has no PID and does not necessarily emit `exit`.
+  if (!child?.pid || child.exitCode !== null || child.signalCode !== null)
+    return;
+  await new Promise((resolve, reject) => {
+    let finished = false;
+    let forceTimer;
+    let deadlineTimer;
+    function finish(error) {
+      if (finished) return;
+      finished = true;
+      clearTimeout(forceTimer);
+      clearTimeout(deadlineTimer);
+      child.off('exit', onExit);
+      child.off('error', onError);
+      if (error) reject(error);
+      else resolve();
+    }
+    const onExit = () => finish();
+    const onError = error => finish(error);
+    // Subscribe before signalling so an early exit cannot be missed.
+    child.once('exit', onExit);
+    child.once('error', onError);
+    forceTimer = setTimeout(() => {
+      try {
+        child.kill('SIGKILL');
+      } catch (error) {
+        finish(error);
+      }
+    }, 3000);
+    deadlineTimer = setTimeout(
+      () => finish(new Error(`Could not stop test child ${child.pid}.`)),
+      6000
+    );
+    forceTimer.unref();
+    deadlineTimer.unref();
+    try {
+      child.kill('SIGTERM');
+    } catch (error) {
+      finish(error);
+    }
+  });
 }
 async function waitForServer(url, child) {
   for (let attempt = 0; attempt < 150; attempt++) {
-    if (child.exitCode !== null)
-      throw new Error(`Astro exited with ${child.exitCode}.`);
+    if (!child.pid || child.exitCode !== null || child.signalCode !== null)
+      throw new Error('The temporary Astro server did not remain running.');
     try {
       if ((await fetch(url)).ok) return;
     } catch {
@@ -50,11 +89,13 @@ async function waitForServer(url, child) {
   }
   throw new Error('Timed out waiting for the temporary Astro server.');
 }
-function connect(url) {
+function connect(url, onCreate) {
   return new Promise((resolve, reject) => {
     const socket = new WebSocket(url);
     socket.addEventListener('open', () => resolve(socket), { once: true });
     socket.addEventListener('error', reject, { once: true });
+    // Let cleanup close a connection that has not finished opening yet.
+    onCreate(socket);
   });
 }
 function cdp(socket) {
@@ -82,19 +123,81 @@ function cdp(socket) {
     });
 }
 
-const port = await freePort();
-const origin = `http://127.0.0.1:${port}`;
-const profile = await mkdtemp(resolve(ROOT, '.browser-check-'));
+let profile;
+let profileCreation;
 let astro;
 let chrome;
 let socket;
+let stopping = false;
+let cleanupPromise;
 const errors = [];
+
+function checkNotStopping() {
+  if (stopping) throw new Error('Browser checks were interrupted.');
+}
+function cleanup() {
+  // Normal completion and a signal can race; resources are released once.
+  cleanupPromise ??= (async () => {
+    const failures = [];
+    try {
+      socket?.close();
+    } catch (error) {
+      failures.push(error);
+    }
+    const stopped = await Promise.allSettled([stop(chrome), stop(astro)]);
+    for (const result of stopped) {
+      if (result.status === 'rejected') failures.push(result.reason);
+    }
+    try {
+      // mkdtemp may still be completing when an interrupt arrives.
+      const createdProfile = profile ?? (await profileCreation);
+      if (createdProfile && stopped[0].status === 'fulfilled') {
+        // Chrome's renderers can briefly outlive the main process and recreate
+        // a cache file during exit. Retry only this task's temporary profile.
+        await rm(createdProfile, {
+          recursive: true,
+          force: true,
+          maxRetries: 8,
+          retryDelay: 100,
+        });
+      }
+    } catch (error) {
+      failures.push(error);
+    }
+    if (failures.length) {
+      throw new AggregateError(failures, 'Browser-check cleanup failed.');
+    }
+  })();
+  return cleanupPromise;
+}
+function handleSignal(signal) {
+  if (stopping) return;
+  stopping = true;
+  // Do not wait for a pending navigation/CDP promise before cleaning up.
+  void cleanup()
+    .catch(error => console.error(error))
+    .finally(() => process.exit(signal === 'SIGINT' ? 130 : 143));
+}
+const onInterrupt = () => handleSignal('SIGINT');
+const onTerminate = () => handleSignal('SIGTERM');
+process.on('SIGINT', onInterrupt);
+process.on('SIGTERM', onTerminate);
+
 try {
+  const port = await freePort();
+  checkNotStopping();
+  const origin = `http://127.0.0.1:${port}`;
+  profileCreation = mkdtemp(resolve(tmpdir(), 'pfg-browser-check-'));
+  profile = await profileCreation;
+  checkNotStopping();
   astro = spawn(
     process.execPath,
     [
       'node_modules/astro/bin/astro.mjs',
       'preview',
+      // Keep this isolated, short-lived test server independent of any
+      // preview the user or another development session is already running.
+      '--ignore-lock',
       '--host',
       '127.0.0.1',
       '--port',
@@ -125,6 +228,7 @@ try {
   } catch (error) {
     throw new Error(`${error.message}\n${serverLog}`);
   }
+  checkNotStopping();
 
   chrome = spawn(
     CHROME,
@@ -156,13 +260,20 @@ try {
         resolve(match[1]);
       }
     });
-    chrome.once('error', reject);
+    chrome.once('error', error => {
+      clearTimeout(timer);
+      reject(error);
+    });
     chrome.once('exit', code => {
       clearTimeout(timer);
       reject(new Error(`Chrome exited with ${code}.\n${output}`));
     });
   });
-  socket = await connect(browserUrl);
+  checkNotStopping();
+  socket = await connect(browserUrl, created => {
+    socket = created;
+  });
+  checkNotStopping();
   const send = cdp(socket);
   const { targetId } = await send('Target.createTarget', {
     url: 'about:blank',
@@ -176,11 +287,14 @@ try {
   await call('Runtime.enable', {});
   socket.addEventListener('message', event => {
     const message = JSON.parse(event.data);
-    if (message.method === 'Runtime.exceptionThrown')
-      errors.push(
-        message.params.exceptionDetails.exception?.description ??
-          message.params.exceptionDetails.text
-      );
+    if (message.method !== 'Runtime.exceptionThrown') return;
+    const description =
+      message.params.exceptionDetails.exception?.description ??
+      message.params.exceptionDetails.text;
+    // The blocked-storage scenario deliberately throws this exact marker;
+    // all unrelated browser exceptions still fail the suite.
+    if (description?.includes('Blocked for testing')) return;
+    errors.push(description);
   });
   async function evaluate(expression) {
     const result = await call('Runtime.evaluate', {
@@ -202,7 +316,17 @@ try {
       await sleep(100);
     }
     const state = await evaluate(
-      `({ href: location.href, lang: document.documentElement.lang, target: document.querySelector('a[href="/zh-cn/"]')?.outerHTML })`
+      `({
+        href: location.href,
+        lang: document.documentElement.lang,
+        target: document.querySelector('a[href="/zh-cn/"]')?.outerHTML,
+        practice: document.querySelector('[data-practice-mission]') ? {
+          initialized: document.querySelector('[data-practice-mission]').dataset.initialized,
+          checked: [...document.querySelectorAll('[data-prediction-choice]:checked')].map(input => input.value),
+          feedback: document.querySelector('[data-quiz-feedback]')?.textContent,
+          retryHidden: document.querySelector('[data-retry-answer]')?.hidden,
+        } : undefined,
+      })`
     );
     throw new Error(
       `Timed out waiting for: ${expression}\nPage: ${JSON.stringify(state)}\nExceptions: ${errors.join('\n')}`
@@ -223,17 +347,19 @@ try {
     });
   }
   async function click(selector) {
-    const point = await evaluate(`(() => {
+    const point = await evaluate(`new Promise(resolve => {
       const element = document.querySelector(${JSON.stringify(selector)});
-      if (!element) return null;
-      element.scrollIntoView({ block: 'center', inline: 'center' });
-      const rect = element.getBoundingClientRect();
-      return {
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height / 2,
-        visible: rect.width > 0 && rect.height > 0,
-      };
-    })()`);
+      if (!element) return resolve(null);
+      element.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'center' });
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const rect = element.getBoundingClientRect();
+        resolve({
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2,
+          visible: rect.width > 0 && rect.height > 0,
+        });
+      }));
+    })`);
     assert.ok(point, `Missing click target: ${selector}`);
     assert.ok(point.visible, `Click target is hidden: ${selector}`);
     for (const type of ['mousePressed', 'mouseReleased']) {
@@ -320,7 +446,7 @@ try {
   );
 
   await viewport(1440, 900);
-  await click('.hs-dropdown-toggle');
+  await click('.language-picker summary');
   await until(
     `document.querySelector('a[href="/zh-cn/"]')?.getBoundingClientRect().width > 0`
   );
@@ -375,6 +501,46 @@ try {
     '胶片模拟',
     '/zh-cn/learn/image-quality/film-simulations/'
   );
+  await search(
+    '/learn/',
+    'light direction',
+    '/learn/composition/understanding-light/'
+  );
+  await search(
+    '/zh-cn/learn/',
+    '侧光',
+    '/zh-cn/learn/composition/understanding-light/'
+  );
+  await search(
+    '/learn/',
+    'negative space',
+    '/learn/composition/subject-and-background/'
+  );
+  await search(
+    '/zh-cn/learn/',
+    '留白',
+    '/zh-cn/learn/composition/subject-and-background/'
+  );
+  await search(
+    '/learn/',
+    'three photos',
+    '/learn/field-practice/neighborhood-story/'
+  );
+  await search(
+    '/zh-cn/learn/',
+    '三张照片',
+    '/zh-cn/learn/field-practice/neighborhood-story/'
+  );
+  await search(
+    '/learn/',
+    'reversible selection',
+    '/learn/field-practice/photo-review/'
+  );
+  await search(
+    '/zh-cn/learn/',
+    '照片筛选',
+    '/zh-cn/learn/field-practice/photo-review/'
+  );
   await checkDirectories({
     call,
     click,
@@ -385,6 +551,42 @@ try {
     viewport,
   });
   await checkTools({
+    call,
+    click,
+    evaluate,
+    navigate,
+    noOverflow,
+    until,
+    viewport,
+  });
+  await checkPractice({
+    call,
+    click,
+    evaluate,
+    navigate,
+    noOverflow,
+    until,
+    viewport,
+  });
+  await checkFraming({
+    call,
+    click,
+    evaluate,
+    navigate,
+    noOverflow,
+    until,
+    viewport,
+  });
+  await checkStory({
+    call,
+    click,
+    evaluate,
+    navigate,
+    noOverflow,
+    until,
+    viewport,
+  });
+  await checkPhotoReview({
     call,
     click,
     evaluate,
@@ -408,8 +610,12 @@ try {
   assert.deepEqual(errors, [], `Browser exceptions: ${errors.join('\n')}`);
   console.log('OK real-browser checks completed without page exceptions.');
 } finally {
-  if (socket) socket.close();
-  await stop(chrome);
-  await stop(astro);
-  await rm(profile, { recursive: true, force: true });
+  try {
+    await cleanup();
+  } finally {
+    if (!stopping) {
+      process.off('SIGINT', onInterrupt);
+      process.off('SIGTERM', onTerminate);
+    }
+  }
 }

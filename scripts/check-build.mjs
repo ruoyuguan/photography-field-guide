@@ -25,6 +25,15 @@ const LOCALIZED_ROUTES = [
   '/learn/image-quality/autofocus/',
   '/learn/image-quality/white-balance/',
   '/learn/image-quality/film-simulations/',
+  '/learn/composition/understanding-light/',
+  '/learn/composition/subject-and-background/',
+  '/learn/field-practice/neighborhood-story/',
+  '/learn/field-practice/photo-review/',
+  '/practice/',
+  '/practice/light-direction/',
+  '/practice/subject-background/',
+  '/practice/neighborhood-story/',
+  '/practice/photo-review/',
   '/tools/',
   '/tools/crop-factor/',
   '/tools/exposure-stops/',
@@ -93,6 +102,12 @@ function attributes(html, attribute) {
     match => match[1]
   );
 }
+function visibleText(html) {
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<[^>]+>/g, ' ');
+}
 function checkPublicUrl(value, where) {
   if (!value.startsWith(`${ORIGIN}/`))
     fail(`${where}: URL is outside ${ORIGIN}: ${value}`);
@@ -131,6 +146,18 @@ for (const file of htmlFiles) {
   const html = await text(file);
   const route = routeForFile(file);
   const where = `HTML ${route}`;
+  if (
+    [
+      '/zh-cn/learn/composition/understanding-light/',
+      '/zh-cn/learn/composition/subject-and-background/',
+      '/zh-cn/learn/field-practice/neighborhood-story/',
+      '/zh-cn/learn/field-practice/photo-review/',
+    ].includes(route) &&
+    visibleText(html).includes('**')
+  )
+    fail(`${where}: visible Markdown emphasis delimiters in the lesson.`);
+  if (/<li>(?:<p>)?\*\*“/.test(html))
+    errors.push(`${file}: visible Markdown emphasis delimiters in a list item`);
   for (const attribute of ['href', 'src']) {
     for (const value of attributes(html, attribute)) {
       if (!value || /^(?:[a-z]+:|\/\/|#|\?)/i.test(value)) continue;

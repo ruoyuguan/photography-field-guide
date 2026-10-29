@@ -4,9 +4,19 @@ This file records the project structure and conventions for coding assistants. S
 
 ## Project overview
 
-Photography Field Guide is a bilingual learning site based on ScrewFast. The active stack is Astro 7, Starlight, Tailwind CSS 4, TypeScript, and Preline. The current public site consists of localised home/404 pages and paired photography guides. Do not expose unfinished interactive labs or equipment galleries as working features.
+Photography Field Guide is a bilingual learning site based on ScrewFast. The active stack is Astro 7, Starlight, Tailwind CSS 4, TypeScript, and Preline. The current site includes bilingual Learn content, two interactive tools, Glossary, Gear, Galleries, Resources, and About. Read `docs/STATUS.md` for the latest verified inventory and review results. Do not expose unfinished features as working functionality.
 
 Marketing locales are **en** (default, no prefix) and **zh-cn** (`/zh-cn/`). Shared views receive the locale explicitly; middleware exposes it as `Astro.locals.locale` and its strings as `Astro.locals.copy`. Locale routing helpers belong only in `src/utils/locale.ts`.
+
+## Development workflow and project memory
+
+For the next content and practice iteration, read [the development workflow prompt](docs/DEVELOPMENT_WORKFLOW_PROMPT.md), [the user question bank](docs/QUESTION_BANK.md), and [the reference link inventory](docs/REFERENCE_LINKS.md). These describe future work; current implementation and verification remain in `docs/STATUS.md`. Follow the current user request when it limits the execution scope.
+
+## Local working directory and reading experience
+
+Use `/Users/ruoyu/photography-field-guide` for all subsequent local development. The old Kimi task checkout and isolated audit copies are retired after verification; do not switch development back to them.
+
+Human readability and cognitive load are the primary design constraints. Keep normal controls and key results together, disclose advanced settings progressively, and use generic sensor formats in general tools. Keep exact camera models in the gear guides and clearly marked examples.
 
 ## Path aliases
 
@@ -43,7 +53,7 @@ Unused ScrewFast views, collections, copy modules, and optional components may r
 - **Styling:** use Tailwind CSS 4 syntax and retain responsive, keyboard-focus, and dark-theme states.
 - **Images:** imported assets use `@images/`; static public files live in `public/`.
 - **Scientific accuracy:** distinguish field-of-view equivalence from physical focal length, exposure brightness, depth of field, and total light. Do not multiply exposure settings by crop factor.
-- **Interactions:** future sliders must be native accessible inputs with labels, keyboard support, useful fallback text, and calculations separated from presentation where practical.
+- **Interactions:** sliders must be native accessible inputs with labels, keyboard support, useful fallback text, and calculations separated from presentation where practical.
 
 ## Commands
 

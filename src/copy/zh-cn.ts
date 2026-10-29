@@ -30,6 +30,8 @@ export const zhCN: Copy = {
       ...en.nav.labels,
       home: '首页',
       learn: '学习',
+      practice: '练习',
+      explore: '探索',
       glossary: '术语',
       tools: '工具',
       gear: '器材',
@@ -45,6 +47,7 @@ export const zhCN: Copy = {
       },
       links: {
         orientation: '从这里开始',
+        practice: '摄影实拍任务',
         sensorFormats: '传感器与画幅',
         equivalentFocalLength: '等效焦距',
         exposureTriangle: '曝光三角',

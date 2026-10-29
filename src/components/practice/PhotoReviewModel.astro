@@ -1,0 +1,254 @@
+---
+import type { PracticeLocale } from '@data/practice';
+
+interface Props {
+  locale: PracticeLocale;
+  prefix: string;
+}
+const { locale, prefix } = Astro.props;
+const copy = {
+  en: {
+    environment: 'Environment pair',
+    subject: 'Subject pair',
+    detail: 'Detail pair',
+    edge: 'Same role · different edge',
+    alignment: 'Same subject · different alignment',
+    crop: 'Same clue · different crop',
+    group: '1 · Group similar frames',
+    groupText: 'Reduce repetition before comparing details.',
+    compare: '2 · Compare purpose and technique',
+    compareText: 'Inspect differences; do not crown a universal winner.',
+    next: '3 · Choose one next change',
+    nextText: 'Turn one observed gap into a repeatable next experiment.',
+    environmentDescription:
+      'Two original cafe concepts with different edge treatment',
+    subjectDescription:
+      'Two original bicycle concepts with different background alignment',
+    detailDescription: 'Two original bell concepts with different framing',
+  },
+  'zh-cn': {
+    environment: '环境对照组',
+    subject: '主体对照组',
+    detail: '细节对照组',
+    edge: '同一角色 · 边缘不同',
+    alignment: '同一主体 · 对齐不同',
+    crop: '同一线索 · 取景不同',
+    group: '1 · 将近似画面分组',
+    groupText: '先减少重复，再比较细节。',
+    compare: '2 · 比较用途与技术',
+    compareText: '检查差别，不评选普遍获胜者。',
+    next: '3 · 选择一项改动',
+    nextText: '把一个观察到的缺口变成可重复的下次实验。',
+    environmentDescription: '两幅边缘处理不同的原创小店概念图',
+    subjectDescription: '两幅背景对齐不同的原创自行车概念图',
+    detailDescription: '两幅取景不同的原创车铃概念图',
+  },
+}[locale];
+---
+
+<div
+  id={`${prefix}-review-model`}
+  data-review-model
+  class="mt-4 grid gap-4 lg:grid-cols-3"
+>
+  <section
+    data-review-group="environment"
+    class="rounded-xl border border-neutral-300 bg-neutral-50 p-3 dark:border-neutral-600 dark:bg-neutral-950/60"
+  >
+    <h4 class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+      {copy.environment}
+    </h4>
+    <div class="mt-2 grid grid-cols-2 gap-2">
+      {(['a', 'b'] as const).map(variant => (
+        <figure data-review-frame={`environment-${variant}`}>
+          <svg
+            viewBox="0 0 180 120"
+            role="img"
+            aria-label={copy.environmentDescription}
+            class="h-auto w-full rounded-md bg-stone-200"
+          >
+            <rect width="180" height="120" fill="#e7e5e4" />
+            <rect x="10" y="16" width="160" height="72" fill="#d6d3d1" />
+            <rect x="17" y="29" width="146" height="14" fill="#d97706" />
+            <path d="M17 43h146l-8 10H25Z" fill="#fbbf24" />
+            <rect x="26" y="59" width="43" height="29" fill="#44403c" />
+            <rect x="81" y="59" width="65" height="29" fill="#f5f5f4" />
+            <path d="M0 96h180" stroke="#78716c" stroke-width="2" />
+            {variant === 'a' ? (
+              <>
+                <path d="M156 12v96" stroke="#57534e" stroke-width="5" />
+                <circle
+                  cx="113"
+                  cy="99"
+                  r="13"
+                  fill="none"
+                  stroke="#44403c"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="145"
+                  cy="99"
+                  r="13"
+                  fill="none"
+                  stroke="#44403c"
+                  stroke-width="2"
+                />
+                <path
+                  d="m113 99 14-22 9 22h-23l19-14 13 14"
+                  fill="none"
+                  stroke="#44403c"
+                  stroke-width="2"
+                />
+              </>
+            ) : (
+              <>
+                <rect x="151" y="54" width="20" height="34" fill="#a8a29e" />
+                <circle
+                  cx="105"
+                  cy="99"
+                  r="13"
+                  fill="none"
+                  stroke="#44403c"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="137"
+                  cy="99"
+                  r="13"
+                  fill="none"
+                  stroke="#44403c"
+                  stroke-width="2"
+                />
+                <path
+                  d="m105 99 14-22 9 22h-23l19-14 13 14"
+                  fill="none"
+                  stroke="#44403c"
+                  stroke-width="2"
+                />
+              </>
+            )}
+            <text x="8" y="115" font-size="10" font-weight="700" fill="#44403c">
+              {variant === 'a' ? 'A1' : 'A2'}
+            </text>
+          </svg>
+        </figure>
+      ))}
+    </div>
+    <p class="mt-2 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+      {copy.edge}
+    </p>
+  </section>
+
+  <section
+    data-review-group="subject"
+    class="rounded-xl border border-neutral-300 bg-neutral-50 p-3 dark:border-neutral-600 dark:bg-neutral-950/60"
+  >
+    <h4 class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+      {copy.subject}
+    </h4>
+    <div class="mt-2 grid grid-cols-2 gap-2">
+      {(['a', 'b'] as const).map(variant => (
+        <figure data-review-frame={`subject-${variant}`}>
+          <svg
+            viewBox="0 0 180 120"
+            role="img"
+            aria-label={copy.subjectDescription}
+            class="h-auto w-full rounded-md bg-stone-200"
+          >
+            <rect width="180" height="120" fill="#e7e5e4" />
+            <rect x="0" y="12" width="180" height="17" fill="#d97706" />
+            <path d="M0 29h180l-9 10H9Z" fill="#fbbf24" />
+            <path
+              d={variant === 'a' ? 'M132 0v120' : 'M25 0v120'}
+              stroke="#a8a29e"
+              stroke-width="8"
+            />
+            <path d="M0 100h180" stroke="#78716c" stroke-width="2" />
+            <g fill="none" stroke="#44403c" stroke-width="2.5">
+              <circle cx="58" cy="87" r="25" />
+              <circle cx="129" cy="87" r="25" />
+              <path d="m58 87 27-43 21 43H58l37-28 34 28M85 44H66m40 0-7-17h20" />
+            </g>
+            <text x="8" y="115" font-size="10" font-weight="700" fill="#44403c">
+              {variant === 'a' ? 'B1' : 'B2'}
+            </text>
+          </svg>
+        </figure>
+      ))}
+    </div>
+    <p class="mt-2 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+      {copy.alignment}
+    </p>
+  </section>
+
+  <section
+    data-review-group="detail"
+    class="rounded-xl border border-neutral-300 bg-neutral-50 p-3 dark:border-neutral-600 dark:bg-neutral-950/60"
+  >
+    <h4 class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+      {copy.detail}
+    </h4>
+    <div class="mt-2 grid grid-cols-2 gap-2">
+      {(['a', 'b'] as const).map(variant => (
+        <figure data-review-frame={`detail-${variant}`}>
+          <svg
+            viewBox="0 0 180 120"
+            role="img"
+            aria-label={copy.detailDescription}
+            class="h-auto w-full rounded-md bg-stone-200"
+          >
+            <rect width="180" height="120" fill="#d6d3d1" />
+            <path d="M-15 105 195 31" stroke="#d97706" stroke-width="20" />
+            <path d="M-15 98 195 24" stroke="#fbbf24" stroke-width="3" />
+            <circle
+              cx={variant === 'a' ? 91 : 122}
+              cy={variant === 'a' ? 51 : 46}
+              r={variant === 'a' ? 34 : 43}
+              fill="#a8a29e"
+              stroke="#44403c"
+              stroke-width="3"
+            />
+            <path
+              d={
+                variant === 'a'
+                  ? 'M63 47a31 31 0 0 1 55-13'
+                  : 'M88 41a39 39 0 0 1 68-17'
+              }
+              fill="none"
+              stroke="#e7e5e4"
+              stroke-width="4"
+            />
+            <path
+              d="m75 39 12 6m-7 10 15 5m-4 10 8 3m22-44-5 12m18-3-7 9"
+              stroke="#57534e"
+              stroke-width="2"
+            />
+            <text x="8" y="115" font-size="10" font-weight="700" fill="#44403c">
+              {variant === 'a' ? 'C1' : 'C2'}
+            </text>
+          </svg>
+        </figure>
+      ))}
+    </div>
+    <p class="mt-2 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+      {copy.crop}
+    </p>
+  </section>
+</div>
+
+<div class="mt-4 grid gap-3 md:grid-cols-3">
+  {[
+    [copy.group, copy.groupText],
+    [copy.compare, copy.compareText],
+    [copy.next, copy.nextText],
+  ].map(([title, detail]) => (
+    <section class="rounded-xl bg-neutral-100 p-3 dark:bg-neutral-800/60">
+      <h4 class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+        {title}
+      </h4>
+      <p class="mt-1 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+        {detail}
+      </p>
+    </section>
+  ))}
+</div>

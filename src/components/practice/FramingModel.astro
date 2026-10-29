@@ -1,0 +1,114 @@
+---
+import type { PracticeLocale } from '@data/practice';
+
+interface Props {
+  locale: PracticeLocale;
+  prefix: string;
+}
+const { locale, prefix } = Astro.props;
+const copy = {
+  en: {
+    initial: 'Initial framing',
+    shifted: 'Shift sideways and reframe',
+    initialDescription:
+      'A background pole overlaps the subject, and a partial bright shape enters at the right edge. A small tree supplies context.',
+    shiftedDescription:
+      'After a small sideways camera move and reframing, the pole is separated from the subject and the edge shape is excluded. The contextual tree remains.',
+    subject: 'Subject, similar size',
+    pole: 'Background pole',
+    edge: 'Partial edge detail',
+    context: 'Context kept',
+    separated: 'Separated background',
+    concept: 'Two conceptual camera frames',
+  },
+  'zh-cn': {
+    initial: '初始构图',
+    shifted: '侧移后重新构图',
+    initialDescription:
+      '背景竖杆与主体重叠，一个局部亮形状从右边缘进入画面。一棵小树提供环境信息。',
+    shiftedDescription:
+      '相机小幅侧移并重新构图后，竖杆与主体分离，边缘形状被排除，环境小树仍保留。',
+    subject: '主体，大小近似',
+    pole: '背景竖杆',
+    edge: '边缘局部细节',
+    context: '保留的环境',
+    separated: '已分离的背景',
+    concept: '两幅相机画面概念图',
+  },
+}[locale];
+---
+
+<div class="mt-4 grid gap-4 md:grid-cols-2" data-framing-model>
+  <figure class="rounded-xl border border-neutral-300 p-3 dark:border-neutral-600">
+    <figcaption class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+      A · {copy.initial}
+    </figcaption>
+    <svg
+      viewBox="0 0 360 260"
+      role="img"
+      aria-labelledby={`${prefix}-framing-a-title ${prefix}-framing-a-desc`}
+      class="mt-2 h-auto w-full"
+    >
+      <title id={`${prefix}-framing-a-title`}>{copy.initial}</title>
+      <desc id={`${prefix}-framing-a-desc`}>
+        {copy.initialDescription} {copy.concept}.
+      </desc>
+      <rect x="10" y="10" width="340" height="220" rx="4" fill="#f4f1e9" />
+      <rect x="170" y="24" width="17" height="190" fill="#a8a29e" />
+      <circle cx="178" cy="92" r="35" fill="#d97706" />
+      <rect x="150" y="123" width="56" height="73" rx="7" fill="#d97706" />
+      <path d="M58 166 L82 133 L106 166 Z" fill="#65a30d" />
+      <rect x="79" y="166" width="6" height="32" fill="#78716c" />
+      <path d="M334 39 L350 55 L334 71 Z" fill="#eab308" />
+      <text x="34" y="217" font-size="11" fill="#44403c">
+        {copy.context}
+      </text>
+      <text x="210" y="48" font-size="11" fill="#44403c">
+        {copy.pole}
+      </text>
+      <text x="265" y="95" font-size="11" fill="#44403c">
+        {copy.edge}
+      </text>
+    </svg>
+    <p class="text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+      {copy.initialDescription}
+    </p>
+  </figure>
+  <figure class="rounded-xl border border-neutral-300 p-3 dark:border-neutral-600">
+    <figcaption class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+      B · {copy.shifted}
+    </figcaption>
+    <svg
+      viewBox="0 0 360 260"
+      role="img"
+      aria-labelledby={`${prefix}-framing-b-title ${prefix}-framing-b-desc`}
+      class="mt-2 h-auto w-full"
+    >
+      <title id={`${prefix}-framing-b-title`}>{copy.shifted}</title>
+      <desc id={`${prefix}-framing-b-desc`}>
+        {copy.shiftedDescription} {copy.concept}.
+      </desc>
+      <rect x="10" y="10" width="340" height="220" rx="4" fill="#f4f1e9" />
+      <rect x="270" y="24" width="17" height="190" fill="#a8a29e" />
+      <circle cx="165" cy="92" r="35" fill="#d97706" />
+      <rect x="137" y="123" width="56" height="73" rx="7" fill="#d97706" />
+      <path d="M52 166 L76 133 L100 166 Z" fill="#65a30d" />
+      <rect x="73" y="166" width="6" height="32" fill="#78716c" />
+      <text x="29" y="217" font-size="11" fill="#44403c">
+        {copy.context}
+      </text>
+      <text x="224" y="48" font-size="11" fill="#44403c">
+        {copy.separated}
+      </text>
+      <text x="119" y="217" font-size="11" fill="#44403c">
+        {copy.subject}
+      </text>
+    </svg>
+    <p class="text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+      {copy.shiftedDescription}
+    </p>
+  </figure>
+</div>
+<p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+  {copy.concept}
+</p>

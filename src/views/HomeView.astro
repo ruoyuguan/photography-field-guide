@@ -4,6 +4,7 @@ import { getCopy } from '@/copy';
 import { localePath, type MarketingLocale } from '@utils/locale';
 import { directoryCopy } from '@copy/directory';
 import { toolsCopy } from '@copy/tools';
+import { practiceCopy } from '@data/practice';
 
 interface Props {
   locale: MarketingLocale;
@@ -14,6 +15,11 @@ const copy = getCopy(locale).home;
 const labels = getCopy(locale).nav.labels;
 const directory = directoryCopy[locale];
 const destinations = [
+  {
+    path: '/practice/',
+    title: labels.practice,
+    description: practiceCopy[locale].intro,
+  },
   {
     path: '/tools/',
     title: labels.tools,
@@ -66,10 +72,10 @@ const paths: Record<string, string> = {
             {copy.hero.primaryBtn}
           </a>
           <a
-            href={localePath(locale, paths.sensors)}
+            href={localePath(locale, '/practice/')}
             class="rounded-full border border-neutral-400 px-6 py-3 text-sm font-bold text-neutral-800 transition hover:border-amber-500 hover:text-amber-700 dark:border-neutral-600 dark:text-neutral-100 dark:hover:text-amber-300"
           >
-            {copy.hero.secondaryBtn}
+            {labels.practice}
           </a>
         </div>
       </div>

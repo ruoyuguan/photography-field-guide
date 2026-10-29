@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-28T20:34:10.239422+08:00",
+  "canonicalRoot": "/Users/ruoyu/photography-field-guide",
+  "incomingRoot": "/Users/ruoyu/Documents/kimi/tasks/2026-10-28/13-30-24-c1663a01/photography-field-guide",
+  "beforeHead": "c60d475ee1d87518e7a4a4584614b8f7c58f6350",
+  "afterHead": "29983b37a111074bf7b045c3110b4f7dfb789ae2",
+  "beforeStatus": " M scripts/browser-check.mjs\n M scripts/browser-directory-checks.mjs\n M scripts/check-build.mjs\n M scripts/smoke.mjs\n M src/content/cameras/fujifilm-x-t5.json\n M src/content/docs/learn/image-quality/raw-jpeg-exif.mdx\n M src/content/docs/learn/index.mdx\n M src/content/docs/zh-cn/learn/image-quality/raw-jpeg-exif.mdx\n M src/content/docs/zh-cn/learn/index.mdx\n?? src/content/docs/learn/image-quality/film-simulations.mdx\n?? src/content/docs/learn/image-quality/white-balance.mdx\n?? src/content/docs/zh-cn/learn/image-quality/film-simulations.mdx\n?? src/content/docs/zh-cn/learn/image-quality/white-balance.mdx\n?? src/content/glossary/color-temperature.json\n?? src/content/glossary/film-simulation-recipe.json\n?? src/content/glossary/film-simulation.json\n?? src/content/glossary/lut.json\n?? src/content/glossary/white-balance.json\n",
+  "preservedStash": "52b3bbdf14a8a57ea938a4db5763982927867118",
+  "workingTreeDifferencesBeforeSync": ["scripts/browser-check.mjs"],
+  "sourceFilesVerifiedByteForByte": 356,
+  "rawGitBackup": ".git/migration-backups/kimi-git-20261028.tar.gz",
+  "rawGitBackupSha256": "ce33800707d948beb45a4f1a5e206b132f3eba89695bc7aa08562ccfa2717e9d",
+  "relocatedGeneratedShims": 90,
+  "duplicateSourceRetired": true,
+  "retiredOn": "2026-10-29T09:25:55.317972+08:00"
+}

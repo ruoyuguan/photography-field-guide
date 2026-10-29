@@ -1,0 +1,118 @@
+{
+  "scope": "Fresh isolated build, root-relative anchor targets and fragments only; not an external-link or deployment test",
+  "htmlPages": 12,
+  "localAnchorChecks": 212,
+  "brokenLocalAnchors": [
+    {
+      "source": "/404.html",
+      "href": "/404/",
+      "issue": "missing target"
+    },
+    {
+      "source": "/zh-cn/404/",
+      "href": "/404/",
+      "issue": "missing target"
+    }
+  ],
+  "metadataSamples": {
+    "/": {
+      "canonical": ["https://ruoyuguan.github.io/photography-field-guide"],
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://ruoyuguan.github.io/photography-field-guide"
+        },
+        {
+          "hreflang": "zh-CN",
+          "href": "https://ruoyuguan.github.io/photography-field-guide/zh-cn"
+        }
+      ],
+      "ogImage": "https://ruoyuguan.github.io/_astro/social.Cv7MYzLa_ZiJaW3.webp"
+    },
+    "/zh-cn/": {
+      "canonical": [
+        "https://ruoyuguan.github.io/photography-field-guide/zh-cn/"
+      ],
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://ruoyuguan.github.io/photography-field-guide"
+        },
+        {
+          "hreflang": "zh-CN",
+          "href": "https://ruoyuguan.github.io/photography-field-guide/zh-cn"
+        }
+      ],
+      "ogImage": "https://ruoyuguan.github.io/_astro/social.Cv7MYzLa_ZiJaW3.webp"
+    },
+    "/basics/equivalent-focal-length/": {
+      "canonical": [
+        "https://ruoyuguan.github.io/basics/equivalent-focal-length/"
+      ],
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://ruoyuguan.github.io/basics/equivalent-focal-length/"
+        },
+        {
+          "hreflang": "zh-CN",
+          "href": "https://ruoyuguan.github.io/zh-cn/basics/equivalent-focal-length/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://ruoyuguan.github.io/basics/equivalent-focal-length/"
+        }
+      ],
+      "ogImage": "https://ruoyuguan.github.io/photography-field-guide/social.webp"
+    },
+    "/zh-cn/basics/equivalent-focal-length/": {
+      "canonical": [
+        "https://ruoyuguan.github.io/zh-cn/basics/equivalent-focal-length/"
+      ],
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://ruoyuguan.github.io/basics/equivalent-focal-length/"
+        },
+        {
+          "hreflang": "zh-CN",
+          "href": "https://ruoyuguan.github.io/zh-cn/basics/equivalent-focal-length/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://ruoyuguan.github.io/basics/equivalent-focal-length/"
+        }
+      ],
+      "ogImage": "https://ruoyuguan.github.io/photography-field-guide/social.webp"
+    }
+  },
+  "robots": "User-agent: Googlebot\nAllow: /\nCrawl-delay: 10\n\nUser-agent: Yandex\nAllow: /\nCrawl-delay: 2\n\nUser-agent: archive.org_bot\nAllow: /\nCrawl-delay: 2\n\nUser-agent: *\nAllow: /\n\nSitemap: https://ruoyuguan.github.io/sitemap-index.xml",
+  "sitemap": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xmlns:video=\"http://www.google.com/schemas/sitemap-video/1.1\"><url><loc>https://ruoyuguan.github.io/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/\"/></url><url><loc>https://ruoyuguan.github.io/basics/equivalent-focal-length/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/basics/equivalent-focal-length/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/basics/equivalent-focal-length/\"/></url><url><loc>https://ruoyuguan.github.io/basics/exposure-triangle/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/basics/exposure-triangle/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/basics/exposure-triangle/\"/></url><url><loc>https://ruoyuguan.github.io/basics/sensor-formats/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/basics/sensor-formats/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/basics/sensor-formats/\"/></url><url><loc>https://ruoyuguan.github.io/start-here/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/start-here/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/start-here/\"/></url><url><loc>https://ruoyuguan.github.io/zh-cn/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/\"/></url><url><loc>https://ruoyuguan.github.io/zh-cn/basics/equivalent-focal-length/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/basics/equivalent-focal-length/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/basics/equivalent-focal-length/\"/></url><url><loc>https://ruoyuguan.github.io/zh-cn/basics/exposure-triangle/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/basics/exposure-triangle/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/basics/exposure-triangle/\"/></url><url><loc>https://ruoyuguan.github.io/zh-cn/basics/sensor-formats/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/basics/sensor-formats/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/basics/sensor-formats/\"/></url><url><loc>https://ruoyuguan.github.io/zh-cn/start-here/</loc><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ruoyuguan.github.io/start-here/\"/><xhtml:link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://ruoyuguan.github.io/zh-cn/start-here/\"/></url></urlset>",
+  "pagefindEntry": {
+    "version": "1.5.2",
+    "languages": {
+      "en": {
+        "hash": "en_c4426f4f30",
+        "wasm": "en",
+        "page_count": 4
+      },
+      "zh-cn": {
+        "hash": "zh-cn_1a6a60d4fc2b3",
+        "wasm": null,
+        "page_count": 4
+      }
+    },
+    "include_characters": [
+      "_",
+      "‿",
+      "⁀",
+      "⁔",
+      "︳",
+      "︴",
+      "﹍",
+      "﹎",
+      "﹏",
+      "＿"
+    ]
+  }
+}

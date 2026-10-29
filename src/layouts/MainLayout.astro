@@ -57,10 +57,15 @@ const metadata = buildPageMetadata({
   <head>
     <Meta metadata={metadata} />
     <script is:inline>
-      // Script to handle dark mode. It will check if the theme is stored in localStorage or if dark theme is preferred by system settings
+      let storedTheme;
+      try {
+        storedTheme = localStorage.getItem('hs_theme');
+      } catch {
+        /* Storage is optional. */
+      }
       if (
-        localStorage.getItem('hs_theme') === 'dark' ||
-        (!('hs_theme' in localStorage) &&
+        storedTheme === 'dark' ||
+        ((!storedTheme || storedTheme === 'auto') &&
           window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
         document.documentElement.classList.add('dark');

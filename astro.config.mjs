@@ -63,9 +63,19 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'learn/exposure' } }],
         },
         {
-          label: 'Image Files',
-          translations: { 'zh-CN': '图像文件' },
+          label: 'Image Quality & Color',
+          translations: { 'zh-CN': '图像质量与色彩' },
           items: [{ autogenerate: { directory: 'learn/image-quality' } }],
+        },
+        {
+          label: 'Light & Composition',
+          translations: { 'zh-CN': '用光与构图' },
+          items: [{ autogenerate: { directory: 'learn/composition' } }],
+        },
+        {
+          label: 'Field Practice',
+          translations: { 'zh-CN': '实拍练习' },
+          items: [{ autogenerate: { directory: 'learn/field-practice' } }],
         },
       ],
       social: [

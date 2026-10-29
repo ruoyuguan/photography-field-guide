@@ -3,64 +3,92 @@ import ThemeIcon from '@components/ThemeIcon.astro';
 import NavLink from '@components/ui/links/NavLink.astro';
 import BrandLogo from '@components/BrandLogo.astro';
 import LanguagePicker from '@components/ui/LanguagePicker.astro';
-import NavbarToggle from '@components/ui/buttons/NavbarToggle.astro';
-import { navLinks } from '@data/navigation';
+import { navLinks, exploreLinks } from '@data/navigation';
 import { localePath } from '@utils/locale';
-
 const { locale, copy: t } = Astro.locals;
 ---
 
-{/* Main header component */}
-<header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start">
-  {/* Navigation container */}
+<header class="sticky inset-x-0 top-4 z-50 w-full text-sm">
   <nav
-    class="relative mx-2 w-full rounded-[36px] border border-yellow-100/40 bg-yellow-50/60 px-4 py-3 backdrop-blur-md md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto dark:border-neutral-700/40 dark:bg-neutral-800/80 dark:backdrop-blur-md"
-    aria-label="Global"
+    aria-label={locale === 'en' ? 'Main navigation' : '主导航'}
+    class="relative mx-auto flex flex-wrap items-center justify-between gap-2 rounded-3xl border border-yellow-100/40 bg-yellow-50/95 px-4 py-3 backdrop-blur-md md:px-6 dark:border-neutral-700 dark:bg-neutral-900/95"
   >
-    <div class="flex items-center justify-between">
-      {/* Brand logo */}
-      <a
-        class="flex-none rounded-lg text-xl font-bold ring-zinc-500 outline-hidden focus-visible:ring-3 dark:ring-zinc-200 dark:focus:outline-hidden"
-        href={localePath(locale)}
-        aria-label="Photography Field Guide"
-      >
-        <BrandLogo />
-      </a>
-      <NavbarToggle target="navbar-collapse-with-animation" />
-      {/* ThemeIcon component specifically for smaller screens */}
-      <span class="inline-block md:hidden">
-        <ThemeIcon />
-      </span>
-    </div>
-    {/* Contains navigation links */}
-    <div
-      id="navbar-collapse-with-animation"
-      class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block"
+    <a
+      class="rounded-lg text-xl font-bold outline-offset-4 focus-visible:outline-2"
+      href={localePath(locale)}
+      aria-label="Photography Field Guide"
     >
-      {/* Navigation links container */}
-      <div class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 md:gap-y-0 md:ps-7 lg:gap-x-7">
+      <BrandLogo />
+    </a>
+    <details open data-main-menu class="main-menu md:ml-auto">
+      <summary class="cursor-pointer rounded-lg px-3 py-2 font-semibold outline-offset-4 focus-visible:outline-2 md:hidden">
+        {locale === 'en' ? 'Menu' : '菜单'}
+      </summary>
+      <div class="menu-content absolute left-0 right-0 mt-3 flex flex-col gap-3 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 shadow-lg md:static md:mt-0 md:flex-row md:items-center md:gap-5 md:border-0 md:bg-transparent md:p-0 md:shadow-none dark:border-neutral-600 dark:bg-neutral-900 md:dark:bg-transparent">
         {navLinks.map(link => (
           <NavLink
             url={localePath(locale, link.path)}
             name={t.nav.labels[link.id]}
           />
         ))}
-
+        <details class="relative" data-explore-menu>
+          <summary class="cursor-pointer rounded-lg px-1 py-2 text-sm font-medium text-neutral-700 outline-offset-4 focus-visible:outline-2 dark:text-neutral-200">
+            {t.nav.labels.explore}
+          </summary>
+          <div class="mt-2 flex min-w-44 flex-col gap-1 rounded-xl border border-neutral-300 bg-neutral-50 p-3 md:absolute md:right-0 md:z-60 md:shadow-lg dark:border-neutral-600 dark:bg-neutral-900">
+            {exploreLinks.map(link => (
+              <NavLink
+                url={localePath(locale, link.path)}
+                name={t.nav.labels[link.id]}
+              />
+            ))}
+          </div>
+        </details>
         <LanguagePicker />
-        {/* ThemeIcon component specifically for larger screens */}
-        <span class="hidden md:inline-block">
-          <ThemeIcon />
-        </span>
+        <ThemeIcon />
       </div>
-    </div>
+    </details>
   </nav>
 </header>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('[data-main-menu]');
+  const wide = matchMedia('(min-width: 768px)');
+  const sync = () => {
+    if (menu) menu.open = wide.matches;
+  };
+  sync();
+  wide.addEventListener('change', sync);
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    const opened = [
+      ...document.querySelectorAll<HTMLDetailsElement>('header details[open]'),
+    ].reverse();
+    const target = opened.find(item => item !== menu || !wide.matches);
+    if (target) {
+      target.open = false;
+      target.querySelector('summary')?.focus();
+    }
+  });
+</script>
 {/* Theme Appearance script to manage light/dark modes */}
 <script is:inline>
+  let memoryTheme;
+  const readTheme = () => {
+    try {
+      return localStorage.getItem('hs_theme') || memoryTheme || 'default';
+    } catch {
+      return (
+        memoryTheme ||
+        (matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'default')
+      );
+    }
+  };
   const HSThemeAppearance = {
     init() {
       const defaultTheme = 'default';
-      let theme = localStorage.getItem('hs_theme') || defaultTheme;
+      let theme = readTheme();
 
       if (document.querySelector('html').classList.contains('dark')) return;
       this.setAppearance(theme);
@@ -76,7 +104,12 @@ const { locale, copy: t } = Astro.locals;
       const $resetStylesEl = this._resetStylesOnLoad();
 
       if (saveInStore) {
-        localStorage.setItem('hs_theme', theme);
+        memoryTheme = theme;
+        try {
+          localStorage.setItem('hs_theme', theme);
+        } catch {
+          /* Theme still works for this visit. */
+        }
       }
 
       if (theme === 'auto') {
@@ -114,7 +147,7 @@ const { locale, copy: t } = Astro.locals;
     },
     getOriginalAppearance() {
       const defaultTheme = 'default';
-      return localStorage.getItem('hs_theme') || defaultTheme;
+      return readTheme();
     },
   };
   HSThemeAppearance.init();

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-29T09:25:55.317972+08:00",
+  "canonicalRoot": "/Users/ruoyu/photography-field-guide",
+  "removedDirectories": [
+    {
+      "path": "/Users/ruoyu/Documents/kimi/tasks/2026-10-28/13-30-24-c1663a01/photography-field-guide",
+      "logicalBytes": 337758236
+    },
+    {
+      "path": "/private/tmp/pfg-audit-20261028.1sIoJU",
+      "logicalBytes": 330449671
+    },
+    {
+      "path": "/private/tmp/pfg-ux-20261028.0cW50W",
+      "logicalBytes": 56581
+    },
+    {
+      "path": "/private/tmp/pfg-maintenance-20261028",
+      "logicalBytes": 16473
+    }
+  ],
+  "preservedIgnoredSourceFiles": [],
+  "preservedStash": "52b3bbdf14a8a57ea938a4db5763982927867118",
+  "rawGitBackup": ".git/migration-backups/kimi-git-20261028.tar.gz",
+  "draftBackup": ".git/migration-backups/maintenance-drafts-20261029.tar.gz",
+  "screenshots": "docs/maintenance/2026-10-29-evidence/",
+  "note": "Logical byte counts do not claim exact APFS physical space reclaimed."
+}

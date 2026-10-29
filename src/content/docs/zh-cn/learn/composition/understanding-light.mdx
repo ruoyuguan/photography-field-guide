@@ -1,0 +1,169 @@
+---
+title: 看懂光线：方向、软硬与反差
+description: 观察哪些表面受光、阴影边缘如何形成，以及为什么反差不等同于硬光。
+translationKey: understanding-light
+category: composition
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [what-is-photography, digital-camera-works]
+relatedConcepts: [exposure, white-balance, depth-of-field]
+relatedTools: []
+lastReviewed: '2026-10-29'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm'
+    title: 'Introduction to Portrait Lighting — Cambridge in Colour'
+    locator: 'Overview: One Light Source; Size: Hard vs. Soft Light; Distance & Apparent Light Size; Direction: Sense of Depth'
+    accessedOn: '2026-10-29'
+    supports: '方向改变受光与阴影的位置；表观光源大小影响阴影和高光过渡；移近光源会同时改变表观大小与照明。'
+sidebar:
+  order: 1
+head:
+  - tag: meta
+    attrs:
+      data-pagefind-meta: search_aliases[content]
+      content: 光线 方向 侧光 正面光 硬光 软光 反差
+---
+
+台灯已经照亮书桌。为什么只是把它挪动一小段距离，照片就会明显变化，即使你完全没有调整相机？
+
+<strong>简短回答：</strong>
+光线方向决定哪些表面接收直射光、阴影投向哪里；软硬描述阴影与高光边缘的过渡，主要受光源相对主体的表观大小影响；反差则是画面中较亮与较暗区域的关系，还受补光、主体、曝光与呈现方式影响。三者有关，但不能混为一谈。
+
+## 先观察三件事
+
+拿起光圈或 ISO 之前，先问：
+
+1. <strong>方向：</strong>从相机位置看，哪些可见表面朝向主光？
+2. <strong>软硬：</strong>阴影边缘是突然还是逐渐过渡？
+3. <strong>反差：</strong>重要的亮部与暗部相差多少？是否还有其他光在填充阴影？
+
+不存在普遍最好的方向或软硬。清楚记录物体与营造强烈氛围，可能需要不同用光。
+
+## 方向：什么表面朝向光？
+
+方向是**光源、主体与相机之间的关系**，不是永远贴在灯具上的标签。即使台灯不动，移动相机也会改变这种关系。
+
+只有一个主导光源、相机固定时：
+
+- **正面光**大致来自相机方向。许多朝向相机的表面被照亮，投影延伸到主体后方，相机可能不太容易看见。
+- **侧光**来自一侧。朝向光源的表面接收更多直射光，投影大致背向光源。主体上的明暗变化可以呈现形状与纹理。
+- **逆光**从主体相对相机的后方到来。朝向相机的表面可能很少接收直射光，轮廓或半透明部分则可能更突出。实际结果仍取决于补光、曝光和主体。
+
+<svg viewBox="0 0 760 310" role="img" aria-label="正面光与画面左侧光的俯视概念对照，物体和相机固定" style="max-width:100%;height:auto;background:#171717;border-radius:16px">
+  <g font-size="15">
+    <text x="28" y="34" fill="#fbbf24" font-weight="700">A · 正面光</text>
+    <rect x="116" y="51" width="92" height="30" rx="6" fill="#fbbf24" />
+    <text x="162" y="71" text-anchor="middle" fill="#422006">同一盏灯</text>
+    <path d="M142 84 L153 111 M182 84 L171 111" stroke="#d97706" stroke-width="3" />
+    <ellipse cx="162" cy="169" rx="31" ry="20" fill="#78716c" opacity="0.5" />
+    <circle cx="162" cy="135" r="27" fill="#e7e5e4" stroke="#a8a29e" />
+    <text x="162" y="140" text-anchor="middle" fill="#292524">物体</text>
+    <rect x="140" y="229" width="44" height="22" rx="4" fill="#e7e5e4" />
+    <path d="M151 229 L162 214 L173 229 Z" fill="#e7e5e4" />
+    <text x="195" y="246" fill="#d4d4d4">固定相机</text>
+    <text x="70" y="282" fill="#a3a3a3">投影延伸到物体后方</text>
+
+    <text x="406" y="34" fill="#fbbf24" font-weight="700">B · 来自画面左侧的光</text>
+    <rect x="397" y="118" width="92" height="30" rx="6" fill="#fbbf24" />
+    <text x="443" y="138" text-anchor="middle" fill="#422006">同一盏灯</text>
+    <path d="M493 127 L523 132 M493 140 L523 139" stroke="#d97706" stroke-width="3" />
+    <ellipse cx="603" cy="135" rx="43" ry="20" fill="#78716c" opacity="0.5" />
+    <circle cx="550" cy="135" r="27" fill="#e7e5e4" stroke="#a8a29e" />
+    <path d="M550 108 A27 27 0 0 0 550 162 Z" fill="#fbbf24" opacity="0.65" />
+    <text x="550" y="140" text-anchor="middle" fill="#292524">物体</text>
+    <rect x="528" y="229" width="44" height="22" rx="4" fill="#e7e5e4" />
+    <path d="M539 229 L550 214 L561 229 Z" fill="#e7e5e4" />
+    <text x="583" y="246" fill="#d4d4d4">固定相机</text>
+    <text x="523" y="184" fill="#a3a3a3">投影 →</text>
+    <text x="28" y="303" fill="#a3a3a3">仅为概念模型：灯距近似、曝光固定；不是实测光照模拟。</text>
+
+  </g>
+</svg>
+
+“阴影背向光源”是有用的几何起点，但不意味着每个阴影都全黑或边缘锐利。墙面、房间和其他光源会补充光线，相机也无法展示被遮挡在其视角之外的表面。
+
+## 硬与软：观察边缘
+
+表观较小的光源，往往让直射光与阴影之间的过渡更突然。表观较大的光源从更宽的角度范围照亮主体，过渡更平缓。摄影中通常把前者称为**硬光**，后者称为**柔光或软光**。
+
+<svg
+  viewBox="0 0 760 220"
+  role="img"
+  aria-label="突然阴影边缘与逐渐阴影边缘的概念比较"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <defs>
+    <linearGradient id="soft-shadow" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f4f1e9" />
+      <stop offset="100%" stop-color="#383838" />
+    </linearGradient>
+  </defs>
+  <text x="30" y="34" fill="#fbbf24" font-size="16" font-weight="700">
+    较硬的边缘
+  </text>
+  <rect x="30" y="56" width="300" height="80" fill="#f4f1e9" />
+  <rect x="180" y="56" width="150" height="80" fill="#383838" />
+  <text x="30" y="164" fill="#d4d4d4" font-size="14">
+    突然过渡
+  </text>
+  <text x="407" y="34" fill="#fbbf24" font-size="16" font-weight="700">
+    较软的边缘
+  </text>
+  <rect x="407" y="56" width="300" height="80" fill="url(#soft-shadow)" />
+  <text x="407" y="164" fill="#d4d4d4" font-size="14">
+    逐渐过渡
+  </text>
+  <text x="30" y="204" fill="#a3a3a3" font-size="13">
+    仅为边缘示意，不是照片或实测亮度曲线。
+  </text>
+</svg>
+
+关键是光源**相对主体的表观大小**，而不是灯具的物理尺寸或亮度本身。太阳实际上非常大，但从地球看去张角很小，所以直射阳光常产生硬阴影。把同一盏灯移近会增大其表观大小，却也会改变照明强度和衰减。因此，不能移近台灯后宣称只有软硬改变了。
+
+柔光与反射可以让光从更宽的有效区域到达主体，但也可能减少可用光并改变其他条件。自制柔光材料还可能带来高温和火灾风险；应使用适合该灯具的专用附件，不要随意覆盖发热灯具。
+
+## 反差不是硬光的同义词
+
+反差关注画面较亮与较暗部分之间的关系。硬光可以造成突然的边缘，但阴影区域究竟有多暗，还取决于房间反射光、第二个光源、主体反射率、曝光与输出处理。柔光不保证低反差，硬光也不意味着每个阴影都必须是黑色。
+
+由此可以把问题分开：
+
+- “这个边缘过渡有多缓？”——软硬问题。
+- “这个重要区域比那个区域暗多少？”——反差问题。
+
+只看直方图或调整亮度，无法单独判断台灯方向。还要观察表面、遮挡和实际场景。
+
+## 控制变量的两张照片实验
+
+使用马克杯或其他安全的小物体，在较暗房间里准备一盏可移动的台灯。这是建议的实验，不是本站提供的实拍样片。
+
+1. 固定物体、机位、变焦、对焦和构图。设置安全且可重复的曝光；两张之间不要改变光圈、快门时间、ISO 或曝光补偿。
+2. 把台灯放在相机轴线附近，可行时略高于物体。拍摄第一张。
+3. 只把台灯以近似距离移到画面左侧，用相同设置拍摄第二张。
+4. 比较可见表面与投影方向，再检查环境光、灯距、曝光或构图是否在不经意间发生了变化。
+
+使用手机时，如果支持，可锁定曝光与对焦。如果设备自动改变了曝光，就记录这个限制，不要宣称完成了完美控制。可重复的曝光模式在这里很有帮助；更高 ISO、不同白平衡或更浅景深都不能解释方向效应。
+
+## 常见误区
+
+- <strong>“侧光总是更好。”</strong>
+  它可以呈现形状与纹理，但是否服务照片取决于主体与意图。
+- <strong>“灯越亮，光越硬。”</strong>亮度与表观光源大小是不同属性。
+- <strong>“柔光没有阴影。”</strong>它通常改变过渡，并不会取消遮挡规律。
+- <strong>“阴影很暗就证明是硬光。”</strong>
+  阴影深浅还受补光、曝光、材质与呈现影响。
+- <strong>“曝光补偿能改变光线方向。”</strong>
+  它通过当前可用的曝光控制改变相机的亮度目标，不改变照明几何关系。
+
+## 开始任务
+
+打开<strong>[光线侦探](../../../practice/light-direction/)</strong>。先预测，再比较方向模型，拍摄两张控制变量的照片，并标记自己的观察。任务不会保存照片或文字反思。
+
+## 继续学习
+
+继续阅读[主体与背景](../subject-and-background/)，通过视点与环境组织完整画面。复习[曝光档位](../../exposure/exposure-stops/)，理解独立的亮度计算；复习[白平衡](../../image-quality/white-balance/)，理解色彩呈现。它们都不能代替对照明方向的观察。
+
+## 资料来源
+
+- [Cambridge in Colour：人像用光入门（英文）](https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm)，章节“Overview: One Light Source”“Size: Hard vs. Soft Light”“Distance & Apparent Light Size”“Direction: Sense of Depth”。访问日期：2026-10-29。

@@ -1,0 +1,30 @@
+
+> photography-field-guide@0.0.1 test:unit /Users/ruoyu/photography-field-guide
+> node --test tests/photography/*.test.ts
+
+✔ identical sensor dimensions produce a crop factor of 1 (0.419667ms)
+✔ nominal APS-C 16 mm is approximately 24 mm equivalent (0.073584ms)
+✔ real sensor dimensions differ from the nominal 1.5 shortcut (0.075375ms)
+✔ diagonal equivalence does not guarantee both axes with different aspect ratios (0.087667ms)
+✔ distant field width keeps every length in the same unit (0.061708ms)
+✔ restricted fractions are parsed without evaluating expressions (0.283416ms)
+✔ invalid and extreme inputs return field errors instead of results (0.155208ms)
+✔ legal input boundaries remain finite (0.41925ms)
+✔ f/2.8 to f/4 is approximately minus one stop of sensor exposure (0.417416ms)
+✔ doubling shutter time adds one stop of sensor exposure (0.073292ms)
+✔ doubling only ISO leaves sensor exposure unchanged and adds nominal output (0.06075ms)
+✔ aperture, shutter and ISO contributions combine independently (0.059125ms)
+✔ zero, negative, non-finite and out-of-range values return field errors (0.0945ms)
+✔ all supported exposure boundaries produce finite comparisons (0.051917ms)
+✔ signed formats positive, negative, and zero values consistently (0.338791ms)
+✔ signed never displays a rounded negative zero (0.056ms)
+✔ shutter display round-trips seconds without rounding to a different exposure (0.317583ms)
+✔ repeated one-third-stop shutter changes keep progressing through sub-second times (0.152333ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.030042

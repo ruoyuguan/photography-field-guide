@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import { publicToolIds } from '@data/tool-registry';
+import { missions } from '@data/practice';
 
 /** Cross-entity rules that Zod schemas cannot enforce on their own. */
 async function runContentValidation(): Promise<void> {
@@ -94,6 +95,72 @@ async function runContentValidation(): Promise<void> {
     visited.add(key);
   };
   for (const key of articleKeys) visit(key, []);
+
+  const missionIds = new Set(missions.map(mission => mission.id));
+  if (missionIds.size !== missions.length)
+    fail('practice', 'Mission IDs must be unique.');
+  for (const mission of missions) {
+    const where = `practice/${mission.id}`;
+    if (!Number.isInteger(mission.version) || mission.version < 1)
+      fail(where, 'Mission version must be a positive integer.');
+    if (mission.nextId && !missionIds.has(mission.nextId))
+      fail(where, 'Next mission must exist.');
+    if (
+      !mission.articlePath.startsWith('/learn/') ||
+      !mission.articlePath.endsWith('/')
+    )
+      fail(where, 'Related lesson must be a logical Learn route.');
+    const route = mission.articlePath.replace(/^\/|\/$/g, '');
+    for (const locale of ['en', 'zh-cn'] as const) {
+      const id = locale === 'en' ? route : `${locale}/${route}`;
+      if (
+        !docs.some(
+          entry =>
+            entry.id === id &&
+            entry.data.reviewStatus === 'published' &&
+            !entry.data.draft
+        )
+      )
+        fail(where, `Missing published ${locale} lesson: ${id}.`);
+      const text = mission.copy[locale];
+      const choices = text.prediction.choices.map(choice => choice.id);
+      const checks = text.reflection.checks.map(check => check.id);
+      if (
+        new Set(choices).size !== choices.length ||
+        !choices.includes(text.prediction.correctChoiceId)
+      )
+        fail(where, `Invalid ${locale} answer IDs.`);
+      if (
+        new Set(checks).size !== checks.length ||
+        checks.length < 1 ||
+        checks.length > 3
+      )
+        fail(where, `Invalid ${locale} reflection checks.`);
+      if (
+        text.observation.steps.length < 1 ||
+        text.observation.steps.length > 3
+      )
+        fail(where, 'Keep the field task to one to three actions.');
+      if (locale === 'zh-cn') {
+        if (
+          JSON.stringify(choices) !==
+            JSON.stringify(
+              mission.copy.en.prediction.choices.map(choice => choice.id)
+            ) ||
+          JSON.stringify(checks) !==
+            JSON.stringify(
+              mission.copy.en.reflection.checks.map(check => check.id)
+            ) ||
+          text.prediction.correctChoiceId !==
+            mission.copy.en.prediction.correctChoiceId
+        )
+          fail(
+            where,
+            'Stable choice/check IDs and the objective answer must match across languages.'
+          );
+      }
+    }
+  }
 
   const checkEntity = (
     collection: string,

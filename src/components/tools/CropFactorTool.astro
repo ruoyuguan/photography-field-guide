@@ -25,115 +25,121 @@ const dimension = limits.sensorDimensionMm;
   >
     {t.interactiveTitle}
   </h2>
-  <div data-interactive hidden class="mt-6">
+  <div data-interactive hidden class="mt-4">
     <form
       data-tool-form
-      class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+      class="grid items-start gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
     >
-      <div class="space-y-6 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
-        <fieldset>
-          <legend class="text-base font-bold text-neutral-900 dark:text-neutral-100">
-            {t.referenceHeading}
-          </legend>
-          <label
-            for={`${instanceId}-reference-preset`}
-            class="mt-4 block text-sm font-semibold text-neutral-800 dark:text-neutral-200"
-          >
-            {t.preset}
-          </label>
-          <select
-            id={`${instanceId}-reference-preset`}
-            data-preset-for="reference"
-            class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
-          >
-            <option value="fullFrame">{t.presets.fullFrame}</option>
-            <option value="fujifilmApsC">{t.presets.fujifilmApsC}</option>
-            <option value="custom">{t.presets.custom}</option>
-          </select>
-          <div class="mt-4 grid gap-5 sm:grid-cols-2">
-            <NumberField
-              idPrefix={instanceId}
-              name="referenceWidth"
-              label={t.width}
-              value="36"
-              min={dimension.min}
-              max={dimension.max}
-              rangeValue={36}
-              rangeMin={dimension.min}
-              rangeMax={dimension.max}
-              rangeStep={0.1}
-              unit={common.millimeters}
-              customPreset="reference"
-            />
-            <NumberField
-              idPrefix={instanceId}
-              name="referenceHeight"
-              label={t.height}
-              value="24"
-              min={dimension.min}
-              max={dimension.max}
-              rangeValue={24}
-              rangeMin={dimension.min}
-              rangeMax={dimension.max}
-              rangeStep={0.1}
-              unit={common.millimeters}
-              customPreset="reference"
-            />
-          </div>
-        </fieldset>
+      <div class="space-y-4 rounded-2xl border border-neutral-300 bg-neutral-50 p-4 dark:border-neutral-700 dark:bg-neutral-900/60">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <fieldset>
+            <legend class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+              {t.referenceHeading}
+            </legend>
+            <label for={`${instanceId}-reference-preset`} class="sr-only">
+              {t.preset}
+            </label>
+            <select
+              id={`${instanceId}-reference-preset`}
+              data-preset-for="reference"
+              class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
+            >
+              <option value="fullFrame">{t.presets.fullFrame}</option>
+              <option value="fujifilmApsC">{t.presets.fujifilmApsC}</option>
+              <option value="custom">{t.presets.custom}</option>
+            </select>
+            <details class="mt-3" data-dimension-settings>
+              <summary class="cursor-pointer text-xs font-semibold text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-400">
+                {common.dimensions}
+              </summary>
+              <div class="mt-4 grid gap-5 sm:grid-cols-2">
+                <NumberField
+                  idPrefix={instanceId}
+                  name="referenceWidth"
+                  label={t.width}
+                  value="36"
+                  min={dimension.min}
+                  max={dimension.max}
+                  rangeValue={36}
+                  rangeMin={dimension.min}
+                  rangeMax={dimension.max}
+                  rangeStep={0.1}
+                  unit={common.millimeters}
+                  customPreset="reference"
+                />
+                <NumberField
+                  idPrefix={instanceId}
+                  name="referenceHeight"
+                  label={t.height}
+                  value="24"
+                  min={dimension.min}
+                  max={dimension.max}
+                  rangeValue={24}
+                  rangeMin={dimension.min}
+                  rangeMax={dimension.max}
+                  rangeStep={0.1}
+                  unit={common.millimeters}
+                  customPreset="reference"
+                />
+              </div>
+            </details>
+          </fieldset>
 
-        <fieldset>
-          <legend class="text-base font-bold text-neutral-900 dark:text-neutral-100">
-            {t.targetHeading}
-          </legend>
-          <label
-            for={`${instanceId}-target-preset`}
-            class="mt-4 block text-sm font-semibold text-neutral-800 dark:text-neutral-200"
-          >
-            {t.preset}
-          </label>
-          <select
-            id={`${instanceId}-target-preset`}
-            data-preset-for="target"
-            class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
-          >
-            <option value="fullFrame">{t.presets.fullFrame}</option>
-            <option value="fujifilmApsC" selected>
-              {t.presets.fujifilmApsC}
-            </option>
-            <option value="custom">{t.presets.custom}</option>
-          </select>
-          <div class="mt-4 grid gap-5 sm:grid-cols-2">
-            <NumberField
-              idPrefix={instanceId}
-              name="targetWidth"
-              label={t.width}
-              value="23.5"
-              min={dimension.min}
-              max={dimension.max}
-              rangeValue={23.5}
-              rangeMin={dimension.min}
-              rangeMax={dimension.max}
-              rangeStep={0.1}
-              unit={common.millimeters}
-              customPreset="target"
-            />
-            <NumberField
-              idPrefix={instanceId}
-              name="targetHeight"
-              label={t.height}
-              value="15.6"
-              min={dimension.min}
-              max={dimension.max}
-              rangeValue={15.6}
-              rangeMin={dimension.min}
-              rangeMax={dimension.max}
-              rangeStep={0.1}
-              unit={common.millimeters}
-              customPreset="target"
-            />
-          </div>
-        </fieldset>
+          <fieldset>
+            <legend class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+              {t.targetHeading}
+            </legend>
+            <label for={`${instanceId}-target-preset`} class="sr-only">
+              {t.preset}
+            </label>
+            <select
+              id={`${instanceId}-target-preset`}
+              data-preset-for="target"
+              class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
+            >
+              <option value="fullFrame">{t.presets.fullFrame}</option>
+              <option value="fujifilmApsC" selected>
+                {t.presets.fujifilmApsC}
+              </option>
+              <option value="custom">{t.presets.custom}</option>
+            </select>
+            <details class="mt-3" data-dimension-settings>
+              <summary class="cursor-pointer text-xs font-semibold text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-400">
+                {common.dimensions}
+              </summary>
+              <div class="mt-4 grid gap-5 sm:grid-cols-2">
+                <NumberField
+                  idPrefix={instanceId}
+                  name="targetWidth"
+                  label={t.width}
+                  value="23.5"
+                  min={dimension.min}
+                  max={dimension.max}
+                  rangeValue={23.5}
+                  rangeMin={dimension.min}
+                  rangeMax={dimension.max}
+                  rangeStep={0.1}
+                  unit={common.millimeters}
+                  customPreset="target"
+                />
+                <NumberField
+                  idPrefix={instanceId}
+                  name="targetHeight"
+                  label={t.height}
+                  value="15.6"
+                  min={dimension.min}
+                  max={dimension.max}
+                  rangeValue={15.6}
+                  rangeMin={dimension.min}
+                  rangeMax={dimension.max}
+                  rangeStep={0.1}
+                  unit={common.millimeters}
+                  customPreset="target"
+                />
+              </div>
+            </details>
+          </fieldset>
+        </div>
 
         <NumberField
           idPrefix={instanceId}
@@ -148,36 +154,43 @@ const dimension = limits.sensorDimensionMm;
           rangeStep={0.1}
           unit={common.millimeters}
         />
-        <NumberField
-          idPrefix={instanceId}
-          name="distance"
-          label={t.distance}
-          value="2"
-          min={limits.distanceM.min}
-          max={limits.distanceM.max}
-          rangeValue={2}
-          rangeMin={limits.distanceM.min}
-          rangeMax={limits.distanceM.max}
-          rangeStep={0.1}
-          unit={common.meters}
-        />
-        <div>
-          <label
-            for={`${instanceId}-axis`}
-            class="block text-sm font-semibold text-neutral-800 dark:text-neutral-200"
-          >
-            {t.axis}
-          </label>
-          <select
-            id={`${instanceId}-axis`}
-            data-axis
-            class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
-          >
-            <option value="horizontal">{t.axes.horizontal}</option>
-            <option value="vertical">{t.axes.vertical}</option>
-            <option value="diagonal">{t.axes.diagonal}</option>
-          </select>
-        </div>
+        <details class="rounded-xl border border-neutral-200 p-3 dark:border-neutral-700">
+          <summary class="cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+            {common.advanced}
+          </summary>
+          <div class="mt-4 space-y-4">
+            <NumberField
+              idPrefix={instanceId}
+              name="distance"
+              label={t.distance}
+              value="2"
+              min={limits.distanceM.min}
+              max={limits.distanceM.max}
+              rangeValue={2}
+              rangeMin={limits.distanceM.min}
+              rangeMax={limits.distanceM.max}
+              rangeStep={0.1}
+              unit={common.meters}
+            />
+            <div>
+              <label
+                for={`${instanceId}-axis`}
+                class="block text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+              >
+                {t.axis}
+              </label>
+              <select
+                id={`${instanceId}-axis`}
+                data-axis
+                class="mt-2 w-full rounded-lg border-neutral-300 bg-white px-3 py-2.5 text-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100"
+              >
+                <option value="horizontal">{t.axes.horizontal}</option>
+                <option value="vertical">{t.axes.vertical}</option>
+                <option value="diagonal">{t.axes.diagonal}</option>
+              </select>
+            </div>
+          </div>
+        </details>
         <button
           type="button"
           data-reset
@@ -196,194 +209,209 @@ const dimension = limits.sensorDimensionMm;
       <div
         data-results
         hidden
-        class="min-w-0 space-y-5"
+        class="min-w-0 space-y-4 lg:sticky lg:top-24"
         aria-live="polite"
         aria-atomic="true"
       >
-        <div class="rounded-2xl bg-neutral-900 p-6 text-white dark:bg-neutral-950">
+        <div class="rounded-2xl bg-neutral-900 p-5 text-white dark:bg-neutral-950">
           <h3 class="text-sm font-semibold text-neutral-300">{t.results}</h3>
-          <p class="mt-4 text-sm text-neutral-300">{t.equivalent}</p>
+          <p class="mt-3 text-sm text-neutral-300">{t.equivalent}</p>
           <p class="mt-1 text-4xl font-bold tracking-tight">
             <span data-result="equivalent"></span>{' '}
             <span class="text-xl font-medium">{common.millimeters}</span>
           </p>
-          <dl class="mt-6 grid gap-4 sm:grid-cols-2">
+          <dl class="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
               <dt class="text-xs text-neutral-400">{t.cropFactor}</dt>
               <dd class="mt-1 text-lg font-semibold">
                 <span data-result="crop-factor"></span>×
               </dd>
             </div>
+          </dl>
+        </div>
+        <div data-results-visual hidden>
+          <figure class="min-w-0 rounded-2xl border border-neutral-300 bg-white p-4 text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-300">
+            <figcaption class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+              {t.sensorDiagram}
+            </figcaption>
+            <svg
+              data-sensor-visual
+              viewBox="0 0 360 290"
+              role="img"
+              aria-labelledby={`${instanceId}-sensor-title ${instanceId}-sensor-desc`}
+              class="mt-2 h-auto max-h-56 w-full"
+            >
+              <title id={`${instanceId}-sensor-title`}>{t.sensorDiagram}</title>
+              <desc id={`${instanceId}-sensor-desc`}>
+                {t.sensorDiagramDescription}
+              </desc>
+              <rect
+                data-reference-sensor
+                x="30"
+                y="40"
+                width="300"
+                height="200"
+                fill="none"
+                stroke="#78716c"
+                stroke-width="2"
+              />
+              <rect
+                data-target-sensor
+                x="62.5"
+                y="70"
+                width="235"
+                height="156"
+                fill="rgba(245,158,11,0.12)"
+                stroke="#d97706"
+                stroke-width="2"
+                stroke-dasharray="6 4"
+              />
+              <text
+                data-reference-label
+                x="180"
+                y="258"
+                text-anchor="middle"
+                fill="currentColor"
+                font-size="12"
+              >
+                {t.referenceLegend}
+              </text>
+              <text
+                data-target-label
+                x="180"
+                y="278"
+                text-anchor="middle"
+                fill="currentColor"
+                font-size="12"
+              >
+                {t.targetLegend}
+              </text>
+            </svg>
+          </figure>
+        </div>
+        <details class="rounded-2xl border border-neutral-300 bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900/60">
+          <summary class="cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+            {common.moreResults}
+          </summary>
+          <dl class="mt-4">
             <div>
-              <dt class="text-xs text-neutral-400">{t.nominal}</dt>
-              <dd class="mt-1 text-lg font-semibold">
+              <dt class="text-xs text-neutral-600 dark:text-neutral-400">
+                {t.nominal}
+              </dt>
+              <dd class="mt-1 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                 <span data-result="nominal-equivalent"></span>{' '}
                 {common.millimeters}
               </dd>
             </div>
           </dl>
-          <p class="mt-4 text-xs leading-5 text-neutral-400">{t.nominalNote}</p>
-        </div>
-        <dl class="grid gap-3 rounded-2xl border border-neutral-300 bg-white p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
-          <div class="flex flex-wrap justify-between gap-2">
-            <dt class="text-sm text-neutral-600 dark:text-neutral-400">
-              {t.angleHorizontal}
-            </dt>
-            <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
-              <span data-result="horizontal-angle"></span>
-              {common.degrees}
-            </dd>
+          <p class="mt-2 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+            {t.nominalNote}
+          </p>
+          <dl class="grid gap-3 rounded-2xl border border-neutral-300 bg-white p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+            <div class="flex flex-wrap justify-between gap-2">
+              <dt class="text-sm text-neutral-600 dark:text-neutral-400">
+                {t.angleHorizontal}
+              </dt>
+              <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
+                <span data-result="horizontal-angle"></span>
+                {common.degrees}
+              </dd>
+            </div>
+            <div class="flex flex-wrap justify-between gap-2">
+              <dt class="text-sm text-neutral-600 dark:text-neutral-400">
+                {t.angleVertical}
+              </dt>
+              <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
+                <span data-result="vertical-angle"></span>
+                {common.degrees}
+              </dd>
+            </div>
+            <div class="flex flex-wrap justify-between gap-2">
+              <dt class="text-sm text-neutral-600 dark:text-neutral-400">
+                {t.angleDiagonal}
+              </dt>
+              <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
+                <span data-result="diagonal-angle"></span>
+                {common.degrees}
+              </dd>
+            </div>
+            <div class="flex flex-wrap justify-between gap-2 border-t border-neutral-200 pt-3 dark:border-neutral-700">
+              <dt class="text-sm text-neutral-600 dark:text-neutral-400">
+                {t.fieldWidth}
+              </dt>
+              <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
+                <span data-result="field-width"></span> {common.meters}
+              </dd>
+            </div>
+          </dl>
+          <div class="space-y-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+            <p>{t.physical}</p>
+            <p>{t.aspect}</p>
           </div>
-          <div class="flex flex-wrap justify-between gap-2">
-            <dt class="text-sm text-neutral-600 dark:text-neutral-400">
-              {t.angleVertical}
-            </dt>
-            <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
-              <span data-result="vertical-angle"></span>
-              {common.degrees}
-            </dd>
-          </div>
-          <div class="flex flex-wrap justify-between gap-2">
-            <dt class="text-sm text-neutral-600 dark:text-neutral-400">
-              {t.angleDiagonal}
-            </dt>
-            <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
-              <span data-result="diagonal-angle"></span>
-              {common.degrees}
-            </dd>
-          </div>
-          <div class="flex flex-wrap justify-between gap-2 border-t border-neutral-200 pt-3 dark:border-neutral-700">
-            <dt class="text-sm text-neutral-600 dark:text-neutral-400">
-              {t.fieldWidth}
-            </dt>
-            <dd class="font-semibold text-neutral-900 dark:text-neutral-100">
-              <span data-result="field-width"></span> {common.meters}
-            </dd>
-          </div>
-        </dl>
-        <div class="space-y-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-          <p>{t.physical}</p>
-          <p>{t.aspect}</p>
-        </div>
+        </details>
       </div>
     </form>
 
-    <div data-results-visual hidden class="mt-8 grid gap-6 lg:grid-cols-2">
-      <figure class="min-w-0 rounded-2xl border border-neutral-300 bg-white p-4 text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-300">
-        <figcaption class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-          {t.sensorDiagram}
-        </figcaption>
-        <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
-          {t.sensorDiagramDescription}
-        </p>
-        <svg
-          data-sensor-visual
-          viewBox="0 0 360 290"
-          role="img"
-          aria-labelledby={`${instanceId}-sensor-title ${instanceId}-sensor-desc`}
-          class="mt-3 h-auto w-full"
-        >
-          <title id={`${instanceId}-sensor-title`}>{t.sensorDiagram}</title>
-          <desc id={`${instanceId}-sensor-desc`}>
-            {t.sensorDiagramDescription}
-          </desc>
-          <rect
-            data-reference-sensor
-            x="30"
-            y="40"
-            width="300"
-            height="200"
-            fill="none"
-            stroke="#78716c"
-            stroke-width="2"
-          />
-          <rect
-            data-target-sensor
-            x="62.5"
-            y="70"
-            width="235"
-            height="156"
-            fill="rgba(245,158,11,0.12)"
-            stroke="#d97706"
-            stroke-width="2"
-            stroke-dasharray="6 4"
-          />
-          <text
-            data-reference-label
-            x="180"
-            y="258"
-            text-anchor="middle"
-            fill="currentColor"
-            font-size="12"
-          >
-            {t.referenceLegend}
-          </text>
-          <text
-            data-target-label
-            x="180"
-            y="278"
-            text-anchor="middle"
-            fill="currentColor"
-            font-size="12"
-          >
-            {t.targetLegend}
-          </text>
-        </svg>
-      </figure>
-      <figure class="min-w-0 rounded-2xl border border-neutral-300 bg-white p-4 text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-300">
-        <figcaption class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+    <div data-results-visual hidden class="mt-5">
+      <details class="rounded-2xl border border-neutral-300 bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900/60">
+        <summary class="cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
           {t.angleDiagram}
-        </figcaption>
-        <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
-          {t.angleDiagramDescription}
-        </p>
-        <svg
-          data-angle-visual
-          viewBox="0 0 420 280"
-          role="img"
-          aria-labelledby={`${instanceId}-angle-title ${instanceId}-angle-desc`}
-          class="mt-3 h-auto w-full"
-        >
-          <title id={`${instanceId}-angle-title`}>{t.angleDiagram}</title>
-          <desc id={`${instanceId}-angle-desc`}>
+        </summary>
+        <figure class="min-w-0 rounded-2xl border border-neutral-300 bg-white p-4 text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-300">
+          <figcaption class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+            {t.angleDiagram}
+          </figcaption>
+          <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
             {t.angleDiagramDescription}
-          </desc>
-          <text
-            data-angle-value
-            x="210"
-            y="34"
-            text-anchor="middle"
-            fill="currentColor"
-            font-size="16"
-            font-weight="700"
-          ></text>
-          <line
-            x1="30"
-            y1="145"
-            x2="390"
-            y2="145"
-            stroke="#78716c"
-            stroke-dasharray="4 5"
-          />
-          <path
-            data-angle-wedge
-            d="M30 145 L370 95 L370 195 Z"
-            fill="rgba(245,158,11,0.12)"
-            stroke="#d97706"
-            stroke-width="2"
-          />
-          <circle cx="30" cy="145" r="7" fill="#44403c" />
-          <text
-            x="18"
-            y="174"
-            text-anchor="start"
-            fill="currentColor"
-            font-size="11"
+          </p>
+          <svg
+            data-angle-visual
+            viewBox="0 0 420 280"
+            role="img"
+            aria-labelledby={`${instanceId}-angle-title ${instanceId}-angle-desc`}
+            class="mt-3 h-auto w-full"
           >
-            {t.camera}
-          </text>
-        </svg>
-      </figure>
+            <title id={`${instanceId}-angle-title`}>{t.angleDiagram}</title>
+            <desc id={`${instanceId}-angle-desc`}>
+              {t.angleDiagramDescription}
+            </desc>
+            <text
+              data-angle-value
+              x="210"
+              y="34"
+              text-anchor="middle"
+              fill="currentColor"
+              font-size="16"
+              font-weight="700"
+            ></text>
+            <line
+              x1="30"
+              y1="145"
+              x2="390"
+              y2="145"
+              stroke="#78716c"
+              stroke-dasharray="4 5"
+            />
+            <path
+              data-angle-wedge
+              d="M30 145 L370 95 L370 195 Z"
+              fill="rgba(245,158,11,0.12)"
+              stroke="#d97706"
+              stroke-width="2"
+            />
+            <circle cx="30" cy="145" r="7" fill="#44403c" />
+            <text
+              x="18"
+              y="174"
+              text-anchor="start"
+              fill="currentColor"
+              font-size="11"
+            >
+              {t.camera}
+            </text>
+          </svg>
+        </figure>
+      </details>
     </div>
   </div>
   <noscript>
@@ -396,4 +424,30 @@ const dimension = limits.sensorDimensionMm;
 <script>
   import { initializeCropFactorTools } from './crop-factor-controller';
   initializeCropFactorTools();
+  const mountDisclosures = () => {
+    document.querySelectorAll<HTMLElement>('[data-crop-tool]').forEach(root => {
+      if (root.dataset.disclosuresReady === 'true') return;
+      root.dataset.disclosuresReady = 'true';
+      root
+        .querySelectorAll<HTMLSelectElement>('[data-preset-for]')
+        .forEach(select => {
+          select.addEventListener('change', () => {
+            if (select.value === 'custom') {
+              const details = select
+                .closest('fieldset')
+                ?.querySelector<HTMLDetailsElement>(
+                  '[data-dimension-settings]'
+                );
+              if (details) details.open = true;
+            }
+          });
+        });
+    });
+  };
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', mountDisclosures, {
+      once: true,
+    });
+  else mountDisclosures();
+  document.addEventListener('astro:page-load', mountDisclosures);
 </script>

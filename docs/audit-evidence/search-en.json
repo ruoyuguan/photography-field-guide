@@ -1,0 +1,44 @@
+{
+  "scope": "Generated Pagefind engine only; Node adapter; not browser UI acceptance",
+  "language": "en",
+  "results": [
+    {
+      "query": "focal length",
+      "hits": [
+        {
+          "title": "Equivalent Focal Length",
+          "url": "/basics/equivalent-focal-length/"
+        },
+        {
+          "title": "The Exposure Triangle",
+          "url": "/basics/exposure-triangle/"
+        },
+        {
+          "title": "Sensor Formats",
+          "url": "/basics/sensor-formats/"
+        },
+        {
+          "title": "Start Here",
+          "url": "/start-here/"
+        }
+      ]
+    },
+    {
+      "query": "ISO",
+      "hits": [
+        {
+          "title": "The Exposure Triangle",
+          "url": "/basics/exposure-triangle/"
+        },
+        {
+          "title": "Start Here",
+          "url": "/start-here/"
+        },
+        {
+          "title": "Sensor Formats",
+          "url": "/basics/sensor-formats/"
+        }
+      ]
+    }
+  ]
+}

@@ -28,12 +28,14 @@ async function arrowRight(call, evaluate, selector) {
 }
 
 async function tap(call, evaluate, selector) {
-  const point = await evaluate(`(() => {
+  const point = await evaluate(`new Promise(resolve => {
     const element = document.querySelector(${JSON.stringify(selector)});
-    element.scrollIntoView({ block: 'center', inline: 'center' });
-    const rect = element.getBoundingClientRect();
-    return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
-  })()`);
+    element.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'center' });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const rect = element.getBoundingClientRect();
+      resolve({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+    }));
+  })`);
   await call('Input.dispatchTouchEvent', {
     type: 'touchStart',
     touchPoints: [{ x: point.x, y: point.y }],
@@ -127,7 +129,7 @@ export async function checkTools({
   );
   console.log('OK crop slider keyboard, input sync, error, reset, and axis');
 
-  await click('.hs-dropdown-toggle');
+  await click('.language-picker summary');
   await until(
     `document.querySelector('a[href="/zh-cn/tools/crop-factor/"]')?.getBoundingClientRect().width > 0`
   );

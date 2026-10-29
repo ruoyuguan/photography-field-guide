@@ -1,0 +1,160 @@
+---
+title: 'Understanding Light: Direction, Hardness, and Contrast'
+description: Read which surfaces are lit, how shadow edges form, and why contrast is not the same thing as hard light.
+translationKey: understanding-light
+category: composition
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [what-is-photography, digital-camera-works]
+relatedConcepts: [exposure, white-balance, depth-of-field]
+relatedTools: []
+lastReviewed: '2026-10-29'
+sources:
+  - url: 'https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm'
+    title: 'Introduction to Portrait Lighting — Cambridge in Colour'
+    locator: 'Overview: One Light Source; Size: Hard vs. Soft Light; Distance & Apparent Light Size; Direction: Sense of Depth'
+    accessedOn: '2026-10-29'
+    supports: 'Direction changes the locations of light and shadow; apparent source size shapes shadow and highlight transitions; moving a source closer changes both its apparent size and illumination.'
+sidebar:
+  order: 1
+---
+
+A lamp is already lighting your desk. Why does moving it a short distance change the photograph so much, even when you do not touch a camera setting?
+
+**Short answer:** light direction determines which surfaces receive direct light and where shadows fall. Hardness describes the transition at shadow and highlight edges, strongly influenced by how large the source appears from the subject. Contrast is the resulting relationship between lighter and darker areas; it also depends on fill light, the subject, exposure, and rendering. These ideas are related, but they are not interchangeable.
+
+## Start with three observations
+
+Before reaching for aperture or ISO, ask:
+
+1. **Direction:** from the camera's viewpoint, which visible surfaces face the main light?
+2. **Hardness:** are shadow edges abrupt or gradual?
+3. **Contrast:** how different are the important lit and shaded areas, and what other light is filling the shadows?
+
+There is no universally best direction or hardness. A clear record of an object and a dramatic interpretation can call for different lighting.
+
+## Direction: what faces the light?
+
+Direction is a relationship among the **light, subject, and camera**, not a label permanently attached to a lamp. Moving the camera can change that relationship even when the lamp stays still.
+
+With one dominant light and a fixed camera:
+
+- **Front light** comes from roughly the camera's direction. Many camera-facing surfaces receive light, while the cast shadow extends behind the subject and may be less visible to the camera.
+- **Side light** arrives from one side. Surfaces facing that side receive more direct light, and the cast shadow extends generally away from the source. The change in illumination across the subject can reveal shape and texture.
+- **Backlight** comes from behind the subject relative to the camera. Camera-facing surfaces may receive little direct light, while edges or translucent parts can become prominent. The result still depends on fill, exposure, and the subject.
+
+<svg viewBox="0 0 760 310" role="img" aria-label="Conceptual top-down comparison of front light and light from camera-left, with a fixed object and camera" style="max-width:100%;height:auto;background:#171717;border-radius:16px">
+  <g font-size="15">
+    <text x="28" y="34" fill="#fbbf24" font-weight="700">A · front light</text>
+    <rect x="116" y="51" width="92" height="30" rx="6" fill="#fbbf24" />
+    <text x="162" y="71" text-anchor="middle" fill="#422006">same lamp</text>
+    <path d="M142 84 L153 111 M182 84 L171 111" stroke="#d97706" stroke-width="3" />
+    <ellipse cx="162" cy="169" rx="31" ry="20" fill="#78716c" opacity="0.5" />
+    <circle cx="162" cy="135" r="27" fill="#e7e5e4" stroke="#a8a29e" />
+    <text x="162" y="140" text-anchor="middle" fill="#292524">object</text>
+    <rect x="140" y="229" width="44" height="22" rx="4" fill="#e7e5e4" />
+    <path d="M151 229 L162 214 L173 229 Z" fill="#e7e5e4" />
+    <text x="195" y="246" fill="#d4d4d4">fixed camera</text>
+    <text x="70" y="282" fill="#a3a3a3">shadow extends behind object</text>
+
+    <text x="406" y="34" fill="#fbbf24" font-weight="700">B · light from camera-left</text>
+    <rect x="397" y="118" width="92" height="30" rx="6" fill="#fbbf24" />
+    <text x="443" y="138" text-anchor="middle" fill="#422006">same lamp</text>
+    <path d="M493 127 L523 132 M493 140 L523 139" stroke="#d97706" stroke-width="3" />
+    <ellipse cx="603" cy="135" rx="43" ry="20" fill="#78716c" opacity="0.5" />
+    <circle cx="550" cy="135" r="27" fill="#e7e5e4" stroke="#a8a29e" />
+    <path d="M550 108 A27 27 0 0 0 550 162 Z" fill="#fbbf24" opacity="0.65" />
+    <text x="550" y="140" text-anchor="middle" fill="#292524">object</text>
+    <rect x="528" y="229" width="44" height="22" rx="4" fill="#e7e5e4" />
+    <path d="M539 229 L550 214 L561 229 Z" fill="#e7e5e4" />
+    <text x="583" y="246" fill="#d4d4d4">fixed camera</text>
+    <text x="523" y="184" fill="#a3a3a3">cast shadow →</text>
+    <text x="28" y="303" fill="#a3a3a3">Concept model only: similar lamp distance, fixed exposure; not a measured lighting simulation.</text>
+
+  </g>
+</svg>
+
+“Shadow extends away from the light” is a useful geometric starting point, not a promise that every shadow is black or perfectly sharp. Walls, the room, and other sources can add light. The camera also cannot show surfaces that are hidden from its viewpoint.
+
+## Hard and soft: read the edge
+
+A small apparent source tends to produce a more abrupt transition between direct light and shadow. A larger apparent source illuminates the subject from a broader range of angles, producing a more gradual transition. This is why photographers call the first kind **hard** and the second **soft**.
+
+<svg
+  viewBox="0 0 760 220"
+  role="img"
+  aria-label="Conceptual comparison of an abrupt shadow edge and a gradual shadow edge"
+  style="max-width:100%;height:auto;background:#171717;border-radius:16px"
+>
+  <defs>
+    <linearGradient id="soft-shadow" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f4f1e9" />
+      <stop offset="100%" stop-color="#383838" />
+    </linearGradient>
+  </defs>
+  <text x="30" y="34" fill="#fbbf24" font-size="16" font-weight="700">
+    harder edge
+  </text>
+  <rect x="30" y="56" width="300" height="80" fill="#f4f1e9" />
+  <rect x="180" y="56" width="150" height="80" fill="#383838" />
+  <text x="30" y="164" fill="#d4d4d4" font-size="14">
+    abrupt transition
+  </text>
+  <text x="407" y="34" fill="#fbbf24" font-size="16" font-weight="700">
+    softer edge
+  </text>
+  <rect x="407" y="56" width="300" height="80" fill="url(#soft-shadow)" />
+  <text x="407" y="164" fill="#d4d4d4" font-size="14">
+    gradual transition
+  </text>
+  <text x="30" y="204" fill="#a3a3a3" font-size="13">
+    Schematic edge profiles, not photographs or measured luminance curves.
+  </text>
+</svg>
+
+The key is **apparent size relative to the subject**, not the lamp's physical dimensions or brightness alone. The sun is physically enormous but appears small from Earth, so direct sunlight commonly produces hard shadows. Moving the same lamp closer makes it appear larger, but it also changes illumination and falloff. Do not move a lamp closer and then claim that only hardness changed.
+
+Diffusion and bounce can make light arrive from a broader effective area, but they can reduce the available light and change other conditions. A sheet or improvised diffuser also introduces heat and fire risks; use equipment intended for the lamp rather than covering a hot light with random material.
+
+## Contrast is not a synonym for hardness
+
+Contrast concerns the relationship between lighter and darker parts of the image. A hard source can create abrupt edges, but the depth of the shaded area also depends on reflected room light, a second source, subject reflectance, exposure, and output processing. Soft light does not guarantee a low-contrast photograph, and hard light does not force every shadow to be black.
+
+This distinction gives you two separate questions:
+
+- “How gradual is this edge?” — a hardness question.
+- “How much darker is this important region than that one?” — a contrast question.
+
+A histogram or brightness adjustment cannot tell you the lamp's direction by itself. Look at surfaces, occlusion, and the scene.
+
+## A controlled two-frame experiment
+
+Use a mug or another safe, small object and one movable lamp in a dim room. This is a proposed experiment, not supplied sample photography.
+
+1. Fix the object, camera position, zoom, focus, and composition. Set a safe exposure that you can repeat; avoid changing aperture, shutter time, ISO, or exposure compensation between frames.
+2. Put the lamp near the camera axis, slightly above the object if practical. Make the first photograph.
+3. Move only the lamp to camera-left at a similar distance. Make the second photograph with the same settings.
+4. Compare visible surfaces and cast-shadow direction. Then check whether ambient light, lamp distance, exposure, or framing changed without your noticing.
+
+On a phone, use exposure and focus lock if available. If the device changes exposure automatically, record that limitation instead of claiming a perfectly controlled comparison. A repeatable exposure mode is useful here; higher ISO, a different white balance, or a shallower depth of field does not explain the direction effect.
+
+## Common misconceptions
+
+- **“Side light is always better.”** It can reveal shape and texture, but whether that serves the photograph depends on the subject and intention.
+- **“A brighter lamp is harder.”** Brightness and apparent source size are different properties.
+- **“Soft light has no shadows.”** It usually changes transitions, not the laws of occlusion.
+- **“Dark shadows prove hard light.”** Shadow depth also depends on fill, exposure, materials, and rendering.
+- **“Exposure compensation changes light direction.”** It changes the camera's brightness target through available exposure controls, not the geometry of illumination.
+
+## Put it into practice
+
+Open **[Light detective](../../../practice/light-direction/)**. Make a prediction, compare the direction model, take the two controlled photographs, and mark your own observations. The mission saves no photos or written reflections.
+
+## Continue
+
+Continue with [Subject and Background](../subject-and-background/) to organize the whole frame through viewpoint and context. Review [exposure stops](../../exposure/exposure-stops/) for the separate brightness calculation and [white balance](../../image-quality/white-balance/) for color rendering. Neither replaces observing the direction of illumination.
+
+## Sources
+
+- [Cambridge in Colour: Introduction to Portrait Lighting](https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm), sections “Overview: One Light Source,” “Size: Hard vs. Soft Light,” “Distance & Apparent Light Size,” and “Direction: Sense of Depth.” Accessed 2026-10-29.

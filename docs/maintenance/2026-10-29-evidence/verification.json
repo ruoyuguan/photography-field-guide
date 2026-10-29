@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-29",
+  "root": "/Users/ruoyu/photography-field-guide",
+  "node": "v24.22.1",
+  "pnpm": "10.34.9",
+  "checks": [
+    {
+      "name": "subpath-build",
+      "exitCode": 0,
+      "log": "docs/maintenance/2026-10-29-evidence/pfg-final-subpath-build.log",
+      "base": "/photography-field-guide"
+    },
+    {
+      "name": "subpath-smoke",
+      "exitCode": 0,
+      "log": "docs/maintenance/2026-10-29-evidence/pfg-final-subpath-smoke.log",
+      "base": "/photography-field-guide"
+    },
+    {
+      "name": "subpath-artifacts",
+      "exitCode": 0,
+      "log": "docs/maintenance/2026-10-29-evidence/pfg-final-subpath-artifacts.log",
+      "base": "/photography-field-guide"
+    },
+    {
+      "name": "root-build",
+      "exitCode": 0,
+      "log": "docs/maintenance/2026-10-29-evidence/pfg-final-root-build.log",
+      "base": "/"
+    },
+    {
+      "name": "root-smoke",
+      "exitCode": 0,
+      "log": "docs/maintenance/2026-10-29-evidence/pfg-final-root-smoke.log",
+      "base": "/"
+    },
+    {
+      "name": "root-artifacts",
+      "exitCode": 0,
+      "log": "docs/maintenance/2026-10-29-evidence/pfg-final-root-artifacts.log",
+      "base": "/"
+    },
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "log": "docs/maintenance/2026-10-29-evidence/pfg-final-unit.log",
+      "base": "/"
+    },
+    {
+      "name": "format",
+      "exitCode": 0,
+      "log": "docs/maintenance/2026-10-29-evidence/pfg-final-format.log",
+      "base": "/"
+    }
+  ],
+  "allPassed": true
+}

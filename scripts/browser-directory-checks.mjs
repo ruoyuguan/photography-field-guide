@@ -72,7 +72,7 @@ export async function checkDirectories({
   );
 
   await navigate('/gear/fujifilm-x-t5/');
-  await click('.hs-dropdown-toggle');
+  await click('.language-picker summary');
   await until(
     `document.querySelector('a[href="/zh-cn/gear/fujifilm-x-t5/"]')?.getBoundingClientRect().width > 0`
   );
@@ -121,6 +121,12 @@ export async function checkDirectories({
     '/zh-cn/learn/image-quality/white-balance/',
     '/learn/image-quality/film-simulations/',
     '/zh-cn/learn/image-quality/film-simulations/',
+    '/learn/composition/understanding-light/',
+    '/zh-cn/learn/composition/understanding-light/',
+    '/practice/',
+    '/zh-cn/practice/',
+    '/practice/light-direction/',
+    '/zh-cn/practice/light-direction/',
   ]) {
     await navigate(path);
     await noOverflow(path);

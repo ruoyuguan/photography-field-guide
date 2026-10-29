@@ -1,0 +1,618 @@
+---
+import {
+  missionById,
+  practiceUiCopy,
+  type PracticeLocale,
+  type PracticeMission,
+} from '@data/practice';
+import { localePath } from '@utils/locale';
+import FramingModel from './FramingModel.astro';
+import NeighborhoodStoryModel from './NeighborhoodStoryModel.astro';
+import PhotoReviewModel from './PhotoReviewModel.astro';
+
+interface Props {
+  locale: PracticeLocale;
+  mission: PracticeMission;
+}
+const { locale, mission } = Astro.props;
+const t = mission.copy[locale];
+const ui = practiceUiCopy[locale];
+const prefix = `${mission.id}-${locale}`;
+const number = String(mission.number).padStart(2, '0');
+const missionLabel = locale === 'en' ? `Mission ${number}` : `任务 ${number}`;
+const readLesson =
+  locale === 'en' ? `Read ${t.lessonTitle}` : `阅读《${t.lessonTitle}》`;
+const nextMission = mission.nextId ? missionById(mission.nextId) : undefined;
+---
+
+<article
+  data-practice-mission
+  data-mission-id={mission.id}
+  data-locale={locale}
+  class="mx-auto max-w-6xl py-6 sm:py-8"
+>
+  <a
+    href={localePath(locale, '/practice/')}
+    class="text-sm font-semibold text-neutral-600 underline decoration-neutral-400 underline-offset-4 hover:text-amber-700 dark:text-neutral-400 dark:hover:text-amber-300"
+  >
+    ← {ui.back}
+  </a>
+  <header class="mt-4 max-w-4xl">
+    <p class="text-sm font-semibold tracking-wide text-amber-700 uppercase dark:text-amber-300">
+      {missionLabel} · {t.duration}
+    </p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-neutral-100">
+      {t.title}
+    </h1>
+    <p class="mt-3 text-base leading-7 text-neutral-600 dark:text-neutral-400">
+      {t.intro}
+    </p>
+    <div class="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950/30">
+      <h2 class="text-sm font-bold text-amber-950 dark:text-amber-100">
+        {ui.goal}
+      </h2>
+      <p class="mt-1 text-sm leading-6 text-amber-950 dark:text-amber-100">
+        {t.goal}
+      </p>
+    </div>
+    <details class="mt-3 rounded-xl border border-neutral-300 bg-neutral-50 px-4 py-3 dark:border-neutral-700 dark:bg-neutral-900/60">
+      <summary class="cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+        {ui.equipment} · {ui.prerequisites}
+      </summary>
+      <ul class="mt-3 list-disc space-y-2 ps-5 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {t.equipment.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
+      <p class="mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {t.prerequisites}
+      </p>
+    </details>
+    <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+      <p class="font-semibold text-neutral-700 dark:text-neutral-300">
+        {ui.status}: <span data-mission-status>{ui.notStarted}</span>
+      </p>
+      <a
+        href={localePath(locale, mission.articlePath)}
+        class="font-semibold text-amber-700 underline decoration-amber-400 underline-offset-4 dark:text-amber-300"
+      >
+        {readLesson} →
+      </a>
+    </div>
+    <p
+      data-storage-notice
+      class="mt-2 text-xs leading-5 text-neutral-500 dark:text-neutral-400"
+    ></p>
+  </header>
+
+  <noscript>
+    <p class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
+      {ui.noScript}
+    </p>
+  </noscript>
+
+  <section class="mt-7" aria-labelledby={`${prefix}-prediction`}>
+    <h2
+      id={`${prefix}-prediction`}
+      data-prediction-heading
+      tabindex="-1"
+      class="text-2xl font-bold text-neutral-900 outline-none dark:text-neutral-100"
+    >
+      {ui.prediction}
+    </h2>
+    <div class="mt-3 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+      <h3 class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+        {t.prediction.title}
+      </h3>
+      <p class="mt-2 max-w-4xl text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+        {t.prediction.question}
+      </p>
+      <ul
+        data-static-choices
+        class="mt-4 list-disc space-y-3 ps-5 text-sm leading-6 text-neutral-700 dark:text-neutral-300"
+      >
+        {t.prediction.choices.map(choice => (
+          <li>{choice.label}</li>
+        ))}
+      </ul>
+      <form data-prediction-form data-practice-interactive hidden class="mt-4">
+        <fieldset>
+          <legend class="sr-only">{t.prediction.question}</legend>
+          <div class="space-y-3">
+            {t.prediction.choices.map(choice => (
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-300 bg-white p-3 text-sm leading-6 text-neutral-800 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-amber-500 dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-200">
+                <input
+                  type="radio"
+                  name={`${prefix}-prediction`}
+                  value={choice.id}
+                  data-prediction-choice
+                  class="mt-1.5 shrink-0"
+                />
+                <span>{choice.label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <p
+          data-quiz-feedback
+          hidden
+          role="status"
+          class="mt-3 rounded-lg p-3 text-sm leading-6"
+        ></p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <button
+            type="submit"
+            data-check-answer
+            class="rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-bold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:bg-amber-400 dark:text-neutral-950"
+          >
+            {ui.checkAnswer}
+          </button>
+          <button
+            type="button"
+            data-retry-answer
+            hidden
+            class="rounded-lg border border-neutral-400 px-4 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200"
+          >
+            {ui.retry}
+          </button>
+          <button
+            type="button"
+            data-show-answer
+            class="rounded-lg border border-neutral-400 px-4 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200"
+          >
+            {ui.showAnswer}
+          </button>
+        </div>
+      </form>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        <details class="rounded-xl bg-neutral-100 p-3 dark:bg-neutral-800/70">
+          <summary class="cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+            {ui.hint}
+          </summary>
+          <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+            {t.prediction.hint}
+          </p>
+        </details>
+        <details
+          data-answer-details
+          class="rounded-xl bg-neutral-100 p-3 dark:bg-neutral-800/70"
+        >
+          <summary class="cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+            {ui.answerTitle}
+          </summary>
+          <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+            {t.prediction.explanation}
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-8" aria-labelledby={`${prefix}-observation`}>
+    <h2
+      id={`${prefix}-observation`}
+      class="text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+    >
+      {t.observation.heading ?? ui.observation}
+    </h2>
+    <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+      {t.observation.intro}
+    </p>
+    <div class="mt-4 rounded-2xl border border-neutral-300 bg-white p-4 sm:p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+      <h3 class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+        {t.observation.modelTitle}
+      </h3>
+      <p class="mt-2 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
+        {t.observation.modelNote}
+      </p>
+      {mission.visual === 'direction' ? (
+        <>
+          <div
+            data-practice-interactive
+            hidden
+            class="mt-4 rounded-xl bg-neutral-50 p-4 dark:bg-neutral-950/70"
+          >
+            <label
+              for={`${prefix}-direction`}
+              class="text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+            >
+              {ui.directionControl}
+            </label>
+            <input
+              id={`${prefix}-direction`}
+              data-direction-control
+              type="range"
+              min="0"
+              max="1"
+              step="1"
+              value="0"
+              aria-valuetext={ui.modelFront}
+              class="mt-3 w-full accent-amber-600"
+            />
+            <div class="mt-1 flex justify-between gap-4 text-xs font-medium text-neutral-600 dark:text-neutral-400">
+              <span>{ui.modelFront}</span>
+              <span>{ui.modelSide}</span>
+            </div>
+            <p class="mt-3 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+              <strong>
+                {ui.directionValue}:{' '}
+                <span data-direction-label>{ui.modelFront}</span>.
+              </strong>{' '}
+              <span data-direction-description>{ui.frontDescription}</span>
+            </p>
+          </div>
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <figure
+              data-direction-model="front"
+              class="rounded-xl border border-neutral-300 p-3 dark:border-neutral-600"
+            >
+              <figcaption class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+                A · {ui.modelFront}
+              </figcaption>
+              <svg
+                viewBox="0 0 360 240"
+                role="img"
+                aria-labelledby={`${prefix}-front-title ${prefix}-front-desc`}
+                class="mt-2 h-auto w-full"
+              >
+                <title id={`${prefix}-front-title`}>{ui.modelFront}</title>
+                <desc id={`${prefix}-front-desc`}>
+                  {ui.frontDescription} {ui.view}.
+                </desc>
+                <rect
+                  x="130"
+                  y="12"
+                  width="100"
+                  height="32"
+                  rx="8"
+                  fill="#fbbf24"
+                />
+                <text
+                  x="180"
+                  y="32"
+                  text-anchor="middle"
+                  font-size="11"
+                  font-weight="700"
+                  fill="#422006"
+                >
+                  {ui.lamp}
+                </text>
+                <path
+                  d="M155 48 L165 82 M205 48 L195 82"
+                  stroke="#d97706"
+                  stroke-width="3"
+                  marker-end="url(#front-arrow)"
+                />
+                <defs>
+                  <marker
+                    id="front-arrow"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="3"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <path d="M0 0 L6 3 L0 6 Z" fill="#d97706" />
+                  </marker>
+                </defs>
+                <ellipse
+                  cx="180"
+                  cy="158"
+                  rx="34"
+                  ry="25"
+                  fill="#78716c"
+                  opacity="0.35"
+                />
+                <text
+                  x="180"
+                  y="184"
+                  text-anchor="middle"
+                  font-size="11"
+                  fill="currentColor"
+                >
+                  {ui.shadow}
+                </text>
+                <circle
+                  cx="180"
+                  cy="111"
+                  r="31"
+                  fill="#e7e5e4"
+                  stroke="#44403c"
+                  stroke-width="2"
+                />
+                <path d="M180 80 A31 31 0 0 1 180 142 Z" fill="#a8a29e" />
+                <text
+                  x="180"
+                  y="116"
+                  text-anchor="middle"
+                  font-size="11"
+                  font-weight="700"
+                  fill="#292524"
+                >
+                  {ui.object}
+                </text>
+                <rect
+                  x="154"
+                  y="207"
+                  width="52"
+                  height="24"
+                  rx="5"
+                  fill="#292524"
+                />
+                <path d="M168 207 L180 190 L192 207 Z" fill="#292524" />
+                <text x="217" y="224" font-size="11" fill="currentColor">
+                  {ui.camera}
+                </text>
+              </svg>
+              <p class="text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+                {ui.frontDescription}
+              </p>
+            </figure>
+            <figure
+              data-direction-model="side"
+              class="rounded-xl border border-neutral-300 p-3 dark:border-neutral-600"
+            >
+              <figcaption class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+                B · {ui.modelSide}
+              </figcaption>
+              <svg
+                viewBox="0 0 360 240"
+                role="img"
+                aria-labelledby={`${prefix}-side-title ${prefix}-side-desc`}
+                class="mt-2 h-auto w-full"
+              >
+                <title id={`${prefix}-side-title`}>{ui.modelSide}</title>
+                <desc id={`${prefix}-side-desc`}>
+                  {ui.sideDescription} {ui.view}.
+                </desc>
+                <rect
+                  x="8"
+                  y="92"
+                  width="96"
+                  height="34"
+                  rx="8"
+                  fill="#fbbf24"
+                />
+                <text
+                  x="56"
+                  y="113"
+                  text-anchor="middle"
+                  font-size="10"
+                  font-weight="700"
+                  fill="#422006"
+                >
+                  {ui.lamp}
+                </text>
+                <path
+                  d="M108 101 L140 106 M108 117 L140 116"
+                  stroke="#d97706"
+                  stroke-width="3"
+                  marker-end="url(#side-arrow)"
+                />
+                <defs>
+                  <marker
+                    id="side-arrow"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="3"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <path d="M0 0 L6 3 L0 6 Z" fill="#d97706" />
+                  </marker>
+                </defs>
+                <ellipse
+                  cx="248"
+                  cy="111"
+                  rx="49"
+                  ry="24"
+                  fill="#78716c"
+                  opacity="0.35"
+                />
+                <text
+                  x="260"
+                  y="150"
+                  text-anchor="middle"
+                  font-size="11"
+                  fill="currentColor"
+                >
+                  {ui.shadow}
+                </text>
+                <circle
+                  cx="180"
+                  cy="111"
+                  r="31"
+                  fill="#e7e5e4"
+                  stroke="#44403c"
+                  stroke-width="2"
+                />
+                <path
+                  d="M180 80 A31 31 0 0 0 180 142 Z"
+                  fill="#fbbf24"
+                  opacity="0.65"
+                />
+                <text
+                  x="180"
+                  y="116"
+                  text-anchor="middle"
+                  font-size="11"
+                  font-weight="700"
+                  fill="#292524"
+                >
+                  {ui.object}
+                </text>
+                <rect
+                  x="154"
+                  y="207"
+                  width="52"
+                  height="24"
+                  rx="5"
+                  fill="#292524"
+                />
+                <path d="M168 207 L180 190 L192 207 Z" fill="#292524" />
+                <text x="217" y="224" font-size="11" fill="currentColor">
+                  {ui.camera}
+                </text>
+              </svg>
+              <p class="text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+                {ui.sideDescription}
+              </p>
+            </figure>
+          </div>
+          <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+            {ui.view}
+          </p>
+        </>
+      ) : mission.visual === 'framing' ? (
+        <FramingModel locale={locale} prefix={prefix} />
+      ) : mission.visual === 'story' ? (
+        <NeighborhoodStoryModel locale={locale} prefix={prefix} />
+      ) : (
+        <PhotoReviewModel locale={locale} prefix={prefix} />
+      )}
+    </div>
+
+    <div class="mt-4 grid gap-4 lg:grid-cols-3">
+      {t.observation.steps.map((step, index) => (
+        <section class="rounded-2xl border border-neutral-300 bg-neutral-50 p-4 dark:border-neutral-700 dark:bg-neutral-900/60">
+          <h3 class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+            {index + 1}. {step.title}
+          </h3>
+          <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+            {step.detail}
+          </p>
+          <label
+            data-practice-interactive
+            hidden
+            class="-mx-2 mt-3 flex min-h-11 cursor-pointer items-start gap-2 rounded-lg px-2 py-2 text-xs font-semibold text-neutral-700 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-amber-500 dark:text-neutral-300"
+          >
+            <input
+              type="checkbox"
+              data-observation-step={step.id}
+              class="mt-0.5"
+            />
+            <span>{ui.markStep}</span>
+          </label>
+        </section>
+      ))}
+    </div>
+    <div class="mt-4 rounded-2xl bg-neutral-100 p-5 dark:bg-neutral-800/60">
+      <h3 class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+        {ui.observationChecklist}
+      </h3>
+      <ul class="mt-3 list-disc space-y-2 ps-5 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+        {t.observation.checklist.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mt-8" aria-labelledby={`${prefix}-reflection`}>
+    <h2
+      id={`${prefix}-reflection`}
+      class="text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+    >
+      {ui.reflection}
+    </h2>
+    <div class="mt-3 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+      <h3 class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+        {t.reflection.title}
+      </h3>
+      <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {t.reflection.intro}
+      </p>
+      <ul
+        data-static-reflection
+        class="mt-4 list-disc space-y-2 ps-5 text-sm leading-6 text-neutral-700 dark:text-neutral-300"
+      >
+        {t.reflection.checks.map(check => (
+          <li>{check.label}</li>
+        ))}
+      </ul>
+      <div data-practice-interactive hidden class="mt-4 space-y-3">
+        {t.reflection.checks.map(check => (
+          <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-300 bg-white p-3 text-sm leading-6 text-neutral-800 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-amber-500 dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-200">
+            <input
+              type="checkbox"
+              data-reflection-check={check.id}
+              class="mt-1.5 shrink-0"
+            />
+            <span>{check.label}</span>
+          </label>
+        ))}
+      </div>
+      <p class="mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {t.reflection.note}
+      </p>
+      <p class="mt-2 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
+        {ui.privacy}
+      </p>
+      <div
+        data-practice-interactive
+        hidden
+        class="mt-5 flex flex-wrap items-center gap-3"
+      >
+        <button
+          type="button"
+          data-complete-mission
+          class="rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-bold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-amber-400 dark:text-neutral-950"
+        >
+          {ui.complete}
+        </button>
+        <button
+          type="button"
+          data-reset-mission
+          class="rounded-lg border border-neutral-400 px-4 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200"
+        >
+          {ui.reset}
+        </button>
+      </div>
+      <p
+        data-completion-feedback
+        role="status"
+        class="mt-3 text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+      ></p>
+      <p class="mt-2 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
+        {ui.keepGoing}
+      </p>
+    </div>
+  </section>
+
+  <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+    <a
+      href={localePath(locale, mission.articlePath)}
+      class="inline-block rounded-lg text-sm font-bold text-amber-700 underline decoration-amber-400 underline-offset-4 dark:text-amber-300"
+    >
+      ← {ui.returnToLesson}
+    </a>
+    {nextMission && (
+      <a
+        href={localePath(locale, `/practice/${nextMission.id}/`)}
+        data-next-mission
+        class="inline-block rounded-lg text-sm font-bold text-amber-700 underline decoration-amber-400 underline-offset-4 dark:text-amber-300"
+      >
+        {locale === 'en' ? 'Next mission' : '下一任务'}:{' '}
+        {nextMission.copy[locale].title} →
+      </a>
+    )}
+  </div>
+</article>
+
+<style>
+  [data-practice-mission][data-direction='front'] [data-direction-model='side'],
+  [data-practice-mission][data-direction='side']
+    [data-direction-model='front'] {
+    opacity: 0.5;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-direction-model] {
+      transition: opacity 120ms ease-out;
+    }
+  }
+</style>
+
+<script>
+  import { initializePracticeMissions } from './practice-controller';
+  initializePracticeMissions();
+</script>

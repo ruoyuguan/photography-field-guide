@@ -39,7 +39,12 @@ export function compactInputNumber(value: number): string {
 }
 
 export function formatShutter(seconds: number): string {
-  if (seconds < 1) return `1/${Math.round(1 / seconds)}`;
+  // Preserve the actual time: rounding a reciprocal turns 0.63 s into 0.5 s
+  // and makes the slider stick when its value is parsed back into seconds.
+  const reciprocal = 1 / seconds;
+  const nearest = Math.round(reciprocal);
+  if (seconds < 1 && Math.abs(reciprocal - nearest) <= 1e-8)
+    return `1/${nearest}`;
   return compactInputNumber(seconds);
 }
 
@@ -51,6 +56,15 @@ export function syncRange(
   const slider = range(root, name);
   slider.value = String(
     slider.dataset.scale === 'log2' ? Math.log2(value) : value
+  );
+  const input = field(root, name);
+  const text =
+    input.dataset.format === 'shutter'
+      ? formatShutter(value)
+      : compactInputNumber(value);
+  slider.setAttribute(
+    'aria-valuetext',
+    `${input.dataset.prefix ?? ''}${text}${input.dataset.unit ? ` ${input.dataset.unit}` : ''}`
   );
 }
 

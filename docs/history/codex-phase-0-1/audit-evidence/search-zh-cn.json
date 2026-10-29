@@ -1,0 +1,36 @@
+{
+  "scope": "Generated Pagefind engine only; Node adapter; not browser UI acceptance",
+  "language": "zh-cn",
+  "results": [
+    {
+      "query": "等效焦距",
+      "hits": [
+        {
+          "title": "等效焦距",
+          "url": "/zh-cn/basics/equivalent-focal-length/"
+        },
+        {
+          "title": "曝光三角",
+          "url": "/zh-cn/basics/exposure-triangle/"
+        },
+        {
+          "title": "传感器与画幅",
+          "url": "/zh-cn/basics/sensor-formats/"
+        },
+        {
+          "title": "从这里开始",
+          "url": "/zh-cn/start-here/"
+        }
+      ]
+    },
+    {
+      "query": "传感器",
+      "hits": [
+        {
+          "title": "传感器与画幅",
+          "url": "/zh-cn/basics/sensor-formats/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "failedChromeSpawn": "exits with error and removes temporary profile",
+  "SIGTERM": "exit 143, temporary profile removed",
+  "realBrowserLaunched": false
+}

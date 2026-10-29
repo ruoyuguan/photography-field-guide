@@ -6,33 +6,39 @@ The project is based on the open-source [ScrewFast](https://github.com/mearashad
 
 ## Current scope
 
-- Responsive English and Chinese home pages with a dimensionally proportional full-frame / APS-C diagram.
-- A paired orientation and three short tutorials under `/learn/`.
-- Localized navigation, metadata, 404 pages, language switching, documentation search, and Pagefind interface text.
-- Build-time article metadata, cross-entity validation, and a small set of sourced glossary, camera, lens, resource, and gallery records.
-- Original aperture branding, favicons, and social-sharing artwork.
-- Two bilingual interactive tools: crop factor / equivalent focal length and exposure stops, with pure formula tests, accessible native controls, original SVG diagrams, input validation, and no-JavaScript explanations.
+- English and Simplified Chinese learning paths: 20 subject tutorials plus orientation, maintained as 42 paired MDX documents.
+- Four complete bilingual practice missions: light direction, subject–background framing, a three-photo neighborhood story, and photo selection / review. All include prediction, explanatory feedback, real-world observation, self-review, and local progress without accounts or aesthetic scores.
+- Two interactive tools for sensor formats / equivalent focal length and exposure stops, with accessible native inputs and tested calculations.
+- A searchable bilingual glossary with 34 terms.
+- Camera and lens guides, three precisely scoped external gallery links, and 13 curated resources.
+- Localized navigation, language switching, documentation search, 404 pages, metadata, and root / subpath deployment checks.
 
-Public gear/gallery directories are planned for later phases. Structured gallery records are not yet a public gallery page.
+The latest imported checkpoint is `29983b3` (color rendering tutorials). Current review, cleanup, and validation status is recorded in [docs/STATUS.md](docs/STATUS.md). Historical Phase 0/1 reports remain snapshots rather than current feature inventories.
 
 ### Routes
 
-| Content                   | English                                       | 简体中文                                            |
-| ------------------------- | --------------------------------------------- | --------------------------------------------------- |
-| Home                      | `/`                                           | `/zh-cn/`                                           |
-| Orientation               | `/learn/`                                     | `/zh-cn/learn/`                                     |
-| Sensor formats            | `/learn/sensor-lens/sensor-formats/`          | `/zh-cn/learn/sensor-lens/sensor-formats/`          |
-| Equivalent focal length   | `/learn/sensor-lens/equivalent-focal-length/` | `/zh-cn/learn/sensor-lens/equivalent-focal-length/` |
-| Exposure triangle         | `/learn/exposure/exposure-triangle/`          | `/zh-cn/learn/exposure/exposure-triangle/`          |
-| Tools                     | `/tools/`                                     | `/zh-cn/tools/`                                     |
-| Crop factor calculator    | `/tools/crop-factor/`                         | `/zh-cn/tools/crop-factor/`                         |
-| Exposure stops calculator | `/tools/exposure-stops/`                      | `/zh-cn/tools/exposure-stops/`                      |
+| Section        | English                  | 简体中文                       |
+| -------------- | ------------------------ | ------------------------------ |
+| Home           | `/`                      | `/zh-cn/`                      |
+| Learn          | `/learn/`                | `/zh-cn/learn/`                |
+| Practice       | `/practice/`             | `/zh-cn/practice/`             |
+| Tools          | `/tools/`                | `/zh-cn/tools/`                |
+| Crop factor    | `/tools/crop-factor/`    | `/zh-cn/tools/crop-factor/`    |
+| Exposure stops | `/tools/exposure-stops/` | `/zh-cn/tools/exposure-stops/` |
+| Glossary       | `/glossary/`             | `/zh-cn/glossary/`             |
+| Gear           | `/gear/`                 | `/zh-cn/gear/`                 |
+| Galleries      | `/galleries/`            | `/zh-cn/galleries/`            |
+| Resources      | `/resources/`            | `/zh-cn/resources/`            |
+| About          | `/about/`                | `/zh-cn/about/`                |
 
 ## Local development
+
+The canonical local checkout is `/Users/ruoyu/photography-field-guide`. Run development and checks from this directory.
 
 Use Node.js **22.23.4 or newer** and pnpm **10.34.9**. `.node-version` selects Node 24.22.1 for version managers that support it.
 
 ```bash
+cd /Users/ruoyu/photography-field-guide
 pnpm install --frozen-lockfile
 pnpm dev
 ```
@@ -59,7 +65,7 @@ pnpm test:smoke
 pnpm test:build
 ```
 
-`pnpm test:unit` checks the photography formulas, unit consistency, representative examples, and invalid or boundary inputs. `pnpm build` runs type checking, validates content, creates the static site in `dist/`, and minifies its HTML. The smoke test checks the 18 public pages and retired/unknown routes. The artifact test checks internal links and assets, canonical/hreflang URLs, 404 `noindex`, manifest, robots, sitemap, and search artifacts.
+`pnpm test:unit` checks the photography formulas, unit consistency, representative examples, and invalid or boundary inputs. `pnpm build` runs type checking, validates content, creates the static site in `dist/`, and minifies its HTML. The smoke test checks all current public pages and retired/unknown routes. The artifact test checks internal links and assets, canonical/hreflang URLs, 404 `noindex`, manifest, robots, sitemap, and search artifacts.
 
 After a root-path production build, an optional real-browser check verifies the language menu, Chinese navigation, English and Chinese search, proportional sensor diagram, calculator results, slider/input synchronization, keyboard operation, reset and error states, no-JavaScript fallbacks, and mobile overflow:
 
@@ -68,7 +74,7 @@ pnpm build
 pnpm test:browser
 ```
 
-The browser check uses an installed Google Chrome (override `CHROME_BIN` if necessary) and a temporary production preview. It closes Chrome, stops the preview, and removes its temporary profile before returning. It is not part of CI; Starlight disables actual Pagefind search in the development server.
+The browser check uses an installed Google Chrome (override `CHROME_BIN` if necessary) and a temporary production preview. It uses a profile in the system temporary directory and closes only its own Chrome and preview processes. Normal completion, errors, SIGINT, and SIGTERM share the cleanup routine. SIGKILL or a system crash cannot run JavaScript cleanup. It is not part of CI; Starlight disables actual Pagefind search in the development server.
 
 Test a GitHub Pages project subpath with:
 

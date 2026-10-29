@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-28",
+  "build": "isolated snapshot of source checkout",
+  "origin": "http://127.0.0.1:4328",
+  "uiSearch": [
+    {
+      "locale": "en",
+      "query": "focal length",
+      "resultCount": 4,
+      "clickedResult": "Sensor Formats",
+      "landedOn": "/basics/sensor-formats/"
+    },
+    {
+      "locale": "zh-cn",
+      "query": "等效焦距",
+      "resultCount": 4,
+      "clickedResult": "等效焦距",
+      "landedOn": "/zh-cn/basics/equivalent-focal-length/"
+    }
+  ],
+  "languageSwitch": {
+    "from": "/basics/sensor-formats/",
+    "to": "/zh-cn/basics/sensor-formats/",
+    "result": "correct corresponding tutorial"
+  },
+  "issues": [
+    {
+      "type": "wrong-language-links",
+      "route": "/zh-cn/basics/sensor-formats/",
+      "brandHref": "/",
+      "guidesHref": "/start-here/"
+    },
+    {
+      "type": "untranslated-ui",
+      "locale": "zh-cn",
+      "labels": [
+        "Getting Started",
+        "Photography Basics",
+        "Start Here",
+        "Search this site",
+        "Clear",
+        "4 results for 等效焦距"
+      ]
+    }
+  ],
+  "mobile": {
+    "requestedViewport": {
+      "width": 390,
+      "height": 844
+    },
+    "checks": [
+      {
+        "path": "/",
+        "clientWidth": 390,
+        "scrollWidth": 390
+      },
+      {
+        "path": "/zh-cn/",
+        "clientWidth": 390,
+        "scrollWidth": 390
+      },
+      {
+        "path": "/basics/equivalent-focal-length/",
+        "clientWidth": 375,
+        "scrollWidth": 375
+      },
+      {
+        "path": "/zh-cn/basics/equivalent-focal-length/",
+        "clientWidth": 375,
+        "scrollWidth": 375
+      }
+    ],
+    "note": "Tutorial scrollbar accounts for width difference. Sample checks only; not a full responsive or WCAG audit."
+  },
+  "desktop": {
+    "path": "/zh-cn/",
+    "clientWidth": 1280,
+    "scrollWidth": 1280
+  },
+  "viewportRestored": true,
+  "scope": "Recorded from actual browser UI snapshots and read-only DOM width measurements. No code changes."
+}
