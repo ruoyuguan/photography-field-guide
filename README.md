@@ -1,5 +1,7 @@
 # Photography Field Guide
 
+**English** | **[简体中文 →](README.zh-CN.md)**
+
 A bilingual photography learning site for beginners, built with Astro, Starlight, and Tailwind CSS. English is the default language; Simplified Chinese is available under `/zh-cn/`.
 
 The project is based on the open-source [ScrewFast](https://github.com/mearashadowfax/ScrewFast) template and retains its MIT license.
