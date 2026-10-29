@@ -4,6 +4,17 @@ A bilingual photography learning site for beginners, built with Astro, Starlight
 
 The project is based on the open-source [ScrewFast](https://github.com/mearashadowfax/ScrewFast) template and retains its MIT license.
 
+## Contributors
+
+- [@ruoyuguan](https://github.com/ruoyuguan) — Project owner, product direction, content decisions, and publishing.
+
+### AI-assisted development
+
+- **Kimi (Moonshot AI)** — Feature implementation, debugging, automated checks, documentation, and engineering delivery.
+- **ChatGPT (OpenAI)** — Product architecture, content design, technical review, and MVP refinement.
+
+AI assistants supported the development of this project. The project owner directs the work and makes the final decisions on published changes.
+
 ## Current scope
 
 - English and Simplified Chinese learning paths: 22 subject tutorials plus orientation, maintained as 46 MDX documents in 23 bilingual pairs.
