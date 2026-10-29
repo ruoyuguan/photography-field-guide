@@ -1,0 +1,91 @@
+---
+import { practicePathCopy } from '@copy/practice-paths';
+import { practiceCatalog } from '@data/practice-catalog';
+import type { PracticeLocale } from '@data/practice';
+interface Props {
+  locale: PracticeLocale;
+}
+const { locale } = Astro.props;
+const t = practicePathCopy[locale];
+const groups = [
+  { title: t.capture, entries: practiceCatalog.slice(0, 3) },
+  { title: t.existing, entries: practiceCatalog.slice(3) },
+];
+---
+
+<section
+  data-practice-suggestion
+  data-practice-interactive
+  hidden
+  class="mt-6 rounded-2xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-800 dark:bg-amber-950/30"
+  aria-labelledby="practice-suggestion-title"
+>
+  <h2
+    id="practice-suggestion-title"
+    data-suggestion-title
+    class="text-xl font-bold text-neutral-900 dark:text-neutral-100"
+  ></h2>
+  <p
+    data-suggestion-reason
+    class="mt-2 max-w-3xl text-sm leading-6 text-neutral-700 dark:text-neutral-300"
+  ></p>
+  <a
+    href="#practice-map"
+    data-suggestion-link
+    class="mt-3 inline-flex min-h-11 items-center rounded-lg bg-neutral-900 px-4 py-2 text-sm font-bold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 dark:bg-amber-400 dark:text-neutral-950"
+  ></a>
+  <p
+    data-practice-summary
+    role="status"
+    class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"
+  ></p>
+  <p
+    data-storage-notice
+    class="mt-2 max-w-3xl text-xs leading-5 text-neutral-600 dark:text-neutral-400"
+  ></p>
+</section>
+<nav
+  id="practice-map"
+  data-practice-map
+  tabindex="-1"
+  class="mt-8 scroll-mt-32 rounded-2xl border border-neutral-300 p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:border-neutral-700"
+  aria-labelledby="practice-map-title"
+>
+  <h2
+    id="practice-map-title"
+    class="text-xl font-bold text-neutral-900 dark:text-neutral-100"
+  >
+    {t.mapTitle}
+  </h2>
+  <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+    {t.mapIntro}
+  </p>
+  <div class="mt-4 grid gap-5 sm:grid-cols-2">
+    {groups.map(group => (
+      <div>
+        <h3 class="text-sm font-bold text-neutral-800 dark:text-neutral-200">
+          {group.title}
+        </h3>
+        <ol class="mt-2 space-y-1">
+          {group.entries.map(entry => (
+            <li>
+              <a
+                href={`#mission-${entry.id}`}
+                data-mission-jump
+                class="flex min-h-11 items-center gap-3 rounded-lg px-2 py-2 text-sm font-semibold text-amber-800 underline decoration-amber-400 underline-offset-4 hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:text-amber-300 dark:hover:bg-neutral-800"
+              >
+                <span
+                  aria-hidden="true"
+                  class="text-xs text-neutral-500 dark:text-neutral-400"
+                >
+                  {String(entry.number).padStart(2, '0')}
+                </span>
+                <span>{entry.copy[locale].lessonTitle}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))}
+  </div>
+</nav>

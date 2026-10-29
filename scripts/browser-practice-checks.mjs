@@ -1,6 +1,26 @@
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { missionById } from '../src/data_files/practice.ts';
+
+const mission = missionById('light-direction');
+assert.ok(mission, 'Missing source mission light-direction');
+
+function feedbackIs(locale, choiceId) {
+  const choice = mission.copy[locale].prediction.choices.find(
+    item => item.id === choiceId
+  );
+  assert.ok(
+    choice?.explanation?.trim(),
+    `${locale}/${choiceId}: missing explanation`
+  );
+  return `(() => {
+    const feedback = document.querySelector('[data-quiz-feedback]');
+    return feedback?.dataset.choiceId === ${JSON.stringify(choiceId)} &&
+      !feedback.hidden &&
+      feedback.textContent === ${JSON.stringify(choice.explanation.trim())};
+  })()`;
+}
 
 async function capture(call, name) {
   const directory = process.env.PFG_SCREENSHOT_DIR;
@@ -107,7 +127,7 @@ export async function checkPractice({
   await until(`document.querySelector('${incorrect}').checked`);
   await click('[data-check-answer]');
   await until(
-    `document.querySelector('[data-quiz-feedback]')?.textContent.includes('Changing direction does not change the lens') && document.querySelector('[data-retry-answer]')?.hidden === false`
+    `${feedbackIs('en', 'longer-focal-length')} && document.querySelector('[data-retry-answer]')?.hidden === false`
   );
   assert.equal(
     await evaluate(
@@ -130,9 +150,7 @@ export async function checkPractice({
   );
   await click(correct);
   await click('[data-check-answer]');
-  await until(
-    `document.querySelector('[data-quiz-feedback]')?.textContent.includes('different set of surfaces')`
-  );
+  await until(feedbackIs('en', 'left-surfaces-right-shadow'));
   assert.equal(
     await evaluate(
       `${savedProgress()}.missions['light-direction'].prediction.solved`
@@ -390,9 +408,7 @@ export async function checkPractice({
     );
     await click(correct);
     await click('[data-check-answer]');
-    await until(
-      `document.querySelector('[data-quiz-feedback]')?.textContent.includes('different set of surfaces')`
-    );
+    await until(feedbackIs('en', 'left-surfaces-right-shadow'));
     await click('[data-complete-mission]');
     await until(
       `document.querySelector('[data-mission-status]')?.textContent === 'You marked this mission complete.'`
@@ -495,9 +511,7 @@ export async function checkPractice({
     await capture(call, 'mission-zh-mobile');
     await tap(call, evaluate, `label:has(${correct})`);
     await tap(call, evaluate, '[data-check-answer]');
-    await until(
-      `document.querySelector('[data-quiz-feedback]')?.textContent.includes('另一组表面')`
-    );
+    await until(feedbackIs('zh-cn', 'left-surfaces-right-shadow'));
     const mobileFeedback = await evaluate(`(() => {
       const rect = document.querySelector('[data-quiz-feedback]').getBoundingClientRect();
       return {

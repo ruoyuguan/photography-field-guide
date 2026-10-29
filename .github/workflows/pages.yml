@@ -1,0 +1,75 @@
+name: Publish photography MVP to GitHub Pages
+
+# Local preparation only: pushing or changing visibility does not publish.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: photography-field-guide-pages
+  cancel-in-progress: false
+
+env:
+  SITE_ORIGIN: https://ruoyuguan.github.io
+  SITE_BASE: /photography-field-guide
+  ASTRO_TELEMETRY_DISABLED: '1'
+
+jobs:
+  build:
+    if: github.repository == 'ruoyuguan/photography-field-guide' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Read the photography repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.34.9
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.22.1
+          cache: pnpm
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Check calculations and progress
+        run: pnpm test:unit
+
+      - name: Build the project site
+        run: pnpm build
+
+      - name: Check project paths and metadata
+        run: |
+          pnpm test:smoke
+          pnpm test:build
+          node scripts/check-lightweight-editing-practice.mjs
+
+      - name: Upload only the public website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.publish.outputs.page_url }}
+    steps:
+      - name: Publish the photography project site
+        id: publish
+        uses: actions/deploy-pages@v4

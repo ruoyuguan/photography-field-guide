@@ -1,0 +1,30 @@
+src/copy/learning-starts.ts 41ms (unchanged)
+src/components/learn/LearningStarts.astro 22ms (unchanged)
+src/utils/practice/suggestion.ts 6ms (unchanged)
+tests/practice/suggestion.test.ts 10ms (unchanged)
+src/copy/practice-paths.ts 3ms (unchanged)
+src/components/practice/PracticeOverview.astro 5ms (unchanged)
+src/components/practice/MissionNavigation.astro 4ms (unchanged)
+src/views/HomeView.astro 6ms (unchanged)
+src/copy/en.ts 7ms (unchanged)
+src/copy/zh-cn.ts 2ms (unchanged)
+src/content/docs/learn/index.mdx 24ms (unchanged)
+src/content/docs/zh-cn/learn/index.mdx 11ms (unchanged)
+src/views/PracticeIndexView.astro 4ms (unchanged)
+src/components/practice/practice-controller.ts 16ms (unchanged)
+src/data_files/practice.ts 7ms (unchanged)
+src/components/practice/PracticeMission.astro 15ms (unchanged)
+src/components/practice/LightweightEditingPractice.astro 8ms (unchanged)
+src/utils/review-date.ts 2ms (unchanged)
+tests/practice/review-date.test.ts 2ms (unchanged)
+src/utils/content-validation.ts 13ms (unchanged)
+scripts/smoke.mjs 8ms (unchanged)
+scripts/browser-check.mjs 14ms
+scripts/browser-learning-path-checks.mjs 9ms
+AI_GUIDE.md 14ms (unchanged)
+README.md 12ms (unchanged)
+docs/ROADMAP.md 20ms
+docs/QUESTION_BANK.md 12ms
+docs/DEVELOPMENT_WORKFLOW_PROMPT.md 21ms
+docs/LEARNING_PATH_UX_REVIEW.md 4ms (unchanged)
+docs/READER_TRIAL_GUIDE.md 3ms

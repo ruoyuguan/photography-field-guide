@@ -1,0 +1,61 @@
+
+> photography-field-guide@0.0.1 build /Users/ruoyu/photography-field-guide
+> astro check && astro build && node process-html.mjs
+
+20:38:12 [vite] Re-optimizing dependencies because vite config has changed
+20:38:12 [content] Syncing content
+20:38:12 [content] Synced content
+20:38:12 [types] Generated 335ms
+20:38:12 [check] Getting diagnostics for Astro files in /Users/ruoyu/photography-field-guide...
+[96msrc/components/sections/insights/InsightDetail.astro[0m:[93m150[0m:[93m49[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m150[0m   document.addEventListener('DOMContentLoaded', event => {
+[7m   [0m [93m                                                ~~~~~[0m
+
+[96msrc/components/sections/navbar&footer/Navbar.astro[0m:[93m149[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'defaultTheme' is declared but its value is never read.
+
+[7m149[0m       const defaultTheme = 'default';
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/components/sections/navbar&footer/Navbar.astro[0m:[93m90[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'defaultTheme' is declared but its value is never read.
+
+[7m90[0m       const defaultTheme = 'default';
+[7m  [0m [93m            ~~~~~~~~~~~~[0m
+
+[96msrc/components/sections/pricing/PricingSection.astro[0m:[93m21[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'PricingSectionProps' is declared but never used.
+
+[7m21[0m interface PricingSectionProps {
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/buttons/Bookmark.astro[0m:[93m18[0m:[93m25[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'dataAttrValue' is declared but its value is never read.
+
+[7m18[0m     constructor(private dataAttrValue: string) {
+[7m  [0m [93m                        ~~~~~~~~~~~~~[0m
+
+[96mtests/practice/lightweight-editing-progress.test.ts[0m:[93m139[0m:[93m60[0m - [91merror[0m[90m ts(2322): [0mType '"unknown-c"' is not assignable to type '"protect-source-state-purpose" | "compare-and-undo-separately" | "export-and-inspect-derivative"'.
+
+[7m139[0m   progress.observationStepIds = ['unknown-a', 'unknown-b', 'unknown-c'];
+[7m   [0m [91m                                                           ~~~~~~~~~~~[0m
+[96mtests/practice/lightweight-editing-progress.test.ts[0m:[93m139[0m:[93m47[0m - [91merror[0m[90m ts(2322): [0mType '"unknown-b"' is not assignable to type '"protect-source-state-purpose" | "compare-and-undo-separately" | "export-and-inspect-derivative"'.
+
+[7m139[0m   progress.observationStepIds = ['unknown-a', 'unknown-b', 'unknown-c'];
+[7m   [0m [91m                                              ~~~~~~~~~~~[0m
+[96mtests/practice/lightweight-editing-progress.test.ts[0m:[93m139[0m:[93m34[0m - [91merror[0m[90m ts(2322): [0mType '"unknown-a"' is not assignable to type '"protect-source-state-purpose" | "compare-and-undo-separately" | "export-and-inspect-derivative"'.
+
+[7m139[0m   progress.observationStepIds = ['unknown-a', 'unknown-b', 'unknown-c'];
+[7m   [0m [91m                                 ~~~~~~~~~~~[0m
+
+[96mtests/practice/mission-feedback.test.ts[0m:[93m59[0m:[93m16[0m - [91merror[0m[90m ts(7022): [0m'choice' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+
+[7m59[0m     for (const choice of originalChoices) {
+[7m  [0m [91m               ~~~~~~[0m
+[96mtests/practice/mission-feedback.test.ts[0m:[93m52[0m:[93m11[0m - [91merror[0m[90m ts(7022): [0m'originalChoices' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+
+[7m52[0m     const originalChoices = original.copy[locale].prediction.choices;
+[7m  [0m [91m          ~~~~~~~~~~~~~~~[0m
+
+Result (228 files): 
+- 5 errors
+- 0 warnings
+- 5 hints
+
+ ELIFECYCLE  Command failed with exit code 1.

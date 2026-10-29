@@ -1,0 +1,20 @@
+---
+import LightweightEditingPractice from '@components/practice/LightweightEditingPractice.astro';
+import { lightweightEditingMission } from '@data/lightweight-editing-practice';
+import MainLayout from '@layouts/MainLayout.astro';
+import type { MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+}
+const { locale } = Astro.props;
+const t = lightweightEditingMission.copy[locale];
+---
+
+<MainLayout
+  title={t.metaTitle}
+  description={t.metaDescription}
+  section="Practice"
+>
+  <LightweightEditingPractice locale={locale} />
+</MainLayout>

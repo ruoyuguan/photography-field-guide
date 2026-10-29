@@ -1,0 +1,239 @@
+{
+  "scope": "C6 integration, preserved Kimi implementation and shared feedback",
+  "recordedAtUtc": "2026-10-29T12:55:42.882022+00:00",
+  "workspace": "/Users/ruoyu/photography-field-guide",
+  "git": {
+    "branch": "main",
+    "head": "95f19f4977321760f850f255674a2f9998326602",
+    "localOriginMain": "95f19f4977321760f850f255674a2f9998326602",
+    "stashCommits": ["52b3bbdf14a8a57ea938a4db5763982927867118"],
+    "preIntegrationUntrackedFiles": 91,
+    "missingPriorFiles": [],
+    "historicalRecordsCompared": 64,
+    "changedHistoricalRecords": [],
+    "backupDirectory": ".git/migration-backups/c6-integration-start-20261029/"
+  },
+  "runtime": {
+    "node": "24.22.1",
+    "nodePath": "/Users/ruoyu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "pnpm": "10.34.9",
+    "pnpmEntry": "/Users/ruoyu/.npm/_npx/a1a38f5f0f780954/node_modules/pnpm/bin/pnpm.cjs",
+    "ASTRO_TELEMETRY_DISABLED": "1",
+    "workingDirectory": "/Users/ruoyu/photography-field-guide"
+  },
+  "inventory": {
+    "learnDocuments": 46,
+    "bilingualSubjectPairs": 22,
+    "orientationPairs": 1,
+    "structuredRecords": 52,
+    "htmlPages": 84,
+    "missions": 6,
+    "unitTests": 66,
+    "missingOrRetiredRouteCases": 8
+  },
+  "checks": [
+    {
+      "name": "unit",
+      "command": "pnpm test:unit",
+      "base": "/",
+      "exitCode": 0,
+      "log": "final-root-unit.log"
+    },
+    {
+      "name": "root build",
+      "command": "pnpm build",
+      "base": "/",
+      "exitCode": 0,
+      "log": "root-build-typed.log"
+    },
+    {
+      "name": "root routes",
+      "command": "pnpm test:smoke",
+      "base": "/",
+      "exitCode": 0,
+      "log": "root-smoke.log"
+    },
+    {
+      "name": "root artifacts",
+      "command": "pnpm test:build",
+      "base": "/",
+      "exitCode": 0,
+      "log": "root-artifacts.log"
+    },
+    {
+      "name": "subpath build",
+      "command": "SITE_BASE=/photography-field-guide pnpm build",
+      "base": "/photography-field-guide",
+      "exitCode": 0,
+      "log": "final-subpath-build.log"
+    },
+    {
+      "name": "subpath routes",
+      "command": "SITE_BASE=/photography-field-guide pnpm test:smoke",
+      "base": "/photography-field-guide",
+      "exitCode": 0,
+      "log": "final-subpath-smoke.log"
+    },
+    {
+      "name": "subpath artifacts",
+      "command": "SITE_BASE=/photography-field-guide pnpm test:build",
+      "base": "/photography-field-guide",
+      "exitCode": 0,
+      "log": "final-subpath-artifacts.log"
+    },
+    {
+      "name": "subpath C6 lesson artifacts",
+      "command": "SITE_BASE=/photography-field-guide node scripts/check-lightweight-editing.mjs",
+      "base": "/photography-field-guide",
+      "exitCode": 0,
+      "log": "final-subpath-editing.log"
+    },
+    {
+      "name": "subpath C6 practice artifacts",
+      "command": "SITE_BASE=/photography-field-guide node scripts/check-lightweight-editing-practice.mjs",
+      "base": "/photography-field-guide",
+      "exitCode": 0,
+      "log": "final-subpath-editing-practice.log"
+    },
+    {
+      "name": "restored root build",
+      "command": "pnpm build",
+      "base": "/",
+      "exitCode": 0,
+      "log": "restore-root-build.log"
+    },
+    {
+      "name": "restored root routes",
+      "command": "pnpm test:smoke",
+      "base": "/",
+      "exitCode": 0,
+      "log": "restore-root-smoke.log"
+    },
+    {
+      "name": "restored root artifacts",
+      "command": "pnpm test:build",
+      "base": "/",
+      "exitCode": 0,
+      "log": "restore-root-artifacts.log"
+    },
+    {
+      "name": "restored root C6 lesson artifacts",
+      "command": "node scripts/check-lightweight-editing.mjs",
+      "base": "/",
+      "exitCode": 0,
+      "log": "restore-root-editing.log"
+    },
+    {
+      "name": "restored root C6 practice artifacts",
+      "command": "node scripts/check-lightweight-editing-practice.mjs",
+      "base": "/",
+      "exitCode": 0,
+      "log": "restore-root-editing-practice.log"
+    },
+    {
+      "name": "shared real browser",
+      "command": "PFG_SCREENSHOT_DIR=<evidence>/shared-browser pnpm test:browser",
+      "base": "/",
+      "exitCode": 0,
+      "log": "final-browser-shared.log"
+    },
+    {
+      "name": "C6 tutorial real browser",
+      "command": "PFG_EVIDENCE_DIR=<evidence>/c6-browser node scripts/browser-lightweight-editing.mjs",
+      "base": "/",
+      "exitCode": 0,
+      "log": "browser-tutorial.log"
+    },
+    {
+      "name": "C6 practice real browser",
+      "command": "PFG_EVIDENCE_DIR=<evidence>/c6-browser node scripts/browser-lightweight-editing-practice.mjs",
+      "base": "/",
+      "exitCode": 0,
+      "log": "final-browser-practice.log"
+    },
+    {
+      "name": "full project formatting",
+      "command": "pnpm format:check",
+      "exitCode": 0,
+      "log": "final-format.log"
+    },
+    {
+      "name": "diff whitespace",
+      "command": "git diff --check",
+      "exitCode": 0,
+      "log": "final-git-diff-check.log"
+    }
+  ],
+  "finalFormatAndDiff": "passed",
+  "typeCheck": {
+    "errors": 0,
+    "warnings": 0,
+    "existingTemplateHints": 5
+  },
+  "failedThenFixed": [
+    {
+      "command": "pnpm build",
+      "exitCode": 1,
+      "log": "root-build.log",
+      "cause": "New negative test fixtures needed explicit TypeScript annotations; app behavior was not the failing step."
+    },
+    {
+      "command": "pnpm format:check",
+      "exitCode": 1,
+      "log": "format-before.log",
+      "cause": "One new test file required formatting after adding its explicit type."
+    }
+  ],
+  "browser": {
+    "type": "automated headless Google Chrome via CDP",
+    "fullFlowBase": "/",
+    "pageExceptions": [],
+    "covered": [
+      "search including Chinese C6 full title",
+      "deep language switch",
+      "calculator input and errors",
+      "C1–C5 all30 localized choice explanations before and after reload",
+      "C5 to C6 both languages",
+      "existing dedicated C6 key without migration",
+      "C6 readiness revocation and restored catalog status",
+      "single reset isolation",
+      "exact two-key clear and preference preservation",
+      "refresh and blocked/corrupt storage",
+      "native keyboard controls",
+      "mobile touch emulation",
+      "actual dark theme",
+      "no JavaScript content",
+      "narrow and 200 percent equivalent viewport",
+      "same-source geometry and exact crop region"
+    ],
+    "notHumanReaderStudy": true
+  },
+  "sourcesDirectlyReadThisRound": [
+    "https://helpx.adobe.com/lightroom-classic/desktop/help/applying-adjustments-develop-module-basic.html",
+    "https://helpx.adobe.com/lightroom-classic/desktop/process-and-develop-photos/image-tone-color.html",
+    "https://helpx.adobe.com/lightroom-classic/desktop/help/crop-rotate-straighten.html",
+    "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site",
+    "https://developers.cloudflare.com/pages/get-started/direct-upload/",
+    "https://vercel.com/changelog/vercel-drop"
+  ],
+  "sharing": {
+    "published": false,
+    "repoVisibilityChanged": false,
+    "pushed": false,
+    "githubPagesExpectedUrl": "https://ruoyuguan.github.io/photography-field-guide/",
+    "observedHttpStatus": 404,
+    "httpEvidence": "github-pages-headers.txt",
+    "publicUrlConfirmed": null
+  },
+  "notExecuted": [
+    "real reader study",
+    "physical phone test",
+    "full screen-reader and WCAG audit",
+    "full subpath browser workflow",
+    "remote CI",
+    "actual deployment/domain/platform404 acceptance",
+    "recheck every external source sitewide",
+    "open/upload/edit any real photograph or verify reader backup"
+  ],
+  "finalDistBase": "/"
+}

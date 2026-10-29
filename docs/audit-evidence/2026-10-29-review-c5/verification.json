@@ -1,0 +1,322 @@
+{
+  "date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "project": "/Users/ruoyu/photography-field-guide",
+  "baselineHead": "95f19f4977321760f850f255674a2f9998326602",
+  "currentHead": "95f19f4977321760f850f255674a2f9998326602",
+  "branch": "main",
+  "stash": [
+    "stash@{0} 52b3bbdf14a8a57ea938a4db5763982927867118 On main: pre-sync Kimi Phase 3B 2026-10-28"
+  ],
+  "authorizationState": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "repositoryVisibilityChanged": false,
+    "stashApplied": false
+  },
+  "runtime": {
+    "node": "24.22.1",
+    "pnpm": "10.34.9",
+    "nodePath": "/Users/ruoyu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "pnpmEntry": "/Users/ruoyu/.npm/_npx/a1a38f5f0f780954/node_modules/pnpm/bin/pnpm.cjs",
+    "environment": {
+      "ASTRO_TELEMETRY_DISABLED": "1",
+      "SITE_ORIGIN": "https://ruoyuguan.github.io"
+    }
+  },
+  "inventory": {
+    "learnDocuments": 44,
+    "subjectPairs": 21,
+    "structuredRecords": 52,
+    "htmlPages": 80,
+    "missions": 5,
+    "unitTests": 38,
+    "typeErrors": 0,
+    "typeWarnings": 0,
+    "existingHints": 5
+  },
+  "checks": [
+    {
+      "name": "baseline-build",
+      "command": "pnpm build",
+      "status": "passed",
+      "exitCode": 0,
+      "log": "logs/baseline-build.log"
+    },
+    {
+      "name": "baseline-format",
+      "command": "pnpm format:check",
+      "status": "passed",
+      "exitCode": 0,
+      "log": "logs/baseline-format.log"
+    },
+    {
+      "name": "browser-final",
+      "command": "PFG_SCREENSHOT_DIR=<temporary evidence directory> pnpm test:browser",
+      "status": "passed",
+      "exitCode": 0,
+      "log": "logs/browser-final-all.log",
+      "scope": "root production build, C1-C5, directories/tools/search/theme/storage, touch/no-script, 200% equivalent CSS viewport"
+    },
+    {
+      "name": "format-changes",
+      "command": "pnpm exec prettier --write AI_GUIDE.md README.md astro.config.mjs docs/DEVELOPMENT_WORKFLOW_PROMPT.md docs/PHASE_3G_C5_REVIEW.md docs/QUESTION_BANK.md docs/REFERENCE_LINKS.md docs/ROADMAP.md docs/STATUS.md docs/history/status-before-c5-2026-10-29.md scripts/browser-backup-checks.mjs scripts/browser-check.mjs scripts/browser-framing-checks.mjs scripts/browser-review-checks.mjs scripts/browser-state-checks.mjs scripts/browser-story-checks.mjs scripts/check-build.mjs scripts/smoke.mjs src/components/ThemeIcon.astro src/components/practice/BackupExportModel.astro src/components/practice/LightDirectionDiagram.astro src/components/practice/PracticeMission.astro src/components/practice/practice-controller.ts src/components/sections/navbar&footer/Navbar.astro src/components/ui/starlight/ThemeProvider.astro src/components/ui/starlight/ThemeSelect.astro src/components/ui/starlight/ThemeSelectMobile.astro src/content/docs/learn/composition/subject-and-background.mdx src/content/docs/learn/composition/understanding-light.mdx src/content/docs/learn/field-practice/photo-review.mdx src/content/docs/learn/index.mdx src/content/docs/learn/workflow/backup-and-export.mdx src/content/docs/zh-cn/learn/composition/subject-and-background.mdx src/content/docs/zh-cn/learn/composition/understanding-light.mdx src/content/docs/zh-cn/learn/field-practice/photo-review.mdx src/content/docs/zh-cn/learn/index.mdx src/content/docs/zh-cn/learn/workflow/backup-and-export.mdx src/data_files/missions/backup-and-export.ts src/data_files/missions/photo-review.ts src/data_files/practice.ts src/pages/practice/backup-and-export.astro src/pages/zh-cn/practice/backup-and-export.astro src/utils/content-validation.ts src/utils/practice/progress.ts tests/practice/progress.test.ts",
+      "SITE_BASE": "/",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/format-changes.log"
+    },
+    {
+      "name": "subpath-build",
+      "command": "pnpm build",
+      "SITE_BASE": "/photography-field-guide",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/subpath-build.log"
+    },
+    {
+      "name": "subpath-smoke",
+      "command": "pnpm test:smoke",
+      "SITE_BASE": "/photography-field-guide",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/subpath-smoke.log"
+    },
+    {
+      "name": "subpath-artifacts",
+      "command": "pnpm test:build",
+      "SITE_BASE": "/photography-field-guide",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/subpath-artifacts.log"
+    },
+    {
+      "name": "restore-root-build",
+      "command": "pnpm build",
+      "SITE_BASE": "/",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/restore-root-build.log"
+    },
+    {
+      "name": "restore-root-smoke",
+      "command": "pnpm test:smoke",
+      "SITE_BASE": "/",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/restore-root-smoke.log"
+    },
+    {
+      "name": "restore-root-artifacts",
+      "command": "pnpm test:build",
+      "SITE_BASE": "/",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/restore-root-artifacts.log"
+    },
+    {
+      "name": "unit-final",
+      "command": "pnpm test:unit",
+      "SITE_BASE": "/",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/unit-final.log"
+    },
+    {
+      "name": "format-final",
+      "command": "pnpm format:check",
+      "SITE_BASE": "/",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/format-final.log"
+    }
+  ],
+  "earlierFailedRuns": [
+    {
+      "log": "logs/root-build.log",
+      "exitCode": 1,
+      "reasonAndResolution": "Unquoted colon in new MDX title; quoted before successful builds."
+    },
+    {
+      "log": "logs/root-smoke.log",
+      "exitCode": 1,
+      "reasonAndResolution": "Concept-only diagram note omitted during refactor; restored explicit scientific boundary."
+    },
+    {
+      "log": "logs/root-smoke-final.log",
+      "exitCode": 1,
+      "reasonAndResolution": "English note replacement missed wrapped source; corrected source and retested."
+    },
+    {
+      "log": "logs/root-build-provider.log",
+      "exitCode": 1,
+      "reasonAndResolution": "Wrong public Icon import; corrected using local package exports."
+    },
+    {
+      "log": "logs/browser.log",
+      "exitCode": 1,
+      "reasonAndResolution": "Old C4 expectation still required no next mission; now asserts real C5 link."
+    },
+    {
+      "log": "logs/browser-final.log",
+      "exitCode": 1,
+      "reasonAndResolution": "New storage-denied check exposed unguarded upstream early ThemeProvider; safely overridden."
+    },
+    {
+      "log": "logs/browser-verified.log",
+      "exitCode": 1,
+      "reasonAndResolution": "New test used an obsolete mobile menu selector; corrected against current dependency source."
+    },
+    {
+      "log": "logs/browser-complete.log",
+      "exitCode": 1,
+      "reasonAndResolution": "Removing global marker suppression exposed duplicate Preline theme initialization; native controls now opt out and are tested."
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "c5-mission-en-1366x768.png",
+      "route": "/practice/backup-and-export/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "method": "isolated Chrome automation; screenshot reviewed by developer",
+      "sha256": "2fc6a9668aceedcc5b53c85d65e93adb4db0294c7ea297c9887c34b2016c06f9"
+    },
+    {
+      "file": "c5-lesson-zh-390x844.png",
+      "route": "/zh-cn/learn/workflow/backup-and-export/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "method": "isolated Chrome automation; screenshot reviewed by developer",
+      "sha256": "1f945dfce9aa1f735666005474034fd39a461fc9ffccdf364aae1fd6602c0ae9"
+    },
+    {
+      "file": "c5-mission-zh-390x844.png",
+      "route": "/zh-cn/practice/backup-and-export/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "method": "isolated Chrome automation; screenshot reviewed by developer",
+      "sha256": "b142c389ee1be046f590ed24efe4fb898b41e085d53802cd939388d2930f3812"
+    },
+    {
+      "file": "c5-feedback-zh-touch-390x844.png",
+      "route": "/zh-cn/practice/backup-and-export/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "method": "isolated Chrome automation; screenshot reviewed by developer",
+      "sha256": "1c0b5b12887441efa4cadb580a7a4f9233a1bb70a37d7a1b15d645d8433a6794"
+    },
+    {
+      "file": "c5-mission-en-200pct-equivalent.png",
+      "route": "/practice/backup-and-export/",
+      "viewport": {
+        "width": 683,
+        "height": 384
+      },
+      "method": "isolated Chrome automation; screenshot reviewed by developer",
+      "sha256": "05a9da43d0ebe74d60d014a454beaac76d405ea7e07ef3430f59e04aa85d0f74"
+    },
+    {
+      "file": "lighting-geometry-en-1366x768.png",
+      "route": "/learn/composition/understanding-light/",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "method": "isolated Chrome automation; screenshot reviewed by developer",
+      "sha256": "2e00dcb9f0306b45bc5263345c1bbd5307f714bba5045fddce01e7e8f0e074ce"
+    }
+  ],
+  "notExecuted": [
+    "Real reader tests",
+    "Full screen-reader / WCAG audit",
+    "Cross-browser matrix",
+    "Full browser interaction suite under deployment subpath (static build/smoke/artifacts were run)",
+    "Remote CI verification or live remote Git-ref refresh",
+    "Deployment and public-host behavior",
+    "Actual reader file backup/recovery/export/privacy checks",
+    "Bulk revalidation of historical external resources"
+  ],
+  "limitations": [
+    "localStorage is not a transactional database; ordinary sequential cross-tab operations are covered, simultaneous same-field writes use last successful write",
+    "Storage mutation refusal preserves temporary in-page behavior; earlier disk state can return on reload",
+    "200% testing is an equivalent CSS viewport, not a complete browser/assistive-technology zoom matrix"
+  ],
+  "postReportChecks": [
+    {
+      "command": "pnpm format:check",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "logs/final-format-check.log"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "passed"
+    },
+    {
+      "command": "read-only process inventory for pfg-browser-check profiles and owned Astro preview",
+      "status": "no matching remaining processes",
+      "queryExitCode": 1,
+      "note": "Filtered query returns 1 when no matches; all browser-suite cleanup routines also completed successfully."
+    }
+  ],
+  "finalGitStatus": [
+    "## main...origin/main",
+    " M AI_GUIDE.md",
+    " M README.md",
+    " M astro.config.mjs",
+    " M docs/DEVELOPMENT_WORKFLOW_PROMPT.md",
+    " M docs/QUESTION_BANK.md",
+    " M docs/REFERENCE_LINKS.md",
+    " M docs/ROADMAP.md",
+    " M docs/STATUS.md",
+    " M scripts/browser-check.mjs",
+    " M scripts/browser-framing-checks.mjs",
+    " M scripts/browser-review-checks.mjs",
+    " M scripts/browser-story-checks.mjs",
+    " M scripts/check-build.mjs",
+    " M scripts/smoke.mjs",
+    " M src/components/ThemeIcon.astro",
+    " M src/components/practice/PracticeMission.astro",
+    " M src/components/practice/practice-controller.ts",
+    " M src/components/sections/navbar&footer/Navbar.astro",
+    " M src/components/ui/starlight/ThemeSelect.astro",
+    " M src/components/ui/starlight/ThemeSelectMobile.astro",
+    " M src/content/docs/learn/composition/subject-and-background.mdx",
+    " M src/content/docs/learn/composition/understanding-light.mdx",
+    " M src/content/docs/learn/field-practice/photo-review.mdx",
+    " M src/content/docs/learn/index.mdx",
+    " M src/content/docs/zh-cn/learn/composition/subject-and-background.mdx",
+    " M src/content/docs/zh-cn/learn/composition/understanding-light.mdx",
+    " M src/content/docs/zh-cn/learn/field-practice/photo-review.mdx",
+    " M src/content/docs/zh-cn/learn/index.mdx",
+    " M src/data_files/missions/photo-review.ts",
+    " M src/data_files/practice.ts",
+    " M src/utils/content-validation.ts",
+    " M src/utils/practice/progress.ts",
+    " M tests/practice/progress.test.ts",
+    "?? docs/PHASE_3G_C5_REVIEW.md",
+    "?? docs/audit-evidence/2026-10-29-review-c5/",
+    "?? docs/history/status-before-c5-2026-10-29.md",
+    "?? scripts/browser-backup-checks.mjs",
+    "?? scripts/browser-state-checks.mjs",
+    "?? src/components/practice/BackupExportModel.astro",
+    "?? src/components/practice/LightDirectionDiagram.astro",
+    "?? src/components/ui/starlight/ThemeProvider.astro",
+    "?? src/content/docs/learn/workflow/",
+    "?? src/content/docs/zh-cn/learn/workflow/",
+    "?? src/data_files/missions/backup-and-export.ts",
+    "?? src/pages/practice/backup-and-export.astro",
+    "?? src/pages/zh-cn/practice/backup-and-export.astro"
+  ]
+}

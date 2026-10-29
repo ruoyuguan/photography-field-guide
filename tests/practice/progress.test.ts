@@ -322,3 +322,195 @@ test('photo review restores three actions and resets without removing C1–C3', 
     assert.equal(restored.getState().missions[id].status, 'completed');
   }
 });
+
+test('interleaved stores preserve other missions and refresh their snapshots', () => {
+  const { storage } = memoryStorage();
+  const first = createPracticeStore(storage);
+  const second = createPracticeStore(storage);
+  first.update('light-direction', progress => {
+    progress.status = 'completed';
+  });
+  second.update('photo-review', progress => {
+    progress.observationStepIds.push('group-similar-frames');
+  });
+  assert.equal(
+    second.getState().missions['light-direction'].status,
+    'completed'
+  );
+  assert.deepEqual(
+    first.getState().missions['photo-review'].observationStepIds,
+    ['group-similar-frames']
+  );
+  first.resetMission('light-direction');
+  assert.equal(second.getState().missions['light-direction'], undefined);
+  assert.deepEqual(
+    second.getState().missions['photo-review'].observationStepIds,
+    ['group-similar-frames']
+  );
+});
+
+test('a stale store cannot resurrect unrelated missions after clear-all', () => {
+  const { storage } = memoryStorage();
+  const first = createPracticeStore(storage);
+  for (const id of ['light-direction', 'subject-background', 'photo-review']) {
+    first.update(id, progress => {
+      progress.status = 'completed';
+    });
+  }
+  const second = createPracticeStore(storage);
+  second.clearAll();
+  first.update('light-direction', progress => {
+    progress.prediction.choiceId = 'always-brighter';
+  });
+  const restored = createPracticeStore(storage).getState();
+  assert.deepEqual(Object.keys(restored.missions), ['light-direction']);
+  assert.equal(restored.missions['light-direction'].status, 'in-progress');
+  assert.equal(restored.missions['light-direction'].prediction.solved, false);
+});
+
+test('same-mission operations use the latest state and the last choice wins', () => {
+  const { storage } = memoryStorage();
+  const first = createPracticeStore(storage);
+  const second = createPracticeStore(storage);
+  first.update('light-direction', progress => {
+    progress.prediction.choiceId = 'left-surfaces-right-shadow';
+    progress.observationStepIds.push('compare-model');
+  });
+  second.update('light-direction', progress => {
+    progress.prediction.choiceId = 'always-brighter';
+    progress.reflectionCheckIds.push('surface-evidence');
+  });
+  first.update('light-direction', progress => {
+    progress.observationStepIds.push('make-front-photo');
+  });
+  const mission = second.getState().missions['light-direction'];
+  assert.equal(mission.prediction.choiceId, 'always-brighter');
+  assert.equal(mission.prediction.solved, false);
+  assert.deepEqual(mission.observationStepIds, [
+    'compare-model',
+    'make-front-photo',
+  ]);
+  assert.deepEqual(mission.reflectionCheckIds, ['surface-evidence']);
+});
+
+test('retry preserves an explicit in-progress marker without a selected answer', () => {
+  const { storage } = memoryStorage();
+  const store = createPracticeStore(storage);
+  store.update('light-direction', progress => {
+    progress.prediction.choiceId = 'always-brighter';
+    progress.status = 'in-progress';
+  });
+  store.update('light-direction', progress => {
+    progress.prediction.choiceId = undefined;
+    progress.status = 'in-progress';
+  });
+  const restored =
+    createPracticeStore(storage).getState().missions['light-direction'];
+  assert.equal(restored.status, 'in-progress');
+  assert.equal(restored.prediction.choiceId, undefined);
+  assert.equal(restored.prediction.solved, false);
+});
+
+test('a failed write keeps later operations in memory instead of reloading stale data', () => {
+  const { storage, values } = memoryStorage({
+    [PRACTICE_STORAGE_KEY]: JSON.stringify(validProgress),
+  });
+  storage.setItem = () => {
+    throw new Error('quota exceeded');
+  };
+  const store = createPracticeStore(storage);
+  store.update('photo-review', progress => {
+    progress.observationStepIds.push('group-similar-frames');
+  });
+  store.update('photo-review', progress => {
+    progress.reflectionCheckIds.push('explain-selection');
+  });
+  assert.equal(store.getNotice(), 'memory');
+  const review = store.getState().missions['photo-review'];
+  assert.deepEqual(review.observationStepIds, ['group-similar-frames']);
+  assert.deepEqual(review.reflectionCheckIds, ['explain-selection']);
+  assert.equal(
+    store.getState().missions['light-direction'].status,
+    'completed'
+  );
+  assert.equal(values.get(PRACTICE_STORAGE_KEY), JSON.stringify(validProgress));
+});
+
+test('an unreadable saved state is never overwritten by a later task update', () => {
+  let writes = 0;
+  const storage = {
+    getItem() {
+      throw new Error('read unavailable');
+    },
+    setItem() {
+      writes++;
+    },
+  } as unknown as Storage;
+  const store = createPracticeStore(storage);
+  store.update('light-direction', progress => {
+    progress.observationStepIds.push('compare-model');
+  });
+  assert.equal(writes, 0);
+  assert.equal(store.getNotice(), 'memory');
+  assert.deepEqual(
+    store.getState().missions['light-direction'].observationStepIds,
+    ['compare-model']
+  );
+});
+
+test('failed clear-all remains empty in memory and reports unavailable storage', () => {
+  const { storage, values } = memoryStorage({
+    [PRACTICE_STORAGE_KEY]: JSON.stringify(validProgress),
+    hs_theme: 'dark',
+  });
+  storage.removeItem = () => {
+    throw new Error('remove unavailable');
+  };
+  const store = createPracticeStore(storage);
+  store.clearAll();
+  assert.deepEqual(store.getState(), emptyPracticeProgress());
+  assert.equal(store.getNotice(), 'memory');
+  assert.equal(values.get(PRACTICE_STORAGE_KEY), JSON.stringify(validProgress));
+  assert.equal(values.get('hs_theme'), 'dark');
+});
+
+test('C5 restores its own actions without saving file information and resets independently of C4', () => {
+  const { storage } = memoryStorage();
+  const store = createPracticeStore(storage);
+  store.update('photo-review', p => {
+    p.status = 'completed';
+  });
+  store.update('backup-and-export', p => {
+    p.prediction.choiceId = 'retain-backup-export-inspect';
+    p.observationStepIds = [
+      'retain-and-check-backup',
+      'export-for-purpose',
+      'inspect-export-locally',
+    ];
+    p.reflectionCheckIds = [
+      'originals-and-recovery',
+      'purposeful-export',
+      'export-privacy-review',
+    ];
+    p.status = 'completed';
+    Object.assign(p, {
+      fileNames: ['private.jpg'],
+      gps: [1, 2],
+      reflectionText: 'private',
+    });
+  });
+  const restored = createPracticeStore(storage);
+  const progress = restored.getState().missions['backup-and-export'];
+  assert.equal(progress.prediction.solved, true);
+  assert.equal(progress.status, 'completed');
+  assert.equal(progress.observationStepIds.length, 3);
+  assert.equal(progress.reflectionCheckIds.length, 3);
+  for (const key of ['fileNames', 'gps', 'reflectionText'])
+    assert.equal(key in progress, false);
+  restored.resetMission('backup-and-export');
+  assert.equal(restored.getState().missions['backup-and-export'], undefined);
+  assert.equal(
+    restored.getState().missions['photo-review'].status,
+    'completed'
+  );
+});

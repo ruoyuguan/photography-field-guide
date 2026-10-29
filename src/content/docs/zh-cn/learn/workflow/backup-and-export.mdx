@@ -1,0 +1,128 @@
+---
+title: 安全备份与导出：保留原片，分享副本
+description: 保留完整拍摄原片，检查独立备份，并在分享前于本地检查符合用途的导出文件。
+translationKey: backup-and-export
+category: workflow
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [raw-jpeg-exif, photo-review]
+relatedConcepts: [raw, jpeg, exif]
+relatedTools: []
+lastReviewed: '2026-10-29'
+sources:
+  - url: 'https://www.cyber.gc.ca/en/guidance/tips-backing-your-information-itsap40002'
+    title: 'Tips for backing up your information — Canadian Centre for Cyber Security'
+    locator: 'Where to store your backups; What else to consider'
+    accessedOn: '2026-10-29'
+    supports: '独立与离线存储、3-2-1 备份策略及恢复测试；本练习是原创的小规模应用。'
+  - url: 'https://support.apple.com/en-us/108922'
+    title: 'Manage your iCloud storage on your Apple device — Apple Support'
+    locator: 'Delete photos in iCloud Photos'
+    accessedOn: '2026-10-29'
+    supports: '在一台设备删除 iCloud 照片，会传播到登录相同账号的其他设备。'
+  - url: 'https://helpx.adobe.com/lightroom-classic/desktop/manage-catalogs-and-files/back-catalog.html'
+    title: 'Back up a catalog — Adobe Lightroom Classic'
+    locator: 'Plan your backup strategy'
+    accessedOn: '2026-10-29'
+    supports: '目录备份只包含目录文件，照片文件与导出文件需要独立备份。'
+  - url: 'https://helpx.adobe.com/lightroom-classic/desktop/export-photos/export-files-disk-or-cd.html'
+    title: 'Export files to disk or CD — Adobe Lightroom Classic'
+    locator: 'File settings; Image sizing; Metadata'
+    accessedOn: '2026-10-29'
+    supports: '格式、压缩、像素尺寸与元数据是不同的导出选择；移除 GPS 的选项有格式限制。'
+  - url: 'https://helpx.adobe.com/lightroom-classic/desktop/technical-support/technical-issues/miscellaneous-issues/color-faq.html'
+    title: 'FAQ: Color in Lightroom Classic — Adobe'
+    locator: 'While exporting or printing photos, can I specify a color space for the target device?'
+    accessedOn: '2026-10-29'
+    supports: 'sRGB 可作为网上分享的示例；打印配置文件取决于目标工作流。'
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/first_step/insert_card/'
+    title: 'Inserting Memory Cards — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'Removing Memory Cards; Compatible Memory Cards'
+    accessedOn: '2026-10-29'
+    supports: '不要中断存储卡写入；先复制文件，再编辑或重命名副本，而非卡上的原文件。'
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/menu_setup/user_setting/'
+    title: 'User Setting — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'FORMAT'
+    accessedOn: '2026-10-29'
+    supports: '格式化删除全部存储卡数据，包括受保护照片；应先把重要文件复制到其他位置。'
+sidebar:
+  order: 1
+head:
+  - tag: meta
+    attrs:
+      data-pagefind-meta: search_aliases[content]
+      content: 照片备份 安全导出 保留原片 同步 恢复 元数据 隐私 像素尺寸 PPI
+---
+
+import BackupExportModel from '@components/practice/BackupExportModel.astro';
+
+选出了三张照片之后，哪些文件需要保护，又应该把哪些发出去？
+
+<strong>简短回答：</strong>
+保留完整拍摄原片，检查一份能在工作存储丢失后用于恢复的备份，再为一种明确用途导出入选副本。重新打开实际导出文件，在本地检查画面与可识别信息。筛选、备份与导出回答的是不同问题。
+
+<strong>从这里开始：</strong>
+取出[照片筛选与复盘](../../field-practice/photo-review/)中的小组拍摄，或其他一次拍摄，保留来源不变。先选一张制作本地网页预览副本，无需公开发布。打开[保留原片，导出副本](../../../practice/backup-and-export/)，按三个操作检查，并记录自己的完成情况。
+
+<BackupExportModel locale="zh-cn" prefix="backup-export-lesson-zh-cn" />
+
+## 决定展示哪些照片时，仍保留完整拍摄
+
+C4 候选清单记录的是哪些画面服务当前用途，不能代替完整来源。本练习保留入选与未入选画面；如果同时拍了 RAW 与 JPEG，两者都保留。如果只拍了 JPEG，相机文件就是原片，不必为了完成任务改拍 RAW。
+
+原片是你保留下来的拍摄文件。导出衍生副本是依据它制作的输出，呈现、裁切、尺寸、压缩或元数据都可能改变。小尺寸 JPEG 不能保留全部 RAW 拍摄数据。“保留原片”也不妨碍编辑选择：旗标与相册可以调整，来源证据仍然保留。若这些职责还不清楚，可回看[RAW、JPEG、HEIF 与 EXIF](../../image-quality/raw-jpeg-exif/)。
+
+## 先复制，再检查恢复
+
+用可信的本地软件<strong>复制而非移动</strong>整次小规模拍摄，保留存储卡或其他来源不变。检查工作位置实际收到了哪些格式和文件；看见缩略图不等于完整传输已经验证。
+
+在分开的物理存储设备上建立备份。同一硬盘上的另一文件夹或分区共享硬盘故障风险。检查覆盖范围，再从备份中把代表性样本恢复到另一个文件夹，不替换工作文件。实际拍了 RAW 与 JPEG 时，用兼容软件分别打开相关恢复样本。核对预期文件数量与大小是有用检查，却不能证明每个字节都正确。
+
+抽样恢复只检查了被抽到的文件与这条恢复路径，不能认证全部文件、未来可读性或所有事故下的保护。如果没有独立存储，可以先规划；实际完成之前，不勾选对应任务操作。
+
+<details>
+<summary>同步、目录与 3-2-1 又分别意味着什么？</summary>
+
+同步让多个位置保持一致，删除也可能随之传播。Apple 的 iCloud 照片说明明确记录了这一行为。某项服务也许另有历史版本或恢复功能，但依赖它备份之前，应检查保留什么、保留多久。
+
+Lightroom Classic 的目录备份只包含目录，不包含照片文件。实际原片与工作流需要的编辑记录应分别保护。常见的<strong>3-2-1</strong>策略提出三份副本、两种存储介质与一份异地副本。它帮助规划，不保证万无一失；风险是否分开、保留策略、覆盖范围与恢复检查仍然重要。离线副本可以减少部分共同风险。本地练习不要求购买服务或连接账号。
+
+</details>
+
+不要为完成任务删除或格式化存储卡。以后进行破坏性操作前，应核实所需副本与恢复范围，并遵循相机说明书。存储卡写入时不要中断。以明确标注的 X-T5 为例，Fujifilm 说明格式化也会移除受保护照片；保护标记不是备份。
+
+## 为一个接收场景导出
+
+在纸上或自己的本地笔记中写用途，例如“普通网页预览”“某冲印店要求的文件”或“全尺寸交付”。本站不保存这些文字。将一至三张 C4 入选照片导出到单独的位置，避免同名冲突静默替换原片。
+
+普通 SDR 网页预览中，软件支持时，<strong>JPEG 配合 sRGB</strong>是一种可行示例。像素尺寸与压缩依据接收者要求选择，没有通用的长边尺寸或质量百分比。打印或其他工作流则应遵循对应接收要求。
+
+<strong>像素尺寸</strong>说明导出图片包含多少像素；<strong>PPI</strong>
+把这些像素联系到实际打印尺寸。只改 PPI
+标签不会创造细节，也不决定网页图片的像素尺寸；应检查尺寸操作是否同时重新采样。
+
+## 检查实际导出文件
+
+用本地查看器重新打开实际导出文件，在预期观看大小下检查方向、裁切、必要细节、尺寸与呈现。编辑器预览或“导出完成”消息不能替代这些检查。
+
+用可信的本地元数据工具检查位置与可识别字段，也要检查文件名与画面：即使没有 GPS，路牌、人脸、姓名牌或住宅室内仍可能透露信息。按接收者需要决定保留哪些，再检查修改元数据后的结果。移除 GPS 不保证匿名；未核实字段继续保留未知。
+
+Adobe 示例中的导出控制可以为部分格式移除 GPS，但这一选项不适用于 DNG。其他软件与格式的行为也会不同。保留私有原片，检查交付副本，再单独决定是否分享。本站不读取 EXIF，也不验证隐私。
+
+## 下一步：尝试可撤销的调整
+
+保护来源后，继续[轻量后期](../lightweight-editing/)与[C6 练习](../../../practice/lightweight-editing/)。编辑不是必须的：如果调整没有服务用途，就保留未改基线。
+
+## 继续学习循环
+
+完成[保留原片，导出副本](../../../practice/backup-and-export/)，或者在导出尺寸提示你需要重新选片时，返回[筛选、复盘、再拍](../../../practice/photo-review/)。任务标记只记录你报告做过的事情，不认证备份，也不表示可以删除或公开发布。
+
+## 资料来源
+
+以下页面均于 2026-10-29 实际打开。软件示例用于解释选择，不要求使用特定编辑器。
+
+- [加拿大网络安全中心：备份存储与恢复检查（英文）](https://www.cyber.gc.ca/en/guidance/tips-backing-your-information-itsap40002)。
+- [Apple：iCloud 照片跨设备删除行为（英文）](https://support.apple.com/en-us/108922)。
+- Adobe：[目录备份（英文）](https://helpx.adobe.com/lightroom-classic/desktop/manage-catalogs-and-files/back-catalog.html)、[导出设置与元数据（英文）](https://helpx.adobe.com/lightroom-classic/desktop/export-photos/export-files-disk-or-cd.html)，以及[输出色彩空间示例（英文）](https://helpx.adobe.com/lightroom-classic/desktop/technical-support/technical-issues/miscellaneous-issues/color-faq.html)。
+- Fujifilm X-T5：[存储卡操作（英文）](https://fujifilm-dsc.com/en/manual/x-t5/first_step/insert_card/)与[格式化（英文）](https://fujifilm-dsc.com/en/manual/x-t5/menu_setup/user_setting/)。

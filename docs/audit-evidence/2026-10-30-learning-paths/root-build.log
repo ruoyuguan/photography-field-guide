@@ -1,0 +1,65 @@
+
+> photography-field-guide@0.0.1 build /Users/ruoyu/photography-field-guide
+> astro check && astro build && node process-html.mjs
+
+00:45:50 [content] Syncing content
+00:45:50 [content] Synced content
+00:45:50 [types] Generated 294ms
+00:45:50 [check] Getting diagnostics for Astro files in /Users/ruoyu/photography-field-guide...
+[96msrc/components/sections/insights/InsightDetail.astro[0m:[93m150[0m:[93m49[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m150[0m   document.addEventListener('DOMContentLoaded', event => {
+[7m   [0m [93m                                                ~~~~~[0m
+
+[96msrc/components/sections/navbar&footer/Navbar.astro[0m:[93m149[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'defaultTheme' is declared but its value is never read.
+
+[7m149[0m       const defaultTheme = 'default';
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/components/sections/navbar&footer/Navbar.astro[0m:[93m90[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'defaultTheme' is declared but its value is never read.
+
+[7m90[0m       const defaultTheme = 'default';
+[7m  [0m [93m            ~~~~~~~~~~~~[0m
+
+[96msrc/components/sections/pricing/PricingSection.astro[0m:[93m21[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'PricingSectionProps' is declared but never used.
+
+[7m21[0m interface PricingSectionProps {
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/buttons/Bookmark.astro[0m:[93m18[0m:[93m25[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'dataAttrValue' is declared but its value is never read.
+
+[7m18[0m     constructor(private dataAttrValue: string) {
+[7m  [0m [93m                        ~~~~~~~~~~~~~[0m
+
+Result (235 files): 
+- 0 errors
+- 0 warnings
+- 5 hints
+
+00:45:53 [content] Syncing content
+00:45:53 [content] Synced content
+00:45:53 [types] Generated 243ms
+00:45:53 [build] output: "static"
+00:45:53 [build] mode: "static"
+00:45:53 [build] directory: /Users/ruoyu/photography-field-guide/dist/
+00:45:53 [build] Collecting build info...
+00:45:53 [build] ✓ Completed in 325ms.
+00:45:53 [build] Building static entrypoints...
+00:45:53 [vite] ✓ built in 649ms
+00:45:54 [vite] ✓ built in 60ms
+00:45:54 [build] Rearranging server assets...
+
+ generating static routes 
+00:45:54   ├─ /404.html00:45:54 [ERROR] Error: Content validation failed:
+- docs/learn: lastReviewed cannot be in the future.
+- docs/zh-cn/learn: lastReviewed cannot be in the future.
+    at runContentValidation (file:///Users/ruoyu/photography-field-guide/dist/.prerender/chunks/content-validation_DJefvLyO.mjs:372:27)
+    at async file:///Users/ruoyu/photography-field-guide/dist/.prerender/chunks/MainLayout_Du1vszyU.mjs:921:2
+00:45:54 [ERROR] [build] Caught error rendering /404: Error: Content validation failed:
+- docs/learn: lastReviewed cannot be in the future.
+- docs/zh-cn/learn: lastReviewed cannot be in the future.
+Content validation failed:
+- docs/learn: lastReviewed cannot be in the future.
+- docs/zh-cn/learn: lastReviewed cannot be in the future.
+  Stack trace:
+    at runContentValidation (file:///Users/ruoyu/photography-field-guide/dist/.prerender/chunks/content-validation_DJefvLyO.mjs:372:27)
+ ELIFECYCLE  Command failed with exit code 1.

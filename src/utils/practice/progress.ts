@@ -118,6 +118,7 @@ function sanitizeMission(
     revealed ||
     observed.values.length ||
     reflected.values.length ||
+    value.status === 'in-progress' ||
     value.status === 'completed'
   );
   if (
@@ -206,7 +207,8 @@ export function createPracticeStore(
   let recovered = false;
   let state = emptyPracticeProgress();
 
-  if (storage) {
+  const refresh = () => {
+    if (!storage || !persistent) return;
     try {
       const parsed = parsePracticeProgress(
         storage.getItem(PRACTICE_STORAGE_KEY)
@@ -214,12 +216,14 @@ export function createPracticeStore(
       state = parsed.progress;
       recovered = parsed.recovered;
     } catch {
+      // Do not overwrite saved progress that this page could not read.
       persistent = false;
     }
-  }
+  };
+  refresh();
 
   const save = () => {
-    if (!storage) {
+    if (!storage || !persistent) {
       persistent = false;
       return;
     }
@@ -234,12 +238,18 @@ export function createPracticeStore(
   };
 
   return {
-    getState: () => state,
+    getState: () => {
+      refresh();
+      return state;
+    },
     getNotice: () =>
       !persistent ? 'memory' : recovered ? 'recovered' : 'persistent',
     update(missionId, change) {
       const mission = missionById(missionId);
       if (!mission) return state;
+      // Apply each operation to the latest saved snapshot. Other missions are
+      // preserved; for the same field, the last successful operation wins.
+      refresh();
       const current =
         state.missions[missionId] ?? emptyMissionProgress(mission);
       const draft: MissionProgress = {
@@ -256,6 +266,7 @@ export function createPracticeStore(
     },
     resetMission(missionId) {
       if (missionById(missionId)) {
+        refresh();
         delete state.missions[missionId];
         save();
       }

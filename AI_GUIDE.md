@@ -4,13 +4,13 @@ This file records the project structure and conventions for coding assistants. S
 
 ## Project overview
 
-Photography Field Guide is a bilingual learning site based on ScrewFast. The active stack is Astro 7, Starlight, Tailwind CSS 4, TypeScript, and Preline. The current site includes bilingual Learn content, two interactive tools, Glossary, Gear, Galleries, Resources, and About. Read `docs/STATUS.md` for the latest verified inventory and review results. Do not expose unfinished features as working functionality.
+Photography Field Guide is a bilingual learning site based on ScrewFast. The active stack is Astro 7, Starlight, Tailwind CSS 4, TypeScript, and Preline. The current site includes bilingual Learn content, six Practice missions (C1–C6), two interactive tools, Glossary, Gear, Galleries, Resources, and About. Read `docs/STATUS.md` for the latest verified inventory and review results. Do not expose unfinished features as working functionality.
 
 Marketing locales are **en** (default, no prefix) and **zh-cn** (`/zh-cn/`). Shared views receive the locale explicitly; middleware exposes it as `Astro.locals.locale` and its strings as `Astro.locals.copy`. Locale routing helpers belong only in `src/utils/locale.ts`.
 
 ## Development workflow and project memory
 
-For the next content and practice iteration, read [the development workflow prompt](docs/DEVELOPMENT_WORKFLOW_PROMPT.md), [the user question bank](docs/QUESTION_BANK.md), and [the reference link inventory](docs/REFERENCE_LINKS.md). These describe future work; current implementation and verification remain in `docs/STATUS.md`. Follow the current user request when it limits the execution scope.
+For the next content and practice iteration, read [the development workflow prompt](docs/DEVELOPMENT_WORKFLOW_PROMPT.md), [the user question bank](docs/QUESTION_BANK.md), and [the reference link inventory](docs/REFERENCE_LINKS.md). The workflow prompt retains historical proposals; use its current-state note and the latest user request. Current implementation and verification remain in `docs/STATUS.md`. Follow the current user request when it limits the execution scope.
 
 ## Local working directory and reading experience
 
@@ -41,6 +41,12 @@ Use the aliases defined in `tsconfig.json`:
 - `src/content/docs/` contains Starlight MDX guides. Chinese guides mirror English slugs under `zh-cn/`, so language switching preserves the current guide.
 - `src/components/BrandLogo.astro`, `src/images/icon*`, and `src/images/social.png` hold project branding.
 - `src/data_files/constants.ts` and `astro.config.mjs` contain public-site metadata. Keep their URLs aligned.
+- `src/data_files/practice-catalog.ts` supplies the C1–C6 navigation catalog. C1–C5 retain the shared mission store; C6 retains its dedicated content, controller, and version-1 storage key. Do not register C6 in the shared store or migrate its saved progress merely to expose it in navigation.
+- `src/utils/practice/index-progress.ts` reads both practice stores for catalog status and clears exactly their two progress keys. Preserve theme and unrelated browser data; individual task resets remain scoped to their task.
+- `LearningStarts.astro` shares the three intent-based entry links across Home and Learn. Keep those labels and routes in `src/copy/learning-starts.ts`; all entries remain available without JavaScript.
+- `PracticeOverview.astro` provides the static mission map and browser-progress suggestion. `selectPracticeSuggestion()` uses curriculum order, not recent activity, and never writes progress. Keep both original stores authoritative.
+- `MissionNavigation.astro` gives each task a related lesson, contextual directory return and suggested continuation. Preserve `#mission-<id>` targets and keyboard focus clearance below the navbar.
+- Content date-only fields use the maintainer authoring calendar, **Asia/Shanghai**, via `contentReviewDate()`. This is independent of build-machine or visitor time zones; future dates remain rejected.
 - `scripts/smoke.mjs` checks the built bilingual routes and rejects visible template demo text.
 
 Unused ScrewFast views, collections, copy modules, and optional components may remain as source material; they have no public routes. Do not delete optional components merely because the current home page does not import them. If an active route is added, replace its demo content and add both locales plus smoke coverage.
@@ -64,3 +70,7 @@ Unused ScrewFast views, collections, copy modules, and optional components may r
 - `python scripts/generate_brand_assets.py` — regenerate raster brand assets with Pillow.
 
 Do not claim a change is verified until the relevant build or test has been run after that change.
+
+The MVP scope and first-publish procedure are in `docs/MVP_RELEASE.md`. `.github/workflows/pages.yml` is deliberately manual-only and project-scoped. Do not add automatic publish triggers, run the workflow, push commits, or change repository visibility without the user’s explicit request. The personal-homepage repository is outside this project’s edit scope.
+
+Raw audit logs and saved HTTP headers are preserved verbatim. `.gitattributes` exempts only those evidence files from Git whitespace diagnostics; source and Markdown checks remain unchanged. Do not rewrite historical evidence to remove terminal spacing or protocol line endings.

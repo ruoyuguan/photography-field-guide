@@ -1,0 +1,302 @@
+---
+interface Props {
+  locale: 'en' | 'zh-cn';
+}
+
+const { locale } = Astro.props;
+const copy = {
+  en: {
+    introduction:
+      'Three separate comparisons from the same source—not a three-filter recipe. These are original concept illustrations, not photographs, calibrated colors, or promised recovery results.',
+    examples: [
+      {
+        id: 'exposure',
+        title: '1 · Brightness: inspect the subject and the highlights',
+        question:
+          'Can the important subject be made easier to read without expecting detail to return to an already blank window?',
+        before: 'Source rendering',
+        after: 'One change: brightness',
+        beforeDescription:
+          'A dim cafe scene with a readable cup, blank bright windows, and an edge pole.',
+        afterDescription:
+          'The identical cafe scene rendered brighter; the windows remain blank.',
+        note: 'A brighter rendering does not add light to the completed capture. Actual recovery depends on the file and what was clipped.',
+      },
+      {
+        id: 'white-balance',
+        title: '2 · Color: decide what should feel neutral or atmospheric',
+        question:
+          'Does a different color rendering serve the materials, the remembered ambience, or another stated intention?',
+        before: 'Source rendering',
+        after: 'One change: color rendering',
+        beforeDescription:
+          'The same warm-looking source cafe scene, table, cup, and edge pole.',
+        afterDescription:
+          'The identical cafe geometry with a less warm color interpretation, not a prescribed correct white balance.',
+        note: 'The two renderings are choices, not a neutral-versus-wrong contest. This pair does not simulate a Kelvin value or a measured color transform.',
+      },
+      {
+        id: 'crop',
+        title: '3 · Framing: remove an edge distraction, keep useful context',
+        question:
+          'Does the retained frame support the subject better after the isolated edge pole is excluded?',
+        before: 'Source frame and retained boundary',
+        after: 'Crop enlarged to fit this card',
+        beforeDescription:
+          'A cafe scene with a cup, useful building context, an edge pole, and a dashed retained crop boundary.',
+        afterDescription:
+          'Only the pixels inside the retained boundary, enlarged for comparison; the pole is excluded and the viewpoint is unchanged.',
+        note: 'The same scene geometry is retained inside the boundary. Enlarging the crop for this comparison says nothing about final detail; inspect the actual output size.',
+      },
+    ],
+  },
+  'zh-cn': {
+    introduction:
+      '以下是从同一来源分别进行的三组对照，不是连续叠加三种效果的配方。它们是原创概念插图，不是实拍样片、校准色块或恢复效果承诺。',
+    examples: [
+      {
+        id: 'exposure',
+        title: '1 · 明暗：检查主体与高光',
+        question:
+          '能否让重要主体更容易辨认，同时不要求已经一片空白的窗户恢复细节？',
+        before: '来源呈现',
+        after: '只改变明暗',
+        beforeDescription:
+          '较暗的咖啡馆场景，杯子仍可辨认，窗户呈明亮空白，边缘有一根立杆。',
+        afterDescription: '完全相同的咖啡馆场景，呈现变亮，窗户仍是空白。',
+        note: '更亮的呈现不会给已经完成的拍摄补回光线。实际恢复程度取决于文件，以及高光或阴影是否丢失信息。',
+      },
+      {
+        id: 'white-balance',
+        title: '2 · 颜色：决定要保留材质中性，还是环境氛围',
+        question:
+          '新的色彩呈现是否更符合材质、记忆中的氛围，或另一种明确意图？',
+        before: '来源呈现',
+        after: '只改变色彩呈现',
+        beforeDescription:
+          '同一偏暖的来源场景，包含咖啡馆、桌面、杯子与边缘立杆。',
+        afterDescription:
+          '几何构图完全不变，色彩解释不再那么暖，但不规定这是唯一正确的白平衡。',
+        note: '两种呈现是不同选择，不是“中性对、偏暖错”。这组图不模拟具体 Kelvin 数值，也不是实测色彩变换。',
+      },
+      {
+        id: 'crop',
+        title: '3 · 取景：去掉边缘干扰，保留有用环境',
+        question: '排除边缘的孤立立杆后，保留画面是否更能服务主体？',
+        before: '来源画面与保留边界',
+        after: '为放入此卡片而放大的裁切',
+        beforeDescription:
+          '咖啡馆场景中有杯子、有用建筑环境与边缘立杆，虚线表示保留范围。',
+        afterDescription:
+          '只显示保留边界内的像素，并为对照而放大；立杆被排除，视点没有改变。',
+        note: '边界内的场景几何关系保持相同。为比较而放大裁切不代表最终细节充足，仍要检查实际输出尺寸。',
+      },
+    ],
+  },
+}[locale];
+
+// Every pair starts with this scene and palette. Only the selected rendering
+// decision changes; the crop uses exactly the same geometry and source colors.
+const sourcePalette = {
+  background: '#81705c',
+  table: '#51423a',
+  roof: '#4a4038',
+  building: '#756153',
+  window: '#fff8ed',
+  sun: '#dca43d',
+  pole: '#3d352f',
+  shadow: '#24201d',
+  cup: '#b8a88c',
+  rim: '#817365',
+};
+const brighterPalette = {
+  background: '#aa9780',
+  table: '#776459',
+  roof: '#6e6055',
+  building: '#a28674',
+  window: '#ffffff',
+  sun: '#ffd166',
+  pole: '#5e534b',
+  shadow: '#38322d',
+  cup: '#e7d3b0',
+  rim: '#a69786',
+};
+const lessWarmPalette = {
+  background: '#747473',
+  table: '#454545',
+  roof: '#424241',
+  building: '#666664',
+  window: '#fafafa',
+  sun: '#c4b151',
+  pole: '#373737',
+  shadow: '#212121',
+  cup: '#ababaa',
+  rim: '#757574',
+};
+const scenePalette = (exampleId: string, state: 'before' | 'after') =>
+  state === 'before' || exampleId === 'crop'
+    ? sourcePalette
+    : exampleId === 'exposure'
+      ? brighterPalette
+      : lessWarmPalette;
+---
+
+<div data-lightweight-editing-model>
+  <p class="text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+    {copy.introduction}
+  </p>
+  <div class="mt-5 space-y-5">
+    {copy.examples.map(example => (
+      <figure
+        class="m-0 overflow-hidden rounded-xl border border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-950/40"
+        data-editing-comparison={example.id}
+      >
+        <figcaption class="px-4 pt-4">
+          <p class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+            {example.title}
+          </p>
+          <p class="mt-2 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+            {example.question}
+          </p>
+        </figcaption>
+        <div class="mt-3 grid gap-4 px-4 sm:grid-cols-2">
+          {(['before', 'after'] as const).map(state => (
+            <div>
+              <p class="mb-2 text-xs font-semibold text-neutral-700 dark:text-neutral-300">
+                {example[state]}
+              </p>
+              <svg
+                viewBox={
+                  example.id === 'crop' && state === 'after'
+                    ? '80 62 144 108'
+                    : '0 0 320 200'
+                }
+                role="img"
+                aria-labelledby={`editing-${locale}-${example.id}-${state}-title editing-${locale}-${example.id}-${state}-desc`}
+                data-editing-scene={example.id}
+                data-editing-state={state}
+                class="h-auto w-full rounded-lg border border-neutral-300 bg-white dark:border-neutral-700"
+              >
+                <title id={`editing-${locale}-${example.id}-${state}-title`}>
+                    {example[state]}
+                  </title>
+                <desc id={`editing-${locale}-${example.id}-${state}-desc`}>
+                  {state === 'before'
+                    ? example.beforeDescription
+                    : example.afterDescription}
+                </desc>
+                <g data-editing-source-scene>
+                  <rect
+                    width="320"
+                    height="200"
+                    fill={scenePalette(example.id, state).background}
+                  />
+                  <rect
+                    y="139"
+                    width="320"
+                    height="61"
+                    fill={scenePalette(example.id, state).table}
+                  />
+                  <path
+                    d="M42 93 L103 57 L164 93 Z"
+                    fill={scenePalette(example.id, state).roof}
+                  />
+                  <rect
+                    x="48"
+                    y="93"
+                    width="110"
+                    height="75"
+                    fill={scenePalette(example.id, state).building}
+                  />
+                  <rect
+                    x="67"
+                    y="110"
+                    width="25"
+                    height="31"
+                    fill={scenePalette(example.id, state).window}
+                  />
+                  <rect
+                    x="113"
+                    y="110"
+                    width="25"
+                    height="31"
+                    fill={scenePalette(example.id, state).window}
+                  />
+                  <circle
+                    cx="216"
+                    cy="80"
+                    r="16"
+                    fill={scenePalette(example.id, state).sun}
+                  />
+                  <rect
+                    x="245"
+                    y="54"
+                    width="10"
+                    height="137"
+                    fill={scenePalette(example.id, state).pole}
+                  />
+                  <circle
+                    cx="250"
+                    cy="49"
+                    r="18"
+                    fill={scenePalette(example.id, state).pole}
+                  />
+                  <ellipse
+                    cx="171"
+                    cy="171"
+                    rx="43"
+                    ry="7"
+                    fill={scenePalette(example.id, state).shadow}
+                    opacity=".35"
+                  />
+                  <rect
+                    x="145"
+                    y="119"
+                    width="51"
+                    height="43"
+                    rx="6"
+                    fill={scenePalette(example.id, state).cup}
+                  />
+                  <path
+                    d="M195 128 C218 124 218 151 195 149"
+                    fill="none"
+                    stroke={scenePalette(example.id, state).cup}
+                    stroke-width="8"
+                  />
+                  <path
+                    d="M150 127 H191"
+                    stroke={scenePalette(example.id, state).rim}
+                    stroke-width="3"
+                  />
+                </g>
+                {example.id === 'crop' && state === 'before' && (
+                  <>
+                    <path
+                      d="M0 0 H320 V200 H0 Z M80 62 V170 H224 V62 Z"
+                      fill="#0f172a"
+                      fill-rule="evenodd"
+                      opacity=".28"
+                    />
+                    <rect
+                      x="80"
+                      y="62"
+                      width="144"
+                      height="108"
+                      fill="none"
+                      stroke="#b45309"
+                      stroke-width="3"
+                      stroke-dasharray="8 5"
+                    />
+                  </>
+                )}
+              </svg>
+            </div>
+          ))}
+        </div>
+        <p class="px-4 py-4 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+          {example.note}
+        </p>
+      </figure>
+    ))}
+  </div>
+</div>

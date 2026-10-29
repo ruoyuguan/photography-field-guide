@@ -21,7 +21,7 @@ const { locale, copy: t } = Astro.locals;
       <BrandLogo />
     </a>
     <details open data-main-menu class="main-menu md:ml-auto">
-      <summary class="cursor-pointer rounded-lg px-3 py-2 font-semibold outline-offset-4 focus-visible:outline-2 md:hidden">
+      <summary class="cursor-pointer rounded-lg px-3 py-2 font-semibold text-neutral-800 outline-offset-4 focus-visible:outline-2 md:hidden dark:text-neutral-100">
         {locale === 'en' ? 'Menu' : '菜单'}
       </summary>
       <div class="menu-content absolute left-0 right-0 mt-3 flex flex-col gap-3 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 shadow-lg md:static md:mt-0 md:flex-row md:items-center md:gap-5 md:border-0 md:bg-transparent md:p-0 md:shadow-none dark:border-neutral-600 dark:bg-neutral-900 md:dark:bg-transparent">

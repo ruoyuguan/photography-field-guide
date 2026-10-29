@@ -97,31 +97,6 @@ export const zhCN: Copy = {
       apscSize: '23.5 × 15.7 mm（富士 X-T5）',
       note: '图示按比例绘制：10 个 SVG 单位代表 1 mm。APS-C 矩形采用 X-T5 的尺寸示例，并非所有 APS-C 的统一规格；此图比较传感器范围，不改变镜头焦距。',
     },
-    pathways: {
-      title: '从真正重要的基础开始',
-      subTitle:
-        '沿着画幅、焦距到曝光的短路径学习。每篇教程都建立在前一篇之上，你可以用自己的相机验证这些概念。',
-      items: [
-        {
-          id: 'sensors',
-          title: '传感器与画幅',
-          description: '看清全画幅与 APS-C 到底改变了什么，又没有改变什么。',
-          linkText: '了解传感器尺寸',
-        },
-        {
-          id: 'focal',
-          title: '等效焦距',
-          description: '理解为什么同一支镜头在较小传感器上会呈现更窄的视角。',
-          linkText: '理解裁切系数',
-        },
-        {
-          id: 'exposure',
-          title: '曝光三角',
-          description: '分清画面亮度、景深、运动模糊和实际到达传感器的光线。',
-          linkText: '学习光圈、快门与 ISO',
-        },
-      ],
-    },
     cta: {
       title: '先建立理解，再考虑添置器材。',
       subTitle:

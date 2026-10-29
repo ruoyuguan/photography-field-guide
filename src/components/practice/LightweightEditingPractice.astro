@@ -1,0 +1,367 @@
+---
+import { lightweightEditingMission } from '@data/lightweight-editing-practice';
+import LightweightEditingModel from '@components/learn/LightweightEditingModel.astro';
+import { localePath, type MarketingLocale } from '@utils/locale';
+import { lightweightEditingUi } from './lightweight-editing-controller';
+import MissionNavigation from './MissionNavigation.astro';
+import { practicePathCopy } from '@copy/practice-paths';
+
+interface Props {
+  locale: MarketingLocale;
+}
+const { locale } = Astro.props;
+const t = lightweightEditingMission.copy[locale];
+const ui = lightweightEditingUi[locale];
+const prefix = `lightweight-editing-${locale}`;
+const copy = {
+  en: {
+    eyebrow: 'Practice C6',
+    back: 'Back to the editing lesson',
+    status: 'Your progress',
+    lesson: 'Review the lightweight editing lesson',
+    equipment: 'What you need',
+    prediction: '1 · Predict the rendering change',
+    check: 'Check prediction',
+    retry: 'Try another answer',
+    show: 'Show explanation',
+    hint: 'Need a hint?',
+    answer: 'Answer and reasoning',
+    local: '2 · Work locally on your own photograph',
+    localIntro:
+      'Complete these actions in your own software. Check an item only after doing it; this website receives no file, setting, dimension, or free-text note.',
+    mark: 'Mark this local step done',
+    reflection: '3 · Make your own review',
+    complete: 'Mark process review complete',
+    reset: 'Reset this practice only',
+    noScore:
+      'Completion records your checklist, not mastery, photo quality, or a guarantee of detail recovery.',
+    noScript:
+      'JavaScript is off. The prediction choices, hint, answer, three local actions, and self-review remain readable below. Use native details and a printed or manual checklist; interactive saving and reset are unavailable.',
+    continue: 'Continue with existing resources',
+    backup: 'Revisit Safe Backup and Export',
+  },
+  'zh-cn': {
+    eyebrow: '练习 C6',
+    back: '返回轻量后期教程',
+    status: '你的进度',
+    lesson: '复习轻量后期教程',
+    equipment: '需要准备',
+    prediction: '1 · 预测呈现变化',
+    check: '检查预测',
+    retry: '重新选择',
+    show: '查看解释',
+    hint: '需要提示？',
+    answer: '答案与推理',
+    local: '2 · 在自己的照片上本地操作',
+    localIntro:
+      '在自己的软件中完成以下操作，做完后再勾选；本站不会接收文件、设置、尺寸或自由文本笔记。',
+    mark: '标记这项本地操作已完成',
+    reflection: '3 · 自主复盘',
+    complete: '标记流程复盘完成',
+    reset: '只重置本练习',
+    noScore: '完成只记录清单，不代表已经精通、照片好坏或细节恢复保证。',
+    noScript:
+      'JavaScript 已关闭。预测选项、提示、答案、三项本地操作与自主复盘仍可阅读。可使用原生展开控件和纸面清单；交互保存与重置不可用。',
+    continue: '继续使用现有内容',
+    backup: '回看安全备份与导出',
+  },
+}[locale];
+const lessonPath = '/learn/workflow/lightweight-editing/';
+---
+
+<article
+  data-lightweight-editing-practice
+  data-locale={locale}
+  class="mx-auto max-w-6xl py-6 sm:py-8"
+>
+  <a
+    href={localePath(locale, lessonPath)}
+    class="text-sm font-semibold text-neutral-600 underline decoration-neutral-400 underline-offset-4 hover:text-amber-700 dark:text-neutral-400 dark:hover:text-amber-300"
+  >
+    ← {copy.back}
+  </a>
+  <a
+    href={`${localePath(locale, '/practice/')}#mission-lightweight-editing`}
+    data-return-directory
+    class="ms-4 inline-flex min-h-11 items-center rounded-lg text-sm font-semibold text-neutral-600 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:text-neutral-300"
+  >
+    {practicePathCopy[locale].returnDirectory}
+  </a>
+  <header class="mt-4 max-w-4xl">
+    <p class="text-sm font-semibold tracking-wide text-amber-700 uppercase dark:text-amber-300">
+      {copy.eyebrow} · {t.duration}
+    </p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-neutral-100">
+      {t.title}
+    </h1>
+    <p class="mt-3 text-base leading-7 text-neutral-600 dark:text-neutral-400">
+      {t.intro}
+    </p>
+    <div class="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950/30">
+      <h2 class="text-sm font-bold text-amber-950 dark:text-amber-100">
+        {locale === 'en' ? 'Goal' : '目标'}
+      </h2>
+      <p class="mt-1 text-sm leading-6 text-amber-950 dark:text-amber-100">
+        {t.goal}
+      </p>
+    </div>
+    <details class="mt-3 rounded-xl border border-neutral-300 bg-neutral-50 px-4 py-3 dark:border-neutral-700 dark:bg-neutral-900/60">
+      <summary class="min-h-7 cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+        {copy.equipment}
+      </summary>
+      <ul class="mt-3 list-disc space-y-2 ps-5 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {t.equipment.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
+      <p class="mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {t.prerequisites}
+      </p>
+    </details>
+    <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+      <p class="font-semibold text-neutral-700 dark:text-neutral-300">
+        {copy.status}: <span data-mission-status>{ui.notStarted}</span>
+      </p>
+      <a
+        href={localePath(locale, lessonPath)}
+        class="font-semibold text-amber-700 underline decoration-amber-400 underline-offset-4 dark:text-amber-300"
+      >
+        {copy.lesson} →
+      </a>
+    </div>
+    <p
+      data-storage-notice
+      class="mt-2 text-xs leading-5 text-neutral-500 dark:text-neutral-400"
+    >
+      {ui.storagePersistent}
+    </p>
+  </header>
+
+  <noscript>
+    <p class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
+      {copy.noScript}
+    </p>
+  </noscript>
+
+  <section class="mt-7" aria-labelledby={`${prefix}-prediction`}>
+    <h2
+      id={`${prefix}-prediction`}
+      data-prediction-heading
+      tabindex="-1"
+      class="text-2xl font-bold text-neutral-900 outline-none dark:text-neutral-100"
+    >
+      {copy.prediction}
+    </h2>
+    <div class="mt-3 rounded-2xl border border-neutral-300 bg-neutral-50 p-4 sm:p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+      <h3 class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+        {t.prediction.title}
+      </h3>
+      <p class="mt-2 max-w-4xl text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+        {t.prediction.question}
+      </p>
+      <ul
+        data-editing-static
+        class="mt-4 list-disc space-y-3 ps-5 text-sm leading-6 text-neutral-700 dark:text-neutral-300"
+      >
+        {t.prediction.choices.map(choice => (
+          <li>{choice.label}</li>
+        ))}
+      </ul>
+      <form data-prediction-form data-editing-interactive hidden class="mt-4">
+        <fieldset>
+          <legend class="sr-only">{t.prediction.question}</legend>
+          <div class="space-y-3">
+            {t.prediction.choices.map(choice => (
+              <label class="flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border border-neutral-300 bg-white p-3 text-sm leading-6 text-neutral-800 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-amber-500 dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-200">
+                <input
+                  type="radio"
+                  name={`${prefix}-prediction`}
+                  value={choice.id}
+                  data-prediction-choice
+                  class="mt-1.5 shrink-0"
+                />
+                <span>{choice.label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <p
+          data-quiz-feedback
+          hidden
+          role="status"
+          class="mt-3 rounded-lg p-3 text-sm leading-6"
+        ></p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <button
+            type="submit"
+            data-check-answer
+            class="min-h-11 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-bold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:bg-amber-400 dark:text-neutral-950"
+          >
+            {copy.check}
+          </button>
+          <button
+            type="button"
+            data-retry-answer
+            hidden
+            class="min-h-11 rounded-lg border border-neutral-400 px-4 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200"
+          >
+            {copy.retry}
+          </button>
+          <button
+            type="button"
+            data-show-answer
+            class="min-h-11 rounded-lg border border-neutral-400 px-4 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200"
+          >
+            {copy.show}
+          </button>
+        </div>
+      </form>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        <details class="rounded-xl bg-neutral-100 p-3 dark:bg-neutral-800/70">
+          <summary class="min-h-7 cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+            {copy.hint}
+          </summary>
+          <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+            {t.prediction.hint}
+          </p>
+        </details>
+        <details
+          data-answer-details
+          class="rounded-xl bg-neutral-100 p-3 dark:bg-neutral-800/70"
+        >
+          <summary class="min-h-7 cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+            {copy.answer}
+          </summary>
+          <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+            {t.prediction.explanation}
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <details class="mt-6 rounded-2xl border border-neutral-300 bg-white p-4 sm:p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+    <summary class="min-h-7 cursor-pointer text-base font-bold text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-100">
+      {t.modelTitle}
+    </summary>
+    <p class="mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+      {t.modelIntro}
+    </p>
+    <div class="mt-4">
+      <LightweightEditingModel locale={locale} />
+    </div>
+  </details>
+
+  <section class="mt-8" aria-labelledby={`${prefix}-local`}>
+    <h2
+      id={`${prefix}-local`}
+      class="text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+    >
+      {copy.local}
+    </h2>
+    <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+      {copy.localIntro}
+    </p>
+    <div class="mt-4 grid gap-4 lg:grid-cols-3">
+      {t.steps.map((step, index) => (
+        <section class="rounded-2xl border border-neutral-300 bg-neutral-50 p-4 dark:border-neutral-700 dark:bg-neutral-900/60">
+          <h3 class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+            {index + 1}. {step.title}
+          </h3>
+          <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+            {step.detail}
+          </p>
+          <label
+            data-editing-interactive
+            hidden
+            class="-mx-2 mt-3 flex min-h-11 cursor-pointer items-start gap-2 rounded-lg px-2 py-2 text-xs font-semibold text-neutral-700 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-amber-500 dark:text-neutral-300"
+          >
+            <input
+              type="checkbox"
+              data-observation-step={step.id}
+              class="mt-0.5 shrink-0"
+            />
+            <span>{step.check}</span>
+          </label>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-8" aria-labelledby={`${prefix}-reflection`}>
+    <h2
+      id={`${prefix}-reflection`}
+      class="text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+    >
+      {copy.reflection}
+    </h2>
+    <div class="mt-3 rounded-2xl border border-neutral-300 bg-neutral-50 p-4 sm:p-5 dark:border-neutral-700 dark:bg-neutral-900/60">
+      <h3 class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+        {t.reflection.title}
+      </h3>
+      <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {t.reflection.intro}
+      </p>
+      <ul
+        data-editing-static
+        class="mt-4 list-disc space-y-2 ps-5 text-sm leading-6 text-neutral-700 dark:text-neutral-300"
+      >
+        {t.reflection.checks.map(check => (
+          <li>{check.label}</li>
+        ))}
+      </ul>
+      <div data-editing-interactive hidden class="mt-4 space-y-3">
+        {t.reflection.checks.map(check => (
+          <label class="flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border border-neutral-300 bg-white p-3 text-sm leading-6 text-neutral-800 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-amber-500 dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-200">
+            <input
+              type="checkbox"
+              data-reflection-check={check.id}
+              class="mt-1.5 shrink-0"
+            />
+            <span>{check.label}</span>
+          </label>
+        ))}
+      </div>
+      <p class="mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {copy.noScore}
+      </p>
+      <div
+        data-editing-interactive
+        hidden
+        class="mt-5 flex flex-wrap items-center gap-3"
+      >
+        <button
+          type="button"
+          data-complete-mission
+          data-label={copy.complete}
+          class="min-h-11 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-bold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-amber-400 dark:text-neutral-950"
+        >
+          {copy.complete}
+        </button>
+        <button
+          type="button"
+          data-reset-mission
+          class="min-h-11 rounded-lg border border-neutral-400 px-4 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:border-neutral-500 dark:text-neutral-200"
+        >
+          {copy.reset}
+        </button>
+      </div>
+      <p
+        data-completion-feedback
+        role="status"
+        class="mt-3 text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+      ></p>
+    </div>
+  </section>
+
+  <MissionNavigation
+    locale={locale}
+    missionId="lightweight-editing"
+    revisitBackup
+  />
+</article>
+
+<script>
+  import { initializeLightweightEditingPractice } from './lightweight-editing-controller';
+  initializeLightweightEditingPractice();
+</script>

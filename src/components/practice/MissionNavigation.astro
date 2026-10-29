@@ -1,0 +1,57 @@
+---
+import { practicePathCopy } from '@copy/practice-paths';
+import { practiceEntryById } from '@data/practice-catalog';
+import { localePath, type MarketingLocale } from '@utils/locale';
+interface Props {
+  locale: MarketingLocale;
+  missionId: string;
+  nextId?: string;
+  revisitBackup?: boolean;
+}
+const { locale, missionId, nextId, revisitBackup = false } = Astro.props;
+const entry = practiceEntryById(missionId);
+if (!entry) throw new Error(`Unknown practice navigation entry: ${missionId}`);
+const next = nextId ? practiceEntryById(nextId) : undefined;
+const t = practicePathCopy[locale];
+const linkClass =
+  'inline-flex min-h-11 items-center rounded-lg py-2 text-sm font-bold text-amber-800 underline decoration-amber-400 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:text-amber-300';
+---
+
+<nav
+  data-mission-navigation
+  aria-label={t.taskNavigation}
+  class="mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-2"
+>
+  <a
+    href={localePath(locale, entry.articlePath)}
+    data-return-lesson
+    class={linkClass}
+  >
+    ← {t.returnLesson}
+  </a>
+  <a
+    href={`${localePath(locale, '/practice/')}#mission-${entry.id}`}
+    data-return-directory
+    class={linkClass}
+  >
+    {t.returnDirectory}
+  </a>
+  {next && (
+    <a
+      href={localePath(locale, `/practice/${next.id}/`)}
+      data-next-mission
+      class={linkClass}
+    >
+      {t.suggestedNext}: {next.copy[locale].title} →
+    </a>
+  )}
+  {revisitBackup && (
+    <a
+      href={localePath(locale, '/learn/workflow/backup-and-export/')}
+      data-revisit-lesson
+      class={linkClass}
+    >
+      {t.revisitBackup} →
+    </a>
+  )}
+</nav>

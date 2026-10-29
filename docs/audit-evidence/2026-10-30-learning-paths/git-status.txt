@@ -1,0 +1,310 @@
+ M AI_GUIDE.md
+ M README.md
+ M astro.config.mjs
+ M docs/DEVELOPMENT_WORKFLOW_PROMPT.md
+ M docs/QUESTION_BANK.md
+ M docs/REFERENCE_LINKS.md
+ M docs/ROADMAP.md
+ M docs/STATUS.md
+ M scripts/browser-check.mjs
+ M scripts/browser-framing-checks.mjs
+ M scripts/browser-practice-checks.mjs
+ M scripts/browser-review-checks.mjs
+ M scripts/browser-story-checks.mjs
+ M scripts/check-build.mjs
+ M scripts/smoke.mjs
+ M src/components/ThemeIcon.astro
+ M src/components/practice/PracticeMission.astro
+ M src/components/practice/practice-controller.ts
+ M src/components/sections/navbar&footer/Navbar.astro
+ M src/components/ui/starlight/ThemeSelect.astro
+ M src/components/ui/starlight/ThemeSelectMobile.astro
+ M src/content/docs/learn/composition/subject-and-background.mdx
+ M src/content/docs/learn/composition/understanding-light.mdx
+ M src/content/docs/learn/field-practice/neighborhood-story.mdx
+ M src/content/docs/learn/field-practice/photo-review.mdx
+ M src/content/docs/learn/index.mdx
+ M src/content/docs/zh-cn/learn/composition/subject-and-background.mdx
+ M src/content/docs/zh-cn/learn/composition/understanding-light.mdx
+ M src/content/docs/zh-cn/learn/field-practice/neighborhood-story.mdx
+ M src/content/docs/zh-cn/learn/field-practice/photo-review.mdx
+ M src/content/docs/zh-cn/learn/index.mdx
+ M src/copy/en.ts
+ M src/copy/zh-cn.ts
+ M src/data_files/missions/neighborhood-story.ts
+ M src/data_files/missions/photo-review.ts
+ M src/data_files/missions/subject-background.ts
+ M src/data_files/practice.ts
+ M src/utils/content-validation.ts
+ M src/utils/practice/progress.ts
+ M src/views/HomeView.astro
+ M src/views/PracticeIndexView.astro
+ M tests/practice/progress.test.ts
+?? docs/C6_INTEGRATION_REVIEW.md
+?? docs/LEARNING_PATH_UX_REVIEW.md
+?? docs/LIGHTWEIGHT_EDITING_ACCEPTANCE.md
+?? docs/LIGHTWEIGHT_EDITING_PRACTICE_ACCEPTANCE.md
+?? docs/PHASE_3G_C5_REVIEW.md
+?? docs/READER_TRIAL_GUIDE.md
+?? docs/SHARING_WITHOUT_GITHUB_ACCESS.md
+?? docs/audit-evidence/2026-10-29-c6-integration/browser-practice.log
+?? docs/audit-evidence/2026-10-29-c6-integration/browser-shared.log
+?? docs/audit-evidence/2026-10-29-c6-integration/browser-tutorial.log
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/practice/c6-en-complete-1366x768.png
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/practice/c6-en-review-1366x768.png
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/practice/c6-zh-dark-390x844.png
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/practice/c6-zh-model-dark-390x844.png
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/practice/verification.json
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/tutorial/lightweight-editing-crop-en-1366x768.png
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/tutorial/lightweight-editing-crop-zh-390x844.png
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/tutorial/lightweight-editing-en-1366x768.png
+?? docs/audit-evidence/2026-10-29-c6-integration/c6-browser/tutorial/lightweight-editing-zh-dark-390x844.png
+?? docs/audit-evidence/2026-10-29-c6-integration/final-browser-practice.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-browser-shared.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-format-after-report.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-format.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-git-diff-check.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-root-artifacts.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-root-build.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-root-editing-practice.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-root-editing.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-root-smoke.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-root-unit.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-subpath-artifacts.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-subpath-build.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-subpath-editing-practice.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-subpath-editing.log
+?? docs/audit-evidence/2026-10-29-c6-integration/final-subpath-smoke.log
+?? docs/audit-evidence/2026-10-29-c6-integration/format-before.log
+?? docs/audit-evidence/2026-10-29-c6-integration/format-final-files.log
+?? docs/audit-evidence/2026-10-29-c6-integration/format-write.log
+?? docs/audit-evidence/2026-10-29-c6-integration/git-status.txt
+?? docs/audit-evidence/2026-10-29-c6-integration/github-pages-headers.txt
+?? docs/audit-evidence/2026-10-29-c6-integration/preservation.json
+?? docs/audit-evidence/2026-10-29-c6-integration/restore-root-artifacts.log
+?? docs/audit-evidence/2026-10-29-c6-integration/restore-root-build.log
+?? docs/audit-evidence/2026-10-29-c6-integration/restore-root-editing-practice.log
+?? docs/audit-evidence/2026-10-29-c6-integration/restore-root-editing.log
+?? docs/audit-evidence/2026-10-29-c6-integration/restore-root-smoke.log
+?? docs/audit-evidence/2026-10-29-c6-integration/root-artifacts.log
+?? docs/audit-evidence/2026-10-29-c6-integration/root-build-typed.log
+?? docs/audit-evidence/2026-10-29-c6-integration/root-build.log
+?? docs/audit-evidence/2026-10-29-c6-integration/root-editing-practice.log
+?? docs/audit-evidence/2026-10-29-c6-integration/root-editing.log
+?? docs/audit-evidence/2026-10-29-c6-integration/root-smoke.log
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/c5-feedback-zh-touch-390x844.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/c5-lesson-zh-390x844.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/c5-mission-en-1366x768.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/c5-mission-en-200pct-equivalent.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/c5-mission-zh-390x844.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/framing-lesson-en-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/framing-lesson-zh-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/framing-lesson-zh-mobile.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/framing-mission-en-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/framing-mission-zh-mobile-feedback.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/framing-mission-zh-mobile.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/framing-mission-zh-zoom-200.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/lesson-en-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/lesson-zh-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/lighting-geometry-en-1366x768.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/mission-en-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/mission-zh-mobile-feedback.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/mission-zh-mobile.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/mission-zh-zoom-200.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/review-lesson-en-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/review-lesson-zh-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/review-lesson-zh-mobile.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/review-mission-en-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/review-mission-zh-mobile-feedback.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/review-mission-zh-mobile.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/review-mission-zh-zoom-200.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/story-lesson-en-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/story-lesson-zh-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/story-lesson-zh-mobile.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/story-mission-en-desktop.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/story-mission-zh-mobile-feedback.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/story-mission-zh-mobile.png
+?? docs/audit-evidence/2026-10-29-c6-integration/shared-browser/story-mission-zh-zoom-200.png
+?? docs/audit-evidence/2026-10-29-c6-integration/subpath-artifacts.log
+?? docs/audit-evidence/2026-10-29-c6-integration/subpath-build.log
+?? docs/audit-evidence/2026-10-29-c6-integration/subpath-editing-practice.log
+?? docs/audit-evidence/2026-10-29-c6-integration/subpath-editing.log
+?? docs/audit-evidence/2026-10-29-c6-integration/subpath-smoke.log
+?? docs/audit-evidence/2026-10-29-c6-integration/unit.log
+?? docs/audit-evidence/2026-10-29-c6-integration/verification.json
+?? docs/audit-evidence/2026-10-29-lightweight-editing-practice/build-verification.json
+?? docs/audit-evidence/2026-10-29-lightweight-editing-practice/c6-en-complete-1366x768.png
+?? docs/audit-evidence/2026-10-29-lightweight-editing-practice/c6-en-review-1366x768.png
+?? docs/audit-evidence/2026-10-29-lightweight-editing-practice/c6-zh-dark-390x844.png
+?? docs/audit-evidence/2026-10-29-lightweight-editing-practice/c6-zh-model-dark-390x844.png
+?? docs/audit-evidence/2026-10-29-lightweight-editing-practice/verification.json
+?? docs/audit-evidence/2026-10-29-lightweight-editing/base-scoped-verification.log
+?? docs/audit-evidence/2026-10-29-lightweight-editing/base-verification.log
+?? docs/audit-evidence/2026-10-29-lightweight-editing/browser-verification.log
+?? docs/audit-evidence/2026-10-29-lightweight-editing/final-format.log
+?? docs/audit-evidence/2026-10-29-lightweight-editing/final-scoped-verification.log
+?? docs/audit-evidence/2026-10-29-lightweight-editing/lightweight-editing-crop-en-1366x768.png
+?? docs/audit-evidence/2026-10-29-lightweight-editing/lightweight-editing-crop-zh-390x844.png
+?? docs/audit-evidence/2026-10-29-lightweight-editing/lightweight-editing-en-1366x768.png
+?? docs/audit-evidence/2026-10-29-lightweight-editing/lightweight-editing-zh-dark-390x844.png
+?? docs/audit-evidence/2026-10-29-lightweight-editing/restore-root-build.log
+?? docs/audit-evidence/2026-10-29-lightweight-editing/root-verification.log
+?? docs/audit-evidence/2026-10-29-lightweight-editing/scoped-verification.log
+?? docs/audit-evidence/2026-10-29-lightweight-editing/verification.json
+?? docs/audit-evidence/2026-10-29-review-c5/c5-feedback-zh-touch-390x844.png
+?? docs/audit-evidence/2026-10-29-review-c5/c5-lesson-zh-390x844.png
+?? docs/audit-evidence/2026-10-29-review-c5/c5-mission-en-1366x768.png
+?? docs/audit-evidence/2026-10-29-review-c5/c5-mission-en-200pct-equivalent.png
+?? docs/audit-evidence/2026-10-29-review-c5/c5-mission-zh-390x844.png
+?? docs/audit-evidence/2026-10-29-review-c5/command-results.json
+?? docs/audit-evidence/2026-10-29-review-c5/lighting-geometry-en-1366x768.png
+?? docs/audit-evidence/2026-10-29-review-c5/logs/baseline-build.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/baseline-format.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/browser-complete.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/browser-final-all.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/browser-final.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/browser-verified.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/browser.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/final-doc-format.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/final-format-check.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/format-changes.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/format-final.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/format-write-final.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/format-write.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/restore-root-artifacts.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/restore-root-build.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/restore-root-smoke.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-artifacts-final.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-artifacts-release.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-artifacts.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-build-final.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-build-fixed.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-build-provider.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-build-release.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-build-theme.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-build-verified.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-build.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-smoke-final.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-smoke-verified.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/root-smoke.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/subpath-artifacts.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/subpath-build.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/subpath-smoke.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/unit-final.log
+?? docs/audit-evidence/2026-10-29-review-c5/logs/unit.log
+?? docs/audit-evidence/2026-10-29-review-c5/verification.json
+?? docs/audit-evidence/2026-10-30-learning-paths/browser-c6.log
+?? docs/audit-evidence/2026-10-30-learning-paths/browser-focused-diagnostic.log
+?? docs/audit-evidence/2026-10-30-learning-paths/browser-full-final.log
+?? docs/audit-evidence/2026-10-30-learning-paths/browser-full-scoped-capture.log
+?? docs/audit-evidence/2026-10-30-learning-paths/browser-full.log
+?? docs/audit-evidence/2026-10-30-learning-paths/browser-query-fixed.log
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/c5-feedback-zh-touch-390x844.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/c5-lesson-zh-390x844.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/c5-mission-en-1366x768.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/c5-mission-en-200pct-equivalent.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/c5-mission-zh-390x844.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/framing-lesson-en-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/framing-lesson-zh-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/framing-lesson-zh-mobile.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/framing-mission-en-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/framing-mission-zh-mobile-feedback.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/framing-mission-zh-mobile.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/framing-mission-zh-zoom-200.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/learning-starts-zh-390x844.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/lesson-en-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/lesson-zh-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/lighting-geometry-en-1366x768.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/mission-en-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/mission-zh-mobile-feedback.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/mission-zh-mobile.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/mission-zh-zoom-200.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/practice-map-zh-dark-390x844.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/practice-overview-en-1366x768.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/review-lesson-en-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/review-lesson-zh-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/review-lesson-zh-mobile.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/review-mission-en-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/review-mission-zh-mobile-feedback.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/review-mission-zh-mobile.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/review-mission-zh-zoom-200.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/story-lesson-en-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/story-lesson-zh-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/story-lesson-zh-mobile.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/story-mission-en-desktop.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/story-mission-zh-mobile-feedback.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/story-mission-zh-mobile.png
+?? docs/audit-evidence/2026-10-30-learning-paths/browser/story-mission-zh-zoom-200.png
+?? docs/audit-evidence/2026-10-30-learning-paths/c6-browser/practice/c6-en-complete-1366x768.png
+?? docs/audit-evidence/2026-10-30-learning-paths/c6-browser/practice/c6-en-review-1366x768.png
+?? docs/audit-evidence/2026-10-30-learning-paths/c6-browser/practice/c6-zh-dark-390x844.png
+?? docs/audit-evidence/2026-10-30-learning-paths/c6-browser/practice/c6-zh-model-dark-390x844.png
+?? docs/audit-evidence/2026-10-30-learning-paths/c6-browser/practice/verification.json
+?? docs/audit-evidence/2026-10-30-learning-paths/format-check.log
+?? docs/audit-evidence/2026-10-30-learning-paths/format-evidence.log
+?? docs/audit-evidence/2026-10-30-learning-paths/format-files-fixed-path.log
+?? docs/audit-evidence/2026-10-30-learning-paths/format-files.log
+?? docs/audit-evidence/2026-10-30-learning-paths/format-final-files.log
+?? docs/audit-evidence/2026-10-30-learning-paths/git-diff-check.log
+?? docs/audit-evidence/2026-10-30-learning-paths/git-status.txt
+?? docs/audit-evidence/2026-10-30-learning-paths/preservation.json
+?? docs/audit-evidence/2026-10-30-learning-paths/restore-root-artifacts.log
+?? docs/audit-evidence/2026-10-30-learning-paths/restore-root-build.log
+?? docs/audit-evidence/2026-10-30-learning-paths/restore-root-c6.log
+?? docs/audit-evidence/2026-10-30-learning-paths/restore-root-smoke.log
+?? docs/audit-evidence/2026-10-30-learning-paths/root-artifacts.log
+?? docs/audit-evidence/2026-10-30-learning-paths/root-build-fixed-date.log
+?? docs/audit-evidence/2026-10-30-learning-paths/root-build.log
+?? docs/audit-evidence/2026-10-30-learning-paths/root-c6.log
+?? docs/audit-evidence/2026-10-30-learning-paths/root-smoke-updated.log
+?? docs/audit-evidence/2026-10-30-learning-paths/root-smoke.log
+?? docs/audit-evidence/2026-10-30-learning-paths/subpath-artifacts.log
+?? docs/audit-evidence/2026-10-30-learning-paths/subpath-build.log
+?? docs/audit-evidence/2026-10-30-learning-paths/subpath-c6.log
+?? docs/audit-evidence/2026-10-30-learning-paths/subpath-smoke.log
+?? docs/audit-evidence/2026-10-30-learning-paths/unit-final.log
+?? docs/audit-evidence/2026-10-30-learning-paths/unit.log
+?? docs/audit-evidence/2026-10-30-learning-paths/verification.json
+?? docs/history/status-before-c5-2026-10-29.md
+?? scripts/browser-backup-checks.mjs
+?? scripts/browser-editing-geometry.mjs
+?? scripts/browser-learning-path-checks.mjs
+?? scripts/browser-lightweight-editing-practice.mjs
+?? scripts/browser-lightweight-editing.mjs
+?? scripts/browser-practice-integration.mjs
+?? scripts/browser-state-checks.mjs
+?? scripts/check-lightweight-editing-practice.mjs
+?? scripts/check-lightweight-editing.mjs
+?? src/components/learn/LearningStarts.astro
+?? src/components/learn/LightweightEditingModel.astro
+?? src/components/practice/BackupExportModel.astro
+?? src/components/practice/LightDirectionDiagram.astro
+?? src/components/practice/LightweightEditingPractice.astro
+?? src/components/practice/MissionNavigation.astro
+?? src/components/practice/PracticeOverview.astro
+?? src/components/practice/lightweight-editing-controller.ts
+?? src/components/ui/starlight/ThemeProvider.astro
+?? src/content/docs/learn/workflow/backup-and-export.mdx
+?? src/content/docs/learn/workflow/lightweight-editing.mdx
+?? src/content/docs/zh-cn/learn/workflow/backup-and-export.mdx
+?? src/content/docs/zh-cn/learn/workflow/lightweight-editing.mdx
+?? src/copy/learning-starts.ts
+?? src/copy/practice-paths.ts
+?? src/data_files/lightweight-editing-practice.ts
+?? src/data_files/missions/backup-and-export.ts
+?? src/data_files/practice-catalog.ts
+?? src/pages/practice/backup-and-export.astro
+?? src/pages/practice/lightweight-editing.astro
+?? src/pages/zh-cn/practice/backup-and-export.astro
+?? src/pages/zh-cn/practice/lightweight-editing.astro
+?? src/utils/practice/feedback.ts
+?? src/utils/practice/index-progress.ts
+?? src/utils/practice/lightweight-editing-progress.ts
+?? src/utils/practice/suggestion.ts
+?? src/utils/review-date.ts
+?? src/views/LightweightEditingPracticeView.astro
+?? tests/practice/index-progress.test.ts
+?? tests/practice/lightweight-editing-progress.test.ts
+?? tests/practice/mission-feedback.test.ts
+?? tests/practice/review-date.test.ts
+?? tests/practice/suggestion.test.ts

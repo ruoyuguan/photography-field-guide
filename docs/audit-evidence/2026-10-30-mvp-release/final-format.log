@@ -1,0 +1,6 @@
+
+> photography-field-guide@0.0.1 format:check /Users/ruoyu/photography-field-guide
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!

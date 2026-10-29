@@ -31,19 +31,25 @@ export const subjectBackgroundMission: PracticeMission = {
           'Keep the subject and focal length fixed. Take a small, safe step sideways, aim back at the subject, and reframe to approximately the same subject size. Which result is the best prediction?',
         choices: [
           {
-            id: 'relative-alignment',
-            label:
-              'The subject and background can shift into a different relative alignment, allowing an overlapping distraction to separate.',
-          },
-          {
             id: 'better-by-rule',
             label:
               'The second photograph must be better because the subject will automatically follow the rule of thirds.',
+            explanation:
+              'This choice turns a viewpoint change into an automatic quality judgment. Stepping sideways can change an overlap, but it does not place the subject on a thirds line for you. Even deliberate thirds placement is an option to assess against your intention, rather than evidence that the second frame is better.',
           },
           {
             id: 'automatic-blur',
             label:
               'The aperture must open and the background must become blurred, even though no lens setting changed.',
+            explanation:
+              'This choice treats camera movement as an aperture adjustment. The exercise keeps lens and exposure settings unchanged, so a sideways step does not open the aperture. Small distance changes may affect blur, but they do not guarantee it; the prediction to test here is relative alignment.',
+          },
+          {
+            id: 'relative-alignment',
+            label:
+              'The subject and background can shift into a different relative alignment, allowing an overlapping distraction to separate.',
+            explanation:
+              'With a stationary subject and unchanged focal length, a sideways camera move followed by reframing can change near–far alignment. Separation depends on the movement and scene distances. Check the overlap, edges, and useful context afterward; separation alone does not decide which photograph serves your intention.',
           },
         ],
         correctChoiceId: 'relative-alignment',
@@ -134,16 +140,22 @@ export const subjectBackgroundMission: PracticeMission = {
           '固定主体和焦距。安全地小幅侧移，重新对准主体，并让主体在画面中的大小近似一致。哪个预测最合理？',
         choices: [
           {
-            id: 'relative-alignment',
-            label: '主体与背景的相对对齐关系可以改变，从而分离原本重叠的干扰。',
-          },
-          {
             id: 'better-by-rule',
             label: '第二张照片一定更好，因为主体会自动符合三分法。',
+            explanation:
+              '这个选项把视点变化变成了自动的质量判断。侧移可能改变重叠，却不会替你把主体放到三分线上。即使主动采用三分法，也要根据表达意图判断，不能据此证明第二张更好。',
           },
           {
             id: 'automatic-blur',
             label: '即使没有调整镜头设置，光圈也一定会开大，背景一定会变模糊。',
+            explanation:
+              '这个选项把相机移动当成了光圈调整。本练习保持镜头与曝光设置不变，侧移不会让光圈开大。微小距离变化可能影响虚化，却不保证背景变模糊；这里要验证的是相对对齐关系。',
+          },
+          {
+            id: 'relative-alignment',
+            label: '主体与背景的相对对齐关系可以改变，从而分离原本重叠的干扰。',
+            explanation:
+              '主体静止、焦距不变时，相机侧移再重新构图，可以改变远近元素的相对对齐关系。能否分离重叠取决于移动量与场景距离。随后要检查重叠、边缘和有用环境；仅仅分离，并不能决定哪张更符合表达意图。',
           },
         ],
         correctChoiceId: 'relative-alignment',

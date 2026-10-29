@@ -1,6 +1,8 @@
 import { getCollection } from 'astro:content';
 import { publicToolIds } from '@data/tool-registry';
 import { missions } from '@data/practice';
+import { practiceCatalog } from '@data/practice-catalog';
+import { contentReviewDate } from '@utils/review-date';
 
 /** Cross-entity rules that Zod schemas cannot enforce on their own. */
 async function runContentValidation(): Promise<void> {
@@ -14,7 +16,7 @@ async function runContentValidation(): Promise<void> {
       getCollection('galleries'),
     ]);
   const errors: string[] = [];
-  const today = new Date().toISOString().slice(0, 10);
+  const today = contentReviewDate();
   const fail = (where: string, message: string) =>
     errors.push(`${where}: ${message}`);
   const checkDate = (where: string, field: string, value?: string) => {
@@ -96,6 +98,32 @@ async function runContentValidation(): Promise<void> {
   };
   for (const key of articleKeys) visit(key, []);
 
+  const catalogIds = new Set(practiceCatalog.map(entry => entry.id));
+  if (catalogIds.size !== practiceCatalog.length)
+    fail('practice catalog', 'Task IDs must be unique.');
+  if (
+    new Set(practiceCatalog.map(entry => entry.number)).size !==
+    practiceCatalog.length
+  )
+    fail('practice catalog', 'Task numbers must be unique.');
+  for (const entry of practiceCatalog) {
+    const route = entry.articlePath.replace(/^\/|\/$/g, '');
+    for (const locale of ['en', 'zh-cn']) {
+      const id = locale === 'en' ? route : `${locale}/${route}`;
+      if (
+        !docs.some(
+          doc =>
+            doc.id === id &&
+            doc.data.reviewStatus === 'published' &&
+            !doc.data.draft
+        )
+      )
+        fail(
+          `practice catalog/${entry.id}`,
+          `Missing published ${locale} lesson.`
+        );
+    }
+  }
   const missionIds = new Set(missions.map(mission => mission.id));
   if (missionIds.size !== missions.length)
     fail('practice', 'Mission IDs must be unique.');
@@ -103,7 +131,7 @@ async function runContentValidation(): Promise<void> {
     const where = `practice/${mission.id}`;
     if (!Number.isInteger(mission.version) || mission.version < 1)
       fail(where, 'Mission version must be a positive integer.');
-    if (mission.nextId && !missionIds.has(mission.nextId))
+    if (mission.nextId && !catalogIds.has(mission.nextId))
       fail(where, 'Next mission must exist.');
     if (
       !mission.articlePath.startsWith('/learn/') ||
@@ -124,7 +152,13 @@ async function runContentValidation(): Promise<void> {
         fail(where, `Missing published ${locale} lesson: ${id}.`);
       const text = mission.copy[locale];
       const choices = text.prediction.choices.map(choice => choice.id);
+      for (const choice of text.prediction.choices)
+        if (!choice.explanation?.trim())
+          fail(where, `Missing ${locale} explanation for choice ${choice.id}.`);
       const checks = text.reflection.checks.map(check => check.id);
+      const steps = text.observation.steps.map(step => step.id);
+      if (new Set(steps).size !== steps.length)
+        fail(where, `Duplicate ${locale} observation step IDs.`);
       if (
         new Set(choices).size !== choices.length ||
         !choices.includes(text.prediction.correctChoiceId)
@@ -147,6 +181,10 @@ async function runContentValidation(): Promise<void> {
             JSON.stringify(
               mission.copy.en.prediction.choices.map(choice => choice.id)
             ) ||
+          JSON.stringify(steps) !==
+            JSON.stringify(
+              mission.copy.en.observation.steps.map(step => step.id)
+            ) ||
           JSON.stringify(checks) !==
             JSON.stringify(
               mission.copy.en.reflection.checks.map(check => check.id)
@@ -156,7 +194,7 @@ async function runContentValidation(): Promise<void> {
         )
           fail(
             where,
-            'Stable choice/check IDs and the objective answer must match across languages.'
+            'Stable choice/step/check IDs and the objective answer must match across languages.'
           );
       }
     }

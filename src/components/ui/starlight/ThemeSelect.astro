@@ -1,8 +1,12 @@
+---
+const { copy: t } = Astro.locals;
+---
+
 {/* Dark Theme Toggle Button */}
 <button
   type="button"
-  aria-label="Dark Theme Toggle"
-  title="Toggle theme"
+  aria-label={t.layout.darkTheme}
+  title={t.layout.toggleTheme}
   id="dark-theme-toggle"
   class="group flex h-8 w-8 items-center justify-center rounded-full font-medium text-neutral-600 ring-zinc-500 outline-hidden transition duration-300 hover:bg-neutral-200 hover:text-orange-400"
   data-hs-theme-click-value="dark"
@@ -25,8 +29,8 @@
 {/* Light Theme Toggle Button */}
 <button
   type="button"
-  aria-label="Light Theme Toggle"
-  title="Toggle theme"
+  aria-label={t.layout.lightTheme}
+  title={t.layout.toggleTheme}
   id="light-theme-toggle"
   class="group flex hidden h-8 w-8 items-center justify-center rounded-full font-medium text-neutral-400 ring-zinc-500 outline-hidden transition duration-300 hover:bg-neutral-700 hover:text-orange-400"
   data-hs-theme-click-value="light"
@@ -56,51 +60,58 @@
 </button>
 
 <script>
-  // Define the Theme type
   type Theme = 'light' | 'dark';
 
-  // Function to set the theme
-  function setTheme(theme: Theme): void {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('starlight-theme', theme);
-    updateButtons(theme);
-  }
-
-  // Function to update the button visibility
   function updateButtons(theme: Theme): void {
     const darkButton = document.getElementById('dark-theme-toggle');
     const lightButton = document.getElementById('light-theme-toggle');
-
-    if (theme === 'dark') {
-      darkButton?.classList.add('hidden');
-      lightButton?.classList.remove('hidden');
-    } else {
-      darkButton?.classList.remove('hidden');
-      lightButton?.classList.add('hidden');
-    }
+    darkButton?.classList.toggle('hidden', theme === 'dark');
+    lightButton?.classList.toggle('hidden', theme !== 'dark');
   }
 
-  // Event listeners for theme toggle buttons
+  function setTheme(theme: Theme): void {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('starlight-theme', theme);
+    } catch {
+      // The theme remains usable for this visit when storage is unavailable.
+    }
+    document.dispatchEvent(
+      new CustomEvent('pfg:theme-change', { detail: theme })
+    );
+  }
+
   document
     .getElementById('dark-theme-toggle')
     ?.addEventListener('click', () => {
       setTheme('dark');
     });
-
   document
     .getElementById('light-theme-toggle')
     ?.addEventListener('click', () => {
       setTheme('light');
     });
-
-  // Initial theme setup
-  document.addEventListener('DOMContentLoaded', () => {
-    const storedTheme = localStorage.getItem('starlight-theme') as Theme | null;
-    const theme: Theme =
-      storedTheme ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light');
-    setTheme(theme);
+  document.addEventListener('pfg:theme-change', event => {
+    const theme = (event as CustomEvent<Theme>).detail;
+    if (theme === 'light' || theme === 'dark') updateButtons(theme);
   });
+
+  const initialize = () => {
+    let storedTheme: string | null = null;
+    try {
+      storedTheme = localStorage.getItem('starlight-theme');
+    } catch {
+      // Respect the system preference without requiring browser storage.
+    }
+    const theme: Theme =
+      storedTheme === 'light' || storedTheme === 'dark'
+        ? storedTheme
+        : window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+    setTheme(theme);
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else initialize();
 </script>

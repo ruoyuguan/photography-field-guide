@@ -1,0 +1,124 @@
+OK proportional sensor diagram and home page at 1440 px / 390 px
+OK English → Chinese language navigation
+OK search "传感器" → /zh-cn/learn/sensor-lens/sensor-formats/
+OK search "ISO" → /learn/exposure/exposure-triangle/
+OK search "aperture priority" → /learn/exposure/pasm-modes/
+OK search "景深" → /zh-cn/learn/sensor-lens/depth-of-field/
+OK search "曝光补偿" → /zh-cn/learn/exposure/exposure-compensation/
+OK search "自动对焦" → /zh-cn/learn/image-quality/autofocus/
+OK search "白平衡" → /zh-cn/learn/image-quality/white-balance/
+OK search "胶片模拟" → /zh-cn/learn/image-quality/film-simulations/
+OK search "light direction" → /learn/composition/understanding-light/
+OK search "侧光" → /zh-cn/learn/composition/understanding-light/
+OK search "negative space" → /learn/composition/subject-and-background/
+OK search "留白" → /zh-cn/learn/composition/subject-and-background/
+OK search "three photos" → /learn/field-practice/neighborhood-story/
+OK search "三张照片" → /zh-cn/learn/field-practice/neighborhood-story/
+OK search "reversible selection" → /learn/field-practice/photo-review/
+OK search "照片筛选" → /zh-cn/learn/field-practice/photo-review/
+OK search "backup export originals" → /learn/workflow/backup-and-export/
+OK search "安全备份" → /zh-cn/learn/workflow/backup-and-export/
+OK bilingual glossary aliases and native reset
+OK gallery scope, EXIF, empty-result, and limited-evidence filters
+OK equipment-page language switch preserves the deep route
+OK resource directory remains complete without JavaScript
+OK mobile directory/article layout /glossary/
+OK mobile directory/article layout /zh-cn/galleries/
+OK mobile directory/article layout /gear/fujifilm-xf16-50/
+OK mobile directory/article layout /zh-cn/resources/
+OK mobile directory/article layout /learn/getting-started/digital-camera-works/
+OK mobile directory/article layout /learn/exposure/pasm-modes/
+OK mobile directory/article layout /zh-cn/learn/exposure/exposure-compensation/
+OK mobile directory/article layout /learn/image-quality/autofocus/
+OK mobile directory/article layout /zh-cn/learn/image-quality/autofocus/
+OK mobile directory/article layout /zh-cn/learn/image-quality/raw-jpeg-exif/
+OK mobile directory/article layout /learn/image-quality/white-balance/
+OK mobile directory/article layout /zh-cn/learn/image-quality/white-balance/
+OK mobile directory/article layout /learn/image-quality/film-simulations/
+OK mobile directory/article layout /zh-cn/learn/image-quality/film-simulations/
+OK mobile directory/article layout /learn/composition/understanding-light/
+OK mobile directory/article layout /zh-cn/learn/composition/understanding-light/
+OK mobile directory/article layout /practice/
+OK mobile directory/article layout /zh-cn/practice/
+OK mobile directory/article layout /practice/light-direction/
+OK mobile directory/article layout /zh-cn/practice/light-direction/
+OK crop calculator defaults and isolated multiple instances
+OK crop slider keyboard, input sync, error, reset, and axis
+OK crop tool deep-language navigation and Chinese error
+OK exposure comparison, ISO separation, keyboard, and errors
+OK Chinese exposure results and validation
+OK no-JavaScript explanations and hidden inactive controls
+OK mobile tool layout /tools/
+OK mobile tool layout /zh-cn/tools/
+OK mobile tool layout /tools/crop-factor/
+OK mobile tool layout /zh-cn/tools/crop-factor/
+OK mobile tool layout /tools/exposure-stops/
+OK mobile tool layout /zh-cn/tools/exposure-stops/
+OK mobile touch reset
+OK tablet tool layout /tools/crop-factor/
+OK tablet tool layout /tools/exposure-stops/
+OK mission goal and first action are visible at 1366×768
+OK prediction, error, retry, correct feedback, hint, and answer
+OK keyboard direction slider, accessible value, and model text
+OK observation, self-review, completion, and refresh persistence
+OK deep-language shared progress and guarded single-mission reset
+OK clear-all removes only practice data and preserves the theme
+OK corrupt JSON, old versions, unknown IDs, and forged states
+OK blocked storage retains a usable in-memory mission
+OK no-JavaScript lesson, mission, answers, and navigation
+OK independent direction controls in multiple initialized instances
+OK Chinese touch controls and nearby feedback at 390×844
+OK answer reveal, focus, and layout at a 200% desktop viewport
+OK framing lesson, model branch, goal, and first action
+OK framing prediction, error, retry, hint, and answer
+OK framing observation, self-review, completion, and refresh
+OK shared language progress and mission-isolated reset
+OK blocked storage on the slider-free framing mission
+OK bilingual no-JavaScript framing content and answers
+OK Chinese framing touch controls and nearby feedback
+OK framing 200% viewport and desktop capture paths
+OK story lesson, three-frame branch, goal, and first action
+OK story prediction, error, retry, hint, and answer
+OK story observation, self-review, completion, and refresh
+OK story language sharing and C1/C2-preserving reset
+OK blocked storage on the three-frame story mission
+OK bilingual no-JavaScript story content and answers
+OK Chinese story touch controls and nearby feedback
+OK story 200% viewport and desktop capture paths
+OK review lesson, six-frame model, goal, and first action
+OK review prediction, error, retry, hint, and answer
+OK local review steps, self-review, completion, and refresh
+OK review language sharing and C1–C3-preserving reset
+OK blocked storage on the photo-review mission
+OK bilingual no-JavaScript review content and answers
+OK Chinese review touch controls and nearby feedback
+OK review 200% viewport and desktop capture paths
+OK C4 → C5 lifecycle, feedback, refresh, deep language switch and isolated reset
+OK C5 blocked storage remains usable without false persistent-save notice
+OK C5 bilingual no-JavaScript goals, answer and workflow
+OK C5 mobile touch, narrow lesson and 200% equivalent viewport
+OK C1–C4 prediction drafts survive checklist actions and answer disclosure
+OK retry progress and native answer disclosure persist across refresh and language change
+OK shared lighting diagrams preserve direction, cast shadow, and lamp distance geometry
+OK desktop and mobile lesson theme controls work with storage denied and no uncaught exceptions
+OK failed reset/removal reports temporary state instead of a false persistent-clear success
+OK bilingual C5 → existing C6, six catalog cards, and original-key progress restoration
+OK C6 evidence removal updates catalog status and C6-only reset preserves shared progress
+OK bilingual clear-all removes both exact progress keys and preserves unrelated preferences after reload
+OK all 30 C1–C5 localized choice explanations match their IDs before and after reload
+OK six-card catalog mobile and narrow layouts
+OK bilingual C6 common baseline, unchanged geometry and exact crop boundary
+OK bilingual Home/Learn intent links, new-photo and existing-photo journeys, native mission-map keyboard anchors
+OK browser-based start/next/continue suggestions, curriculum precedence, refresh, real language switch, and dedicated C6 continuation without storage migration
+OK complete checklists invite revisiting, exact two-key clearing refreshes suggestions, unrelated preferences remain
+OK all six bilingual task endings retain their lesson, contextual directory return, and suggested continuation
+file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:124
+        reject(new Error(`CDP timed out: ${method}`));
+               ^
+
+Error: CDP timed out: Runtime.evaluate
+    at Timeout._onTimeout (file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:124:16)
+    at listOnTimeout (node:internal/timers:685:17)
+    at process.processTimers (node:internal/timers:618:7)
+
+Node.js v24.22.1

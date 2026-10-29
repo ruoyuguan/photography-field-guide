@@ -1,14 +1,16 @@
 ---
 import {
-  missionById,
   practiceUiCopy,
   type PracticeLocale,
   type PracticeMission,
 } from '@data/practice';
 import { localePath } from '@utils/locale';
+import MissionNavigation from './MissionNavigation.astro';
 import FramingModel from './FramingModel.astro';
+import LightDirectionDiagram from './LightDirectionDiagram.astro';
 import NeighborhoodStoryModel from './NeighborhoodStoryModel.astro';
 import PhotoReviewModel from './PhotoReviewModel.astro';
+import BackupExportModel from './BackupExportModel.astro';
 
 interface Props {
   locale: PracticeLocale;
@@ -22,7 +24,6 @@ const number = String(mission.number).padStart(2, '0');
 const missionLabel = locale === 'en' ? `Mission ${number}` : `任务 ${number}`;
 const readLesson =
   locale === 'en' ? `Read ${t.lessonTitle}` : `阅读《${t.lessonTitle}》`;
-const nextMission = mission.nextId ? missionById(mission.nextId) : undefined;
 ---
 
 <article
@@ -32,7 +33,8 @@ const nextMission = mission.nextId ? missionById(mission.nextId) : undefined;
   class="mx-auto max-w-6xl py-6 sm:py-8"
 >
   <a
-    href={localePath(locale, '/practice/')}
+    href={`${localePath(locale, '/practice/')}#mission-${mission.id}`}
+    data-return-directory
     class="text-sm font-semibold text-neutral-600 underline decoration-neutral-400 underline-offset-4 hover:text-amber-700 dark:text-neutral-400 dark:hover:text-amber-300"
   >
     ← {ui.back}
@@ -249,101 +251,11 @@ const nextMission = mission.nextId ? missionById(mission.nextId) : undefined;
               <figcaption class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
                 A · {ui.modelFront}
               </figcaption>
-              <svg
-                viewBox="0 0 360 240"
-                role="img"
-                aria-labelledby={`${prefix}-front-title ${prefix}-front-desc`}
-                class="mt-2 h-auto w-full"
-              >
-                <title id={`${prefix}-front-title`}>{ui.modelFront}</title>
-                <desc id={`${prefix}-front-desc`}>
-                  {ui.frontDescription} {ui.view}.
-                </desc>
-                <rect
-                  x="130"
-                  y="12"
-                  width="100"
-                  height="32"
-                  rx="8"
-                  fill="#fbbf24"
-                />
-                <text
-                  x="180"
-                  y="32"
-                  text-anchor="middle"
-                  font-size="11"
-                  font-weight="700"
-                  fill="#422006"
-                >
-                  {ui.lamp}
-                </text>
-                <path
-                  d="M155 48 L165 82 M205 48 L195 82"
-                  stroke="#d97706"
-                  stroke-width="3"
-                  marker-end="url(#front-arrow)"
-                />
-                <defs>
-                  <marker
-                    id="front-arrow"
-                    markerWidth="6"
-                    markerHeight="6"
-                    refX="3"
-                    refY="3"
-                    orient="auto"
-                  >
-                    <path d="M0 0 L6 3 L0 6 Z" fill="#d97706" />
-                  </marker>
-                </defs>
-                <ellipse
-                  cx="180"
-                  cy="158"
-                  rx="34"
-                  ry="25"
-                  fill="#78716c"
-                  opacity="0.35"
-                />
-                <text
-                  x="180"
-                  y="184"
-                  text-anchor="middle"
-                  font-size="11"
-                  fill="currentColor"
-                >
-                  {ui.shadow}
-                </text>
-                <circle
-                  cx="180"
-                  cy="111"
-                  r="31"
-                  fill="#e7e5e4"
-                  stroke="#44403c"
-                  stroke-width="2"
-                />
-                <path d="M180 80 A31 31 0 0 1 180 142 Z" fill="#a8a29e" />
-                <text
-                  x="180"
-                  y="116"
-                  text-anchor="middle"
-                  font-size="11"
-                  font-weight="700"
-                  fill="#292524"
-                >
-                  {ui.object}
-                </text>
-                <rect
-                  x="154"
-                  y="207"
-                  width="52"
-                  height="24"
-                  rx="5"
-                  fill="#292524"
-                />
-                <path d="M168 207 L180 190 L192 207 Z" fill="#292524" />
-                <text x="217" y="224" font-size="11" fill="currentColor">
-                  {ui.camera}
-                </text>
-              </svg>
+              <LightDirectionDiagram
+                locale={locale}
+                direction="front"
+                prefix={`${prefix}-front`}
+              />
               <p class="text-xs leading-5 text-neutral-600 dark:text-neutral-400">
                 {ui.frontDescription}
               </p>
@@ -355,105 +267,11 @@ const nextMission = mission.nextId ? missionById(mission.nextId) : undefined;
               <figcaption class="text-sm font-bold text-neutral-900 dark:text-neutral-100">
                 B · {ui.modelSide}
               </figcaption>
-              <svg
-                viewBox="0 0 360 240"
-                role="img"
-                aria-labelledby={`${prefix}-side-title ${prefix}-side-desc`}
-                class="mt-2 h-auto w-full"
-              >
-                <title id={`${prefix}-side-title`}>{ui.modelSide}</title>
-                <desc id={`${prefix}-side-desc`}>
-                  {ui.sideDescription} {ui.view}.
-                </desc>
-                <rect
-                  x="8"
-                  y="92"
-                  width="96"
-                  height="34"
-                  rx="8"
-                  fill="#fbbf24"
-                />
-                <text
-                  x="56"
-                  y="113"
-                  text-anchor="middle"
-                  font-size="10"
-                  font-weight="700"
-                  fill="#422006"
-                >
-                  {ui.lamp}
-                </text>
-                <path
-                  d="M108 101 L140 106 M108 117 L140 116"
-                  stroke="#d97706"
-                  stroke-width="3"
-                  marker-end="url(#side-arrow)"
-                />
-                <defs>
-                  <marker
-                    id="side-arrow"
-                    markerWidth="6"
-                    markerHeight="6"
-                    refX="3"
-                    refY="3"
-                    orient="auto"
-                  >
-                    <path d="M0 0 L6 3 L0 6 Z" fill="#d97706" />
-                  </marker>
-                </defs>
-                <ellipse
-                  cx="248"
-                  cy="111"
-                  rx="49"
-                  ry="24"
-                  fill="#78716c"
-                  opacity="0.35"
-                />
-                <text
-                  x="260"
-                  y="150"
-                  text-anchor="middle"
-                  font-size="11"
-                  fill="currentColor"
-                >
-                  {ui.shadow}
-                </text>
-                <circle
-                  cx="180"
-                  cy="111"
-                  r="31"
-                  fill="#e7e5e4"
-                  stroke="#44403c"
-                  stroke-width="2"
-                />
-                <path
-                  d="M180 80 A31 31 0 0 0 180 142 Z"
-                  fill="#fbbf24"
-                  opacity="0.65"
-                />
-                <text
-                  x="180"
-                  y="116"
-                  text-anchor="middle"
-                  font-size="11"
-                  font-weight="700"
-                  fill="#292524"
-                >
-                  {ui.object}
-                </text>
-                <rect
-                  x="154"
-                  y="207"
-                  width="52"
-                  height="24"
-                  rx="5"
-                  fill="#292524"
-                />
-                <path d="M168 207 L180 190 L192 207 Z" fill="#292524" />
-                <text x="217" y="224" font-size="11" fill="currentColor">
-                  {ui.camera}
-                </text>
-              </svg>
+              <LightDirectionDiagram
+                locale={locale}
+                direction="side"
+                prefix={`${prefix}-side`}
+              />
               <p class="text-xs leading-5 text-neutral-600 dark:text-neutral-400">
                 {ui.sideDescription}
               </p>
@@ -467,6 +285,8 @@ const nextMission = mission.nextId ? missionById(mission.nextId) : undefined;
         <FramingModel locale={locale} prefix={prefix} />
       ) : mission.visual === 'story' ? (
         <NeighborhoodStoryModel locale={locale} prefix={prefix} />
+      ) : mission.visual === 'backup' ? (
+        <BackupExportModel locale={locale} prefix={prefix} />
       ) : (
         <PhotoReviewModel locale={locale} prefix={prefix} />
       )}
@@ -579,24 +399,11 @@ const nextMission = mission.nextId ? missionById(mission.nextId) : undefined;
     </div>
   </section>
 
-  <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
-    <a
-      href={localePath(locale, mission.articlePath)}
-      class="inline-block rounded-lg text-sm font-bold text-amber-700 underline decoration-amber-400 underline-offset-4 dark:text-amber-300"
-    >
-      ← {ui.returnToLesson}
-    </a>
-    {nextMission && (
-      <a
-        href={localePath(locale, `/practice/${nextMission.id}/`)}
-        data-next-mission
-        class="inline-block rounded-lg text-sm font-bold text-amber-700 underline decoration-amber-400 underline-offset-4 dark:text-amber-300"
-      >
-        {locale === 'en' ? 'Next mission' : '下一任务'}:{' '}
-        {nextMission.copy[locale].title} →
-      </a>
-    )}
-  </div>
+  <MissionNavigation
+    locale={locale}
+    missionId={mission.id}
+    nextId={mission.nextId}
+  />
 </article>
 
 <style>

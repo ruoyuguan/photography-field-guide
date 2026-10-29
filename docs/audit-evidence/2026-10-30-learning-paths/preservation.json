@@ -1,0 +1,10 @@
+{
+  "branch": "main",
+  "head": "95f19f4977321760f850f255674a2f9998326602",
+  "localOriginMain": "95f19f4977321760f850f255674a2f9998326602",
+  "stash": ["stash@{0} 52b3bbdf14a8a57ea938a4db5763982927867118"],
+  "priorUntrackedFiles": 184,
+  "missingPriorFiles": [],
+  "historicalFilesCompared": 150,
+  "changedHistoricalFiles": []
+}

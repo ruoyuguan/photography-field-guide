@@ -1,4 +1,12 @@
 import {
+  createPracticeIndexStore,
+  PRACTICE_PROGRESS_KEYS,
+} from '@utils/practice/index-progress';
+import { predictionFeedback } from '@utils/practice/feedback';
+import { selectPracticeSuggestion } from '@utils/practice/suggestion';
+import { practiceCatalog } from '@data/practice-catalog';
+import { practicePathCopy } from '@copy/practice-paths';
+import {
   missionById,
   practiceCopy,
   practiceUiCopy,
@@ -7,6 +15,7 @@ import {
 import {
   createPracticeStore,
   emptyMissionProgress,
+  PRACTICE_STORAGE_KEY,
   type MissionProgress,
 } from '@utils/practice/progress';
 
@@ -37,7 +46,6 @@ function initializeMission(root: HTMLElement): void {
   if (!mission) return;
   const locale = localeOf(root);
   const ui = practiceUiCopy[locale];
-  const t = mission.copy[locale];
   const store = createPracticeStore();
   const form = root.querySelector<HTMLFormElement>('[data-prediction-form]');
   const answer = root.querySelector<HTMLDetailsElement>(
@@ -52,6 +60,8 @@ function initializeMission(root: HTMLElement): void {
 
   const current = (): MissionProgress =>
     store.getState().missions[mission.id] ?? emptyMissionProgress(mission);
+  let draftChoiceId = current().prediction.choiceId;
+  let hasDraftChoice = false;
   const markActivity = (progress: MissionProgress) => {
     if (progress.status !== 'completed') progress.status = 'in-progress';
   };
@@ -97,7 +107,7 @@ function initializeMission(root: HTMLElement): void {
     root
       .querySelectorAll<HTMLInputElement>('[data-prediction-choice]')
       .forEach(input => {
-        input.checked = input.value === progress.prediction.choiceId;
+        input.checked = input.value === draftChoiceId;
       });
     root
       .querySelectorAll<HTMLInputElement>('[data-observation-step]')
@@ -115,15 +125,16 @@ function initializeMission(root: HTMLElement): void {
       });
 
     const feedback = root.querySelector<HTMLElement>('[data-quiz-feedback]');
-    const derivedFeedback = progress.prediction.choiceId
-      ? progress.prediction.solved
-        ? t.prediction.correct
-        : t.prediction.incorrect
-      : null;
+    const derivedFeedback = predictionFeedback(
+      mission,
+      locale,
+      progress.prediction.choiceId
+    );
     const feedbackText = quizFeedback ?? derivedFeedback;
     if (feedback) {
       feedback.hidden = !feedbackText;
       feedback.textContent = feedbackText ?? '';
+      feedback.dataset.choiceId = progress.prediction.choiceId ?? '';
       feedback.className =
         'mt-3 rounded-lg bg-amber-50 p-3 text-sm leading-6 text-amber-950 dark:bg-amber-950/40 dark:text-amber-100';
     }
@@ -132,8 +143,6 @@ function initializeMission(root: HTMLElement): void {
       retry.hidden = !(
         progress.prediction.choiceId && !progress.prediction.solved
       );
-    if (progress.prediction.revealed) answer.open = true;
-
     const complete = root.querySelector<HTMLButtonElement>(
       '[data-complete-mission]'
     );
@@ -162,18 +171,27 @@ function initializeMission(root: HTMLElement): void {
       render();
       return;
     }
-    const correct = selected.value === t.prediction.correctChoiceId;
+    const response = predictionFeedback(mission, locale, selected.value);
+    if (response === null) {
+      setQuizFeedback(ui.chooseFirst);
+      render();
+      return;
+    }
     store.update(mission.id, progress => {
       progress.prediction.choiceId = selected.value;
       markActivity(progress);
     });
-    setQuizFeedback(correct ? t.prediction.correct : t.prediction.incorrect);
+    draftChoiceId = selected.value;
+    hasDraftChoice = false;
+    setQuizFeedback(response);
     render();
   });
   root
     .querySelectorAll<HTMLInputElement>('[data-prediction-choice]')
     .forEach(input =>
       input.addEventListener('change', () => {
+        draftChoiceId = input.value;
+        hasDraftChoice = true;
         setQuizFeedback('');
         const feedback = root.querySelector<HTMLElement>(
           '[data-quiz-feedback]'
@@ -187,6 +205,8 @@ function initializeMission(root: HTMLElement): void {
       progress.prediction.solved = false;
       markActivity(progress);
     });
+    draftChoiceId = undefined;
+    hasDraftChoice = false;
     setQuizFeedback('');
     render();
     root.querySelector<HTMLInputElement>('[data-prediction-choice]')?.focus();
@@ -200,19 +220,27 @@ function initializeMission(root: HTMLElement): void {
     render();
     answer.querySelector('summary')?.focus();
   });
+  answer.open = current().prediction.revealed;
+  answer.addEventListener('toggle', () => {
+    if (!answer.open || current().prediction.revealed) return;
+    store.update(mission.id, progress => {
+      progress.prediction.revealed = true;
+      markActivity(progress);
+    });
+    render();
+  });
 
   slider?.addEventListener('input', renderDirection);
   root
     .querySelectorAll<HTMLInputElement>('[data-observation-step]')
     .forEach(input =>
       input.addEventListener('change', () => {
-        const checked = [
-          ...root.querySelectorAll<HTMLInputElement>(
-            '[data-observation-step]:checked'
-          ),
-        ].map(item => item.dataset.observationStep ?? '');
+        const id = input.dataset.observationStep ?? '';
+        const checked = input.checked;
         store.update(mission.id, progress => {
-          progress.observationStepIds = checked;
+          progress.observationStepIds = checked
+            ? [...new Set([...progress.observationStepIds, id])]
+            : progress.observationStepIds.filter(stepId => stepId !== id);
           markActivity(progress);
         });
         render();
@@ -222,13 +250,12 @@ function initializeMission(root: HTMLElement): void {
     .querySelectorAll<HTMLInputElement>('[data-reflection-check]')
     .forEach(input =>
       input.addEventListener('change', () => {
-        const checked = [
-          ...root.querySelectorAll<HTMLInputElement>(
-            '[data-reflection-check]:checked'
-          ),
-        ].map(item => item.dataset.reflectionCheck ?? '');
+        const id = input.dataset.reflectionCheck ?? '';
+        const checked = input.checked;
         store.update(mission.id, progress => {
-          progress.reflectionCheckIds = checked;
+          progress.reflectionCheckIds = checked
+            ? [...new Set([...progress.reflectionCheckIds, id])]
+            : progress.reflectionCheckIds.filter(checkId => checkId !== id);
           markActivity(progress);
         });
         render();
@@ -248,13 +275,27 @@ function initializeMission(root: HTMLElement): void {
     if (!window.confirm(ui.confirmReset)) return;
     store.resetMission(mission.id);
     form.reset();
+    draftChoiceId = undefined;
+    hasDraftChoice = false;
     if (slider) slider.value = '0';
     answer.open = false;
     setQuizFeedback('');
-    completionFeedback = ui.resetDone;
+    completionFeedback =
+      store.getNotice() === 'memory' ? ui.resetMemory : ui.resetDone;
     renderDirection();
     render();
     root.querySelector<HTMLElement>('[data-prediction-heading]')?.focus();
+  });
+
+  window.addEventListener('storage', event => {
+    if (event.key !== null && event.key !== PRACTICE_STORAGE_KEY) return;
+    if (!root.isConnected) return;
+    const progress = current();
+    if (!hasDraftChoice) draftChoiceId = progress.prediction.choiceId;
+    if (!progress.prediction.revealed) answer.open = false;
+    setQuizFeedback(hasDraftChoice ? '' : null);
+    completionFeedback = null;
+    render();
   });
 
   renderDirection();
@@ -266,20 +307,57 @@ function initializeIndex(root: HTMLElement): void {
   const locale = localeOf(root);
   const copy = practiceCopy[locale];
   const ui = practiceUiCopy[locale];
-  const store = createPracticeStore();
+  const store = createPracticeIndexStore();
   const render = () => {
     root.querySelectorAll<HTMLElement>('[data-practice-card]').forEach(card => {
       const id = card.dataset.practiceCard ?? '';
-      const progress = store.getState().missions[id];
+      const progress = store.getStatus(id);
       const status = card.querySelector('[data-card-status]');
       if (status)
         status.textContent =
-          progress?.status === 'completed'
+          progress === 'completed'
             ? copy.completed
-            : progress?.status === 'in-progress'
+            : progress === 'in-progress'
               ? copy.inProgress
               : copy.notStarted;
     });
+    const pathCopy = practicePathCopy[locale];
+    const statuses = Object.fromEntries(
+      practiceCatalog.map(entry => [entry.id, store.getStatus(entry.id)])
+    );
+    const suggestion = selectPracticeSuggestion(statuses);
+    const target = practiceCatalog.find(
+      entry => entry.id === suggestion.missionId
+    )!;
+    const panel = root.querySelector<HTMLElement>('[data-practice-suggestion]');
+    if (panel) {
+      panel.dataset.suggestionKind = suggestion.kind;
+      panel.dataset.missionId = suggestion.missionId;
+      const mode = pathCopy.suggestion[suggestion.kind];
+      const title = panel.querySelector('[data-suggestion-title]');
+      const reason = panel.querySelector('[data-suggestion-reason]');
+      const link = panel.querySelector<HTMLAnchorElement>(
+        '[data-suggestion-link]'
+      );
+      const summary = panel.querySelector('[data-practice-summary]');
+      const card = [
+        ...root.querySelectorAll<HTMLElement>('[data-practice-card]'),
+      ].find(card => card.dataset.practiceCard === suggestion.missionId);
+      const href = card
+        ?.querySelector<HTMLAnchorElement>('[data-practice-open]')
+        ?.getAttribute('href');
+      if (title) title.textContent = mode.title;
+      if (reason) reason.textContent = mode.reason;
+      if (link && href) {
+        link.setAttribute('href', href);
+        link.textContent = `${mode.action}: ${target.copy[locale].title} →`;
+      }
+      if (summary)
+        summary.textContent = pathCopy.summary(
+          suggestion.completedCount,
+          suggestion.totalCount
+        );
+    }
     const storage = root.querySelector('[data-storage-notice]');
     if (storage)
       storage.textContent =
@@ -294,7 +372,18 @@ function initializeIndex(root: HTMLElement): void {
     store.clearAll();
     render();
     const feedback = root.querySelector('[data-clear-feedback]');
-    if (feedback) feedback.textContent = copy.cleared;
+    if (feedback)
+      feedback.textContent =
+        store.getNotice() === 'memory' ? copy.clearedMemory : copy.cleared;
+  });
+  window.addEventListener('storage', event => {
+    if (
+      event.key !== null &&
+      !PRACTICE_PROGRESS_KEYS.some(key => key === event.key)
+    )
+      return;
+    if (!root.isConnected) return;
+    render();
   });
   render();
   revealInteractive(root);

@@ -10,6 +10,11 @@ import { checkPractice } from './browser-practice-checks.mjs';
 import { checkFraming } from './browser-framing-checks.mjs';
 import { checkStory } from './browser-story-checks.mjs';
 import { checkPhotoReview } from './browser-review-checks.mjs';
+import { checkState } from './browser-state-checks.mjs';
+import { checkBackup } from './browser-backup-checks.mjs';
+import { checkPracticeIntegration } from './browser-practice-integration.mjs';
+import { checkEditingGeometry } from './browser-editing-geometry.mjs';
+import { checkLearningPaths } from './browser-learning-path-checks.mjs';
 
 /**
  * Optional real-browser checks using an installed Chrome and Node's WebSocket.
@@ -291,9 +296,6 @@ try {
     const description =
       message.params.exceptionDetails.exception?.description ??
       message.params.exceptionDetails.text;
-    // The blocked-storage scenario deliberately throws this exact marker;
-    // all unrelated browser exceptions still fail the suite.
-    if (description?.includes('Blocked for testing')) return;
     errors.push(description);
   });
   async function evaluate(expression) {
@@ -388,6 +390,16 @@ try {
     await until(
       `!!document.querySelector('dialog[open] .pagefind-ui__search-input')`
     );
+    // The search dialog is reused between pages. Remove previous results
+    // before testing a new debounced query, so stale links cannot pass or fail it.
+    await evaluate(`(() => {
+      const input = document.querySelector('dialog[open] .pagefind-ui__search-input');
+      input.value = '';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    })()`);
+    await until(
+      `!document.querySelector('dialog[open] .pagefind-ui__result-link')`
+    );
     await evaluate(`(() => {
       const input = document.querySelector('dialog[open] .pagefind-ui__search-input');
       input.value = ${JSON.stringify(query)};
@@ -428,187 +440,244 @@ try {
     console.log(`OK search ${JSON.stringify(query)} → ${expectedPath}`);
   }
 
-  await viewport(1440, 900);
-  await navigate('/');
-  assert.equal(await evaluate('document.documentElement.lang'), 'en');
-  const dimensions = await evaluate(
-    `[...document.querySelectorAll('[data-sensor]')].map(el => ({ id: el.dataset.sensor, width: Number(el.getAttribute('width')), height: Number(el.getAttribute('height')) }))`
-  );
-  assert.deepEqual(dimensions, [
-    { id: 'full-frame', width: 360, height: 240 },
-    { id: 'aps-c', width: 235, height: 157 },
-  ]);
-  await noOverflow('/');
-  await viewport(390, 844);
-  await noOverflow('/');
-  console.log(
-    'OK proportional sensor diagram and home page at 1440 px / 390 px'
-  );
+  if (process.env.PFG_BROWSER_SCOPE === 'learning-paths') {
+    await checkLearningPaths({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+    assert.deepEqual(errors, [], `Browser exceptions: ${errors.join('\n')}`);
+    console.log('OK focused learning-path checks without page exceptions.');
+  } else {
+    await viewport(1440, 900);
+    await navigate('/');
+    assert.equal(await evaluate('document.documentElement.lang'), 'en');
+    const dimensions = await evaluate(
+      `[...document.querySelectorAll('[data-sensor]')].map(el => ({ id: el.dataset.sensor, width: Number(el.getAttribute('width')), height: Number(el.getAttribute('height')) }))`
+    );
+    assert.deepEqual(dimensions, [
+      { id: 'full-frame', width: 360, height: 240 },
+      { id: 'aps-c', width: 235, height: 157 },
+    ]);
+    await noOverflow('/');
+    await viewport(390, 844);
+    await noOverflow('/');
+    console.log(
+      'OK proportional sensor diagram and home page at 1440 px / 390 px'
+    );
 
-  await viewport(1440, 900);
-  await click('.language-picker summary');
-  await until(
-    `document.querySelector('a[href="/zh-cn/"]')?.getBoundingClientRect().width > 0`
-  );
-  await click('a[href="/zh-cn/"]');
-  await until(
-    `location.pathname === '/zh-cn/' && document.documentElement.lang === 'zh-CN'`
-  );
-  console.log('OK English → Chinese language navigation');
+    await viewport(1440, 900);
+    await click('.language-picker summary');
+    await until(
+      `document.querySelector('a[href="/zh-cn/"]')?.getBoundingClientRect().width > 0`
+    );
+    await click('a[href="/zh-cn/"]');
+    await until(
+      `location.pathname === '/zh-cn/' && document.documentElement.lang === 'zh-CN'`
+    );
+    console.log('OK English → Chinese language navigation');
 
-  await navigate('/zh-cn/learn/');
-  const chineseNavigation = await evaluate(
-    `[...document.querySelectorAll('a')].filter(a => a.getAttribute('href')?.startsWith('/zh-cn/learn/')).map(a => a.textContent.trim())`
-  );
-  assert.ok(
-    chineseNavigation.some(text => text.includes('全画幅、APS-C 与传感器画幅'))
-  );
-  assert.ok(chineseNavigation.some(text => text.includes('曝光三角')));
-  assert.equal(
-    await evaluate(`!!document.querySelector('a[href="/learn/"]')`),
-    false,
-    'Chinese docs contain an English Learn destination'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '传感器',
-    '/zh-cn/learn/sensor-lens/sensor-formats/'
-  );
-  await search('/learn/', 'ISO', '/learn/exposure/exposure-triangle/');
-  await search('/learn/', 'aperture priority', '/learn/exposure/pasm-modes/');
-  await search(
-    '/zh-cn/learn/',
-    '景深',
-    '/zh-cn/learn/sensor-lens/depth-of-field/'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '曝光补偿',
-    '/zh-cn/learn/exposure/exposure-compensation/'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '自动对焦',
-    '/zh-cn/learn/image-quality/autofocus/'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '白平衡',
-    '/zh-cn/learn/image-quality/white-balance/'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '胶片模拟',
-    '/zh-cn/learn/image-quality/film-simulations/'
-  );
-  await search(
-    '/learn/',
-    'light direction',
-    '/learn/composition/understanding-light/'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '侧光',
-    '/zh-cn/learn/composition/understanding-light/'
-  );
-  await search(
-    '/learn/',
-    'negative space',
-    '/learn/composition/subject-and-background/'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '留白',
-    '/zh-cn/learn/composition/subject-and-background/'
-  );
-  await search(
-    '/learn/',
-    'three photos',
-    '/learn/field-practice/neighborhood-story/'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '三张照片',
-    '/zh-cn/learn/field-practice/neighborhood-story/'
-  );
-  await search(
-    '/learn/',
-    'reversible selection',
-    '/learn/field-practice/photo-review/'
-  );
-  await search(
-    '/zh-cn/learn/',
-    '照片筛选',
-    '/zh-cn/learn/field-practice/photo-review/'
-  );
-  await checkDirectories({
-    call,
-    click,
-    evaluate,
-    navigate,
-    noOverflow,
-    until,
-    viewport,
-  });
-  await checkTools({
-    call,
-    click,
-    evaluate,
-    navigate,
-    noOverflow,
-    until,
-    viewport,
-  });
-  await checkPractice({
-    call,
-    click,
-    evaluate,
-    navigate,
-    noOverflow,
-    until,
-    viewport,
-  });
-  await checkFraming({
-    call,
-    click,
-    evaluate,
-    navigate,
-    noOverflow,
-    until,
-    viewport,
-  });
-  await checkStory({
-    call,
-    click,
-    evaluate,
-    navigate,
-    noOverflow,
-    until,
-    viewport,
-  });
-  await checkPhotoReview({
-    call,
-    click,
-    evaluate,
-    navigate,
-    noOverflow,
-    until,
-    viewport,
-  });
+    await navigate('/zh-cn/learn/');
+    const chineseNavigation = await evaluate(
+      `[...document.querySelectorAll('a')].filter(a => a.getAttribute('href')?.startsWith('/zh-cn/learn/')).map(a => a.textContent.trim())`
+    );
+    assert.ok(
+      chineseNavigation.some(text =>
+        text.includes('全画幅、APS-C 与传感器画幅')
+      )
+    );
+    assert.ok(chineseNavigation.some(text => text.includes('曝光三角')));
+    assert.equal(
+      await evaluate(`!!document.querySelector('a[href="/learn/"]')`),
+      false,
+      'Chinese docs contain an English Learn destination'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '传感器',
+      '/zh-cn/learn/sensor-lens/sensor-formats/'
+    );
+    await search('/learn/', 'ISO', '/learn/exposure/exposure-triangle/');
+    await search('/learn/', 'aperture priority', '/learn/exposure/pasm-modes/');
+    await search(
+      '/zh-cn/learn/',
+      '景深',
+      '/zh-cn/learn/sensor-lens/depth-of-field/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '曝光补偿',
+      '/zh-cn/learn/exposure/exposure-compensation/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '自动对焦',
+      '/zh-cn/learn/image-quality/autofocus/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '白平衡',
+      '/zh-cn/learn/image-quality/white-balance/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '胶片模拟',
+      '/zh-cn/learn/image-quality/film-simulations/'
+    );
+    await search(
+      '/learn/',
+      'light direction',
+      '/learn/composition/understanding-light/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '侧光',
+      '/zh-cn/learn/composition/understanding-light/'
+    );
+    await search(
+      '/learn/',
+      'negative space',
+      '/learn/composition/subject-and-background/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '留白',
+      '/zh-cn/learn/composition/subject-and-background/'
+    );
+    await search(
+      '/learn/',
+      'three photos',
+      '/learn/field-practice/neighborhood-story/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '三张照片',
+      '/zh-cn/learn/field-practice/neighborhood-story/'
+    );
+    await search(
+      '/learn/',
+      'reversible selection',
+      '/learn/field-practice/photo-review/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '照片筛选',
+      '/zh-cn/learn/field-practice/photo-review/'
+    );
+    await search(
+      '/learn/',
+      'backup export originals',
+      '/learn/workflow/backup-and-export/'
+    );
+    await search(
+      '/zh-cn/learn/',
+      '安全备份',
+      '/zh-cn/learn/workflow/backup-and-export/'
+    );
+    await checkDirectories({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+    await checkTools({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+    await checkPractice({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+    await checkFraming({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+    await checkStory({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+    await checkPhotoReview({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
 
-  await viewport(390, 844);
-  for (const path of [
-    '/',
-    '/zh-cn/',
-    '/learn/',
-    '/zh-cn/learn/sensor-lens/sensor-formats/',
-  ]) {
-    await navigate(path);
-    await noOverflow(path);
-    console.log(`OK mobile layout ${path}`);
+    await checkBackup({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+    await checkState({ call, click, evaluate, navigate, until, viewport });
+
+    await checkPracticeIntegration({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+    await checkEditingGeometry({ evaluate, navigate, viewport });
+    await checkLearningPaths({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      until,
+      viewport,
+    });
+
+    await viewport(390, 844);
+    for (const path of [
+      '/',
+      '/zh-cn/',
+      '/learn/',
+      '/zh-cn/learn/sensor-lens/sensor-formats/',
+    ]) {
+      await navigate(path);
+      await noOverflow(path);
+      console.log(`OK mobile layout ${path}`);
+    }
+    assert.deepEqual(errors, [], `Browser exceptions: ${errors.join('\n')}`);
+    console.log('OK real-browser checks completed without page exceptions.');
   }
-  assert.deepEqual(errors, [], `Browser exceptions: ${errors.join('\n')}`);
-  console.log('OK real-browser checks completed without page exceptions.');
 } finally {
   try {
     await cleanup();

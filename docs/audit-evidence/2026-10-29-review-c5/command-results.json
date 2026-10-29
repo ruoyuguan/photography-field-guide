@@ -1,0 +1,74 @@
+[
+  {
+    "name": "format-changes",
+    "command": "pnpm exec prettier --write AI_GUIDE.md README.md astro.config.mjs docs/DEVELOPMENT_WORKFLOW_PROMPT.md docs/PHASE_3G_C5_REVIEW.md docs/QUESTION_BANK.md docs/REFERENCE_LINKS.md docs/ROADMAP.md docs/STATUS.md docs/history/status-before-c5-2026-10-29.md scripts/browser-backup-checks.mjs scripts/browser-check.mjs scripts/browser-framing-checks.mjs scripts/browser-review-checks.mjs scripts/browser-state-checks.mjs scripts/browser-story-checks.mjs scripts/check-build.mjs scripts/smoke.mjs src/components/ThemeIcon.astro src/components/practice/BackupExportModel.astro src/components/practice/LightDirectionDiagram.astro src/components/practice/PracticeMission.astro src/components/practice/practice-controller.ts src/components/sections/navbar&footer/Navbar.astro src/components/ui/starlight/ThemeProvider.astro src/components/ui/starlight/ThemeSelect.astro src/components/ui/starlight/ThemeSelectMobile.astro src/content/docs/learn/composition/subject-and-background.mdx src/content/docs/learn/composition/understanding-light.mdx src/content/docs/learn/field-practice/photo-review.mdx src/content/docs/learn/index.mdx src/content/docs/learn/workflow/backup-and-export.mdx src/content/docs/zh-cn/learn/composition/subject-and-background.mdx src/content/docs/zh-cn/learn/composition/understanding-light.mdx src/content/docs/zh-cn/learn/field-practice/photo-review.mdx src/content/docs/zh-cn/learn/index.mdx src/content/docs/zh-cn/learn/workflow/backup-and-export.mdx src/data_files/missions/backup-and-export.ts src/data_files/missions/photo-review.ts src/data_files/practice.ts src/pages/practice/backup-and-export.astro src/pages/zh-cn/practice/backup-and-export.astro src/utils/content-validation.ts src/utils/practice/progress.ts tests/practice/progress.test.ts",
+    "SITE_BASE": "/",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "format-changes.log"
+  },
+  {
+    "name": "subpath-build",
+    "command": "pnpm build",
+    "SITE_BASE": "/photography-field-guide",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "subpath-build.log"
+  },
+  {
+    "name": "subpath-smoke",
+    "command": "pnpm test:smoke",
+    "SITE_BASE": "/photography-field-guide",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "subpath-smoke.log"
+  },
+  {
+    "name": "subpath-artifacts",
+    "command": "pnpm test:build",
+    "SITE_BASE": "/photography-field-guide",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "subpath-artifacts.log"
+  },
+  {
+    "name": "restore-root-build",
+    "command": "pnpm build",
+    "SITE_BASE": "/",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "restore-root-build.log"
+  },
+  {
+    "name": "restore-root-smoke",
+    "command": "pnpm test:smoke",
+    "SITE_BASE": "/",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "restore-root-smoke.log"
+  },
+  {
+    "name": "restore-root-artifacts",
+    "command": "pnpm test:build",
+    "SITE_BASE": "/",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "restore-root-artifacts.log"
+  },
+  {
+    "name": "unit-final",
+    "command": "pnpm test:unit",
+    "SITE_BASE": "/",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "unit-final.log"
+  },
+  {
+    "name": "format-final",
+    "command": "pnpm format:check",
+    "SITE_BASE": "/",
+    "exitCode": 0,
+    "status": "passed",
+    "log": "format-final.log"
+  }
+]

@@ -1,0 +1,43 @@
+
+> photography-field-guide@0.0.1 build /Users/ruoyu/photography-field-guide
+> astro check && astro build && node process-html.mjs
+
+14:57:17 [content] Syncing content
+14:57:17 [content] Synced content
+14:57:17 [types] Generated 258ms
+14:57:17 [check] Getting diagnostics for Astro files in /Users/ruoyu/photography-field-guide...
+[96msrc/components/sections/insights/InsightDetail.astro[0m:[93m150[0m:[93m49[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m150[0m   document.addEventListener('DOMContentLoaded', event => {
+[7m   [0m [93m                                                ~~~~~[0m
+
+[96msrc/components/sections/navbar&footer/Navbar.astro[0m:[93m149[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'defaultTheme' is declared but its value is never read.
+
+[7m149[0m       const defaultTheme = 'default';
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/components/sections/navbar&footer/Navbar.astro[0m:[93m90[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'defaultTheme' is declared but its value is never read.
+
+[7m90[0m       const defaultTheme = 'default';
+[7m  [0m [93m            ~~~~~~~~~~~~[0m
+
+[96msrc/components/sections/pricing/PricingSection.astro[0m:[93m21[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'PricingSectionProps' is declared but never used.
+
+[7m21[0m interface PricingSectionProps {
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/buttons/Bookmark.astro[0m:[93m18[0m:[93m25[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'dataAttrValue' is declared but its value is never read.
+
+[7m18[0m     constructor(private dataAttrValue: string) {
+[7m  [0m [93m                        ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/starlight/ThemeProvider.astro[0m:[93m2[0m:[93m18[0m - [91merror[0m[90m ts(2307): [0mCannot find module '@astrojs/starlight/components/Icon.astro' or its corresponding type declarations.
+
+[7m2[0m import Icon from '@astrojs/starlight/components/Icon.astro';
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (208 files): 
+- 1 error
+- 0 warnings
+- 5 hints
+
+ ELIFECYCLE  Command failed with exit code 1.

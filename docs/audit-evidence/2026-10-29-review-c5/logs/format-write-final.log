@@ -1,0 +1,43 @@
+AI_GUIDE.md 22ms (unchanged)
+README.md 10ms (unchanged)
+astro.config.mjs 29ms (unchanged)
+docs/DEVELOPMENT_WORKFLOW_PROMPT.md 28ms (unchanged)
+docs/PHASE_3G_C5_REVIEW.md 10ms
+docs/QUESTION_BANK.md 12ms (unchanged)
+docs/REFERENCE_LINKS.md 14ms
+docs/ROADMAP.md 25ms
+docs/STATUS.md 2ms (unchanged)
+scripts/browser-backup-checks.mjs 9ms (unchanged)
+scripts/browser-check.mjs 18ms (unchanged)
+scripts/browser-framing-checks.mjs 6ms (unchanged)
+scripts/browser-review-checks.mjs 5ms (unchanged)
+scripts/browser-state-checks.mjs 4ms
+scripts/browser-story-checks.mjs 5ms (unchanged)
+scripts/check-build.mjs 6ms (unchanged)
+scripts/smoke.mjs 4ms (unchanged)
+src/components/practice/BackupExportModel.astro 12ms (unchanged)
+src/components/practice/LightDirectionDiagram.astro 5ms (unchanged)
+src/components/practice/PracticeMission.astro 15ms (unchanged)
+src/components/practice/practice-controller.ts 28ms (unchanged)
+src/components/sections/navbar&footer/Navbar.astro 8ms (unchanged)
+src/components/ui/starlight/ThemeProvider.astro 3ms
+src/components/ui/starlight/ThemeSelect.astro 5ms (unchanged)
+src/components/ui/starlight/ThemeSelectMobile.astro 4ms (unchanged)
+src/content/docs/learn/composition/subject-and-background.mdx 18ms (unchanged)
+src/content/docs/learn/composition/understanding-light.mdx 13ms
+src/content/docs/learn/field-practice/photo-review.mdx 13ms (unchanged)
+src/content/docs/learn/index.mdx 7ms (unchanged)
+src/content/docs/learn/workflow/backup-and-export.mdx 10ms (unchanged)
+src/content/docs/zh-cn/learn/composition/subject-and-background.mdx 12ms (unchanged)
+src/content/docs/zh-cn/learn/composition/understanding-light.mdx 12ms
+src/content/docs/zh-cn/learn/field-practice/photo-review.mdx 15ms (unchanged)
+src/content/docs/zh-cn/learn/index.mdx 7ms (unchanged)
+src/content/docs/zh-cn/learn/workflow/backup-and-export.mdx 11ms (unchanged)
+src/data_files/missions/backup-and-export.ts 4ms (unchanged)
+src/data_files/missions/photo-review.ts 3ms (unchanged)
+src/data_files/practice.ts 6ms (unchanged)
+src/pages/practice/backup-and-export.astro 1ms (unchanged)
+src/pages/zh-cn/practice/backup-and-export.astro 1ms (unchanged)
+src/utils/content-validation.ts 12ms (unchanged)
+src/utils/practice/progress.ts 8ms (unchanged)
+tests/practice/progress.test.ts 14ms (unchanged)

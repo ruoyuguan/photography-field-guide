@@ -1,0 +1,135 @@
+---
+interface Props {
+  locale: 'en' | 'zh-cn';
+  prefix?: string;
+}
+const { locale, prefix = `backup-export-${locale}` } = Astro.props;
+const copy = {
+  en: {
+    title: 'Keep the original set; branch into backup and delivery',
+    source: 'Keep the card or other source intact during this exercise.',
+    roles: [
+      {
+        title: 'Complete working originals',
+        relationship: 'Copy the whole small shoot',
+        detail:
+          'Retain selected and unselected frames, including RAW plus JPEG if both were captured. A camera JPEG can itself be an original.',
+      },
+      {
+        title: 'Independent backup',
+        relationship: 'Copy originals to separate physical storage',
+        detail:
+          'Check coverage and recover a sample into a separate folder. Opening that sample tests part of recovery, not every file or every risk.',
+      },
+      {
+        title: 'Selected delivery copies',
+        relationship: 'Export from the reviewed selection',
+        detail:
+          'Match one stated purpose. Reopen the actual exports and inspect pixels, filenames, and metadata locally before deciding to share.',
+      },
+    ],
+    note: 'Backup and export are different branches from the originals. These cards describe a process; the website has not checked any files.',
+    scenarios: [
+      {
+        title: 'Are two folders or a synced gallery enough?',
+        detail:
+          'Two folders on one drive share that drive’s failure risk. Sync can propagate deletion; a cloud service may offer recovery features, but “synced” alone does not establish their coverage or retention. Check the actual recovery behavior.',
+      },
+      {
+        title: 'Does a small JPEG or a catalog replace the originals?',
+        detail:
+          'A rendered JPEG export cannot preserve all RAW capture data. A Lightroom Classic catalog backup contains the catalog, not the photograph files. Preserve the actual originals and any editing records needed for your workflow separately.',
+      },
+      {
+        title: 'Can a completion mark tell me to format a card?',
+        detail:
+          'No. This exercise never asks you to delete or format. Before any later destructive card operation, verify the copies and recovery coverage you need, and follow the camera’s instructions. Do not interrupt a card while data are being written.',
+      },
+    ],
+  },
+  'zh-cn': {
+    title: '保留完整原片，分别制作备份与交付副本',
+    source: '本练习全程保留存储卡或其他来源不变。',
+    roles: [
+      {
+        title: '完整工作原片',
+        relationship: '复制整次小规模拍摄',
+        detail:
+          '保留入选与未入选画面；如果拍了 RAW 加 JPEG，两者都保留。相机 JPEG 本身也可以是原片。',
+      },
+      {
+        title: '独立备份',
+        relationship: '将原片复制到分开的物理存储',
+        detail:
+          '检查覆盖范围，并把样本恢复到另一个文件夹。打开样本只检查了部分恢复过程，不代表每个文件或每种风险都已验证。',
+      },
+      {
+        title: '入选交付副本',
+        relationship: '从复盘后的选择导出',
+        detail:
+          '服务一种明确用途。重新打开实际导出文件，在本地检查像素内容、文件名与元数据，再决定是否分享。',
+      },
+    ],
+    note: '备份与导出分别从原片出发，职责不同。这些卡片只描述流程，本站没有检查任何文件。',
+    scenarios: [
+      {
+        title: '两个文件夹或同步相册够了吗？',
+        detail:
+          '同一硬盘上的两个文件夹共享硬盘故障风险。同步可能传播删除；云服务也许另有恢复功能，但“已同步”本身不能证明恢复范围或保留期限，应核查实际恢复行为。',
+      },
+      {
+        title: '小尺寸 JPEG 或目录能代替原片吗？',
+        detail:
+          '渲染后的 JPEG 导出不能保留全部 RAW 拍摄数据。Lightroom Classic 的目录备份只包含目录，不包含照片文件；实际原片与工作流需要的编辑记录应分别保护。',
+      },
+      {
+        title: '完成标记能说明可以格式化存储卡吗？',
+        detail:
+          '不能。本练习不要求删除或格式化。以后进行破坏性存储卡操作前，应核实所需副本与恢复范围，并遵循相机说明书。存储卡正在写入时不要中断。',
+      },
+    ],
+  },
+}[locale];
+---
+
+<div data-backup-export-model aria-labelledby={`${prefix}-workflow-title`}>
+  <p
+    id={`${prefix}-workflow-title`}
+    class="text-base font-bold text-neutral-900 dark:text-neutral-100"
+  >
+    {copy.title}
+  </p>
+  <p class="mt-2 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+    {copy.source}
+  </p>
+  <ol class="mt-4 grid list-none gap-3 p-0 md:grid-cols-3">
+    {copy.roles.map((role, index) => (
+      <li class="rounded-xl border border-neutral-300 bg-neutral-50 p-4 dark:border-neutral-600 dark:bg-neutral-950/50">
+        <p class="text-xs font-semibold leading-5 text-amber-800 dark:text-amber-300">
+          {index + 1} · {role.relationship}
+        </p>
+        <p class="mt-2 text-sm font-bold text-neutral-900 dark:text-neutral-100">
+          {role.title}
+        </p>
+        <p class="mt-2 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+          {role.detail}
+        </p>
+      </li>
+    ))}
+  </ol>
+  <p class="mt-3 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+    {copy.note}
+  </p>
+  <div class="mt-4 space-y-2">
+    {copy.scenarios.map(scenario => (
+      <details class="rounded-xl border border-neutral-300 px-4 py-3 dark:border-neutral-700">
+        <summary class="cursor-pointer text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500 dark:text-neutral-200">
+          {scenario.title}
+        </summary>
+        <p class="mt-3 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+          {scenario.detail}
+        </p>
+      </details>
+    ))}
+  </div>
+</div>

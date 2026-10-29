@@ -106,3 +106,29 @@ Photography Life 的 **How to Choose Between Similar Versions of a Photo** 在�
 外链应告诉读者为什么值得打开、到哪里能找到相关内容、可能有哪些语言或访问限制；默认文本链接。没有转载许可时不复制、下载或热链照片。
 
 网络检查可独立执行，不把所有离线构建绑定到第三方在线状态。不要自动创建定时监控；如用户未来明确提出，再按其频率和通知要求配置。
+
+## 7. 本轮 C5 官方引用与复查范围
+
+2026-10-29 为 C5 实际打开以下页面；它们是文章主张的来源，不自动新增为资源集合全面 verified 条目，既有 13 条资源的 lastVerified 不变。
+
+| 来源                                                                                                                                            | 本轮支持的具体主张                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| [加拿大网络安全中心：备份提示](https://www.cyber.gc.ca/en/guidance/tips-backing-your-information-itsap40002)                                    | 分离存储、离线／异地、3-2-1 与恢复测试               |
+| [Apple：管理 iCloud 存储](https://support.apple.com/en-us/108922)                                                                               | iCloud 照片的跨设备删除传播                          |
+| [Adobe：目录备份](https://helpx.adobe.com/lightroom-classic/desktop/manage-catalogs-and-files/back-catalog.html)                                | Lightroom Classic 目录备份不包含照片文件             |
+| [Adobe：导出到磁盘](https://helpx.adobe.com/lightroom-classic/desktop/export-photos/export-files-disk-or-cd.html)                               | 格式、尺寸、压缩、元数据分开选择；DNG 的位置移除限制 |
+| [Adobe：色彩常见问题](https://helpx.adobe.com/lightroom-classic/desktop/technical-support/technical-issues/miscellaneous-issues/color-faq.html) | sRGB 用于普通网页用途的示例，不推广为所有输出标准    |
+| [Fujifilm X-T5：存储卡](https://fujifilm-dsc.com/en/manual/x-t5/first_step/insert_card/)                                                        | 不中断写入与卡上原片处理风险                         |
+| [Fujifilm X-T5：FORMAT](https://fujifilm-dsc.com/en/manual/x-t5/menu_setup/user_setting/)                                                       | 格式化包含受保护照片也会被移除，先保护重要文件       |
+
+审查中还实际打开 Cambridge 光线、C4 两篇 Adobe、C3 两篇 DPS。C2 的 Photography Life 直接访问受限（402），iPhotography 返回 403；CISA 的候选 PDF 403，未纳入 C5 引用。这些失败不当作新的已验证记录。来源访问不等于对读者文件完成检查，具体引用范围见文章与本轮审查记录。
+
+## 6. C6 与分享方案的本轮核对（2026-10-29）
+
+本轮直接打开并读取 Adobe 的 [Develop 模块](https://helpx.adobe.com/lightroom-classic/desktop/help/applying-adjustments-develop-module-basic.html)、[影调与色彩](https://helpx.adobe.com/lightroom-classic/desktop/process-and-develop-photos/image-tone-color.html)、[裁切与拉直](https://helpx.adobe.com/lightroom-classic/desktop/help/crop-rotate-straighten.html)。分别支持 Lightroom Classic 保存编辑指令而不改原文件、呈现亮度与白平衡的操作区别，以及裁切边界／比例与旋转属于不同控制。软件专属行为未扩展为所有编辑器的保证；概念图不是实测变换或恢复效果承诺。
+
+分享方案直接核对 [GitHub 静态发布](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)、[Cloudflare Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/) 与 [Vercel Drop](https://vercel.com/changelog/vercel-drop)。这些材料支持可预先构建或手动上传，无须一律把私有开发仓库交给第三方读取；并不证明本站已部署。详见 [分享方案](SHARING_WITHOUT_GITHUB_ACCESS.md)。其他历史资源本轮未逐一重新访问，继续保留其各自核查状态。
+
+## MVP Pages 发布依据（2026-10-30）
+
+直接核对 GitHub 官方的 [账号站与项目站地址规则](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[配置发布来源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)、[自定义发布工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) 和 [deploy-pages v4 权限说明](https://github.com/actions/deploy-pages/tree/v4)。支持 MVP 项目子路径、手动 Actions 发布及必要权限，不证明本站已上线。当前域名未发生自定义域名跳转；将来改域名需重新核对继承规则。

@@ -1,0 +1,5 @@
+
+> photography-field-guide@0.0.1 test:build /Users/ruoyu/photography-field-guide
+> node scripts/check-build.mjs
+
+OK build checks: 84 HTML pages, internal links/fragments/assets, SEO, manifest, robots, sitemap, and search artifacts (base /).

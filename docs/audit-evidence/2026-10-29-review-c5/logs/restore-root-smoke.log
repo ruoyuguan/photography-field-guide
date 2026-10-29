@@ -1,0 +1,93 @@
+
+> photography-field-guide@0.0.1 test:smoke /Users/ruoyu/photography-field-guide
+> node scripts/smoke.mjs
+
+OK   / → 200
+OK   /learn/ → 200
+OK   /learn/getting-started/what-is-photography/ → 200
+OK   /learn/getting-started/digital-camera-works/ → 200
+OK   /learn/sensor-lens/sensor-formats/ → 200
+OK   /learn/sensor-lens/equivalent-focal-length/ → 200
+OK   /learn/sensor-lens/depth-of-field/ → 200
+OK   /learn/exposure/aperture/ → 200
+OK   /learn/exposure/shutter-speed/ → 200
+OK   /learn/exposure/iso/ → 200
+OK   /learn/exposure/exposure-stops/ → 200
+OK   /learn/exposure/pasm-modes/ → 200
+OK   /learn/exposure/exposure-compensation/ → 200
+OK   /learn/exposure/exposure-triangle/ → 200
+OK   /learn/image-quality/raw-jpeg-exif/ → 200
+OK   /learn/image-quality/autofocus/ → 200
+OK   /learn/image-quality/white-balance/ → 200
+OK   /learn/image-quality/film-simulations/ → 200
+OK   /learn/composition/understanding-light/ → 200
+OK   /learn/composition/subject-and-background/ → 200
+OK   /learn/field-practice/neighborhood-story/ → 200
+OK   /learn/field-practice/photo-review/ → 200
+OK   /practice/ → 200
+OK   /practice/light-direction/ → 200
+OK   /practice/subject-background/ → 200
+OK   /practice/neighborhood-story/ → 200
+OK   /practice/photo-review/ → 200
+OK   /practice/backup-and-export/ → 200
+OK   /learn/workflow/backup-and-export/ → 200
+OK   /tools/ → 200
+OK   /tools/crop-factor/ → 200
+OK   /tools/exposure-stops/ → 200
+OK   /glossary/ → 200
+OK   /gear/ → 200
+OK   /gear/fujifilm-x-t5/ → 200
+OK   /gear/fujifilm-xf16-50/ → 200
+OK   /galleries/ → 200
+OK   /resources/ → 200
+OK   /about/ → 200
+OK   /zh-cn/ → 200
+OK   /zh-cn/learn/ → 200
+OK   /zh-cn/learn/getting-started/what-is-photography/ → 200
+OK   /zh-cn/learn/getting-started/digital-camera-works/ → 200
+OK   /zh-cn/learn/sensor-lens/sensor-formats/ → 200
+OK   /zh-cn/learn/sensor-lens/equivalent-focal-length/ → 200
+OK   /zh-cn/learn/sensor-lens/depth-of-field/ → 200
+OK   /zh-cn/learn/exposure/aperture/ → 200
+OK   /zh-cn/learn/exposure/shutter-speed/ → 200
+OK   /zh-cn/learn/exposure/iso/ → 200
+OK   /zh-cn/learn/exposure/exposure-stops/ → 200
+OK   /zh-cn/learn/exposure/pasm-modes/ → 200
+OK   /zh-cn/learn/exposure/exposure-compensation/ → 200
+OK   /zh-cn/learn/exposure/exposure-triangle/ → 200
+OK   /zh-cn/learn/image-quality/raw-jpeg-exif/ → 200
+OK   /zh-cn/learn/image-quality/autofocus/ → 200
+OK   /zh-cn/learn/image-quality/white-balance/ → 200
+OK   /zh-cn/learn/image-quality/film-simulations/ → 200
+OK   /zh-cn/learn/composition/understanding-light/ → 200
+OK   /zh-cn/learn/composition/subject-and-background/ → 200
+OK   /zh-cn/learn/field-practice/neighborhood-story/ → 200
+OK   /zh-cn/learn/field-practice/photo-review/ → 200
+OK   /zh-cn/practice/ → 200
+OK   /zh-cn/practice/light-direction/ → 200
+OK   /zh-cn/practice/subject-background/ → 200
+OK   /zh-cn/practice/neighborhood-story/ → 200
+OK   /zh-cn/practice/photo-review/ → 200
+OK   /zh-cn/practice/backup-and-export/ → 200
+OK   /zh-cn/learn/workflow/backup-and-export/ → 200
+OK   /zh-cn/tools/ → 200
+OK   /zh-cn/tools/crop-factor/ → 200
+OK   /zh-cn/tools/exposure-stops/ → 200
+OK   /zh-cn/glossary/ → 200
+OK   /zh-cn/gear/ → 200
+OK   /zh-cn/gear/fujifilm-x-t5/ → 200
+OK   /zh-cn/gear/fujifilm-xf16-50/ → 200
+OK   /zh-cn/galleries/ → 200
+OK   /zh-cn/resources/ → 200
+OK   /zh-cn/about/ → 200
+OK   /404 → 200
+OK   /zh-cn/404/ → 200
+OK   /does-not-exist/ → 404 noindex
+OK   /zh-cn/does-not-exist/ → 404 noindex
+OK   /start-here/ → 404 noindex
+OK   /basics/sensor-formats/ → 404 noindex
+OK   /basics/equivalent-focal-length/ → 404 noindex
+OK   /basics/exposure-triangle/ → 404 noindex
+OK   /zh-cn/start-here/ → 404 noindex
+OK   /zh-cn/basics/sensor-formats/ → 404 noindex
+OK smoke: 80 pages and 8 missing/retired routes (base /).

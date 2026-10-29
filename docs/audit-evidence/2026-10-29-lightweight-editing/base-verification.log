@@ -1,0 +1,344 @@
+
+> photography-field-guide@0.0.1 build
+> astro check && astro build && node process-html.mjs
+
+16:27:08 [content] Syncing content
+16:27:08 [content] Astro config changed
+16:27:08 [content] Clearing content store
+16:27:09 [content] Synced content
+16:27:09 [types] Generated 321ms
+16:27:09 [check] Getting diagnostics for Astro files in /Users/ruoyu/photography-field-guide...
+[96msrc/components/practice/practice-controller.ts[0m:[93m42[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m't' is declared but its value is never read.
+
+[7m42[0m   const t = mission.copy[locale];
+[7m  [0m [93m        ~[0m
+
+[96msrc/components/sections/insights/InsightDetail.astro[0m:[93m150[0m:[93m49[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m150[0m   document.addEventListener('DOMContentLoaded', event => {
+[7m   [0m [93m                                                ~~~~~[0m
+
+[96msrc/components/sections/navbar&footer/Navbar.astro[0m:[93m149[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'defaultTheme' is declared but its value is never read.
+
+[7m149[0m       const defaultTheme = 'default';
+[7m   [0m [93m            ~~~~~~~~~~~~[0m
+[96msrc/components/sections/navbar&footer/Navbar.astro[0m:[93m90[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'defaultTheme' is declared but its value is never read.
+
+[7m90[0m       const defaultTheme = 'default';
+[7m  [0m [93m            ~~~~~~~~~~~~[0m
+
+[96msrc/components/sections/pricing/PricingSection.astro[0m:[93m21[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'PricingSectionProps' is declared but never used.
+
+[7m21[0m interface PricingSectionProps {
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/buttons/Bookmark.astro[0m:[93m18[0m:[93m25[0m - [93mwarning[0m[90m ts(6138): [0mProperty 'dataAttrValue' is declared but its value is never read.
+
+[7m18[0m     constructor(private dataAttrValue: string) {
+[7m  [0m [93m                        ~~~~~~~~~~~~~[0m
+
+Result (212 files): 
+- 0 errors
+- 0 warnings
+- 6 hints
+
+16:27:11 [content] Syncing content
+16:27:11 [content] Synced content
+16:27:11 [types] Generated 267ms
+16:27:11 [build] output: "static"
+16:27:11 [build] mode: "static"
+16:27:11 [build] directory: /Users/ruoyu/photography-field-guide/dist/
+16:27:11 [build] Collecting build info...
+16:27:11 [build] ✓ Completed in 352ms.
+16:27:11 [build] Building static entrypoints...
+16:27:12 [vite] ✓ built in 654ms
+16:27:12 [vite] ✓ built in 57ms
+16:27:12 [build] Rearranging server assets...
+
+ generating static routes 
+16:27:12   ├─ /404.html[content] 46 articles and 52 structured entries validated.
+ (+10ms) 
+16:27:12   ├─ /about/index.html (+2ms) 
+16:27:12   ├─ /favicon.ico (+36ms) 
+16:27:12   ├─ /galleries/index.html (+3ms) 
+16:27:12   ├─ /gear/fujifilm-x-t5/index.html (+2ms) 
+16:27:12   ├─ /gear/fujifilm-xf16-50/index.html (+7ms) 
+16:27:12   ├─ /gear/index.html (+6ms) 
+16:27:12   ├─ /glossary/index.html (+3ms) 
+16:27:12   ├─ /manifest.json (+1ms) 
+16:27:12   ├─ /practice/backup-and-export/index.html (+3ms) 
+16:27:12   ├─ /practice/light-direction/index.html (+1ms) 
+16:27:12   ├─ /practice/neighborhood-story/index.html (+1ms) 
+16:27:12   ├─ /practice/photo-review/index.html (+1ms) 
+16:27:12   ├─ /practice/subject-background/index.html (+1ms) 
+16:27:12   ├─ /practice/index.html (+1ms) 
+16:27:12   ├─ /resources/index.html (+2ms) 
+16:27:12   ├─ /robots.txt (+1ms) 
+16:27:12   ├─ /tools/crop-factor/index.html (+2ms) 
+16:27:12   ├─ /tools/exposure-stops/index.html (+1ms) 
+16:27:12   ├─ /tools/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/404/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/about/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/galleries/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/gear/fujifilm-x-t5/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/gear/fujifilm-xf16-50/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/gear/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/glossary/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/practice/backup-and-export/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/practice/light-direction/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/practice/neighborhood-story/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/practice/photo-review/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/practice/subject-background/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/practice/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/resources/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/tools/crop-factor/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/tools/exposure-stops/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/tools/index.html (+1ms) 
+16:27:12   ├─ /zh-cn/index.html (+1ms) 
+16:27:12   ├─ /index.html (+1ms) 
+16:27:12   ├─ /learn/index.html (+9ms) 
+16:27:12   ├─ /learn/composition/subject-and-background/index.html (+3ms) 
+16:27:12   ├─ /learn/composition/understanding-light/index.html (+3ms) 
+16:27:12   ├─ /learn/exposure/aperture/index.html (+3ms) 
+16:27:12   ├─ /learn/exposure/exposure-compensation/index.html (+2ms) 
+16:27:12   ├─ /learn/exposure/exposure-stops/index.html (+2ms) 
+16:27:12   ├─ /learn/exposure/exposure-triangle/index.html (+2ms) 
+16:27:12   ├─ /learn/exposure/iso/index.html (+2ms) 
+16:27:12   ├─ /learn/exposure/pasm-modes/index.html (+3ms) 
+16:27:12   ├─ /learn/exposure/shutter-speed/index.html (+2ms) 
+16:27:12   ├─ /learn/field-practice/neighborhood-story/index.html (+3ms) 
+16:27:12   ├─ /learn/field-practice/photo-review/index.html (+11ms) 
+16:27:12   ├─ /learn/getting-started/digital-camera-works/index.html (+3ms) 
+16:27:12   ├─ /learn/getting-started/what-is-photography/index.html (+2ms) 
+16:27:12   ├─ /learn/image-quality/autofocus/index.html (+2ms) 
+16:27:12   ├─ /learn/image-quality/film-simulations/index.html (+2ms) 
+16:27:12   ├─ /learn/image-quality/raw-jpeg-exif/index.html (+2ms) 
+16:27:12   ├─ /learn/image-quality/white-balance/index.html (+2ms) 
+16:27:12   ├─ /learn/sensor-lens/depth-of-field/index.html (+3ms) 
+16:27:12   ├─ /learn/sensor-lens/equivalent-focal-length/index.html (+2ms) 
+16:27:12   ├─ /learn/sensor-lens/sensor-formats/index.html (+2ms) 
+16:27:12   ├─ /learn/workflow/backup-and-export/index.html (+2ms) 
+16:27:12   ├─ /learn/workflow/lightweight-editing/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/index.html (+3ms) 
+16:27:12   ├─ /zh-cn/learn/composition/subject-and-background/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/composition/understanding-light/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/exposure/aperture/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/exposure/exposure-compensation/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/exposure/exposure-stops/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/exposure/exposure-triangle/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/exposure/iso/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/exposure/pasm-modes/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/exposure/shutter-speed/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/field-practice/neighborhood-story/index.html (+3ms) 
+16:27:12   ├─ /zh-cn/learn/field-practice/photo-review/index.html (+3ms) 
+16:27:12   ├─ /zh-cn/learn/getting-started/digital-camera-works/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/getting-started/what-is-photography/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/image-quality/autofocus/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/image-quality/film-simulations/index.html (+5ms) 
+16:27:12   ├─ /zh-cn/learn/image-quality/raw-jpeg-exif/index.html (+3ms) 
+16:27:12   ├─ /zh-cn/learn/image-quality/white-balance/index.html (+3ms) 
+16:27:12   ├─ /zh-cn/learn/sensor-lens/depth-of-field/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/sensor-lens/equivalent-focal-length/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/sensor-lens/sensor-formats/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/workflow/backup-and-export/index.html (+2ms) 
+16:27:12   ├─ /zh-cn/learn/workflow/lightweight-editing/index.html (+2ms) 
+16:27:12 ✓ Completed in 260ms.
+
+ generating optimized images 
+16:27:12   ▶ /_astro/icon.rJ6j6E4__Z2j8leN.png (reused cache entry) (+1ms) (1/7)
+16:27:12   ▶ /_astro/icon.3ih38xtz_LQeXu.svg (reused cache entry) (+1ms) (2/7)
+16:27:12   ▶ /_astro/icon-maskable.DHRBUiSL_Z1miUUm.png (reused cache entry) (+1ms) (3/7)
+16:27:12   ▶ /_astro/social.Cv7MYzLa_Zadwni.webp (reused cache entry) (+1ms) (4/7)
+16:27:12   ▶ /_astro/icon.rJ6j6E4__Z2mWcxc.png (reused cache entry) (+0ms) (5/7)
+16:27:12   ▶ /_astro/icon-maskable.DHRBUiSL_lU3Wj.png (reused cache entry) (+0ms) (6/7)
+16:27:12   ▶ /_astro/icon.rJ6j6E4__csGat.png (reused cache entry) (+0ms) (7/7)
+16:27:12 ✓ Completed in 2ms.
+
+16:27:12 [build] ✓ Completed in 1.01s.
+16:27:12 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+16:27:12 [starlight:pagefind] Building search index with Pagefind...
+16:27:13 [starlight:pagefind] Found 82 HTML files.
+16:27:13 [starlight:pagefind] Finished building search index in 166ms.
+16:27:13 [build] 82 page(s) built in 1.55s
+16:27:13 [build] Complete!
+Processing file: dist/404.html
+Processing file: dist/index.html
+Processing file: dist/zh-cn/index.html
+Processing file: dist/zh-cn/tools/index.html
+Processing file: dist/zh-cn/tools/exposure-stops/index.html
+Processing file: dist/zh-cn/tools/crop-factor/index.html
+Processing file: dist/zh-cn/resources/index.html
+Processing file: dist/zh-cn/practice/index.html
+Processing file: dist/zh-cn/practice/subject-background/index.html
+Processing file: dist/zh-cn/practice/photo-review/index.html
+Processing file: dist/zh-cn/practice/neighborhood-story/index.html
+Processing file: dist/zh-cn/practice/light-direction/index.html
+Processing file: dist/zh-cn/practice/backup-and-export/index.html
+Processing file: dist/zh-cn/learn/index.html
+Processing file: dist/zh-cn/learn/workflow/lightweight-editing/index.html
+Processing file: dist/zh-cn/learn/workflow/backup-and-export/index.html
+Processing file: dist/zh-cn/learn/sensor-lens/sensor-formats/index.html
+Processing file: dist/zh-cn/learn/sensor-lens/equivalent-focal-length/index.html
+Processing file: dist/zh-cn/learn/sensor-lens/depth-of-field/index.html
+Processing file: dist/zh-cn/learn/image-quality/white-balance/index.html
+Processing file: dist/zh-cn/learn/image-quality/raw-jpeg-exif/index.html
+Processing file: dist/zh-cn/learn/image-quality/film-simulations/index.html
+Processing file: dist/zh-cn/learn/image-quality/autofocus/index.html
+Processing file: dist/zh-cn/learn/getting-started/what-is-photography/index.html
+Processing file: dist/zh-cn/learn/getting-started/digital-camera-works/index.html
+Processing file: dist/zh-cn/learn/field-practice/photo-review/index.html
+Processing file: dist/zh-cn/learn/field-practice/neighborhood-story/index.html
+Processing file: dist/zh-cn/learn/exposure/shutter-speed/index.html
+Processing file: dist/zh-cn/learn/exposure/pasm-modes/index.html
+Processing file: dist/zh-cn/learn/exposure/iso/index.html
+Processing file: dist/zh-cn/learn/exposure/exposure-triangle/index.html
+Processing file: dist/zh-cn/learn/exposure/exposure-stops/index.html
+Processing file: dist/zh-cn/learn/exposure/exposure-compensation/index.html
+Processing file: dist/zh-cn/learn/exposure/aperture/index.html
+Processing file: dist/zh-cn/learn/composition/understanding-light/index.html
+Processing file: dist/zh-cn/learn/composition/subject-and-background/index.html
+Processing file: dist/zh-cn/glossary/index.html
+Processing file: dist/zh-cn/gear/index.html
+Processing file: dist/zh-cn/gear/fujifilm-xf16-50/index.html
+Processing file: dist/zh-cn/gear/fujifilm-x-t5/index.html
+Processing file: dist/zh-cn/galleries/index.html
+Processing file: dist/zh-cn/about/index.html
+Processing file: dist/zh-cn/404/index.html
+Processing file: dist/tools/index.html
+Processing file: dist/tools/exposure-stops/index.html
+Processing file: dist/tools/crop-factor/index.html
+Processing file: dist/resources/index.html
+Processing file: dist/practice/index.html
+Processing file: dist/practice/subject-background/index.html
+Processing file: dist/practice/photo-review/index.html
+Processing file: dist/practice/neighborhood-story/index.html
+Processing file: dist/practice/light-direction/index.html
+Processing file: dist/practice/backup-and-export/index.html
+Processing file: dist/learn/index.html
+Processing file: dist/learn/workflow/lightweight-editing/index.html
+Processing file: dist/learn/workflow/backup-and-export/index.html
+Processing file: dist/learn/sensor-lens/sensor-formats/index.html
+Processing file: dist/learn/sensor-lens/equivalent-focal-length/index.html
+Processing file: dist/learn/sensor-lens/depth-of-field/index.html
+Processing file: dist/learn/image-quality/white-balance/index.html
+Processing file: dist/learn/image-quality/raw-jpeg-exif/index.html
+Processing file: dist/learn/image-quality/film-simulations/index.html
+Processing file: dist/learn/image-quality/autofocus/index.html
+Processing file: dist/learn/getting-started/what-is-photography/index.html
+Processing file: dist/learn/getting-started/digital-camera-works/index.html
+Processing file: dist/learn/field-practice/photo-review/index.html
+Processing file: dist/learn/field-practice/neighborhood-story/index.html
+Processing file: dist/learn/exposure/shutter-speed/index.html
+Processing file: dist/learn/exposure/pasm-modes/index.html
+Processing file: dist/learn/exposure/iso/index.html
+Processing file: dist/learn/exposure/exposure-triangle/index.html
+Processing file: dist/learn/exposure/exposure-stops/index.html
+Processing file: dist/learn/exposure/exposure-compensation/index.html
+Processing file: dist/learn/exposure/aperture/index.html
+Processing file: dist/learn/composition/understanding-light/index.html
+Processing file: dist/learn/composition/subject-and-background/index.html
+Processing file: dist/glossary/index.html
+Processing file: dist/gear/index.html
+Processing file: dist/gear/fujifilm-xf16-50/index.html
+Processing file: dist/gear/fujifilm-x-t5/index.html
+Processing file: dist/galleries/index.html
+Processing file: dist/about/index.html
+
+> photography-field-guide@0.0.1 test:smoke
+> node scripts/smoke.mjs
+
+OK   /photography-field-guide/ → 200
+OK   /photography-field-guide/learn/ → 200
+OK   /photography-field-guide/learn/getting-started/what-is-photography/ → 200
+OK   /photography-field-guide/learn/getting-started/digital-camera-works/ → 200
+OK   /photography-field-guide/learn/sensor-lens/sensor-formats/ → 200
+OK   /photography-field-guide/learn/sensor-lens/equivalent-focal-length/ → 200
+OK   /photography-field-guide/learn/sensor-lens/depth-of-field/ → 200
+OK   /photography-field-guide/learn/exposure/aperture/ → 200
+OK   /photography-field-guide/learn/exposure/shutter-speed/ → 200
+OK   /photography-field-guide/learn/exposure/iso/ → 200
+OK   /photography-field-guide/learn/exposure/exposure-stops/ → 200
+OK   /photography-field-guide/learn/exposure/pasm-modes/ → 200
+OK   /photography-field-guide/learn/exposure/exposure-compensation/ → 200
+OK   /photography-field-guide/learn/exposure/exposure-triangle/ → 200
+OK   /photography-field-guide/learn/image-quality/raw-jpeg-exif/ → 200
+OK   /photography-field-guide/learn/image-quality/autofocus/ → 200
+OK   /photography-field-guide/learn/image-quality/white-balance/ → 200
+OK   /photography-field-guide/learn/image-quality/film-simulations/ → 200
+OK   /photography-field-guide/learn/composition/understanding-light/ → 200
+OK   /photography-field-guide/learn/composition/subject-and-background/ → 200
+OK   /photography-field-guide/learn/field-practice/neighborhood-story/ → 200
+OK   /photography-field-guide/learn/field-practice/photo-review/ → 200
+OK   /photography-field-guide/practice/ → 200
+OK   /photography-field-guide/practice/light-direction/ → 200
+OK   /photography-field-guide/practice/subject-background/ → 200
+OK   /photography-field-guide/practice/neighborhood-story/ → 200
+OK   /photography-field-guide/practice/photo-review/ → 200
+OK   /photography-field-guide/practice/backup-and-export/ → 200
+OK   /photography-field-guide/learn/workflow/backup-and-export/ → 200
+OK   /photography-field-guide/tools/ → 200
+OK   /photography-field-guide/tools/crop-factor/ → 200
+OK   /photography-field-guide/tools/exposure-stops/ → 200
+OK   /photography-field-guide/glossary/ → 200
+OK   /photography-field-guide/gear/ → 200
+OK   /photography-field-guide/gear/fujifilm-x-t5/ → 200
+OK   /photography-field-guide/gear/fujifilm-xf16-50/ → 200
+OK   /photography-field-guide/galleries/ → 200
+OK   /photography-field-guide/resources/ → 200
+OK   /photography-field-guide/about/ → 200
+OK   /photography-field-guide/zh-cn/ → 200
+OK   /photography-field-guide/zh-cn/learn/ → 200
+OK   /photography-field-guide/zh-cn/learn/getting-started/what-is-photography/ → 200
+OK   /photography-field-guide/zh-cn/learn/getting-started/digital-camera-works/ → 200
+OK   /photography-field-guide/zh-cn/learn/sensor-lens/sensor-formats/ → 200
+OK   /photography-field-guide/zh-cn/learn/sensor-lens/equivalent-focal-length/ → 200
+OK   /photography-field-guide/zh-cn/learn/sensor-lens/depth-of-field/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/aperture/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/shutter-speed/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/iso/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/exposure-stops/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/pasm-modes/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/exposure-compensation/ → 200
+OK   /photography-field-guide/zh-cn/learn/exposure/exposure-triangle/ → 200
+OK   /photography-field-guide/zh-cn/learn/image-quality/raw-jpeg-exif/ → 200
+OK   /photography-field-guide/zh-cn/learn/image-quality/autofocus/ → 200
+OK   /photography-field-guide/zh-cn/learn/image-quality/white-balance/ → 200
+OK   /photography-field-guide/zh-cn/learn/image-quality/film-simulations/ → 200
+OK   /photography-field-guide/zh-cn/learn/composition/understanding-light/ → 200
+OK   /photography-field-guide/zh-cn/learn/composition/subject-and-background/ → 200
+OK   /photography-field-guide/zh-cn/learn/field-practice/neighborhood-story/ → 200
+OK   /photography-field-guide/zh-cn/learn/field-practice/photo-review/ → 200
+OK   /photography-field-guide/zh-cn/practice/ → 200
+OK   /photography-field-guide/zh-cn/practice/light-direction/ → 200
+OK   /photography-field-guide/zh-cn/practice/subject-background/ → 200
+OK   /photography-field-guide/zh-cn/practice/neighborhood-story/ → 200
+OK   /photography-field-guide/zh-cn/practice/photo-review/ → 200
+OK   /photography-field-guide/zh-cn/practice/backup-and-export/ → 200
+OK   /photography-field-guide/zh-cn/learn/workflow/backup-and-export/ → 200
+OK   /photography-field-guide/zh-cn/tools/ → 200
+OK   /photography-field-guide/zh-cn/tools/crop-factor/ → 200
+OK   /photography-field-guide/zh-cn/tools/exposure-stops/ → 200
+OK   /photography-field-guide/zh-cn/glossary/ → 200
+OK   /photography-field-guide/zh-cn/gear/ → 200
+OK   /photography-field-guide/zh-cn/gear/fujifilm-x-t5/ → 200
+OK   /photography-field-guide/zh-cn/gear/fujifilm-xf16-50/ → 200
+OK   /photography-field-guide/zh-cn/galleries/ → 200
+OK   /photography-field-guide/zh-cn/resources/ → 200
+OK   /photography-field-guide/zh-cn/about/ → 200
+OK   /photography-field-guide/404 → 200
+OK   /photography-field-guide/zh-cn/404/ → 200
+OK   /photography-field-guide/does-not-exist/ → 404 noindex
+OK   /photography-field-guide/zh-cn/does-not-exist/ → 404 noindex
+OK   /photography-field-guide/start-here/ → 404 noindex
+OK   /photography-field-guide/basics/sensor-formats/ → 404 noindex
+OK   /photography-field-guide/basics/equivalent-focal-length/ → 404 noindex
+OK   /photography-field-guide/basics/exposure-triangle/ → 404 noindex
+OK   /photography-field-guide/zh-cn/start-here/ → 404 noindex
+OK   /photography-field-guide/zh-cn/basics/sensor-formats/ → 404 noindex
+OK smoke: 80 pages and 8 missing/retired routes (base /photography-field-guide).
+
+> photography-field-guide@0.0.1 test:build
+> node scripts/check-build.mjs
+
+Build checks failed (1):
+- Expected 80 HTML files, found 82.

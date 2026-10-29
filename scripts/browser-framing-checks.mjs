@@ -1,6 +1,26 @@
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { missionById } from '../src/data_files/practice.ts';
+
+const mission = missionById('subject-background');
+assert.ok(mission, 'Missing source mission subject-background');
+
+function feedbackIs(locale, choiceId) {
+  const choice = mission.copy[locale].prediction.choices.find(
+    item => item.id === choiceId
+  );
+  assert.ok(
+    choice?.explanation?.trim(),
+    `${locale}/${choiceId}: missing explanation`
+  );
+  return `(() => {
+    const feedback = document.querySelector('[data-quiz-feedback]');
+    return feedback?.dataset.choiceId === ${JSON.stringify(choiceId)} &&
+      !feedback.hidden &&
+      feedback.textContent === ${JSON.stringify(choice.explanation.trim())};
+  })()`;
+}
 
 const STORAGE_KEY = 'photography-field-guide:practice:v1';
 const MISSION = '[data-practice-mission]';
@@ -116,7 +136,7 @@ export async function checkFraming({
   await click(incorrect);
   await click('[data-check-answer]');
   await until(
-    `document.querySelector('[data-quiz-feedback]')?.textContent.includes('does not automatically improve') && document.querySelector('[data-retry-answer]')?.hidden === false`
+    `${feedbackIs('en', 'better-by-rule')} && document.querySelector('[data-retry-answer]')?.hidden === false`
   );
   assert.equal(
     await evaluate(
@@ -133,9 +153,7 @@ export async function checkFraming({
   );
   await click(correct);
   await click('[data-check-answer]');
-  await until(
-    `document.querySelector('[data-quiz-feedback]')?.textContent.includes('changes near–far alignment')`
-  );
+  await until(feedbackIs('en', 'relative-alignment'));
   await click(`${MISSION} section details:not([data-answer-details]) summary`);
   assert.ok(
     await evaluate(
@@ -256,6 +274,8 @@ export async function checkFraming({
     'subject-background': 'Not started',
     'neighborhood-story': 'Not started',
     'photo-review': 'Not started',
+    'backup-and-export': 'Not started',
+    'lightweight-editing': 'Not started',
   });
   console.log('OK shared language progress and mission-isolated reset');
 
@@ -276,9 +296,7 @@ export async function checkFraming({
     );
     await click(correct);
     await click('[data-check-answer]');
-    await until(
-      `document.querySelector('[data-quiz-feedback]')?.textContent.includes('changes near–far alignment')`
-    );
+    await until(feedbackIs('en', 'relative-alignment'));
     await click('[data-complete-mission]');
     await until(
       `document.querySelector('[data-mission-status]')?.textContent === 'You marked this mission complete.'`
@@ -352,9 +370,7 @@ export async function checkFraming({
     await capture(call, 'framing-mission-zh-mobile');
     await tap(call, evaluate, `label:has(${correct})`);
     await tap(call, evaluate, '[data-check-answer]');
-    await until(
-      `document.querySelector('[data-quiz-feedback]')?.textContent.includes('改变机位再重新构图')`
-    );
+    await until(feedbackIs('zh-cn', 'relative-alignment'));
     assert.ok(
       await evaluate(`(() => {
         const rect = document.querySelector('[data-quiz-feedback]').getBoundingClientRect();

@@ -77,6 +77,11 @@ export default defineConfig({
           translations: { 'zh-CN': '实拍练习' },
           items: [{ autogenerate: { directory: 'learn/field-practice' } }],
         },
+        {
+          label: 'Workflow',
+          translations: { 'zh-CN': '照片工作流' },
+          items: [{ autogenerate: { directory: 'learn/workflow' } }],
+        },
       ],
       social: [
         {
@@ -90,6 +95,7 @@ export default defineConfig({
       // Starlight applies Astro's base to this logical public asset path.
       favicon: '/favicon.ico',
       components: {
+        ThemeProvider: './src/components/ui/starlight/ThemeProvider.astro',
         SiteTitle: './src/components/ui/starlight/SiteTitle.astro',
         Head: './src/components/ui/starlight/Head.astro',
         MobileMenuFooter:

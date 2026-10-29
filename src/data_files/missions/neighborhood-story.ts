@@ -31,19 +31,25 @@ export const neighborhoodStoryMission: PracticeMission = {
           'You want three photographs to explain a small neighborhood cafe. Which plan is most likely to add useful information across the set?',
         choices: [
           {
-            id: 'complementary-information',
-            label:
-              'One frame establishes the setting, one shows a particular subject or activity within it, and one reveals a relevant small detail.',
-          },
-          {
             id: 'three-identical-frames',
             label:
               'Three nearly identical frames of the same facade must explain more because there are more files.',
+            explanation:
+              'This choice counts files rather than new information. Repeated views can serve a deliberate comparison, such as a change over time, but three nearly identical facade frames may leave the same questions about this cafe unanswered. Ask what the second and third photographs add for the stated goal.',
+          },
+          {
+            id: 'complementary-information',
+            label:
+              'One frame establishes the setting, one shows a particular subject or activity within it, and one reveals a relevant small detail.',
+            explanation:
+              'For the stated goal of explaining this cafe, setting, a particular subject or activity, and a relevant detail can answer different questions. They still need a shared idea to connect them. This makes the plan useful for this information goal; it does not prescribe the most artistic images or their only valid order.',
           },
           {
             id: 'required-lens-sequence',
             label:
               'The only correct method is to use a wide, normal, and macro lens in that fixed order.',
+            explanation:
+              'This choice makes equipment and order stand in for information roles. Different lenses can change framing, but their names do not establish what a viewer learns. One familiar lens can serve these roles where access and focusing distance allow; choose the sequence for your idea.',
           },
         ],
         correctChoiceId: 'complementary-information',
@@ -62,7 +68,7 @@ export const neighborhoodStoryMission: PracticeMission = {
           'The concept frames stay visible. Plan your own sentence first, then make three photographs in any order that suits the place and conditions.',
         modelTitle: 'Three connected views of one cafe corner',
         modelNote:
-          'Original concept illustration, not sample photography or an exact perspective simulation. The repeated amber awning connects the frames; these are possible roles, not the only correct template.',
+          'Original concept illustration, not sample photography or an exact perspective simulation. Repeated amber color and the bicycle/bell details connect the frames; these are possible roles, not the only correct template.',
         steps: [
           {
             id: 'make-environment-photo',
@@ -135,18 +141,24 @@ export const neighborhoodStoryMission: PracticeMission = {
           '你想用三张照片说明一家社区小店的特点。哪个计划最有可能让整组照片提供更有用的信息？',
         choices: [
           {
-            id: 'complementary-information',
-            label:
-              '一张交代环境，一张呈现其中的具体对象或活动，一张揭示与主题有关的小细节。',
-          },
-          {
             id: 'three-identical-frames',
             label:
               '同一张门面拍三份近乎重复的照片，文件更多，说明的信息就一定更多。',
+            explanation:
+              '这个选项把文件数量当成了新增信息。重复视角可以用于有意的比较，例如记录时间变化；但三张近乎相同的门面照，可能仍让观者对小店的同一些问题得不到回答。应问第二张与第三张为本题目标补充了什么。',
+          },
+          {
+            id: 'complementary-information',
+            label:
+              '一张交代环境，一张呈现其中的具体对象或活动，一张揭示与主题有关的小细节。',
+            explanation:
+              '针对说明这家小店的目标，环境、具体对象或活动、相关细节可以回答不同问题。三张仍需要一个共同想法来连接。这个计划对本题的信息目标有帮助，但不规定哪种照片最有艺术性，也不规定唯一有效的排序。',
           },
           {
             id: 'required-lens-sequence',
             label: '唯一正确的方法是按固定顺序使用广角、中焦和微距镜头。',
+            explanation:
+              '这个选项用器材和顺序代替了信息角色。不同镜头能改变取景，名称本身却不说明观者学到了什么。在拍摄位置和最近对焦距离允许时，一支熟悉的镜头也能承担这些角色；排序应服务自己的想法。',
           },
         ],
         correctChoiceId: 'complementary-information',
@@ -165,7 +177,7 @@ export const neighborhoodStoryMission: PracticeMission = {
           '概念图始终保留。先用一句话写下自己的意图，再按适合现场的条件与顺序拍摄三张照片。',
         modelTitle: '同一个小店街角的三种视角',
         modelNote:
-          '原创概念插图，不是实拍样片或精确透视模拟。重复出现的琥珀色遮阳篷连接三格；这些只是可能的信息角色，不是唯一正确模板。',
+          '原创概念插图，不是实拍样片或精确透视模拟。重复出现的琥珀色与自行车、车铃线索连接三格；这些只是可能的信息角色，不是唯一正确模板。',
         steps: [
           {
             id: 'make-environment-photo',

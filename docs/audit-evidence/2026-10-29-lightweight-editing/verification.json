@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "project": "/Users/ruoyu/photography-field-guide",
+  "status": "lightweight_editing_content_complete_shared_integration_pending",
+  "head": "95f19f4977321760f850f255674a2f9998326602",
+  "runtime": {
+    "node": "24.22.1",
+    "npm": "11.12.1",
+    "newDependencies": false
+  },
+  "inventoryAfterChange": {
+    "learnDocuments": 46,
+    "structuredRecords": 52,
+    "htmlPages": 82,
+    "newBilingualArticlePairs": 1
+  },
+  "checks": [
+    {
+      "name": "unit",
+      "command": "npm run test:unit",
+      "status": "passed",
+      "result": "38/38",
+      "log": "root-verification.log"
+    },
+    {
+      "name": "root-build-final",
+      "command": "npm run build",
+      "status": "passed",
+      "result": "46 articles, 52 structured entries, 82 HTML pages; 0 errors, 0 warnings, 6 hints",
+      "log": "final-scoped-verification.log"
+    },
+    {
+      "name": "root-smoke",
+      "command": "npm run test:smoke",
+      "status": "passed",
+      "result": "80 existing routes and 8 missing/retired routes; new article pair is covered by scoped checks",
+      "log": "final-scoped-verification.log"
+    },
+    {
+      "name": "root-scoped-artifacts-final",
+      "command": "node scripts/check-lightweight-editing.mjs",
+      "status": "passed",
+      "log": "final-scoped-verification.log"
+    },
+    {
+      "name": "browser-final",
+      "command": "node scripts/browser-lightweight-editing.mjs",
+      "status": "passed",
+      "result": "Search in both languages, corresponding-language navigation, C5 link, six accessible SVGs, desktop, actual dark theme at 390x844, 683x384, no-JavaScript details, no horizontal overflow, no page exceptions",
+      "log": "final-scoped-verification.log"
+    },
+    {
+      "name": "scoped-format-final",
+      "command": "prettier --check <five new implementation files>",
+      "status": "passed",
+      "log": "final-scoped-verification.log"
+    },
+    {
+      "name": "subpath-build",
+      "command": "SITE_BASE=/photography-field-guide npm run build",
+      "status": "passed",
+      "result": "82 HTML pages",
+      "log": "base-verification.log"
+    },
+    {
+      "name": "subpath-smoke",
+      "command": "SITE_BASE=/photography-field-guide npm run test:smoke",
+      "status": "passed",
+      "result": "80 existing routes and 8 missing/retired routes",
+      "log": "base-verification.log"
+    },
+    {
+      "name": "subpath-scoped-artifacts",
+      "command": "SITE_BASE=/photography-field-guide node scripts/check-lightweight-editing.mjs",
+      "status": "passed",
+      "log": "base-scoped-verification.log"
+    },
+    {
+      "name": "full-format",
+      "command": "npm run format:check",
+      "status": "failed_retained_shared_files",
+      "observedFailure": "Formatting issues remain in src/components/practice/practice-controller.ts and src/utils/practice/feedback.ts.",
+      "reason": "Both files belong to the retained shared Practice scope. All new implementation files and this batch's verification documents pass their scoped format checks.",
+      "log": "final-format.log"
+    },
+    {
+      "name": "root-shared-artifact-inventory",
+      "command": "npm run test:build",
+      "status": "failed_retained_shared_inventory",
+      "observedFailure": "Expected 80 HTML files, found 82.",
+      "reason": "The pre-existing PUBLIC_ROUTES inventory has not received the new bilingual article pair. The shared file was deliberately not modified in this isolated batch.",
+      "log": "root-verification.log"
+    },
+    {
+      "name": "subpath-shared-artifact-inventory",
+      "command": "SITE_BASE=/photography-field-guide npm run test:build",
+      "status": "failed_retained_shared_inventory",
+      "observedFailure": "Expected 80 HTML files, found 82.",
+      "reason": "Same retained shared route inventory; not a build or missing-link failure.",
+      "log": "base-verification.log"
+    }
+  ],
+  "correctedBeforeFinal": [
+    "Added page-local Chinese search aliases to cover browser word segmentation while retaining the full-title search assertion.",
+    "Used the site's real theme control and asserted dark mode before mobile screenshots; media emulation alone was insufficient.",
+    "Corrected awkward English short-answer wording.",
+    "Corrected the Chinese Adobe source locator from crop preview to highlight/shadow clipping preview."
+  ],
+  "visualReview": {
+    "status": "developer_screenshots_reviewed",
+    "screenshots": [
+      "lightweight-editing-en-1366x768.png",
+      "lightweight-editing-crop-en-1366x768.png",
+      "lightweight-editing-zh-dark-390x844.png",
+      "lightweight-editing-crop-zh-390x844.png"
+    ],
+    "notCovered": "Real-reader testing, comprehensive WCAG audit, browser matrix, subpath interactive browser run"
+  },
+  "authorizationState": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "repositoryVisibilityChanged": false,
+    "existingStashChanged": false,
+    "sharedSourceFilesChangedByThisBatch": false
+  },
+  "handoff": [
+    "Add the new bilingual article pair to the shared route inventories when that scope is handed over.",
+    "Implement the full bilingual C6 Practice mission only after the shared Practice scope is free; no placeholder task was registered.",
+    "Preserve the other assistant's existing C5/Practice changes and rerun complete integration checks after merging scopes."
+  ]
+}

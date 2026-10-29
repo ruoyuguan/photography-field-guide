@@ -5,6 +5,7 @@ export const photoReviewMission: PracticeMission = {
   number: 4,
   version: 1,
   visual: 'review',
+  nextId: 'backup-and-export',
   articlePath: '/learn/field-practice/photo-review/',
   copy: {
     en: {
@@ -30,19 +31,25 @@ export const photoReviewMission: PracticeMission = {
           'You are selecting photographs for a stated purpose, not judging artistic worth. Which review process is the most defensible?',
         choices: [
           {
-            id: 'purpose-and-evidence',
-            label:
-              'Compare how each frame serves the intention, check whether focus, motion, and exposure interfere with that use, and keep candidates reversible while deciding.',
-          },
-          {
             id: 'sharpest-always-wins',
             label:
               'Always choose the sharpest frame, even when it repeats information or misses the intended moment.',
+            explanation:
+              'This choice gives sharpness the whole decision. A detail-critical use may require precise focus, while another purpose may use intentional motion blur. When a sharp frame repeats information or misses the intended moment, sharpness alone does not show that it serves this selection.',
           },
           {
             id: 'delete-unselected',
             label:
               'Delete every unselected frame during the first pass so that no comparison evidence remains.',
+            explanation:
+              'This choice treats a first-pass selection as final. An unselected frame can still reveal a timing, focus, or framing difference that helps explain the choice or plan a reshoot. Keep the originals in this exercise and use reversible candidate marks while the comparison is still developing.',
+          },
+          {
+            id: 'purpose-and-evidence',
+            label:
+              'Compare how each frame serves the intention, check whether focus, motion, and exposure interfere with that use, and keep candidates reversible while deciding.',
+            explanation:
+              'For a stated use, compare each frame’s contribution and inspect the technical evidence that use requires. Focus, motion, and exposure matter when they support or obstruct it. Reversible marks let you revisit the candidates; this process supports a reasoned selection without ranking artistic worth.',
           },
         ],
         correctChoiceId: 'purpose-and-evidence',
@@ -136,17 +143,23 @@ export const photoReviewMission: PracticeMission = {
           '你正在为一个明确用途筛选照片，而不是评判艺术价值。哪种复盘过程更有依据？',
         choices: [
           {
-            id: 'purpose-and-evidence',
-            label:
-              '比较每张图如何服务拍摄意图，检查对焦、运动与曝光是否妨碍这一用途，并在决定期间保留可撤销的候选标记。',
-          },
-          {
             id: 'sharpest-always-wins',
             label: '永远选择最锐利的一张，即使它重复信息或错过了想表达的瞬间。',
+            explanation:
+              '这个选项把全部决定交给了锐利程度。细节要求高的用途可能需要精确对焦，另一种表达却可能采用有意运动模糊。如果锐利画面只是重复信息或错过预期瞬间，锐利本身不能证明它适合本次筛选。',
           },
           {
             id: 'delete-unselected',
             label: '第一轮就删除全部未选照片，不留下任何可供比较的证据。',
+            explanation:
+              '这个选项把第一轮筛选当成了最终决定。未选画面仍可能揭示时机、对焦或取景差别，帮助解释选择或计划重拍。本练习保留原片，在比较尚未完成时使用可撤销的候选标记。',
+          },
+          {
+            id: 'purpose-and-evidence',
+            label:
+              '比较每张图如何服务拍摄意图，检查对焦、运动与曝光是否妨碍这一用途，并在决定期间保留可撤销的候选标记。',
+            explanation:
+              '用途明确后，比较每张图的贡献，并检查这一用途需要的技术证据。对焦、运动与曝光要看它们如何支持或妨碍表达。可撤销的标记让候选仍可重审；这套过程帮助筛选有理有据，不对艺术价值排名。',
           },
         ],
         correctChoiceId: 'purpose-and-evidence',

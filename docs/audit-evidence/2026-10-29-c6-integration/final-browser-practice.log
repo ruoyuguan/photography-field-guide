@@ -1,0 +1,9 @@
+OK English prediction, wrong-answer retry, explanation, three local steps, self-review, and completion
+OK Refresh and English ↔ Chinese navigation preserve one shared C6 progress record
+OK Single-task reset preserves shared mission data and theme
+OK Corrupt storage recovers to a safe empty task with an honest notice
+OK Blocked C6 storage keeps the task usable in memory without claiming persistence
+OK Native radio and submit controls work from the keyboard
+OK Accessible concept pairs, real dark theme, mobile, and zoom-equivalent layouts
+OK No-script prediction choices, answer, concept illustrations, local actions, and self-review
+OK standalone C6 browser checks completed.

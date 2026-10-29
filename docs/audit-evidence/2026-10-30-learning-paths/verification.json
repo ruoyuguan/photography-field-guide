@@ -1,0 +1,218 @@
+{
+  "recordedAt": "2026-10-30T01:03:37.446301+08:00",
+  "workspace": "/Users/ruoyu/photography-field-guide",
+  "git": {
+    "branch": "main",
+    "head": "95f19f4977321760f850f255674a2f9998326602",
+    "localOriginMain": "95f19f4977321760f850f255674a2f9998326602",
+    "stash": ["stash@{0} 52b3bbdf14a8a57ea938a4db5763982927867118"],
+    "priorUntrackedFiles": 184,
+    "missingPriorFiles": [],
+    "historicalFilesCompared": 150,
+    "changedHistoricalFiles": []
+  },
+  "runtime": {
+    "node": "24.22.1",
+    "pnpm": "10.34.9",
+    "nodePath": "/Users/ruoyu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "pnpmEntry": "/Users/ruoyu/.npm/_npx/a1a38f5f0f780954/node_modules/pnpm/bin/pnpm.cjs",
+    "ASTRO_TELEMETRY_DISABLED": "1",
+    "contentReviewTimeZone": "Asia/Shanghai"
+  },
+  "inventory": {
+    "unitTests": 80,
+    "htmlPages": 84,
+    "learnDocuments": 46,
+    "structuredRecords": 52,
+    "missions": 6
+  },
+  "checks": [
+    {
+      "name": "unit tests",
+      "command": "pnpm test:unit",
+      "exitCode": 0,
+      "log": "unit-final.log",
+      "base": "/"
+    },
+    {
+      "name": "root build",
+      "command": "pnpm build",
+      "exitCode": 0,
+      "log": "root-build-fixed-date.log",
+      "base": "/"
+    },
+    {
+      "name": "full Chrome",
+      "command": "PFG_SCREENSHOT_DIR=<evidence>/browser node scripts/browser-check.mjs",
+      "exitCode": 0,
+      "log": "browser-full-scoped-capture.log",
+      "base": "/"
+    },
+    {
+      "name": "C6 Chrome",
+      "command": "PFG_EVIDENCE_DIR=<evidence>/c6-browser node scripts/browser-lightweight-editing-practice.mjs",
+      "exitCode": 0,
+      "log": "browser-c6.log",
+      "base": "/"
+    },
+    {
+      "name": "subpath build",
+      "command": "SITE_BASE=/photography-field-guide pnpm build",
+      "exitCode": 0,
+      "log": "subpath-build.log",
+      "base": "/photography-field-guide"
+    },
+    {
+      "name": "subpath routes",
+      "command": "SITE_BASE=/photography-field-guide node scripts/smoke.mjs",
+      "exitCode": 0,
+      "log": "subpath-smoke.log",
+      "base": "/photography-field-guide"
+    },
+    {
+      "name": "subpath artifacts",
+      "command": "SITE_BASE=/photography-field-guide node scripts/check-build.mjs",
+      "exitCode": 0,
+      "log": "subpath-artifacts.log",
+      "base": "/photography-field-guide"
+    },
+    {
+      "name": "subpath C6",
+      "command": "SITE_BASE=/photography-field-guide node scripts/check-lightweight-editing-practice.mjs",
+      "exitCode": 0,
+      "log": "subpath-c6.log",
+      "base": "/photography-field-guide"
+    },
+    {
+      "name": "restored root build",
+      "command": "pnpm build",
+      "exitCode": 0,
+      "log": "restore-root-build.log",
+      "base": "/"
+    },
+    {
+      "name": "restored root routes",
+      "command": "node scripts/smoke.mjs",
+      "exitCode": 0,
+      "log": "restore-root-smoke.log",
+      "base": "/"
+    },
+    {
+      "name": "restored root artifacts",
+      "command": "node scripts/check-build.mjs",
+      "exitCode": 0,
+      "log": "restore-root-artifacts.log",
+      "base": "/"
+    },
+    {
+      "name": "restored root C6",
+      "command": "node scripts/check-lightweight-editing-practice.mjs",
+      "exitCode": 0,
+      "log": "restore-root-c6.log",
+      "base": "/"
+    },
+    {
+      "name": "full project formatting",
+      "command": "pnpm format:check",
+      "exitCode": 0,
+      "log": "format-check.log"
+    },
+    {
+      "name": "diff whitespace",
+      "command": "git diff --check",
+      "exitCode": 0,
+      "log": "git-diff-check.log"
+    }
+  ],
+  "typeCheck": {
+    "errors": 0,
+    "warnings": 0,
+    "existingHints": 5
+  },
+  "formatAndDiff": "passed",
+  "failedThenFixed": [
+    {
+      "log": "format-files.log",
+      "exitCode": 127,
+      "reason": "Node PATH missing for formatter; format-files-fixed-path.log passes."
+    },
+    {
+      "log": "root-build.log",
+      "exitCode": 1,
+      "reason": "UTC future-date check rejected the actual Asia/Shanghai authoring date; explicit date policy and four boundary tests added."
+    },
+    {
+      "log": "root-smoke.log",
+      "exitCode": 1,
+      "reason": "Four assertions still expected old Next mission text; updated to actual Suggested next practice while retaining target checks."
+    },
+    {
+      "log": "browser-full.log",
+      "exitCode": 1,
+      "reason": "Search script read previous query results during debounce; now clears old query before requiring the correct target."
+    },
+    {
+      "logs": ["browser-query-fixed.log", "browser-full-final.log"],
+      "exitCode": 1,
+      "reason": "Screenshot helper awaited unrelated document-wide pending transitions; bounded wait now applies only to running finite animations in the capture region."
+    }
+  ],
+  "browser": {
+    "kind": "automated headless Google Chrome via CDP",
+    "pageExceptions": [],
+    "fullFlowBase": "/",
+    "newCoverage": [
+      "bilingual intent links and actual routes",
+      "curriculum-ordered continuation without new storage",
+      "C6 authoritative dedicated record",
+      "all 12 task endings",
+      "native Enter, focused anchors and navbar clearance",
+      "clear-all and preference preservation",
+      "actual dark mobile and narrow/200-percent-equivalent views",
+      "no JavaScript static entries and map"
+    ],
+    "screenshots": [
+      {
+        "file": "browser/learning-starts-zh-390x844.png",
+        "page": "/zh-cn/",
+        "viewport": [390, 844],
+        "theme": "dark",
+        "area": "intent cards before sensor figure"
+      },
+      {
+        "file": "browser/practice-map-zh-dark-390x844.png",
+        "page": "/zh-cn/practice/",
+        "viewport": [390, 844],
+        "theme": "dark",
+        "area": "six native mission-map links"
+      },
+      {
+        "file": "browser/practice-overview-en-1366x768.png",
+        "page": "/practice/",
+        "viewport": [1366, 768],
+        "theme": "dark",
+        "area": "first experiment and compact map"
+      }
+    ]
+  },
+  "notExecuted": [
+    "human reader study",
+    "physical phone test",
+    "full screen-reader or WCAG audit",
+    "full subpath browser suite",
+    "remote CI",
+    "deployment and external visitor trial",
+    "sitewide external-link recheck"
+  ],
+  "published": false,
+  "pushed": false,
+  "committed": false,
+  "finalDistBase": "/",
+  "localPreview": {
+    "url": "http://127.0.0.1:7100/zh-cn/practice/",
+    "httpStatus": 200,
+    "stoppedAfterReview": true,
+    "expectedShutdownExitCode": 130,
+    "initialLaunchCorrection": "Legacy astro.js CLI path was absent; project pnpm preview command then started successfully."
+  }
+}

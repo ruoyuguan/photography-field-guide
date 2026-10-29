@@ -1,0 +1,19 @@
+
+> photography-field-guide@0.0.1 build /Users/ruoyu/photography-field-guide
+> astro check && astro build && node process-html.mjs
+
+14:52:00 [content] Syncing content
+Nested mappings are not allowed in compact mappings at line 2, column 8:
+
+title: Safe Backup and Export: Keep Originals, Share Copies
+       ^
+
+  Location:
+    /Users/ruoyu/photography-field-guide/src/content/docs/learn/workflow/backup-and-export.mdx:2:7
+  Stack trace:
+    at Composer.onError (/Users/ruoyu/photography-field-guide/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/composer.js:70:34)
+    at resolveCollection (/Users/ruoyu/photography-field-guide/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-collection.js:13:27)
+    at Object.composeNode (/Users/ruoyu/photography-field-guide/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-node.js:34:42)
+    at Composer.next (/Users/ruoyu/photography-field-guide/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/composer.js:152:40)
+    at Composer.compose (/Users/ruoyu/photography-field-guide/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/composer.js:134:25)
+ ELIFECYCLE  Command failed with exit code 1.

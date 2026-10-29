@@ -34,6 +34,10 @@ const LOCALIZED_ROUTES = [
   '/practice/subject-background/',
   '/practice/neighborhood-story/',
   '/practice/photo-review/',
+  '/practice/backup-and-export/',
+  '/learn/workflow/lightweight-editing/',
+  '/practice/lightweight-editing/',
+  '/learn/workflow/backup-and-export/',
   '/tools/',
   '/tools/crop-factor/',
   '/tools/exposure-stops/',
@@ -142,6 +146,31 @@ for (const route of [
     fail(`Pre-release route was not retired: ${route}`);
 }
 
+const targetIds = new Map();
+async function idsIn(target) {
+  if (!targetIds.has(target)) {
+    const source = await readFile(target, 'utf8');
+    targetIds.set(
+      target,
+      new Set(
+        [
+          ...source.matchAll(/(?:\s|<)id="([^"]+)"/g),
+          ...source.matchAll(/<a\s[^>]*?\bname="([^"]+)"/gi),
+        ].map(match => decodeAttribute(match[1]))
+      )
+    );
+  }
+  return targetIds.get(target);
+}
+function decodeAttribute(value) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#(?:x([0-9a-f]+)|([0-9]+));/gi, (_, hex, decimal) =>
+      String.fromCodePoint(parseInt(hex || decimal, hex ? 16 : 10))
+    );
+}
+
 for (const file of htmlFiles) {
   const html = await text(file);
   const route = routeForFile(file);
@@ -173,6 +202,22 @@ for (const file of htmlFiles) {
           fail(`${where}: missing ${attribute} target: ${value}`);
         }
       }
+    }
+  }
+  for (const raw of attributes(html, 'href')) {
+    if (!raw || /^(?:mailto:|tel:|javascript:|data:)/i.test(raw)) continue;
+    const url = new URL(decodeAttribute(raw), `${ORIGIN}${publicPath(route)}`);
+    if (url.origin !== ORIGIN || !url.hash || url.hash === '#') continue;
+    const target = localFileForUrl(url.pathname);
+    if (!target) continue; // Path errors are reported above.
+    try {
+      const id = decodeURIComponent(url.hash.slice(1));
+      if (!(await idsIn(target)).has(id))
+        fail(`${where}: missing fragment ${url.hash} in ${url.pathname}.`);
+    } catch (error) {
+      if (error instanceof URIError)
+        fail(`${where}: malformed fragment ${url.hash}.`);
+      // Missing files are already reported by the path checks above.
     }
   }
   for (const stale of ['/start-here/', '/basics/', '/zh-cn/basics/'])
@@ -299,5 +344,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(
-  `OK build checks: ${htmlFiles.length} HTML pages, internal links/assets, SEO, manifest, robots, sitemap, and search artifacts (base ${BASE}).`
+  `OK build checks: ${htmlFiles.length} HTML pages, internal links/fragments/assets, SEO, manifest, robots, sitemap, and search artifacts (base ${BASE}).`
 );

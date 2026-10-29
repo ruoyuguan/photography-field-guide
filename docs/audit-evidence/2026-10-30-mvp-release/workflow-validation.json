@@ -1,0 +1,11 @@
+{
+  "yamlParse": "passed",
+  "trigger": "manual only",
+  "repository": "ruoyuguan/photography-field-guide",
+  "branch": "main",
+  "base": "/photography-field-guide",
+  "artifact": "dist",
+  "deploymentDependencies": "passed",
+  "permissions": "scoped",
+  "remoteActionsRun": false
+}

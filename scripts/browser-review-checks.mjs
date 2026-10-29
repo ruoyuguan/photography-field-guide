@@ -1,6 +1,26 @@
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { missionById } from '../src/data_files/practice.ts';
+
+const mission = missionById('photo-review');
+assert.ok(mission, 'Missing source mission photo-review');
+
+function feedbackIs(locale, choiceId) {
+  const choice = mission.copy[locale].prediction.choices.find(
+    item => item.id === choiceId
+  );
+  assert.ok(
+    choice?.explanation?.trim(),
+    `${locale}/${choiceId}: missing explanation`
+  );
+  return `(() => {
+    const feedback = document.querySelector('[data-quiz-feedback]');
+    return feedback?.dataset.choiceId === ${JSON.stringify(choiceId)} &&
+      !feedback.hidden &&
+      feedback.textContent === ${JSON.stringify(choice.explanation.trim())};
+  })()`;
+}
 
 const STORAGE_KEY = 'photography-field-guide:practice:v1';
 const MISSION = '[data-practice-mission]';
@@ -109,7 +129,7 @@ export async function checkPhotoReview({
     goalVisible: true,
     choiceVisible: true,
     missionNumber: 'Mission 04 · About 20 minutes',
-    nextExists: false,
+    nextExists: true,
     overflow: false,
   });
   console.log('OK review lesson, six-frame model, goal, and first action');
@@ -128,7 +148,7 @@ export async function checkPhotoReview({
   await click(incorrect);
   await click('[data-check-answer]');
   await until(
-    `document.querySelector('[data-quiz-feedback]')?.textContent.includes('Sharpness alone cannot decide') && document.querySelector('[data-retry-answer]')?.hidden === false`
+    `${feedbackIs('en', 'sharpest-always-wins')} && document.querySelector('[data-retry-answer]')?.hidden === false`
   );
   assert.equal(
     await evaluate(
@@ -145,9 +165,7 @@ export async function checkPhotoReview({
   );
   await click(correct);
   await click('[data-check-answer]');
-  await until(
-    `document.querySelector('[data-quiz-feedback]')?.textContent.includes('Editorial fit and technical evidence')`
-  );
+  await until(feedbackIs('en', 'purpose-and-evidence'));
   await click(`${MISSION} section details:not([data-answer-details]) summary`);
   assert.ok(
     await evaluate(
@@ -290,6 +308,8 @@ export async function checkPhotoReview({
     'subject-background': 'Marked complete',
     'neighborhood-story': 'Marked complete',
     'photo-review': 'Not started',
+    'backup-and-export': 'Not started',
+    'lightweight-editing': 'Not started',
   });
   console.log('OK review language sharing and C1–C3-preserving reset');
 
@@ -310,9 +330,7 @@ export async function checkPhotoReview({
     );
     await click(correct);
     await click('[data-check-answer]');
-    await until(
-      `document.querySelector('[data-quiz-feedback]')?.textContent.includes('Editorial fit and technical evidence')`
-    );
+    await until(feedbackIs('en', 'purpose-and-evidence'));
     await click('[data-complete-mission]');
     await until(
       `document.querySelector('[data-mission-status]')?.textContent === 'You marked this mission complete.'`
@@ -386,9 +404,7 @@ export async function checkPhotoReview({
     await capture(call, 'review-mission-zh-mobile');
     await tap(call, evaluate, `label:has(${correct})`);
     await tap(call, evaluate, '[data-check-answer]');
-    await until(
-      `document.querySelector('[data-quiz-feedback]')?.textContent.includes('表达适配度与技术证据')`
-    );
+    await until(feedbackIs('zh-cn', 'purpose-and-evidence'));
     assert.ok(
       await evaluate(`(() => {
         const rect = document.querySelector('[data-quiz-feedback]').getBoundingClientRect();

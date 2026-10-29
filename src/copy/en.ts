@@ -228,34 +228,6 @@ export const en = {
       apscSize: '23.5 × 15.7 mm (Fujifilm X-T5)',
       note: 'Drawn to scale: 10 SVG units represent 1 mm. The APS-C rectangle is an X-T5 example, not a universal APS-C size. The diagram compares sensor areas; it does not change the lens focal length.',
     },
-    pathways: {
-      title: 'Start with the fundamentals',
-      subTitle:
-        'Follow a short path from sensor size to exposure. Each guide builds on the previous one and gives you concepts you can test with your own camera.',
-      items: [
-        {
-          id: 'sensors',
-          title: 'Sensor formats',
-          description:
-            'See what full frame and APS-C actually change—and what they do not.',
-          linkText: 'Explore sensor sizes',
-        },
-        {
-          id: 'focal',
-          title: 'Equivalent focal length',
-          description:
-            'Learn why the same lens can produce a tighter field of view on a smaller sensor.',
-          linkText: 'Understand crop factor',
-        },
-        {
-          id: 'exposure',
-          title: 'The exposure triangle',
-          description:
-            'Separate image brightness from depth of field, motion blur, and the light reaching the sensor.',
-          linkText: 'Learn aperture, shutter & ISO',
-        },
-      ],
-    },
     cta: {
       title: 'Build understanding before buying more gear.',
       subTitle:

@@ -1,0 +1,26 @@
+{
+  "scope": "standalone-c6-lightweight-editing-practice",
+  "base": "/",
+  "browser": "headless Google Chrome via CDP",
+  "passed": [
+    "English prediction, wrong-answer retry, explanation, three local steps, self-review, and completion",
+    "Refresh and English ↔ Chinese navigation preserve one shared C6 progress record",
+    "Single-task reset preserves shared mission data and theme",
+    "Corrupt storage recovers to a safe empty task with an honest notice",
+    "Blocked C6 storage keeps the task usable in memory without claiming persistence",
+    "Native radio and submit controls work from the keyboard",
+    "Accessible concept pairs, real dark theme, mobile, and zoom-equivalent layouts",
+    "No-script prediction choices, answer, concept illustrations, local actions, and self-review"
+  ],
+  "pageExceptions": [],
+  "screenshots": [
+    "c6-en-complete-1366x768.png",
+    "c6-en-review-1366x768.png",
+    "c6-zh-dark-390x844.png",
+    "c6-zh-model-dark-390x844.png"
+  ],
+  "limitations": [
+    "No real photograph or third-party editor was accessed.",
+    "No human reader study or comprehensive WCAG audit was performed."
+  ]
+}

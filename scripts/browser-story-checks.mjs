@@ -1,6 +1,26 @@
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { missionById } from '../src/data_files/practice.ts';
+
+const mission = missionById('neighborhood-story');
+assert.ok(mission, 'Missing source mission neighborhood-story');
+
+function feedbackIs(locale, choiceId) {
+  const choice = mission.copy[locale].prediction.choices.find(
+    item => item.id === choiceId
+  );
+  assert.ok(
+    choice?.explanation?.trim(),
+    `${locale}/${choiceId}: missing explanation`
+  );
+  return `(() => {
+    const feedback = document.querySelector('[data-quiz-feedback]');
+    return feedback?.dataset.choiceId === ${JSON.stringify(choiceId)} &&
+      !feedback.hidden &&
+      feedback.textContent === ${JSON.stringify(choice.explanation.trim())};
+  })()`;
+}
 
 const STORAGE_KEY = 'photography-field-guide:practice:v1';
 const MISSION = '[data-practice-mission]';
@@ -121,7 +141,7 @@ export async function checkStory({
   await click(incorrect);
   await click('[data-check-answer]');
   await until(
-    `document.querySelector('[data-quiz-feedback]')?.textContent.includes('equipment names do not create a story') && document.querySelector('[data-retry-answer]')?.hidden === false`
+    `${feedbackIs('en', 'required-lens-sequence')} && document.querySelector('[data-retry-answer]')?.hidden === false`
   );
   assert.equal(
     await evaluate(
@@ -138,9 +158,7 @@ export async function checkStory({
   );
   await click(correct);
   await click('[data-check-answer]');
-  await until(
-    `document.querySelector('[data-quiz-feedback]')?.textContent.includes('Complementary roles can add setting')`
-  );
+  await until(feedbackIs('en', 'complementary-information'));
   await click(`${MISSION} section details:not([data-answer-details]) summary`);
   assert.ok(
     await evaluate(
@@ -287,6 +305,8 @@ export async function checkStory({
     'subject-background': 'Marked complete',
     'neighborhood-story': 'Not started',
     'photo-review': 'Not started',
+    'backup-and-export': 'Not started',
+    'lightweight-editing': 'Not started',
   });
   console.log('OK story language sharing and C1/C2-preserving reset');
 
@@ -307,9 +327,7 @@ export async function checkStory({
     );
     await click(correct);
     await click('[data-check-answer]');
-    await until(
-      `document.querySelector('[data-quiz-feedback]')?.textContent.includes('Complementary roles can add setting')`
-    );
+    await until(feedbackIs('en', 'complementary-information'));
     await click('[data-complete-mission]');
     await until(
       `document.querySelector('[data-mission-status]')?.textContent === 'You marked this mission complete.'`
@@ -383,9 +401,7 @@ export async function checkStory({
     await capture(call, 'story-mission-zh-mobile');
     await tap(call, evaluate, `label:has(${correct})`);
     await tap(call, evaluate, '[data-check-answer]');
-    await until(
-      `document.querySelector('[data-quiz-feedback]')?.textContent.includes('互补的信息角色')`
-    );
+    await until(feedbackIs('zh-cn', 'complementary-information'));
     assert.ok(
       await evaluate(`(() => {
         const rect = document.querySelector('[data-quiz-feedback]').getBoundingClientRect();

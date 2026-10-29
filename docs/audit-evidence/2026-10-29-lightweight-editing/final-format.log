@@ -1,0 +1,8 @@
+
+> photography-field-guide@0.0.1 format:check
+> prettier --check .
+
+Checking formatting...
+[warn] src/components/practice/practice-controller.ts
+[warn] src/utils/practice/feedback.ts
+[warn] Code style issues found in 2 files. Run Prettier with --write to fix.

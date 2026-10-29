@@ -1,0 +1,23 @@
+HTTP/1.1 200 Connection established
+
+HTTP/2 404 
+server: GitHub.com
+content-type: text/html; charset=utf-8
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6ae29fcf-1ea1"
+x-proxy-cache: MISS
+x-github-request-id: 22EE:14CDDF:20DBBD:273CE8:6AE32F3B
+x-github-edge-region: koreacentral
+accept-ranges: bytes
+age: 0
+date: Thu, 29 Oct 2026 11:34:21 GMT
+via: 1.1 varnish
+x-served-by: cache-icn1450086-ICN
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1793273661.119709,VS0,VE233
+vary: Accept-Encoding
+x-fastly-request-id: 655c5ab338688af2fba2c35d8822a42cc007ea4c
+content-length: 7841
+

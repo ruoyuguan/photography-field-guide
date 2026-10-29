@@ -1,3 +1,4 @@
+import { backupAndExportMission } from './missions/backup-and-export.ts';
 import { neighborhoodStoryMission } from './missions/neighborhood-story.ts';
 import { photoReviewMission } from './missions/photo-review.ts';
 import { subjectBackgroundMission } from './missions/subject-background.ts';
@@ -8,7 +9,7 @@ export interface PracticeMission {
   id: string;
   number: number;
   version: number;
-  visual: 'direction' | 'framing' | 'story' | 'review';
+  visual: 'direction' | 'framing' | 'story' | 'review' | 'backup';
   articlePath: string;
   nextId?: string;
   copy: Record<
@@ -26,7 +27,7 @@ export interface PracticeMission {
       prediction: {
         title: string;
         question: string;
-        choices: { id: string; label: string }[];
+        choices: { id: string; label: string; explanation?: string }[];
         correctChoiceId: string;
         hint: string;
         correct: string;
@@ -62,14 +63,16 @@ export const practiceCopy = {
     intro:
       'Predict one change, test it, and review what you see. No account, upload, score, or forced unlock.',
     open: 'Open mission',
-    progress: 'Your progress on this device',
+    progress: 'Your progress in this browser',
     notStarted: 'Not started',
     inProgress: 'In progress',
     completed: 'Marked complete',
     clearAll: 'Clear all practice progress',
     confirmClear:
-      'Clear only Photography Field Guide practice progress on this device? Your theme and other site data will not change.',
+      'Clear only Photography Field Guide practice progress in this browser? Your theme and other site data will not change.',
     cleared: 'Practice progress cleared.',
+    clearedMemory:
+      'Progress is cleared on this page. Some saved progress could not be removed and may return after a reload.',
     noScript:
       'JavaScript is unavailable. Every mission remains readable, including the answer explanation. Progress controls are hidden.',
   },
@@ -82,14 +85,16 @@ export const practiceCopy = {
     intro:
       '先预测一个变化，再动手验证并复盘。无需账号或上传，不打分，也不强制解锁。',
     open: '开始任务',
-    progress: '此设备上的进度',
+    progress: '本浏览器中的进度',
     notStarted: '尚未开始',
     inProgress: '进行中',
     completed: '已标记完成',
     clearAll: '清除全部练习进度',
     confirmClear:
-      '只清除此设备上摄影指南的练习进度吗？主题和其他网站数据不会改变。',
+      '只清除此浏览器中摄影指南的练习进度吗？主题和其他网站数据不会改变。',
     cleared: '练习进度已清除。',
+    clearedMemory:
+      '本页进度已清除。部分已保存的进度未能移除，刷新后可能再次出现。',
     noScript:
       '当前无法使用 JavaScript。任务目标、步骤和答案解释仍可完整阅读，进度控件已隐藏。',
   },
@@ -139,8 +144,10 @@ export const practiceUiCopy = {
     keepGoing:
       'You can revise any answer or reset without losing access to the lesson.',
     reset: 'Reset this mission',
-    confirmReset: 'Reset only this mission on this device?',
+    confirmReset: 'Reset only this mission in this browser?',
     resetDone: 'This mission was reset.',
+    resetMemory:
+      'This mission is reset for this page only. Earlier saved progress may return after a reload because browser storage refused the change.',
     status: 'Mission status',
     notStarted: 'Not started',
     inProgress: 'In progress',
@@ -196,8 +203,10 @@ export const practiceUiCopy = {
     completed: '你已将此任务标记为完成。',
     keepGoing: '可以修改答案或重置，教程与任务始终可以访问。',
     reset: '重置此任务',
-    confirmReset: '只重置此设备上的当前任务吗？',
+    confirmReset: '只重置此浏览器中的当前任务吗？',
     resetDone: '当前任务已重置。',
+    resetMemory:
+      '仅重置了本页任务。浏览器拒绝修改存储，刷新后可能恢复此前保存的记录。',
     status: '任务状态',
     notStarted: '尚未开始',
     inProgress: '进行中',
@@ -243,19 +252,25 @@ export const missions: PracticeMission[] = [
             'Keep the object, camera, exposure, lamp, and approximate lamp distance fixed. Move the lamp from near the camera to camera-left. Which result is the best prediction?',
           choices: [
             {
-              id: 'left-surfaces-right-shadow',
-              label:
-                'Left-facing surfaces receive more direct light, and the cast shadow extends generally to camera-right.',
-            },
-            {
               id: 'longer-focal-length',
               label:
                 'The lens focal length increases, so the object appears larger.',
+              explanation:
+                'This choice treats a lighting change as a lens change. The focal length and camera position stay fixed, so moving the lamp does not magnify the object. Look instead for a different lit surface and a shadow that falls away from the new lamp position.',
+            },
+            {
+              id: 'left-surfaces-right-shadow',
+              label:
+                'Left-facing surfaces receive more direct light, and the cast shadow extends generally to camera-right.',
+              explanation:
+                'With the camera, object, exposure, and approximate lamp distance fixed, a lamp at camera-left favors left-facing surfaces. The object blocks light on the opposite side, so the cast shadow extends generally to camera-right. Reflected room light can soften that shadow; this predicts direction rather than identical overall brightness.',
             },
             {
               id: 'always-brighter',
               label:
                 'Every part of the scene must become brighter because the lamp moved.',
+              explanation:
+                'This choice assumes that moving a light adds illumination everywhere. At a similar lamp distance, changing direction can brighten some surfaces and darken others because their orientation and occlusion change. Compare particular surfaces instead of expecting the whole scene to brighten.',
             },
           ],
           correctChoiceId: 'left-surfaces-right-shadow',
@@ -346,16 +361,22 @@ export const missions: PracticeMission[] = [
             '固定物体、相机、曝光、台灯和近似灯距，只把台灯从相机附近移到画面左侧。哪个预测最合理？',
           choices: [
             {
-              id: 'left-surfaces-right-shadow',
-              label: '朝左的表面接收更多直射光，投影大致向画面右侧延伸。',
-            },
-            {
               id: 'longer-focal-length',
               label: '镜头焦距变长，所以物体看起来更大。',
+              explanation:
+                '这个选项把光线变化当成了镜头变化。焦距与机位都保持不变，移动台灯不会把物体放大。应观察哪个表面改为受光，以及投影如何背向新的灯位延伸。',
+            },
+            {
+              id: 'left-surfaces-right-shadow',
+              label: '朝左的表面接收更多直射光，投影大致向画面右侧延伸。',
+              explanation:
+                '相机、物体、曝光和近似灯距固定时，画面左侧的台灯更容易直接照亮朝左的表面。物体在另一侧挡住光，因此投影大致向画面右侧延伸。房间反射光可能让阴影变浅；这个预测说明方向，不保证整体亮度相同。',
             },
             {
               id: 'always-brighter',
               label: '因为台灯移动了，画面每个部分都一定更亮。',
+              explanation:
+                '这个选项假设移动光源会让所有地方都增加受光。灯距近似不变时，方向变化会改变表面朝向与遮挡，某些表面可能变亮，另一些可能变暗。应比较具体表面，而不是预期整幅画面都变亮。',
             },
           ],
           correctChoiceId: 'left-surfaces-right-shadow',
@@ -423,6 +444,7 @@ export const missions: PracticeMission[] = [
   subjectBackgroundMission,
   neighborhoodStoryMission,
   photoReviewMission,
+  backupAndExportMission,
 ];
 
 export function missionById(id: string): PracticeMission | undefined {

@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-29",
+  "node": "24.22.1",
+  "scope": "standalone-c6-lightweight-editing-practice",
+  "passed": {
+    "unitTests": "48/48, including 10 new C6 tests",
+    "rootBuild": "46 articles, 52 structured entries, 84 HTML pages; 0 errors, 0 warnings, 6 existing hints",
+    "subpathBuild": "SITE_BASE=/photography-field-guide; 84 HTML pages; 0 errors, 0 warnings, 6 existing hints",
+    "rootSmoke": "80 shared-list pages and 8 missing/retired routes",
+    "subpathSmoke": "80 shared-list pages and 8 missing/retired routes",
+    "standaloneArtifactChecks": ["/", "/photography-field-guide"],
+    "articleArtifactChecks": ["/", "/photography-field-guide"],
+    "browserPracticeChecks": "8 groups passed; 0 page exceptions; root base",
+    "browserArticleRegression": "Passed at root base",
+    "finalDist": "root base restored and canonical verified"
+  },
+  "retainedSharedFailures": {
+    "testBuild": "Expected 80 HTML files, found 84.",
+    "formatCheck": [
+      "src/components/practice/practice-controller.ts",
+      "src/utils/practice/feedback.ts"
+    ]
+  },
+  "notRun": [
+    "Interactive browser suite against a subpath build",
+    "Real photographs or third-party editing software",
+    "Human reader testing or comprehensive WCAG audit",
+    "Cross-browser matrix or public deployment verification",
+    "Commit, push, deployment, rollback, or stash operations"
+  ]
+}

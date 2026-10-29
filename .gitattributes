@@ -1,0 +1,4 @@
+# Audit evidence is preserved verbatim, including terminal spacing and HTTP CRLF.
+# Keep text diffs visible; only whitespace diagnostics are disabled for these files.
+docs/audit-evidence/**/*.log -whitespace
+docs/audit-evidence/**/github-pages-headers.txt -whitespace

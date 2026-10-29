@@ -1,0 +1,133 @@
+---
+title: 'Safe Backup and Export: Keep Originals, Share Copies'
+description: Keep the complete original shoot, check an independent backup, and inspect a purpose-specific export locally before sharing.
+translationKey: backup-and-export
+category: workflow
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [raw-jpeg-exif, photo-review]
+relatedConcepts: [raw, jpeg, exif]
+relatedTools: []
+lastReviewed: '2026-10-29'
+sources:
+  - url: 'https://www.cyber.gc.ca/en/guidance/tips-backing-your-information-itsap40002'
+    title: 'Tips for backing up your information — Canadian Centre for Cyber Security'
+    locator: 'Where to store your backups; What else to consider'
+    accessedOn: '2026-10-29'
+    supports: 'Separate and offline storage, 3-2-1 as a backup strategy, and testing recovery; the exercise is an original small-scale application.'
+  - url: 'https://support.apple.com/en-us/108922'
+    title: 'Manage your iCloud storage on your Apple device — Apple Support'
+    locator: 'Delete photos in iCloud Photos'
+    accessedOn: '2026-10-29'
+    supports: 'Deleting an iCloud Photos image on one device propagates to other devices signed in to the same account.'
+  - url: 'https://helpx.adobe.com/lightroom-classic/desktop/manage-catalogs-and-files/back-catalog.html'
+    title: 'Back up a catalog — Adobe Lightroom Classic'
+    locator: 'Plan your backup strategy'
+    accessedOn: '2026-10-29'
+    supports: 'Catalog backups include the catalog file, while photograph files and exports need independent backup.'
+  - url: 'https://helpx.adobe.com/lightroom-classic/desktop/export-photos/export-files-disk-or-cd.html'
+    title: 'Export files to disk or CD — Adobe Lightroom Classic'
+    locator: 'File settings; Image sizing; Metadata'
+    accessedOn: '2026-10-29'
+    supports: 'Export format, compression, pixel sizing, and metadata are distinct choices; GPS removal has format-specific limits.'
+  - url: 'https://helpx.adobe.com/lightroom-classic/desktop/technical-support/technical-issues/miscellaneous-issues/color-faq.html'
+    title: 'FAQ: Color in Lightroom Classic — Adobe'
+    locator: 'While exporting or printing photos, can I specify a color space for the target device?'
+    accessedOn: '2026-10-29'
+    supports: 'sRGB is an example for online sharing; print profiles depend on the target workflow.'
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/first_step/insert_card/'
+    title: 'Inserting Memory Cards — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'Removing Memory Cards; Compatible Memory Cards'
+    accessedOn: '2026-10-29'
+    supports: 'Do not interrupt card writes; copy files before editing or renaming the copies rather than the on-card originals.'
+  - url: 'https://fujifilm-dsc.com/en/manual/x-t5/menu_setup/user_setting/'
+    title: 'User Setting — FUJIFILM X-T5 Owner’s Manual'
+    locator: 'FORMAT'
+    accessedOn: '2026-10-29'
+    supports: 'Formatting removes all card data, including protected pictures; important files must first be copied elsewhere.'
+sidebar:
+  order: 1
+head:
+  - tag: meta
+    attrs:
+      data-pagefind-meta: search_aliases[content]
+      content: photo backup export originals sync recovery metadata privacy pixel dimensions PPI
+---
+
+import BackupExportModel from '@components/practice/BackupExportModel.astro';
+
+You selected three photographs. What should you protect, and what should you send?
+
+<strong>Short answer:</strong> Keep the complete original shoot, check a backup
+that can survive loss of your working storage, and export selected copies for
+one stated use. Reopen the actual export and inspect both the image and its
+identifying information locally. Selecting, backing up, and exporting answer
+different questions.
+
+<strong>Start here:</strong> Take the small shoot from [Photo Selection and
+Review](../../field-practice/photo-review/), or another shoot. Keep its source
+intact. Choose one photograph for a local web-preview export; this exercise
+needs no public post. Open [Keep originals, export a
+copy](../../../practice/backup-and-export/) for the three actions and your own
+completion record.
+
+<BackupExportModel locale="en" prefix="backup-export-lesson-en" />
+
+## Keep the whole shoot while deciding what to show
+
+The C4 shortlist records what serves your present purpose. It does not replace the complete source set. During this exercise retain selected and unselected frames, including both RAW and JPEG if you captured both. If you captured only JPEG, those camera files are your originals; RAW is not a requirement.
+
+An original is the captured file you preserve. An exported derivative is an output prepared from it, potentially with changed rendering, crop, dimensions, compression, or metadata. A small JPEG cannot retain all RAW capture data. “Keep originals” also does not mean “never make editorial choices”: you can change flags and albums without erasing the source evidence. Review [RAW, JPEG, HEIF, and EXIF](../../image-quality/raw-jpeg-exif/) when the roles are unclear.
+
+## Copy first, then check recovery
+
+Use trusted local software to **copy rather than move** the complete small shoot. Keep the card or other source intact. Check which formats and files reached the working destination; visible thumbnails alone are not a complete transfer check.
+
+Make a backup on separate physical storage. Another folder or partition on the same drive shares that drive’s failure risk. Check coverage and recover a representative sample from the backup into a separate folder, without replacing your working files. Open recovered RAW and JPEG samples when both are relevant, using compatible software. Compare expected file counts and sizes as useful checks, not proof that every byte is correct.
+
+A sample recovery tests only the sampled files and that recovery path. It cannot certify every file, future readability, or protection against every incident. If separate storage is unavailable, plan the step and leave its task checkbox unmarked until you can perform it.
+
+<details>
+<summary>What about synchronization, catalogs, and 3-2-1?</summary>
+
+Synchronization keeps locations aligned; deletion may travel with it. Apple documents this behavior for iCloud Photos. A service may also offer version history or recovery, but check what it preserves and for how long before relying on it as backup.
+
+A Lightroom Classic catalog backup contains the catalog, not your photograph files. Preserve actual originals and any editing records your workflow needs. The widely used **3-2-1** strategy calls for three copies, two media types, and one offsite copy. It is a planning aid, not a guarantee: separation, retention, coverage, and recovery checks still matter. An offline copy reduces some shared risks. This local exercise does not require buying a service or connecting an account.
+
+</details>
+
+Do not delete or format a card for this task. Before a later destructive card operation, verify the copies and recovery coverage you need and follow the camera manual. Never interrupt a card write. For the clearly labeled X-T5 example, Fujifilm states that formatting also removes protected pictures; a protection mark is not a backup.
+
+## Export for one destination
+
+Write the purpose on paper or in your own local notes: “ordinary web preview,” “a print lab’s requested file,” or “full-size delivery.” The website stores none of those notes. Export one to three C4 selections into a separate destination so a naming collision cannot silently replace an original.
+
+For an ordinary SDR web preview, **JPEG with sRGB** is one practical example when supported. Choose pixel dimensions and compression for the recipient’s requirements; there is no universal long-edge size or quality percentage. For print or another workflow, follow that destination’s specifications instead.
+
+**Pixel dimensions** say how many pixels the exported image contains. **PPI** relates those pixels to a physical print size. Changing a PPI label alone does not create detail or determine a web image’s pixel dimensions; check whether a resize operation also resamples the image.
+
+## Inspect the exported file itself
+
+Reopen the actual exported file in a local viewer. Check orientation, crop, necessary detail, dimensions, and rendering at the intended viewing size. An editor preview or “export complete” message does not answer those questions.
+
+Use a trusted local metadata tool to inspect location and identifying fields. Check the filename and visible image too: a street sign, face, name badge, or home interior can disclose information even without GPS. Choose what the audience needs, then inspect the result after any metadata change. Removing GPS is not a promise of anonymity; unresolved fields remain unknown.
+
+Adobe’s example export controls can remove GPS for some formats, but that option is unavailable for DNG. Other software and formats behave differently. Preserve your private originals, inspect the delivery copy, and decide separately whether to share. This website neither reads EXIF nor verifies privacy.
+
+## Try a reversible edit next
+
+After protecting the source, continue with [Lightweight Editing](../lightweight-editing/) and its [C6 practice](../../../practice/lightweight-editing/). An edit is optional: keep the original baseline when a change does not serve your purpose.
+
+## Continue the learning loop
+
+Complete [Keep originals, export a copy](../../../practice/backup-and-export/), or return to [Select, review, reshoot](../../../practice/photo-review/) when the exported size reveals a different selection need. Task marks record what you report doing; they do not certify a backup or authorize deletion or publication.
+
+## Sources
+
+All pages below were opened on 2026-10-29. Software examples explain the underlying choices; no particular editor is required.
+
+- [Canadian Centre for Cyber Security: backup storage and recovery testing](https://www.cyber.gc.ca/en/guidance/tips-backing-your-information-itsap40002).
+- [Apple: deletion across iCloud Photos devices](https://support.apple.com/en-us/108922).
+- [Adobe: catalog backups](https://helpx.adobe.com/lightroom-classic/desktop/manage-catalogs-and-files/back-catalog.html), [export settings and metadata](https://helpx.adobe.com/lightroom-classic/desktop/export-photos/export-files-disk-or-cd.html), and [output color-space examples](https://helpx.adobe.com/lightroom-classic/desktop/technical-support/technical-issues/miscellaneous-issues/color-faq.html).
+- [Fujifilm X-T5: handling memory cards](https://fujifilm-dsc.com/en/manual/x-t5/first_step/insert_card/) and [formatting](https://fujifilm-dsc.com/en/manual/x-t5/menu_setup/user_setting/).

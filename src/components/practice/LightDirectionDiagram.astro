@@ -1,0 +1,123 @@
+---
+import { practiceUiCopy, type PracticeLocale } from '@data/practice';
+interface Props {
+  locale: PracticeLocale;
+  direction: 'front' | 'side';
+  prefix: string;
+}
+const { locale, direction, prefix } = Astro.props;
+const ui = practiceUiCopy[locale];
+const front = direction === 'front';
+// Same 90-unit source distance; camera and subject stay fixed in both views.
+const lamp = front ? { x: 180, y: 200 } : { x: 90, y: 110 };
+const shadow = front ? { x: 180, y: 63 } : { x: 227, y: 110 };
+---
+
+<svg
+  viewBox="0 0 360 288"
+  role="img"
+  aria-labelledby={`${prefix}-title ${prefix}-desc`}
+  data-lighting-diagram={direction}
+  class="h-auto w-full"
+  style="background:#171717;border-radius:12px"
+>
+  <title id={`${prefix}-title`}>{front ? ui.modelFront : ui.modelSide}</title>
+  <desc id={`${prefix}-desc`}>
+    {front ? ui.frontDescription : ui.sideDescription} {ui.view}.
+  </desc>
+  <text x="16" y="25" fill="#d4d4d4" font-size="12">
+    {ui.view}
+  </text>
+  <ellipse
+    data-light-shadow
+    cx={shadow.x}
+    cy={shadow.y}
+    rx={front ? 25 : 35}
+    ry={front ? 30 : 23}
+    fill="#78716c"
+  />
+  <text
+    x={front ? 221 : 273}
+    y={front ? 62 : 148}
+    fill="#d4d4d4"
+    font-size="11"
+  >
+    {ui.shadow}
+  </text>
+  <path
+    d={
+      front
+        ? 'M170 177 L174 147 M190 177 L186 147'
+        : 'M114 102 L142 106 M114 118 L142 114'
+    }
+    stroke="#fbbf24"
+    stroke-width="3"
+    marker-end={`url(#${prefix}-arrow)`}
+  />
+  <defs>
+    <marker
+      id={`${prefix}-arrow`}
+      markerWidth="6"
+      markerHeight="6"
+      refX="5"
+      refY="3"
+      orient="auto"
+    >
+      <path d="M0 0 L6 3 L0 6 Z" fill="#fbbf24" />
+    </marker>
+  </defs>
+  <circle data-light-source cx={lamp.x} cy={lamp.y} r="18" fill="#fbbf24" />
+  <text
+    x={lamp.x}
+    y={lamp.y + 5}
+    text-anchor="middle"
+    font-size="14"
+    fill="#422006"
+  >
+    ✦
+  </text>
+  <text
+    x={lamp.x}
+    y={lamp.y + 34}
+    text-anchor="middle"
+    fill="#d4d4d4"
+    font-size="10"
+  >
+    {ui.lamp}
+  </text>
+  <circle
+    data-light-object
+    cx="180"
+    cy="110"
+    r="31"
+    fill="#a8a29e"
+    stroke="#e7e5e4"
+    stroke-width="2"
+  />
+  <path
+    d={
+      front
+        ? 'M149 110 A31 31 0 0 0 211 110 Z'
+        : 'M180 79 A31 31 0 0 0 180 141 Z'
+    }
+    fill="#fbbf24"
+    opacity=".85"
+  />
+  <text
+    x="180"
+    y="114"
+    text-anchor="middle"
+    fill="#292524"
+    font-size="11"
+    font-weight="700"
+  >
+    {ui.object}
+  </text>
+  <g data-light-camera data-x="180" data-y="250">
+    <rect x="157" y="250" width="46" height="22" rx="4" fill="#e7e5e4" />
+    <path d="M169 250 L180 238 L191 250 Z" fill="#e7e5e4" />
+  </g>
+  <text x="212" y="265" fill="#d4d4d4" font-size="11">
+    {ui.camera}
+  </text>
+</svg>

@@ -1,0 +1,50 @@
+
+> photography-field-guide@0.0.1 test:unit /Users/ruoyu/photography-field-guide
+> node --test tests/photography/*.test.ts tests/practice/*.test.ts
+
+✔ identical sensor dimensions produce a crop factor of 1 (0.403916ms)
+✔ nominal APS-C 16 mm is approximately 24 mm equivalent (0.072958ms)
+✔ real sensor dimensions differ from the nominal 1.5 shortcut (0.072875ms)
+✔ diagonal equivalence does not guarantee both axes with different aspect ratios (0.092167ms)
+✔ distant field width keeps every length in the same unit (0.074958ms)
+✔ restricted fractions are parsed without evaluating expressions (0.268084ms)
+✔ invalid and extreme inputs return field errors instead of results (0.078709ms)
+✔ legal input boundaries remain finite (0.053292ms)
+✔ f/2.8 to f/4 is approximately minus one stop of sensor exposure (0.4265ms)
+✔ doubling shutter time adds one stop of sensor exposure (0.071375ms)
+✔ doubling only ISO leaves sensor exposure unchanged and adds nominal output (0.06475ms)
+✔ aperture, shutter and ISO contributions combine independently (0.055875ms)
+✔ zero, negative, non-finite and out-of-range values return field errors (0.09675ms)
+✔ all supported exposure boundaries produce finite comparisons (0.053792ms)
+✔ signed formats positive, negative, and zero values consistently (0.325583ms)
+✔ signed never displays a rounded negative zero (0.050166ms)
+✔ shutter display round-trips seconds without rounding to a different exposure (0.318208ms)
+✔ repeated one-third-stop shutter changes keep progressing through sub-second times (0.148708ms)
+✔ empty and missing storage start without any completed mission (0.762125ms)
+✔ valid progress round-trips with stable mission and step IDs (0.322625ms)
+✔ corrupt JSON and old root versions reset safely (0.086958ms)
+✔ unknown IDs, invalid steps, and forged answer flags are not trusted (0.084125ms)
+✔ an outdated mission resets only that mission (0.060542ms)
+✔ wrong answers stay retryable and revealing an answer is not mastery (0.067333ms)
+✔ read and write failures retain an in-memory task (0.079625ms)
+✔ clearing practice removes only this project key (0.094708ms)
+✔ single-mission reset leaves unrelated preferences and other data intact (0.085875ms)
+✔ framing progress is validated, restored, and reset independently (0.143916ms)
+✔ story progress restores three actions and resets without removing C1 or C2 (0.138917ms)
+✔ photo review restores three actions and resets without removing C1–C3 (0.154625ms)
+✔ interleaved stores preserve other missions and refresh their snapshots (0.094458ms)
+✔ a stale store cannot resurrect unrelated missions after clear-all (0.081916ms)
+✔ same-mission operations use the latest state and the last choice wins (0.073958ms)
+✔ retry preserves an explicit in-progress marker without a selected answer (0.06575ms)
+✔ a failed write keeps later operations in memory instead of reloading stale data (0.0765ms)
+✔ an unreadable saved state is never overwritten by a later task update (0.050209ms)
+✔ failed clear-all remains empty in memory and reports unavailable storage (0.056583ms)
+✔ C5 restores its own actions without saving file information and resets independently of C4 (0.094459ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 84.197042

@@ -1,0 +1,61 @@
+OK proportional sensor diagram and home page at 1440 px / 390 px
+OK English → Chinese language navigation
+OK search "传感器" → /zh-cn/learn/sensor-lens/sensor-formats/
+OK search "ISO" → /learn/exposure/exposure-triangle/
+OK search "aperture priority" → /learn/exposure/pasm-modes/
+OK search "景深" → /zh-cn/learn/sensor-lens/depth-of-field/
+OK search "曝光补偿" → /zh-cn/learn/exposure/exposure-compensation/
+OK search "自动对焦" → /zh-cn/learn/image-quality/autofocus/
+OK search "白平衡" → /zh-cn/learn/image-quality/white-balance/
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: No search result for 胶片模拟 points to /zh-cn/learn/image-quality/film-simulations/ after loading up to four pages: [{"text":"从这里开始","href":"/zh-cn/learn/"},{"text":"3 · 选择色彩与机内呈现","href":"/zh-cn/learn/#3--%E9%80%89%E6%8B%A9%E8%89%B2%E5%BD%A9%E4%B8%8E%E6%9C%BA%E5%86%85%E5%91%88%E7%8E%B0"},{"text":"白平衡与色温","href":"/zh-cn/learn/image-quality/white-balance/"},{"text":"继续学习","href":"/zh-cn/learn/image-quality/white-balance/#%E7%BB%A7%E7%BB%AD%E5%AD%A6%E4%B9%A0"}]. Search UI: 清除搜索
+
+找到 4 条与“胶片模拟”相关的结果
+
+胶片模拟、配方与 RAW 显影
+
+胶片模拟、配方与 RAW 显影
+
+胶片模拟、配方与 RAW 显影. 为什么两张光圈、
+
+内置选项到底做什么？
+
+REALA ACE、黑白选项等胶片模拟。说明书描述
+
+常见误区
+
+. “胶片模拟改变到达传感器的实际光线。
+
+RAW、JPEG、HEIF 与 EXIF
+
+继续学习
+
+继续学习. 继续阅读白平衡与色温和胶片模拟、
+
+从这里开始
+
+3 · 选择色彩与机内呈现
+
+白平衡补偿与曝光亮度。 胶片模拟、配方与 RAW
+
+白平衡与色温
+
+继续学习
+
+分清亮度决策。继续阅读胶片模拟、配方与 RAW
+
+Search_aliases: 白 平衡
+    at search (file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:421:12)
+    at async file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:501:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

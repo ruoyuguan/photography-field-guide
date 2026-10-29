@@ -1,0 +1,17 @@
+src/copy/learning-starts.ts 41ms (unchanged)
+src/components/learn/LearningStarts.astro 22ms (unchanged)
+src/utils/practice/suggestion.ts 6ms (unchanged)
+tests/practice/suggestion.test.ts 11ms (unchanged)
+src/copy/practice-paths.ts 3ms
+src/components/practice/PracticeOverview.astro 4ms
+src/components/practice/MissionNavigation.astro 4ms
+src/views/HomeView.astro 6ms
+src/copy/en.ts 7ms (unchanged)
+src/copy/zh-cn.ts 2ms (unchanged)
+src/content/docs/learn/index.mdx 25ms (unchanged)
+src/content/docs/zh-cn/learn/index.mdx 11ms (unchanged)
+src/views/PracticeIndexView.astro 4ms
+src/components/practice/practice-controller.ts 16ms
+src/data_files/practice.ts 7ms (unchanged)
+src/components/practice/PracticeMission.astro 15ms
+src/components/practice/LightweightEditingPractice.astro 8ms
