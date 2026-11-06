@@ -90,6 +90,22 @@ const EXPECTATIONS = {
     '理解你的相机。',
     '10 个 SVG 单位代表 1 mm',
   ],
+  '/cameras/': [
+    '60-second classification challenge',
+    'classification-challenge-format-and-viewfinder',
+    `href="${withBase('/glossary/dslr/')}"`,
+  ],
+  '/zh-cn/cameras/': [
+    '60 秒分类挑战',
+    'classification-challenge-fixed-lens-and-focus',
+    `href="${withBase('/zh-cn/glossary/fixed-lens/')}"`,
+  ],
+  '/glossary/dslr/': [
+    `href="${withBase('/cameras/#classification-challenge-format-and-viewfinder')}"`,
+  ],
+  '/zh-cn/glossary/fixed-lens/': [
+    `href="${withBase('/zh-cn/cameras/#classification-challenge-fixed-lens-and-focus')}"`,
+  ],
   '/learn/': [
     '<html lang="en"',
     'Start Here',

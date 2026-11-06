@@ -4,7 +4,7 @@
 
 ## 目录与版本
 
-开发目录为 `/Users/ruoyu/photography-field-guide`。相机分类首批以 `de29771` 提交并推送至 `origin/main`，随后由 [GitHub Pages 工作流 #3](https://github.com/ruoyuguan/photography-field-guide/actions/runs/42144652423) 发布。第二批源码归入 `main`。公网发布使用独立的手动流程。更早的交接基线为 `95f19f4`，MVP 提交为 `e6087c5`。
+开发目录为 `/Users/ruoyu/photography-field-guide`。相机分类首批以 `de29771` 提交并推送至 `origin/main`，随后由 [GitHub Pages 工作流 #3](https://github.com/ruoyuguan/photography-field-guide/actions/runs/42144652423) 发布。第二批源码以 `93d0ed3` 推送至 `origin/main`。公网发布使用独立的手动流程。更早的交接基线为 `95f19f4`，MVP 提交为 `e6087c5`。
 
 Pages 工作流限定摄影仓库的 `main` 分支，采用手动触发。首发步骤见 [MVP 发布说明](MVP_RELEASE.md)。
 
@@ -35,6 +35,12 @@ Pages 工作流限定摄影仓库的 `main` 分支，采用手动触发。首发
 - 对照区与器材档案双向链接。固定镜头、定焦、无反、单反、CCD 和 CMOS 等词条连接到对应例子。固定镜头可记录定焦或变焦范围，只有可换镜头机身参与卡口兼容校验。
 
 本地验收通过 99 项单元测试。根路径和 `/photography-field-guide` 各构建 124 页，`test:smoke` 和 `test:build` 均通过。类型检查为 0 errors、0 warnings、5 个既有 hints。根路径整站 Chrome 检查无页面异常，包含双语案例与 CCD 词条往返，以及两个中文档案在 390 × 844、683 × 384 和 320 × 640 视口下的横向溢出检查。
+
+## 60 秒分类挑战
+
+中英文 `/cameras/` 的三机对照下方新增两道题，分别区分 APS-C 与取景方式、固定镜头与自动对焦。每个选项有独立解释，可单题重试。相关词条通过固定锚点返回原题。作答只存在于当前页面；无脚本时可阅读选项、展开解释并往返词条。
+
+分类 Chrome 专项核对了两种语言的六个选项、单题重试、原题定位和键盘焦点、无脚本的答案与往返，以及 390 × 844 中文深色触控下的反馈和重试。根路径和项目子路径各构建 124 页，`test:smoke`、`test:build` 和 99 项单测通过。根路径整站 Chrome 的页面断言均通过，临时预览和浏览器已退出；测试运行器未自行退出，结束进程后命令返回 143。读者试用见 [试用指南](READER_TRIAL_GUIDE.md)。
 
 ## 练习与进度
 

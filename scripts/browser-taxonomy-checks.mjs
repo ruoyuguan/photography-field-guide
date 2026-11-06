@@ -59,7 +59,7 @@ async function capture(call, evaluate, name, selector) {
   );
 }
 
-/** Root-path browser regression for the first taxonomy slice; not reader research. */
+/** Root-path browser regression for camera taxonomy and its linked lessons. */
 export async function checkTaxonomy({
   call,
   click,
@@ -368,6 +368,104 @@ export async function checkTaxonomy({
     }
     console.log('OK bilingual three-camera comparison and CCD example links');
 
+    const challengeQuestions = [
+      { id: 'format-and-viewfinder', term: 'dslr', correct: 3 },
+      { id: 'fixed-lens-and-focus', term: 'fixed-lens', correct: 1 },
+    ];
+    const headingId = id => `classification-challenge-${id}`;
+    const questionSelector = id =>
+      `[data-taxonomy-question]:has(#${headingId(id)})`;
+    const formatQuestion = questionSelector(challengeQuestions[0].id);
+    const lensQuestion = questionSelector(challengeQuestions[1].id);
+    for (const prefix of ['', '/zh-cn']) {
+      await navigate(`${prefix}/cameras/`);
+      await until(
+        `document.querySelector('${formatQuestion} [data-taxonomy-answer-controls]').hidden === false`
+      );
+      assert.equal(
+        await evaluate(
+          `document.querySelector('#camera-examples').nextElementSibling.id`
+        ),
+        'classification-challenge'
+      );
+
+      const correct = prefix ? '答对了。' : 'Correct.';
+      const incorrect = prefix ? '再想想。' : 'Try again.';
+      for (const item of challengeQuestions) {
+        const question = questionSelector(item.id);
+        assert.equal(
+          await evaluate(
+            `document.querySelector('${question} [data-static-choices]').hidden`
+          ),
+          true
+        );
+        const responses = new Set();
+        for (const position of [1, 2, 3]) {
+          const choice = `${question} [data-taxonomy-choice]:nth-child(${position})`;
+          await key(choice, ' ', 'Space', 32);
+          const response = await evaluate(`(() => ({
+            feedback: document.querySelector('${question} [role="status"]').textContent,
+            selected: document.querySelector('${choice}').getAttribute('aria-pressed'),
+            selectedCount: document.querySelectorAll('${question} [aria-pressed="true"]').length,
+          }))()`);
+          assert.ok(
+            response.feedback.startsWith(
+              position === item.correct ? correct : incorrect
+            ),
+            `${prefix || 'en'} ${item.id} choice ${position}: ${JSON.stringify(response)}`
+          );
+          assert.ok(response.feedback.length > 40);
+          assert.equal(response.selected, 'true');
+          assert.equal(response.selectedCount, 1);
+          responses.add(response.feedback);
+        }
+        assert.equal(responses.size, 3);
+      }
+
+      const lensFeedback = await evaluate(
+        `document.querySelector('${lensQuestion} [data-taxonomy-feedback]').textContent`
+      );
+      await key(`${formatQuestion} [data-taxonomy-retry]`, ' ', 'Space', 32);
+      assert.ok(
+        await evaluate(`document.activeElement === document.querySelector('${formatQuestion} [data-taxonomy-choice]') &&
+        document.querySelector('${formatQuestion} [data-taxonomy-feedback]').textContent === '' &&
+        document.querySelector('${formatQuestion} [data-taxonomy-retry]').hidden &&
+        !document.querySelector('${formatQuestion} [aria-pressed="true"]')`)
+      );
+      assert.equal(
+        await evaluate(
+          `document.querySelector('${lensQuestion} [data-taxonomy-feedback]').textContent`
+        ),
+        lensFeedback
+      );
+      await key(
+        `${formatQuestion} [data-taxonomy-choice]:nth-child(3)`,
+        ' ',
+        'Space',
+        32
+      );
+      assert.ok(
+        await evaluate(
+          `document.querySelector('${formatQuestion} [data-taxonomy-feedback]').textContent.startsWith(${JSON.stringify(correct)})`
+        )
+      );
+
+      for (const { id, term } of challengeQuestions) {
+        await enter(`${questionSelector(id)} [data-taxonomy-reading]`);
+        await atCaseLink(`${prefix}/glossary/${term}/`);
+        await enter('[data-taxonomy-return]');
+        await atCaseLink(`${prefix}/cameras/#${headingId(id)}`);
+        await until(`document.activeElement.id === '${headingId(id)}'`);
+        assert.ok(
+          await evaluate(`document.activeElement.getBoundingClientRect().top >
+          (document.querySelector('header.sticky')?.getBoundingClientRect().bottom ?? 0)`)
+        );
+      }
+    }
+    console.log(
+      'OK bilingual classification questions, all six option explanations, independent retry and keyboard return to each question'
+    );
+
     await search('/learn/', 'DSLR', '/glossary/dslr/');
     await search('/zh-cn/learn/', '单反', '/zh-cn/glossary/slr/');
     await search(
@@ -514,6 +612,23 @@ export async function checkTaxonomy({
         ),
         true
       );
+      for (const { id, term } of challengeQuestions) {
+        const question = questionSelector(id);
+        assert.ok(
+          await evaluate(`document.querySelector('${question} [data-taxonomy-answer-controls]').hidden &&
+          !document.querySelector('${question} [data-static-choices]').hidden &&
+          document.querySelectorAll('${question} [data-static-choices] li').length === 3`)
+        );
+        await toggleSummary(`${question} [data-taxonomy-answer] > summary`);
+        assert.ok(
+          await evaluate(`document.querySelector('${question} [data-taxonomy-answer]').open &&
+          document.querySelector('${question} [data-taxonomy-answer] p').textContent.trim().length > 40`)
+        );
+        await enter(`${question} [data-taxonomy-reading]`);
+        await atCaseLink(`${prefix}/glossary/${term}/`);
+        await enter('[data-taxonomy-return]');
+        await atCaseLink(`${prefix}/cameras/#${headingId(id)}`);
+      }
       await navigate(`${prefix}/tools/format-comparison/`);
       assert.equal(
         await evaluate(
@@ -562,7 +677,7 @@ export async function checkTaxonomy({
       );
     }
     console.log(
-      'OK no-JavaScript taxonomy disclosure, physical dimensions/default comparison and optical exposition'
+      'OK no-JavaScript taxonomy disclosure, challenge answers and return links, physical dimensions and optical exposition'
     );
 
     await call('Emulation.setScriptExecutionDisabled', { value: false });
@@ -581,8 +696,39 @@ export async function checkTaxonomy({
     await until(
       `document.querySelector('[data-taxonomy-dimension] details').open === true`
     );
+    await until(
+      `document.querySelector('${lensQuestion} [data-taxonomy-answer-controls]').hidden === false`
+    );
+    await tap(
+      call,
+      evaluate,
+      `${lensQuestion} [data-taxonomy-choice]:nth-child(2)`
+    );
+    await until(
+      `document.querySelector('${lensQuestion} [data-taxonomy-feedback]').textContent.startsWith('再想想。')`
+    );
+    assert.ok(
+      await evaluate(`(() => {
+      const rect = document.querySelector('${lensQuestion} [data-taxonomy-feedback]').getBoundingClientRect();
+      return rect.top >= 0 && rect.bottom <= innerHeight;
+    })()`)
+    );
+    await noOverflow('/zh-cn/cameras/ classification challenge at 390x844');
+    await until(`document.documentElement.classList.contains('dark')`);
+    await capture(
+      call,
+      evaluate,
+      'classification-challenge-zh-dark-390x844',
+      lensQuestion
+    );
+    await tap(call, evaluate, `${lensQuestion} [data-taxonomy-retry]`);
+    await until(
+      `document.querySelector('${lensQuestion} [data-taxonomy-feedback]').textContent === ''`
+    );
     await call('Emulation.setTouchEmulationEnabled', { enabled: false });
-    console.log('OK native touch disclosure at 390x844');
+    console.log(
+      'OK native touch disclosure, challenge feedback and retry at 390x844'
+    );
   } finally {
     await call('Emulation.setScriptExecutionDisabled', { value: false });
     await call('Emulation.setTouchEmulationEnabled', { enabled: false });

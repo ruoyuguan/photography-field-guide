@@ -1,0 +1,159 @@
+---
+import {
+  taxonomyChallengeCopy,
+  taxonomyChallengeQuestions,
+} from '@copy/taxonomy-challenge';
+import { localePath, type MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+}
+
+const { locale } = Astro.props;
+const t = taxonomyChallengeCopy[locale];
+---
+
+<section
+  id="classification-challenge"
+  aria-labelledby="classification-challenge-title"
+  class="mt-10 scroll-mt-28 rounded-2xl border border-neutral-300 bg-neutral-100 p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900"
+>
+  <h2 id="classification-challenge-title" class="text-xl font-bold">
+    {t.title}
+  </h2>
+  <p class="mt-2 max-w-3xl leading-7 text-neutral-700 dark:text-neutral-300">
+    {t.intro}
+  </p>
+  <div class="mt-5 space-y-4">
+    {taxonomyChallengeQuestions.map(({ id, termId, correctChoice }, index) => {
+      const question = t.questions[id];
+      const headingId = `classification-challenge-${id}`;
+      return (
+        <article
+          data-taxonomy-question
+          data-correct-label={t.correct}
+          data-incorrect-label={t.incorrect}
+          class="rounded-xl border border-neutral-300 bg-white p-4 sm:p-5 dark:border-neutral-700 dark:bg-neutral-950"
+        >
+          <h3
+            id={headingId}
+            tabindex="-1"
+            class="scroll-mt-28 text-base font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600 dark:focus-visible:outline-amber-400"
+          >
+            {index + 1}. {question.prompt}
+          </h3>
+          <ol
+            data-static-choices
+            class="mt-3 list-decimal space-y-2 ps-5 text-sm leading-6 text-neutral-700 dark:text-neutral-300"
+          >
+            {question.choices.map(choice => (
+              <li>{choice.label}</li>
+            ))}
+          </ol>
+          <div
+            data-taxonomy-answer-controls
+            data-pagefind-ignore
+            hidden
+            class="mt-3"
+          >
+            <div role="group" aria-labelledby={headingId} class="space-y-2">
+              {question.choices.map((choice, choiceIndex) => (
+                <button
+                  type="button"
+                  aria-pressed="false"
+                  data-taxonomy-choice
+                  data-correct={
+                    choiceIndex === correctChoice ? 'true' : 'false'
+                  }
+                  data-feedback={choice.feedback}
+                  class="block min-h-11 w-full rounded-lg border border-neutral-300 px-3 py-2 text-start text-sm leading-6 aria-pressed:border-amber-600 aria-pressed:bg-amber-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 dark:border-neutral-600 dark:aria-pressed:border-amber-400 dark:aria-pressed:bg-amber-400/10 dark:focus-visible:outline-amber-400"
+                >
+                  {choice.label}
+                </button>
+              ))}
+            </div>
+            <p
+              data-taxonomy-feedback
+              role="status"
+              aria-atomic="true"
+              class="mt-3 rounded-lg bg-neutral-100 px-3 py-2 text-sm leading-6 empty:m-0 empty:p-0 dark:bg-neutral-800"
+            ></p>
+            <button
+              type="button"
+              data-taxonomy-retry
+              hidden
+              class="mt-2 min-h-11 rounded-lg border border-neutral-400 px-3 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 dark:border-neutral-600 dark:focus-visible:outline-amber-400"
+            >
+              {t.retry}
+            </button>
+          </div>
+          <details data-taxonomy-answer class="mt-3 text-sm leading-6">
+            <summary class="min-h-11 cursor-pointer py-2 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 dark:focus-visible:outline-amber-400">
+              {t.showAnswer}
+            </summary>
+            <p class="mt-1 text-neutral-700 dark:text-neutral-300">
+              {question.choices[correctChoice].feedback}
+            </p>
+          </details>
+          <a
+            data-taxonomy-reading
+            class="mt-2 inline-block rounded-sm py-2 text-sm font-semibold text-amber-800 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 dark:text-amber-300 dark:focus-visible:outline-amber-400"
+            href={localePath(locale, `/glossary/${termId}/`)}
+          >
+            {question.readMore} →
+          </a>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<script>
+  for (const question of document.querySelectorAll<HTMLElement>(
+    '[data-taxonomy-question]'
+  )) {
+    const controls = question.querySelector<HTMLElement>(
+      '[data-taxonomy-answer-controls]'
+    );
+    const staticChoices = question.querySelector<HTMLElement>(
+      '[data-static-choices]'
+    );
+    const choices = Array.from(
+      question.querySelectorAll<HTMLButtonElement>('[data-taxonomy-choice]')
+    );
+    const firstChoice = choices[0];
+    const feedback = question.querySelector<HTMLElement>(
+      '[data-taxonomy-feedback]'
+    );
+    const retry = question.querySelector<HTMLButtonElement>(
+      '[data-taxonomy-retry]'
+    );
+    if (!controls || !staticChoices || !firstChoice || !feedback || !retry)
+      continue;
+
+    for (const choice of choices) {
+      choice.addEventListener('click', () => {
+        for (const button of choices) {
+          button.setAttribute('aria-pressed', String(button === choice));
+        }
+        const result =
+          choice.dataset.correct === 'true'
+            ? question.dataset.correctLabel
+            : question.dataset.incorrectLabel;
+        feedback.textContent = `${result} ${choice.dataset.feedback}`;
+        retry.hidden = false;
+      });
+    }
+
+    retry.addEventListener('click', () => {
+      for (const choice of choices)
+        choice.setAttribute('aria-pressed', 'false');
+      feedback.textContent = '';
+      retry.hidden = true;
+      firstChoice.focus();
+    });
+
+    controls.hidden = false;
+    staticChoices.hidden = true;
+  }
+</script>

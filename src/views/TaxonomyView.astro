@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import MainLayout from '@layouts/MainLayout.astro';
 import PageHeader from '@components/directory/PageHeader.astro';
+import ClassificationChallenge from '@components/directory/ClassificationChallenge.astro';
 import SourceLinks from '@components/directory/SourceLinks.astro';
 import { taxonomyCopy } from '@copy/taxonomy';
 import { getArticleLinks } from '@utils/catalog';
@@ -140,6 +141,7 @@ const cameraExamples = exampleIds.flatMap(id =>
             ))}
           </div>
         </section>
+        <ClassificationChallenge locale={locale} />
         <h2 class="mt-12 text-2xl font-bold">{t.dimensions}</h2>
         <p class="mt-3 max-w-3xl leading-7 text-neutral-600 dark:text-neutral-400">
           {t.scope}
