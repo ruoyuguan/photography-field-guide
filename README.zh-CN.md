@@ -23,12 +23,12 @@ AI 助手为本项目的开发提供支持。项目负责人主导工作，并�
 - 按学习意图提供共享起点链接、精简的六任务路线图、基于浏览器进度的建议与情境化返回入口；所有任务均可自由进入。
 - 六个双语实践任务：光线方向、主体与背景取景、用三张照片讲述街区故事、照片筛选与复盘、安全备份与导出，以及轻量后期。任务包括预测、解释性反馈、本地观察或操作、自我复盘和无需账号的浏览器进度，不进行审美评分。C5 与 C6 相连；后期练习分别比较亮度、白平衡与裁切，并允许保留未修改的最终版本。
 - 三个互动工具分别解释画幅系数与等效焦距、曝光档位，以及不同画幅的物理尺寸。
-- 相机分类总览介绍 16 个维度，提供 7 个维度详情、X-T5／GFX100RF／D200 案例对照和原创取景光路图的入口。
+- 相机分类总览介绍 16 个维度，提供 7 个维度详情、X-T5／GFX100RF／D200 案例对照、Pentax 17 半格示例和原创取景光路图的入口。
 - 可搜索的双语术语词典收录 42 个术语，其中 8 个有独立详情页。
 - 相机与镜头指南、三个范围明确的外部样片链接，以及 13 个精选资源。
 - 本地化导航、语言切换、文档搜索、404 页面、元数据，以及根路径／子路径部署检查。
 
-当前源码包含 78 条结构化记录和 124 个 HTML 路由。相机分类首批已发布至 [GitHub Pages](https://ruoyuguan.github.io/photography-field-guide/zh-cn/cameras/)。参见 [当前项目状态](docs/STATUS.md)、[相机分类覆盖计划](docs/CAMERA_TAXONOMY_PLAN.md) 与 [分类首批验收](docs/CAMERA_TAXONOMY_REVIEW.md)。既有 [C6 集成审查](docs/C6_INTEGRATION_REVIEW.md) 记录当时的检查。
+当前源码包含 79 条结构化记录和 128 个 HTML 路由。相机分类与分类挑战已发布至 [GitHub Pages](https://ruoyuguan.github.io/photography-field-guide/zh-cn/cameras/)。参见 [当前项目状态](docs/STATUS.md)、[相机分类覆盖计划](docs/CAMERA_TAXONOMY_PLAN.md) 与 [分类首批验收](docs/CAMERA_TAXONOMY_REVIEW.md)。既有 [C6 集成审查](docs/C6_INTEGRATION_REVIEW.md) 记录当时的检查。
 
 ### 路由
 

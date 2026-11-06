@@ -2,7 +2,11 @@ import { tap } from './browser-touch.mjs';
 import assert from 'node:assert/strict';
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { FORMAT_PRESETS } from '../src/utils/photography/format-comparison.ts';
+import {
+  FORMAT_PRESETS,
+  HALF_FRAME_COMPARISON_PATH,
+  findFormat,
+} from '../src/utils/photography/format-comparison.ts';
 
 const closeTo = (actual, expected, tolerance = 1e-8) =>
   assert.ok(
@@ -466,6 +470,62 @@ export async function checkTaxonomy({
       'OK bilingual classification questions, all six option explanations, independent retry and keyboard return to each question'
     );
 
+    const halfFrame = findFormat('film-half-frame');
+    const apsC = findFormat('aps-c');
+    assert.ok(halfFrame && apsC);
+    const assertInitialPair = () =>
+      evaluate(`(() => {
+      const dimensions = side => document.querySelector('[data-format-result="' + side + '"] [data-format-metric="dimensions"]').textContent.trim();
+      const rect = side => {
+        const element = document.querySelector('[data-format-rect="' + side + '"]');
+        return Number(element.getAttribute('width')) / Number(element.getAttribute('height'));
+      };
+      return dimensions('a') === '17 × 24 mm' && dimensions('b') === '23.5 × 15.7 mm' &&
+        rect('a') < 1 && rect('b') > 1 && document.querySelector('[data-format-ratio]').textContent.trim() === '0.904';
+    })()`);
+    for (const prefix of ['', '/zh-cn']) {
+      const gearLink = `${prefix}/gear/pentax-17/#format-example`;
+      await navigate(`${prefix}/cameras/`);
+      await enter(
+        `section:has(#film-half-frame-example) a[href="${gearLink}"]`
+      );
+      await atCaseLink(gearLink);
+      assert.deepEqual(
+        await evaluate(
+          `[...document.querySelectorAll('section[aria-labelledby="gear-specifications"] dt')].map(element => element.textContent.trim())`
+        ),
+        prefix
+          ? ['胶片曝光画面', '一体式镜头', '胶卷规格']
+          : ['Film image area', 'Built-in lens', 'Film stock']
+      );
+      await enter(`main a[href="${prefix}${HALF_FRAME_COMPARISON_PATH}"]`);
+      await atCaseLink(`${prefix}${HALF_FRAME_COMPARISON_PATH}`);
+      await until(
+        `document.querySelector('[data-format-tool]').dataset.initialized === 'true'`
+      );
+      assert.ok(await assertInitialPair());
+      assert.deepEqual(
+        await evaluate(
+          `[...document.querySelectorAll('[data-format-select]')].map(select => select.value)`
+        ),
+        ['film-half-frame', 'aps-c']
+      );
+      await assertFormat(halfFrame, apsC);
+      await enter(`main a[href="${gearLink}"]`);
+      await atCaseLink(gearLink);
+      await until(`document.activeElement.id === 'format-example'`);
+    }
+    await navigate(HALF_FRAME_COMPARISON_PATH);
+    await click('.language-picker summary');
+    await click(
+      `.language-picker a[href="/zh-cn${HALF_FRAME_COMPARISON_PATH}"]`
+    );
+    await atCaseLink(`/zh-cn${HALF_FRAME_COMPARISON_PATH}`);
+    assert.ok(await assertInitialPair());
+    console.log(
+      'OK bilingual Pentax case, same-scale preset, localized round trip and deep-language switch'
+    );
+
     await search('/learn/', 'DSLR', '/glossary/dslr/');
     await search('/zh-cn/learn/', '单反', '/zh-cn/glossary/slr/');
     await search(
@@ -494,7 +554,7 @@ export async function checkTaxonomy({
       await noOverflow(`${prefix}/tools/format-comparison/`);
     }
     console.log(
-      'OK native keyboard format selection and all36 pairs in both languages: physical dimensions, area, crop factor and two visible outlines at one SVG scale'
+      `OK native keyboard format selection and all ${FORMAT_PRESETS.length ** 2} pairs in both languages: physical dimensions, area, crop factor and two visible outlines at one SVG scale`
     );
 
     for (const prefix of ['', '/zh-cn']) {
@@ -575,6 +635,8 @@ export async function checkTaxonomy({
         '/zh-cn/glossary/prime-lens/',
         '/zh-cn/gear/fujifilm-gfx100rf/',
         '/zh-cn/gear/nikon-d200/',
+        '/zh-cn/gear/pentax-17/',
+        `/zh-cn${HALF_FRAME_COMPARISON_PATH}`,
         '/zh-cn/tools/format-comparison/',
         '/zh-cn/learn/sensor-lens/camera-viewfinding/',
       ]) {
@@ -583,6 +645,16 @@ export async function checkTaxonomy({
       }
     }
     await viewport(390, 844);
+    await navigate(`/zh-cn${HALF_FRAME_COMPARISON_PATH}`);
+    await until(`document.documentElement.classList.contains('dark') &&
+      document.querySelector('[data-format-tool]').dataset.initialized === 'true'`);
+    assert.ok(await assertInitialPair());
+    await capture(
+      call,
+      evaluate,
+      'pentax-half-frame-zh-dark-390x844',
+      '[data-format-controls]'
+    );
     await navigate('/zh-cn/learn/sensor-lens/camera-viewfinding/');
     await until(`document.documentElement.dataset.theme === 'dark'`);
     await capture(
@@ -665,6 +737,16 @@ export async function checkTaxonomy({
         true
       );
       await noOverflow(`${prefix}/tools/format-comparison/ without JavaScript`);
+      await navigate(`${prefix}${HALF_FRAME_COMPARISON_PATH}`);
+      assert.equal(
+        await evaluate(
+          `document.querySelector('[data-format-controls]').hidden`
+        ),
+        true
+      );
+      assert.ok(await assertInitialPair());
+      await enter(`main a[href="${prefix}/gear/pentax-17/#format-example"]`);
+      await atCaseLink(`${prefix}/gear/pentax-17/#format-example`);
       await navigate(`${prefix}/learn/sensor-lens/camera-viewfinding/`);
       await toggleSummary(
         'details:has([data-optical-state="exposure"]) > summary'

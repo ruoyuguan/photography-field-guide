@@ -1,0 +1,135 @@
+{
+  "id": "pentax-17",
+  "brand": "PENTAX",
+  "model": "17",
+  "medium": "film",
+  "filmFrame": {
+    "formatId": "film-half-frame",
+    "widthMm": 17,
+    "heightMm": 24,
+    "stock": {
+      "en": "35 mm film (135)",
+      "zh-cn": "35 mm 胶卷（135）"
+    }
+  },
+  "lensSystem": {
+    "type": "fixed",
+    "focalLengthMm": {
+      "min": 25,
+      "max": 25
+    },
+    "maximumAperture": {
+      "wide": 3.5,
+      "tele": 3.5
+    }
+  },
+  "description": {
+    "en": "A 35 mm half-frame film camera with a built-in prime lens, an optical bright-frame viewfinder and manually selected focus zones.",
+    "zh-cn": "一台使用 35 mm 胶卷的半格相机，配备内置定焦镜头和亮框光学取景器，拍摄时按距离手动选对焦档。"
+  },
+  "lessonNotes": {
+    "en": [
+      "Hold the camera horizontally in its usual shooting position and the film records a vertical 17 × 24 mm image. The same type of 35 mm film can also be used in cameras that expose a 36 × 24 mm frame. “35 mm” names the film size and “half-frame” describes the area used for each picture.",
+      "The X-T5 uses a 23.5 × 15.7 mm APS-C sensor, with an area of 368.95 mm². The Pentax 17 exposes 408 mm² of film. The comparison shows physical size and shape. Field of view also depends on focal length and which dimension you compare. The lens, recording medium and processing all affect image quality.",
+      "The built-in lens stays attached and has one focal length, 25 mm. In Standard mode, estimate the subject distance and select a focus zone. The GFX100RF also has a built-in prime lens and offers autofocus."
+    ],
+    "zh-cn": [
+      "正常横持机身时，胶片记录的是一幅宽 17 mm、高 24 mm 的竖幅照片。同一种 35 mm 胶卷也能用于拍摄 36 × 24 mm 标准画幅的相机。「35 mm」说的是胶卷规格，「半格」说的是每张照片使用的曝光区域。",
+      "X-T5 使用宽 23.5 mm、高 15.7 mm 的 APS-C 传感器，面积为 368.95 mm²。Pentax 17 的胶片曝光面积为 408 mm²。对照图呈现的是记录区域的实际尺寸和形状。视角还取决于焦距和所比较的方向，画质则受镜头、记录介质和处理方式影响。",
+      "内置镜头不能更换，只有 25 mm 一个焦距。在标准拍摄模式下，估计主体距离，再手动选择对焦档。GFX100RF 同样配有内置定焦镜头，并支持自动对焦。"
+    ]
+  },
+  "manufacturerUrl": "https://www.ricoh-imaging.co.jp/english/products/pentax17/spec/",
+  "documentationUrl": "https://www.ricoh-imaging.co.jp/english/support/man-pdf/pentax17_om_en_web.pdf",
+  "articleKeys": ["sensor-formats", "camera-viewfinding", "autofocus"],
+  "sources": [
+    {
+      "url": "https://www.ricoh-imaging.co.jp/english/products/pentax17/spec/",
+      "title": "RICOH Imaging — PENTAX 17 Specifications",
+      "locator": "Model Description, Lens, Viewfinder, Focusing and Shutter",
+      "accessedOn": "2026-11-07",
+      "supports": "35 mm film, 24 × 17 mm frame, 25 mm f/3.5 lens, Albada bright-frame finder, manual zone focus, and electronically controlled behind-the-lens shutter."
+    },
+    {
+      "url": "https://www.ricoh-imaging.co.jp/english/products/pentax17/feature/",
+      "title": "RICOH Imaging — PENTAX 17 Features",
+      "locator": "Half-size format, Standard mode",
+      "accessedOn": "2026-11-07",
+      "supports": "17 × 24 mm in the normal portrait frame orientation, a 36 × 24 mm standard 35 mm film frame and manual focus-zone selection in Standard mode."
+    },
+    {
+      "url": "https://www.ricoh-imaging.co.jp/english/support/qa/pentax17/",
+      "title": "RICOH Imaging — PENTAX 17 FAQ",
+      "locator": "Lens interchangeability and autofocus",
+      "accessedOn": "2026-11-07",
+      "supports": "The lens is built in and focusing is selected by subject-distance zone."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor",
+      "accessedOn": "2026-11-07",
+      "supports": "23.5 × 15.7 mm APS-C sensor in this particular camera."
+    },
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/gfx100rf/technical_notes/spec/",
+      "title": "FUJIFILM GFX100RF Owner’s Manual",
+      "locator": "System, Lens and Focus",
+      "accessedOn": "2026-11-07",
+      "supports": "Fixed focal length and autofocus on the GFX100RF."
+    },
+    {
+      "url": "https://www.fujifilm.com/jp/ja/consumer/films/negative-and-reversal/jan",
+      "title": "Fujifilm — Film formats and packaging",
+      "locator": "35 mm color negative film, FUJIFILM 400 row",
+      "accessedOn": "2026-11-07",
+      "supports": "The 135 designation for 35 mm still-film cartridges."
+    }
+  ],
+  "reviewStatus": "published",
+  "classifications": [
+    {
+      "dimensionId": "recording-medium",
+      "value": {
+        "en": "35 mm film (135)",
+        "zh-cn": "35 mm 胶卷（135）"
+      }
+    },
+    {
+      "dimensionId": "optical-architecture",
+      "value": {
+        "en": "Albada bright-frame optical viewfinder",
+        "zh-cn": "阿尔巴达式亮框光学取景器"
+      }
+    },
+    {
+      "dimensionId": "lens-system",
+      "conceptId": "fixed-lens",
+      "value": {
+        "en": "Built-in 25 mm f/3.5 prime lens",
+        "zh-cn": "内置 25 mm f/3.5 定焦镜头"
+      }
+    },
+    {
+      "dimensionId": "format",
+      "value": {
+        "en": "Half-frame film",
+        "zh-cn": "胶片半格"
+      }
+    },
+    {
+      "dimensionId": "focusing",
+      "value": {
+        "en": "Manual selection of subject-distance zones",
+        "zh-cn": "按主体距离手动选对焦档"
+      }
+    },
+    {
+      "dimensionId": "shutter",
+      "value": {
+        "en": "Electronically controlled behind-the-lens shutter",
+        "zh-cn": "电子控制的镜头后方快门"
+      }
+    }
+  ]
+}

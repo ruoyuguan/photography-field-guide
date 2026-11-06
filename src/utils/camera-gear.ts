@@ -1,7 +1,13 @@
 import type { CollectionEntry } from 'astro:content';
 import type { MarketingLocale } from './locale';
 
-type CameraLensSystem = CollectionEntry<'cameras'>['data']['lensSystem'];
+type CameraData = CollectionEntry<'cameras'>['data'];
+type CameraLensSystem = CameraData['lensSystem'];
+
+export function cameraAreaLabel(camera: CameraData) {
+  const area = camera.medium === 'film' ? camera.filmFrame : camera.sensor;
+  return `${area.widthMm} × ${area.heightMm} mm`;
+}
 
 export function cameraLensLabel(
   lens: CameraLensSystem,

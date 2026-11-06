@@ -10,8 +10,12 @@
     "zh-cn": "一类小于 36 × 24 mm 的传感器画幅，具体尺寸和标称画幅系数会有差异。"
   },
   "misconceptions": {
-    "en": ["APS-C does not mean exactly half the full-frame area."],
-    "zh-cn": ["APS-C 不表示面积恰好是全画幅的一半。"]
+    "en": [
+      "APS-C does not mean exactly half the full-frame area. A half-frame film exposure describes how much of a 35 mm roll one picture uses."
+    ],
+    "zh-cn": [
+      "数码摄影中俗称的「半画幅」常指 APS-C，面积不一定是全画幅的一半。胶片「半格」说的是一张照片用多少 35 mm 胶卷的曝光区域。"
+    ]
   },
   "example": {
     "en": "The Fujifilm X-T5 uses a 23.5 × 15.7 mm APS-C sensor, about 43% of 36 × 24 mm by area.",
@@ -26,6 +30,13 @@
       "locator": "Image Sensor",
       "accessedOn": "2026-10-28",
       "supports": "The dimensions of one specific APS-C sensor, not every APS-C camera."
+    },
+    {
+      "url": "https://www.ricoh-imaging.co.jp/english/products/pentax17/feature/",
+      "title": "RICOH Imaging PENTAX 17 Features",
+      "locator": "What’s the half-size format?",
+      "accessedOn": "2026-11-07",
+      "supports": "The half-frame film term describes the per-picture exposure area on 35 mm film."
     }
   ],
   "reviewStatus": "published"

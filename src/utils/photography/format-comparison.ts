@@ -13,8 +13,11 @@ export const FORMAT_PRESETS = [
   { id: 'digital-medium', widthMm: 43.8, heightMm: 32.9 },
   { id: 'film-6x6', widthMm: 56, heightMm: 56 },
   { id: 'film-4x5', widthMm: 120, heightMm: 96 },
+  { id: 'film-half-frame', widthMm: 17, heightMm: 24 },
 ] as const;
 export type FormatId = (typeof FORMAT_PRESETS)[number]['id'];
+export const HALF_FRAME_COMPARISON_PATH =
+  '/tools/format-comparison/half-frame-vs-aps-c/';
 
 export interface FormatMetrics extends SensorDimensions {
   areaMm2: number;

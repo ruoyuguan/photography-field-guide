@@ -32,25 +32,25 @@
 
 ## 3. 科学原理与参数问题
 
-| ID                | 用户曾提出的重要问题                                                                   | 当前关联入口                                               | 下一步                                                   |
-| ----------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------- |
-| first-session     | 数码相机怎样成像，怎样读相机分类，第一次使用相机要学什么、如何拍第一张                 | `digital-camera-works`、`what-is-photography`、`/cameras/` | 已有成像、入门和分类入口，首次拍摄操作路径可继续试用     |
-| sensor-format     | 全幅、APS-C、M4/3 和中画幅是什么，“半画幅”是不是一半面积，与胶片 half-frame 有什么区别 | `sensor-formats`、`format-comparison`                      | 已有章节和六种代表格式比较，完整胶片规格与小型传感器待核 |
-| equivalence       | 为什么16mm常说约24mm；1.5从哪里来；实际焦距是否改变；裁切是否光学放大                  | equivalent-focal-length；crop-factor工具                   | 已有章节与工具，保留近似值／具体尺寸／厂商标注的区别     |
-| perspective       | 视角、取景范围、透视、焦距和移动机位怎样区分                                           | equivalent-focal-length                                    | 已有解释，可由主体背景任务继续实践                       |
-| aperture          | F2.8/F4/F8是什么意思；数值小为何开口大；入瞳与焦距关系                                 | aperture                                                   | 已有章节，检查符号、单位与分层阅读                       |
-| variable-aperture | F2.8–4.8为什么可设F8；最大、当前和最小光圈怎样区分                                     | aperture；镜头资料                                         | 已有案例；不编造中间焦距曲线                             |
-| exposure-light    | 进光量、单位面积光曝光、总光量、输出亮度如何区分                                       | iso；exposure-stops；曝光工具                              | 已有内容，模型条件持续回归                               |
-| iso               | ISO是否增加光子；低ISO是否永远最好；增益、噪声与高光余量的关系                         | iso                                                        | 已有章节，避免跨机型无条件结论                           |
-| shutter-blur      | 快门为何影响亮度和模糊；主体运动、抖动、滚动失真怎样区分                               | shutter-speed；autofocus                                   | 已有章节；具体运动练习后续扩展                           |
-| stabilization     | IBIS/OIS做什么；防抖为什么不能冻结运动主体                                             | shutter-speed；器材资料                                    | 已有解释，可独立扩写                                     |
-| dof               | 景深与焦距、F数、距离、画幅、观看条件和背景虚化关系                                    | depth-of-field                                             | 已有章节，进阶计算器尚未实现                             |
-| resolution        | 为什么40MP不等于真实细节；镜头MTF、像差、衍射、对焦与锐化怎样影响                      | 部分分散说明                                               | 优先整理为独立图像质量选题                               |
-| exposure-controls | 同亮度为何能有不同参数；先调哪个；P/A/S/M、AutoISO怎样选择                             | pasm-modes；exposure-stops                                 | 已有章节；AutoISO可按真实机型继续扩写                    |
-| metering          | 测光、EV、曝光补偿、直方图、高光与阴影怎么用                                           | exposure-compensation                                      | 测光有解释；直方图等仍可独立扩写                         |
-| file-workflow     | RAW/JPEG/HEIF有什么区别；EXIF能说明和不能说明什么；平台为何丢元数据                    | raw-jpeg-exif                                              | 已有章节；本地EXIF工具尚未实现                           |
-| color             | 白平衡、色温、色偏、动态范围是什么                                                     | white-balance；部分基础文                                  | 白平衡已有；动态范围可独立扩写                           |
-| film-rendering    | 内置模拟、第三方配方、LUT、RAW转换、预设有什么区别；代际兼容如何核查                   | film-simulations                                           | 已有章节；新增配方需独立核实                             |
+| ID                | 用户曾提出的重要问题                                                                   | 当前关联入口                                               | 下一步                                                                      |
+| ----------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------- |
+| first-session     | 数码相机怎样成像，怎样读相机分类，第一次使用相机要学什么、如何拍第一张                 | `digital-camera-works`、`what-is-photography`、`/cameras/` | 已有成像、入门和分类入口，首次拍摄操作路径可继续试用                        |
+| sensor-format     | 全幅、APS-C、M4/3 和中画幅是什么，“半画幅”是不是一半面积，与胶片 half-frame 有什么区别 | `sensor-formats`、`format-comparison`                      | 已有章节、七种代表格式和 Pentax 17／X-T5 对照；其余胶片规格与小型传感器待核 |
+| equivalence       | 为什么16mm常说约24mm；1.5从哪里来；实际焦距是否改变；裁切是否光学放大                  | equivalent-focal-length；crop-factor工具                   | 已有章节与工具，保留近似值／具体尺寸／厂商标注的区别                        |
+| perspective       | 视角、取景范围、透视、焦距和移动机位怎样区分                                           | equivalent-focal-length                                    | 已有解释，可由主体背景任务继续实践                                          |
+| aperture          | F2.8/F4/F8是什么意思；数值小为何开口大；入瞳与焦距关系                                 | aperture                                                   | 已有章节，检查符号、单位与分层阅读                                          |
+| variable-aperture | F2.8–4.8为什么可设F8；最大、当前和最小光圈怎样区分                                     | aperture；镜头资料                                         | 已有案例；不编造中间焦距曲线                                                |
+| exposure-light    | 进光量、单位面积光曝光、总光量、输出亮度如何区分                                       | iso；exposure-stops；曝光工具                              | 已有内容，模型条件持续回归                                                  |
+| iso               | ISO是否增加光子；低ISO是否永远最好；增益、噪声与高光余量的关系                         | iso                                                        | 已有章节，避免跨机型无条件结论                                              |
+| shutter-blur      | 快门为何影响亮度和模糊；主体运动、抖动、滚动失真怎样区分                               | shutter-speed；autofocus                                   | 已有章节；具体运动练习后续扩展                                              |
+| stabilization     | IBIS/OIS做什么；防抖为什么不能冻结运动主体                                             | shutter-speed；器材资料                                    | 已有解释，可独立扩写                                                        |
+| dof               | 景深与焦距、F数、距离、画幅、观看条件和背景虚化关系                                    | depth-of-field                                             | 已有章节，进阶计算器尚未实现                                                |
+| resolution        | 为什么40MP不等于真实细节；镜头MTF、像差、衍射、对焦与锐化怎样影响                      | 部分分散说明                                               | 优先整理为独立图像质量选题                                                  |
+| exposure-controls | 同亮度为何能有不同参数；先调哪个；P/A/S/M、AutoISO怎样选择                             | pasm-modes；exposure-stops                                 | 已有章节；AutoISO可按真实机型继续扩写                                       |
+| metering          | 测光、EV、曝光补偿、直方图、高光与阴影怎么用                                           | exposure-compensation                                      | 测光有解释；直方图等仍可独立扩写                                            |
+| file-workflow     | RAW/JPEG/HEIF有什么区别；EXIF能说明和不能说明什么；平台为何丢元数据                    | raw-jpeg-exif                                              | 已有章节；本地EXIF工具尚未实现                                              |
+| color             | 白平衡、色温、色偏、动态范围是什么                                                     | white-balance；部分基础文                                  | 白平衡已有；动态范围可独立扩写                                              |
+| film-rendering    | 内置模拟、第三方配方、LUT、RAW转换、预设有什么区别；代际兼容如何核查                   | film-simulations                                           | 已有章节；新增配方需独立核实                                                |
 
 表中入口以 translationKey／工具 ID 表达，执行时查真实登记与 URL，不机械拼接过期路径。
 

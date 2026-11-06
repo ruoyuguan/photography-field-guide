@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import MainLayout from '@layouts/MainLayout.astro';
 import PageHeader from '@components/directory/PageHeader.astro';
 import { directoryCopy } from '@copy/directory';
-import { cameraLensLabel } from '@utils/camera-gear';
+import { cameraAreaLabel, cameraLensLabel } from '@utils/camera-gear';
 import { localePath, type MarketingLocale } from '@utils/locale';
 
 interface Props {
@@ -28,7 +28,7 @@ const items = [
     model: item.data.model,
     description: item.data.description[locale],
     kind: t.camera,
-    detail: `${item.data.sensor.widthMm} × ${item.data.sensor.heightMm} mm · ${cameraLensLabel(item.data.lensSystem, locale)}`,
+    detail: `${cameraAreaLabel(item.data)} · ${cameraLensLabel(item.data.lensSystem, locale)}`,
   })),
   ...lenses.map(item => ({
     id: item.id,

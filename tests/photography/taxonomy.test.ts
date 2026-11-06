@@ -8,6 +8,10 @@ import {
 } from '../../src/utils/taxonomy-validation.ts';
 import { publicToolIds } from '../../src/data_files/tool-registry.ts';
 import { cameraSchema } from '../../src/utils/content-schema.ts';
+import {
+  compareFormats,
+  findFormat,
+} from '../../src/utils/photography/format-comparison.ts';
 
 function fixture(): TaxonomyReferenceInput {
   return {
@@ -392,6 +396,49 @@ test('camera records distinguish a built-in lens from an interchangeable mount',
         mountName: d200.lensSystem.mountName,
       },
     }).success,
+    false
+  );
+});
+
+test('film camera data and the preset agree without changing legacy digital records', () => {
+  const cameras = readRecords('cameras');
+  const pentax = cameraSchema.parse(
+    cameras.find(camera => camera.id === 'pentax-17')
+  );
+  const xt5 = cameraSchema.parse(
+    cameras.find(camera => camera.id === 'fujifilm-x-t5')
+  );
+  assert.equal(pentax.medium, 'film');
+  assert.equal(xt5.medium, 'digital');
+  const halfFrame = findFormat(pentax.filmFrame.formatId);
+  assert.ok(halfFrame);
+  assert.deepEqual([halfFrame.widthMm, halfFrame.heightMm], [17, 24]);
+  assert.equal(halfFrame.widthMm, pentax.filmFrame.widthMm);
+  assert.equal(halfFrame.heightMm, pentax.filmFrame.heightMm);
+  const apsC = findFormat(xt5.sensor.formatId);
+  assert.ok(apsC);
+  assert.equal(apsC.widthMm, xt5.sensor.widthMm);
+  assert.equal(apsC.heightMm, xt5.sensor.heightMm);
+  const comparison = compareFormats(halfFrame, apsC);
+  assert.ok(comparison.ok);
+  assert.equal(comparison.value.a.areaMm2, 408);
+  assert.ok(Math.abs(comparison.value.b.areaMm2 - 368.95) < 1e-9);
+  assert.ok(
+    comparison.value.overlay.a.width < comparison.value.overlay.a.height
+  );
+  assert.ok(
+    comparison.value.overlay.b.width > comparison.value.overlay.b.height
+  );
+  assert.equal(
+    cameraSchema.safeParse({
+      ...pentax,
+      sensor: xt5.sensor,
+      specifications: xt5.specifications,
+    }).success,
+    false
+  );
+  assert.equal(
+    cameraSchema.safeParse({ ...xt5, filmFrame: pentax.filmFrame }).success,
     false
   );
 });

@@ -104,7 +104,13 @@ const apertureRangeSchema = z.object({
   tele: z.number().positive(),
 });
 
-export const cameraSchema = z.object({
+const cameraAreaSchema = z.object({
+  formatId: entityIdSchema,
+  widthMm: z.number().positive(),
+  heightMm: z.number().positive(),
+});
+
+const cameraBaseSchema = z.object({
   id: entityIdSchema,
   brand: nonEmpty,
   model: nonEmpty,
@@ -132,22 +138,31 @@ export const cameraSchema = z.object({
       })
     )
     .default([]),
-  sensor: z.object({
-    formatId: entityIdSchema,
-    widthMm: z.number().positive(),
-    heightMm: z.number().positive(),
-  }),
-  specifications: z.object({
-    effectiveMegapixels: z.number().positive().optional(),
-    hasIBIS: z.boolean().optional(),
-    fileFormats: z.array(nonEmpty),
-  }),
   description: localizedTextSchema,
   manufacturerUrl: url,
   documentationUrl: url,
   articleKeys: z.array(entityIdSchema).default([]),
   ...sourceFields,
 });
+
+export const cameraSchema = z.union([
+  cameraBaseSchema.extend({
+    medium: z.literal('digital').default('digital'),
+    sensor: cameraAreaSchema,
+    specifications: z.object({
+      effectiveMegapixels: z.number().positive().optional(),
+      hasIBIS: z.boolean().optional(),
+      fileFormats: z.array(nonEmpty),
+    }),
+    filmFrame: z.never().optional(),
+  }),
+  cameraBaseSchema.extend({
+    medium: z.literal('film'),
+    filmFrame: cameraAreaSchema.extend({ stock: localizedTextSchema }),
+    sensor: z.never().optional(),
+    specifications: z.never().optional(),
+  }),
+]);
 
 export const lensSchema = z.object({
   id: entityIdSchema,

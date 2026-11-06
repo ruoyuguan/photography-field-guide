@@ -7,6 +7,11 @@ export const formatComparisonCopy = {
     description:
       'Compare physical image areas at one shared scale, from Micro Four Thirds to medium-format and 4×5 film.',
     title: 'How big is the image area?',
+    halfFrameTitle: 'Half-frame film and digital APS-C',
+    halfFrameIntro:
+      'Compare the Pentax 17 film frame with the Fujifilm X-T5 sensor. The starting outlines use each camera’s normal horizontal hold. The Pentax frame is vertical and the X-T5 frame is horizontal. Rotate either camera and its frame rotates with it.',
+    openHalfFrame: 'Compare half-frame film with APS-C',
+    backToPentax: 'Back to the Pentax 17 example',
     intro:
       'Choose two formats. The outlines share one scale, so twice the width really means twice the width. A format name describes an image area; it does not rank your photographs.',
     back: 'All tools',
@@ -23,7 +28,7 @@ export const formatComparisonCopy = {
     aspect: 'Width ÷ height',
     crop: '35 mm diagonal crop factor',
     noScript:
-      'Without JavaScript, the default comparison and the full dimensions table remain available. Format selection requires JavaScript.',
+      'Without JavaScript, the comparison shown and the full dimensions table remain available. Format selection requires JavaScript.',
     summary: '{b} has {ratio}× the image area of {a}.',
     fallback: 'Dimensions at a glance',
     format: 'Format',
@@ -41,7 +46,7 @@ export const formatComparisonCopy = {
     continue: 'Continue with focal length & field of view',
     sources: 'Sources for the dimensions',
     checked:
-      'Dimension sources opened and checked on 2026-11-05. Only the specified dimensions are used; product advertising is not a quality comparison.',
+      'The original dimension references were checked on 2026-11-05. The Pentax 17 half-frame specification was checked on 2026-11-07.',
     error:
       'Choose two available formats. The previous comparison remains visible.',
     labels: {
@@ -65,6 +70,10 @@ export const formatComparisonCopy = {
         title: '120 film · 6×6 frame example',
         note: '56 × 56 mm exposed frame, using the GX680III optional 6×6 mask as the reference.',
       },
+      'film-half-frame': {
+        title: '35 mm film · half-frame example',
+        note: 'Pentax 17 exposes a frame 17 mm wide and 24 mm high when held horizontally. These are frame dimensions, while 35 mm identifies the film format.',
+      },
       'film-4x5': {
         title: '4×5 film · reference image area',
         note: '120 × 96 mm image-area reference from Schneider’s XENAR brochure; holder openings vary.',
@@ -76,6 +85,11 @@ export const formatComparisonCopy = {
     description:
       '用统一比例比较 M43、APS-C、全画幅、数码中画幅、120 和 4×5 胶片的实际成像区域。',
     title: '成像区域究竟有多大？',
+    halfFrameTitle: '胶片半格与数码 APS-C',
+    halfFrameIntro:
+      '对照 Pentax 17 的胶片曝光画面和富士 X-T5 的传感器。起始对照按两台相机正常横持时的方向绘制。Pentax 17 记录竖幅，X-T5 记录横幅。转动机身，画面方向也会随之改变。',
+    openHalfFrame: '对照胶片半格与 APS-C',
+    backToPentax: '返回 Pentax 17 案例',
     intro:
       '选择两个画幅。两条边框采用同一比例，宽度两倍就确实画成两倍。画幅名称描述成像区域，不是照片的等级。',
     back: '所有工具',
@@ -92,7 +106,7 @@ export const formatComparisonCopy = {
     aspect: '宽 ÷ 高',
     crop: '相对 35 mm 的对角线裁切系数',
     noScript:
-      '关闭 JavaScript 后，仍可阅读默认对比图和完整尺寸表；切换画幅需要 JavaScript。',
+      '关闭 JavaScript 后，仍可阅读当前对比图和完整尺寸表；切换画幅需要 JavaScript。',
     summary: '{b}的成像面积是{a}的 {ratio} 倍。',
     fallback: '全部参考尺寸',
     format: '画幅',
@@ -110,7 +124,7 @@ export const formatComparisonCopy = {
     continue: '继续理解焦距与视角',
     sources: '尺寸依据',
     checked:
-      '尺寸资料于 2026-11-05 打开核查。只采用相应尺寸，不把产品宣传作为画质比较。',
+      '原有尺寸资料于 2026-11-05 核查。Pentax 17 半格规格于 2026-11-07 核查。',
     error: '请选择两个可用画幅；先前的比较仍保留。',
     labels: {
       'micro-four-thirds': {
@@ -132,6 +146,10 @@ export const formatComparisonCopy = {
       'film-6x6': {
         title: '120 胶片（6×6 曝光区域示例）',
         note: '56 × 56 mm，采用 GX680III 的选配 6×6 遮幅框实际曝光尺寸。',
+      },
+      'film-half-frame': {
+        title: '35 mm 胶片（半格示例）',
+        note: 'Pentax 17 横持时的曝光画面宽 17 mm、高 24 mm。35 mm 指胶卷规格。',
       },
       'film-4x5': {
         title: '4×5 胶片（成像区域参考）',
@@ -157,6 +175,10 @@ export const formatDimensionSources = [
   {
     title: 'Fujifilm GFX100RF · image sensor',
     url: 'https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/',
+  },
+  {
+    title: 'RICOH Imaging PENTAX 17 · Half-size format and frame dimensions',
+    url: 'https://www.ricoh-imaging.co.jp/english/products/pentax17/feature/',
   },
   {
     title: 'Fujifilm GX680III · 6×6 format mask',

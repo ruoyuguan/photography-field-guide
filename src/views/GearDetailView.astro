@@ -4,7 +4,8 @@ import MainLayout from '@layouts/MainLayout.astro';
 import SourceLinks from '@components/directory/SourceLinks.astro';
 import { taxonomyCopy } from '@copy/taxonomy';
 import { directoryCopy } from '@copy/directory';
-import { cameraLensLabel } from '@utils/camera-gear';
+import { cameraAreaLabel, cameraLensLabel } from '@utils/camera-gear';
+import { HALF_FRAME_COMPARISON_PATH } from '@utils/photography/format-comparison';
 import { getArticleLinks, requiredArticle } from '@utils/catalog';
 import { localePath, type MarketingLocale } from '@utils/locale';
 
@@ -25,31 +26,44 @@ const tx = taxonomyCopy[locale];
 const dimensions = await getCollection('taxonomyDimensions');
 const glossary = await getCollection('glossary');
 const articles = await getArticleLinks(locale);
-const sensorFormat = camera?.data.classifications.find(
-  row => row.dimensionId === 'format'
-)?.value[locale];
-const ibis = camera?.data.specifications.hasIBIS;
+const cameraFormat =
+  camera?.data.classifications.find(row => row.dimensionId === 'format')?.value[
+    locale
+  ] ??
+  (camera?.data.medium === 'film'
+    ? camera.data.filmFrame.formatId
+    : camera?.data.sensor.formatId);
+const ibis = camera?.data.specifications?.hasIBIS;
+const isHalfFrameExample = camera?.id === 'pentax-17';
 const specs = camera
   ? [
       [
-        t.sensor,
-        `${camera.data.sensor.widthMm} × ${camera.data.sensor.heightMm} mm · ${sensorFormat ?? camera.data.sensor.formatId}`,
+        camera.data.medium === 'film' ? t.filmFrame : t.sensor,
+        `${cameraAreaLabel(camera.data)} · ${cameraFormat}`,
       ],
       [
         camera.data.lensSystem.type === 'fixed' ? t.fixedLens : t.mount,
         cameraLensLabel(camera.data.lensSystem, locale),
       ],
-      [
-        t.pixels,
-        camera.data.specifications.effectiveMegapixels
-          ? `${camera.data.specifications.effectiveMegapixels} MP`
-          : common.unknown,
-      ],
-      [
-        t.ibis,
-        ibis === undefined ? common.unknown : ibis ? common.yes : common.no,
-      ],
-      [t.formats, camera.data.specifications.fileFormats.join(' · ')],
+      ...(camera.data.medium === 'film'
+        ? [[t.filmStock, camera.data.filmFrame.stock[locale]]]
+        : [
+            [
+              t.pixels,
+              camera.data.specifications.effectiveMegapixels
+                ? `${camera.data.specifications.effectiveMegapixels} MP`
+                : common.unknown,
+            ],
+            [
+              t.ibis,
+              ibis === undefined
+                ? common.unknown
+                : ibis
+                  ? common.yes
+                  : common.no,
+            ],
+            [t.formats, camera.data.specifications.fileFormats.join(' · ')],
+          ]),
     ]
   : lens
     ? [
@@ -94,7 +108,7 @@ const lessons = camera
       {camera ? t.camera : t.lens} · {data.brand}
     </p>
     <h1 class="mt-3 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-      {data.model}
+      {isHalfFrameExample ? `${data.brand} ${data.model}` : data.model}
     </h1>
     <p class="mt-5 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
       {data.description[locale]}
@@ -119,8 +133,10 @@ const lessons = camera
         </a>
       )}
     </div>
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold">{t.specifications}</h2>
+    <section class="mt-12" aria-labelledby="gear-specifications">
+      <h2 id="gear-specifications" class="text-2xl font-bold">
+        {t.specifications}
+      </h2>
       <dl class="mt-5 divide-y divide-neutral-300 rounded-2xl border border-neutral-300 dark:divide-neutral-700 dark:border-neutral-700">
         {specs.map(([label, value]) => (
           <div class="grid gap-2 p-5 sm:grid-cols-[180px_1fr]">
@@ -185,16 +201,25 @@ const lessons = camera
           })}
         </dl>
         <a
-          href={localePath(locale, '/cameras/#camera-examples')}
+          href={localePath(
+            locale,
+            isHalfFrameExample
+              ? '/cameras/#film-half-frame-example'
+              : '/cameras/#camera-examples'
+          )}
           class="mt-5 inline-block font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
         >
-          {tx.example} →
+          {isHalfFrameExample ? tx.halfFrameBack : tx.example} →
         </a>
       </section>
     )}
     {lessons.length > 0 && (
       <section class="mt-12 rounded-2xl bg-neutral-100 p-7 dark:bg-neutral-900">
-        <h2 class="text-2xl font-bold">
+        <h2
+          id={isHalfFrameExample ? 'format-example' : undefined}
+          tabindex={isHalfFrameExample ? -1 : undefined}
+          class="scroll-mt-28 text-2xl font-bold"
+        >
           {camera ? t.cameraLessonTitle : t.lensLessonTitle}
         </h2>
         <ul class="mt-5 list-disc space-y-4 pl-5 leading-7 text-neutral-700 dark:text-neutral-300">
@@ -202,6 +227,14 @@ const lessons = camera
             <li>{lesson}</li>
           ))}
         </ul>
+        {isHalfFrameExample && (
+          <a
+            href={localePath(locale, HALF_FRAME_COMPARISON_PATH)}
+            class="mt-5 inline-block font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+          >
+            {tx.halfFrameCompare} →
+          </a>
+        )}
       </section>
     )}
     <section class="mt-12">

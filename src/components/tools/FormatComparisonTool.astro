@@ -6,16 +6,22 @@ import {
 } from '@copy/format-comparison';
 import {
   FORMAT_PRESETS,
+  HALF_FRAME_COMPARISON_PATH,
   compareFormats,
+  findFormat,
 } from '@utils/photography/format-comparison';
 import { localePath, type MarketingLocale } from '@utils/locale';
 interface Props {
   locale: MarketingLocale;
+  halfFrameExample?: boolean;
 }
-const { locale } = Astro.props;
+const { locale, halfFrameExample = false } = Astro.props;
 const t = formatComparisonCopy[locale];
-const a = FORMAT_PRESETS[2];
-const b = FORMAT_PRESETS[3];
+const a = findFormat(halfFrameExample ? 'film-half-frame' : 'full-frame');
+const b = findFormat(halfFrameExample ? 'aps-c' : 'digital-medium');
+if (!a || !b) throw new Error('Unknown initial format comparison.');
+const title = halfFrameExample ? t.halfFrameTitle : t.title;
+const intro = halfFrameExample ? t.halfFrameIntro : t.intro;
 const calculated = compareFormats(a, b);
 if (!calculated.ok) throw new Error('Invalid default format dimensions.');
 const value = calculated.value;
@@ -31,8 +37,8 @@ const summary = t.summary
 
 <MainLayout
   searchable
-  title={t.metaTitle}
-  description={t.description}
+  title={halfFrameExample ? title : t.metaTitle}
+  description={halfFrameExample ? intro : t.description}
   section={t.title}
 >
   <article
@@ -48,11 +54,22 @@ const summary = t.summary
     </a>
     <header class="mt-6 max-w-3xl">
       <h1 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-neutral-100">
-        {t.title}
+        {title}
       </h1>
       <p class="mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-300">
-        {t.intro}
+        {intro}
       </p>
+      <a
+        href={localePath(
+          locale,
+          halfFrameExample
+            ? '/gear/pentax-17/#format-example'
+            : HALF_FRAME_COMPARISON_PATH
+        )}
+        class="mt-4 inline-block font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+      >
+        {halfFrameExample ? t.backToPentax : t.openHalfFrame} →
+      </a>
     </header>
     <section
       class="mt-8 rounded-3xl border border-neutral-300 bg-neutral-50 p-4 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"

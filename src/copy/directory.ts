@@ -36,7 +36,7 @@ const en = {
   gear: {
     metaTitle: 'Camera & Lens Learning Guides',
     metaDescription:
-      'Source-checked camera and lens specifications with examples of viewing systems, sensor formats, and lens attachment.',
+      'Source-checked specifications and examples of viewing systems, digital and film formats, and lens attachment.',
     eyebrow: 'Use equipment to understand principles',
     title: 'Camera and lens guides',
     intro:
@@ -56,6 +56,8 @@ const en = {
     manual: 'Online manual',
     specifications: 'Verified specifications',
     sensor: 'Sensor',
+    filmFrame: 'Film image area',
+    filmStock: 'Film stock',
     mount: 'Mount',
     fixedLens: 'Built-in lens',
     pixels: 'Effective pixels',
@@ -215,7 +217,7 @@ const zhCN: DirectoryCopy = {
   gear: {
     metaTitle: '相机与镜头学习指南',
     metaDescription:
-      '可溯源的相机与镜头规格，配有取景系统、传感器画幅和镜头连接方式的实例。',
+      '可溯源的相机与镜头规格，配有取景系统、数码与胶片画幅、镜头连接方式的实例。',
     eyebrow: '用具体器材理解通用原理',
     title: '相机与镜头指南',
     intro: '对照规格和实例，了解相机怎样记录图像、怎样取景，以及镜头能否更换。',
@@ -232,6 +234,8 @@ const zhCN: DirectoryCopy = {
     manual: '在线说明书',
     specifications: '已核实规格',
     sensor: '传感器',
+    filmFrame: '胶片曝光画面',
+    filmStock: '胶卷规格',
     mount: '卡口',
     fixedLens: '一体式镜头',
     pixels: '有效像素',

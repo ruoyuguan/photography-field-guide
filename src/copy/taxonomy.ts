@@ -15,6 +15,12 @@ const en = {
   exampleIntro:
     'Read across the same four questions. Which cameras share the APS-C size family? Which use electronic viewing even though only one of them can change lenses?',
   exampleLink: 'See full classifications',
+  halfFrameTitle: 'Pentax 17: what does half-frame mean?',
+  halfFrameIntro:
+    'Compare one half-frame exposure on a 35 mm roll with the recording area of an APS-C sensor. Start by identifying what records the image, then look at width and height.',
+  halfFrameRead: 'Read the Pentax 17 case',
+  halfFrameCompare: 'Open the half-frame and APS-C comparison',
+  halfFrameBack: 'Back to the film example in camera taxonomy',
   dimensions: 'Choose a question',
   scope:
     'This map introduces 16 dimensions. Follow the linked explanations for detail; the map is a guide to relationships, not an exhaustive list of every historical or scientific camera.',
@@ -61,6 +67,12 @@ const zh: TaxonomyCopy = {
   exampleIntro:
     '对照相同的四个问题。哪两台相机都属于 APS-C 画幅？哪两台都用电子取景，却只有一台能换镜头？',
   exampleLink: '查看完整分类',
+  halfFrameTitle: 'Pentax 17 案例｜胶片半格是什么意思？',
+  halfFrameIntro:
+    '把 35 mm 胶卷上的一格曝光画面与 APS-C 传感器的成像区域对照。先找出各自用什么记录影像，再比较画面的宽和高。',
+  halfFrameRead: '阅读 Pentax 17 案例',
+  halfFrameCompare: '打开胶片半格与 APS-C 对照',
+  halfFrameBack: '返回相机分类里的胶片案例',
   dimensions: '选择一个问题',
   scope:
     '这张地图介绍 16 个维度，可沿链接进一步阅读。它帮助理解概念之间的关系，不声称穷尽历史与科学成像中的全部设备。',

@@ -6,6 +6,7 @@ import ClassificationChallenge from '@components/directory/ClassificationChallen
 import SourceLinks from '@components/directory/SourceLinks.astro';
 import { taxonomyCopy } from '@copy/taxonomy';
 import { getArticleLinks } from '@utils/catalog';
+import { HALF_FRAME_COMPARISON_PATH } from '@utils/photography/format-comparison';
 import { localePath, type MarketingLocale } from '@utils/locale';
 
 interface Props {
@@ -43,12 +44,16 @@ const comparisonIds = [
   'format',
   'sensor-technology',
 ];
-const publishedCameras = dimension
-  ? []
-  : await getCollection(
-      'cameras',
-      ({ data }) => data.reviewStatus === 'published'
-    );
+const publishedCameras =
+  !dimension || dimension.id === 'format'
+    ? await getCollection(
+        'cameras',
+        ({ data }) => data.reviewStatus === 'published'
+      )
+    : [];
+const halfFrameCase = publishedCameras.find(
+  camera => camera.id === 'pentax-17'
+);
 const cameraExamples = exampleIds.flatMap(id =>
   publishedCameras.filter(camera => camera.id === id)
 );
@@ -142,6 +147,34 @@ const cameraExamples = exampleIds.flatMap(id =>
           </div>
         </section>
         <ClassificationChallenge locale={locale} />
+        {halfFrameCase && (
+          <section class="mt-10 rounded-2xl border border-neutral-300 bg-neutral-50 p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
+            <h2
+              id="film-half-frame-example"
+              tabindex="-1"
+              class="scroll-mt-28 text-xl font-bold"
+            >
+              {t.halfFrameTitle}
+            </h2>
+            <p class="mt-3 max-w-3xl leading-7 text-neutral-700 dark:text-neutral-300">
+              {t.halfFrameIntro}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-x-5 gap-y-3">
+              <a
+                href={localePath(locale, '/gear/pentax-17/#format-example')}
+                class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+              >
+                {t.halfFrameRead} →
+              </a>
+              <a
+                href={localePath(locale, HALF_FRAME_COMPARISON_PATH)}
+                class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+              >
+                {t.halfFrameCompare} →
+              </a>
+            </div>
+          </section>
+        )}
         <h2 class="mt-12 text-2xl font-bold">{t.dimensions}</h2>
         <p class="mt-3 max-w-3xl leading-7 text-neutral-600 dark:text-neutral-400">
           {t.scope}
@@ -230,6 +263,16 @@ const cameraExamples = exampleIds.flatMap(id =>
                 </li>
               );
             })}
+            {dimension?.id === 'format' && halfFrameCase && (
+              <li>
+                <a
+                  href={localePath(locale, HALF_FRAME_COMPARISON_PATH)}
+                  class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+                >
+                  {t.halfFrameCompare} →
+                </a>
+              </li>
+            )}
             {entry.data.toolIds.map(id => (
               <li>
                 <a

@@ -26,5 +26,6 @@ export const taxonomyRoutes = [
     id => `/glossary/${id}/`
   ),
   '/tools/format-comparison/',
+  '/tools/format-comparison/half-frame-vs-aps-c/',
   '/learn/sensor-lens/camera-viewfinding/',
 ];
