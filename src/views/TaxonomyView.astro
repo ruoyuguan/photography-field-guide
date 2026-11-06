@@ -2,9 +2,20 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import MainLayout from '@layouts/MainLayout.astro';
 import PageHeader from '@components/directory/PageHeader.astro';
+import CameraFormGuide from '@components/directory/CameraFormGuide.astro';
 import ClassificationChallenge from '@components/directory/ClassificationChallenge.astro';
+import FilmProcessComparison from '@components/directory/FilmProcessComparison.astro';
+import FlashSyncComparison from '@components/directory/FlashSyncComparison.astro';
+import FocusDistanceGuide from '@components/directory/FocusDistanceGuide.astro';
+import InstantRecordingComparison from '@components/directory/InstantRecordingComparison.astro';
+import ShutterTimingComparison from '@components/directory/ShutterTimingComparison.astro';
 import SourceLinks from '@components/directory/SourceLinks.astro';
+import { flashSyncCopy } from '@copy/flash-sync';
 import { taxonomyCopy } from '@copy/taxonomy';
+import {
+  INSTANT_COMPARISON_PATH,
+  recordingMediumCopy,
+} from '@copy/recording-medium';
 import { getArticleLinks } from '@utils/catalog';
 import { HALF_FRAME_COMPARISON_PATH } from '@utils/photography/format-comparison';
 import { localePath, type MarketingLocale } from '@utils/locale';
@@ -77,10 +88,18 @@ const cameraExamples = exampleIds.flatMap(id =>
       </nav>
     )}
     <PageHeader
-      eyebrow={t.eyebrow}
+      eyebrow={dimension ? dimension.data.title[locale] : t.eyebrow}
       title={dimension ? dimension.data.question[locale] : t.title}
       intro={dimension ? dimension.data.summary[locale] : t.intro}
     />
+    {dimension?.id === 'shutter' && (
+      <a
+        href="#flash-sync"
+        class="mt-5 inline-block font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+      >
+        {flashSyncCopy[locale].title} ↓
+      </a>
+    )}
     {!dimension && (
       <>
         <section class="mt-8 rounded-2xl bg-neutral-100 p-6 dark:bg-neutral-900">
@@ -214,6 +233,24 @@ const cameraExamples = exampleIds.flatMap(id =>
               <p class="mt-3 leading-8 text-neutral-700 dark:text-neutral-300">
                 {entry.data.boundary[locale]}
               </p>
+              {dimension.id === 'recording-medium' && (
+                <InstantRecordingComparison locale={locale} />
+              )}
+              {dimension.id === 'film-process' && (
+                <FilmProcessComparison locale={locale} />
+              )}
+              {dimension.id === 'shutter' && (
+                <>
+                  <ShutterTimingComparison locale={locale} />
+                  <FlashSyncComparison locale={locale} />
+                </>
+              )}
+              {dimension.id === 'focusing' && (
+                <FocusDistanceGuide locale={locale} />
+              )}
+              {dimension.id === 'form-factor' && (
+                <CameraFormGuide locale={locale} />
+              )}
             </>
           ) : (
             <details class="mt-5">
@@ -270,6 +307,16 @@ const cameraExamples = exampleIds.flatMap(id =>
                   class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
                 >
                   {t.halfFrameCompare} →
+                </a>
+              </li>
+            )}
+            {entry.id === 'film-process' && (
+              <li>
+                <a
+                  href={localePath(locale, INSTANT_COMPARISON_PATH)}
+                  class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+                >
+                  {recordingMediumCopy[locale].link} →
                 </a>
               </li>
             )}

@@ -6,27 +6,78 @@
     "zh-cn": "机身与产品形态"
   },
   "question": {
-    "en": "How is the camera packaged and used?",
-    "zh-cn": "相机以什么形态使用？"
+    "en": "What will you actually carry to take the photo?",
+    "zh-cn": "要拍这张照片，你实际得带上什么？"
   },
   "summary": {
-    "en": "Product form helps explain handling and use.",
-    "zh-cn": "产品形态帮助理解操作与使用场景。"
+    "en": "Compare a compact zoom, a bridge-style long zoom, and an interchangeable-lens kit by packed size, framing range, and shooting task.",
+    "zh-cn": "从装包体积、取景范围和拍摄任务出发，对照便携变焦、一体式长变焦和可换镜头套装。"
   },
   "boundary": {
-    "en": "Compact, bridge, action and smartphone are product descriptions, not one image-quality ladder. “Professional” is not a sensor dimension.",
-    "zh-cn": "卡片、桥式、运动相机与手机是产品描述，不是一条画质等级阶梯。“专业”不是传感器尺寸。"
+    "en": "Product names describe design or use, while image quality depends on the capture conditions and the equipment. Nikon lists the P950 under Compact Digital Cameras and also calls it a bridge camera. Use the actual dimensions to judge whether it fits your bag.",
+    "zh-cn": "产品名称描述设计或用途，成像表现还要看设备与拍摄条件。尼康将 P950 列在「小型数码相机」中，也称它为桥式相机。要判断能否装进包，直接核对尺寸。"
   },
-  "detailed": false,
+  "detailed": true,
   "explanation": {
-    "en": [],
-    "zh-cn": []
+    "en": [
+      "Start with the setup you would carry. Check the space it takes with the lens attached, and include the battery, card, and any extras you would pack.",
+      "Decide how you need to change framing. An integrated zoom changes the field of view with the same lens. An interchangeable-lens body can take another compatible lens, so the range and carry size depend on the lens you choose.",
+      "Work backward from the shot. A street scene might need a wide view. A distant subject might need a tight view from the same spot. The 35 mm equivalent focal-length range helps you compare framing across these examples."
+    ],
+    "zh-cn": [
+      "先看实际携带的组合。量装好镜头后的体积，算上电池、存储卡和打算放进包里的配件。",
+      "再想取景要怎么变化。一体式变焦用同一支镜头改变视角。可换镜头机身能换装兼容镜头，取景范围和携带体积随镜头组合而变。",
+      "最后从要拍的照片倒推。街景可能需要宽视角，远处的主体可能需要从同一位置取更窄的画面。用 35 mm 等效焦距范围可以比较这些组合的取景范围。"
+    ]
   },
-  "relatedDimensionIds": ["lens-system", "applications"],
-  "termIds": [],
-  "articleKeys": ["what-is-photography"],
+  "relatedDimensionIds": ["lens-system", "format", "applications"],
+  "termIds": ["fixed-lens", "focal-length"],
+  "articleKeys": ["equivalent-focal-length", "what-is-photography"],
   "toolIds": [],
-  "lastReviewed": "2026-11-05",
-  "sources": [],
+  "lastReviewed": "2026-11-07",
+  "sources": [
+    {
+      "url": "https://www.sony.com/electronics/support/compact-cameras-dsc-rx-series/dsc-rx100m7/specifications",
+      "title": "Sony DSC-RX100M7 — Specifications",
+      "locator": "Lens and Size & Weight",
+      "supports": "Optical zoom range, outside dimensions and 302 g including battery and card.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "url": "https://www.sony.com/za/electronics/cyber-shot-compact-cameras/dsc-rx100m7",
+      "title": "Sony RX100 VII — Features",
+      "locator": "Broad zoom range from a pocket-size camera",
+      "supports": "The RX100 VII uses a built-in zoom lens.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "url": "https://imaging.nikon.com/imaging/lineup/coolpix/p/p950/",
+      "title": "Nikon COOLPIX P950 — Specifications",
+      "locator": "Lens, Dimensions/weight, and Compact Digital Cameras category",
+      "supports": "24–2,000 mm equivalent optical zoom range, dimensions, 1,005 g with battery and card, and Nikon's compact digital camera category.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "url": "https://www.nikonusa.com/press-room/nikon-at-ces-2020",
+      "title": "Nikon — CES 2020 product announcement",
+      "locator": "COOLPIX P950",
+      "supports": "Nikon describes the P950 as an all-in-one superzoom bridge camera.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "url": "https://www.fujifilm-x.com/en-us/products/cameras/x-t5/specifications/",
+      "title": "Fujifilm X-T5 — Specifications",
+      "locator": "Lens Mount and Weight",
+      "supports": "Fujifilm X mount and 557 g camera weight including battery and card.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/lenses/xf16-50mmf28-48-r-lm-wr/specifications/",
+      "title": "Fujifilm XF16–50mmF2.8–4.8 R LM WR — Specifications",
+      "locator": "Focal length (35mm format equivalent) and Weight",
+      "supports": "24–76 mm equivalent range and about 240 g lens weight, excluding accessories specified in the footnote.",
+      "accessedOn": "2026-11-07"
+    }
+  ],
   "reviewStatus": "published"
 }

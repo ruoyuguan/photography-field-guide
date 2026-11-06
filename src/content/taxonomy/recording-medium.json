@@ -14,30 +14,74 @@
     "zh-cn": "把拍摄时的记录介质与成品输出方式分开。"
   },
   "boundary": {
-    "en": "Film, digital capture and instant output can overlap in a hybrid system. Pinhole describes an image-forming opening, not a recording medium.",
-    "zh-cn": "混合系统可以同时数码拍摄与即时胶片输出。针孔描述成像孔口，不是一种记录介质。"
+    "en": "Film, digital capture and instant output can coexist across a device’s workflow. A pinhole describes how light enters to form an image. Look separately at the material or sensor that receives that light.",
+    "zh-cn": "同一台设备可以先数码拍摄，再输出到即显胶片。针孔描述光线怎样进入相机并成像，记录介质要另外看光线落在哪种材料或传感器上。"
   },
   "detailed": true,
   "explanation": {
     "en": [
-      "A film camera records a latent image for chemical development. A digital camera converts an electronic sensor signal into data. These descriptions do not specify how the photographer views the scene. The instax mini Evo combines digital capture with instant-film output, showing why both stages should be recorded."
+      "Start at the moment of capture. With film, light forms a latent image that becomes visible through chemical development. With digital capture, a sensor converts light into signals that become image data.",
+      "Then ask how you get a picture you can view or hold. Roll film is developed later. An instant-film sheet can develop after ejection. A hybrid camera can save a digital image first and print a selected image afterward."
     ],
     "zh-cn": [
-      "胶片相机记录供化学显影使用的潜影，数码相机把电子传感器信号转为数据。这些描述不指定摄影者如何取景。instax mini Evo 把数码拍摄与即时胶片输出结合起来，说明需要同时描述两个阶段。"
+      "先看拍摄时光线落在哪里。用胶片拍摄时，光线在胶片上留下潜影，经过化学显影才看得到图像。数码拍摄时，传感器将光转成信号，形成图像数据。",
+      "再问怎样得到能看的照片。普通胶卷在拍摄后冲洗，即显胶片可以在出片后显影。混合式相机可以先保存数码照片，再选择一张输出。"
     ]
   },
   "relatedDimensionIds": ["optical-architecture", "film-process", "workflow"],
   "termIds": [],
   "articleKeys": ["digital-camera-works"],
   "toolIds": [],
-  "lastReviewed": "2026-11-05",
+  "lastReviewed": "2026-11-07",
   "sources": [
     {
       "url": "https://www.instax.com/mini_evo/en/spec.html",
       "title": "FUJIFILM instax mini Evo Specifications",
       "locator": "Camera functions; Printing functions",
-      "accessedOn": "2026-11-05",
-      "supports": "Digital CMOS capture and output onto instax mini instant film coexist in a hybrid system."
+      "accessedOn": "2026-11-07",
+      "supports": "CMOS capture, internal or microSD/microSDHC storage, and printing to instax mini instant film."
+    },
+    {
+      "url": "https://instax.com/mini_evo/common/support/manuals/manual_naen.pdf",
+      "title": "FUJIFILM instax mini Evo User’s Guide",
+      "locator": "Taking Photos and Printing a Photo, pp. 12–14",
+      "accessedOn": "2026-11-07",
+      "supports": "A new photo is saved digitally. The user can later select a stored image and print it."
+    },
+    {
+      "url": "https://www.instax.com/mini99/en/spec/",
+      "title": "FUJIFILM instax mini 99 Specifications",
+      "locator": "Film used, Photo picture size, Film ejection and Film developing time",
+      "accessedOn": "2026-11-07",
+      "supports": "instax mini film, a 62 × 46 mm picture area, automatic ejection and on-sheet development."
+    },
+    {
+      "url": "https://instax.com/mini99/assets/pdf/manual_naen.pdf",
+      "title": "FUJIFILM instax mini 99 User’s Guide",
+      "locator": "Part Names, Taking Photos, and About Shooting Functions",
+      "accessedOn": "2026-11-07",
+      "supports": "The camera ejects exposed film after ordinary capture. Double exposure combines two shots on one sheet."
+    },
+    {
+      "url": "https://www.instax.com/instaxtechnology/en/",
+      "title": "FUJIFILM instax Technology",
+      "locator": "Snap it up, A mini darkroom, and In the frame",
+      "accessedOn": "2026-11-07",
+      "supports": "Direct exposure in an analog instant camera and chemical development on the sheet after ejection."
+    },
+    {
+      "url": "https://asset.fujifilm.com/www/ph/files/2020-12/5cc03b7f067001e7045d7c6d0f3070df/instax_mini_datasheet.pdf",
+      "title": "FUJIFILM instax mini Instant Color Film Data Sheet",
+      "locator": "Section 2, Film Size and Image Size",
+      "accessedOn": "2026-11-07",
+      "supports": "86 × 54 mm sheet dimensions and a 62 × 46 mm visible image area."
+    },
+    {
+      "url": "https://www.ricoh-imaging.co.jp/english/support/man-pdf/pentax17_om_en_web.pdf",
+      "title": "RICOH Imaging PENTAX 17 Operating Manual",
+      "locator": "Half-frame, printed p. 14",
+      "accessedOn": "2026-11-07",
+      "supports": "The 35 mm half-frame roll is developed after capture."
     },
     {
       "url": "https://global.canon/en/c-museum/product/film49.html",

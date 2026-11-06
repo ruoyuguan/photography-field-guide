@@ -3,6 +3,10 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import MainLayout from '@layouts/MainLayout.astro';
 import SourceLinks from '@components/directory/SourceLinks.astro';
 import { taxonomyCopy } from '@copy/taxonomy';
+import {
+  INSTANT_COMPARISON_PATH,
+  recordingMediumCopy,
+} from '@copy/recording-medium';
 import { directoryCopy } from '@copy/directory';
 import { cameraAreaLabel, cameraLensLabel } from '@utils/camera-gear';
 import { HALF_FRAME_COMPARISON_PATH } from '@utils/photography/format-comparison';
@@ -228,12 +232,20 @@ const lessons = camera
           ))}
         </ul>
         {isHalfFrameExample && (
-          <a
-            href={localePath(locale, HALF_FRAME_COMPARISON_PATH)}
-            class="mt-5 inline-block font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
-          >
-            {tx.halfFrameCompare} →
-          </a>
+          <div class="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+            <a
+              href={localePath(locale, HALF_FRAME_COMPARISON_PATH)}
+              class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+            >
+              {tx.halfFrameCompare} →
+            </a>
+            <a
+              href={localePath(locale, INSTANT_COMPARISON_PATH)}
+              class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+            >
+              {recordingMediumCopy[locale].link} →
+            </a>
+          </div>
         )}
       </section>
     )}

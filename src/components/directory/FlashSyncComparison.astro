@@ -1,0 +1,116 @@
+---
+import { flashSyncCopy } from '@copy/flash-sync';
+import type { MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+}
+
+const { locale } = Astro.props;
+const t = flashSyncCopy[locale];
+const frame = { x: 14, y: 10, width: 156, height: 104 };
+const panels = [
+  { id: 'full-open', openingY: frame.y, openingHeight: frame.height },
+  { id: 'traveling-slit', openingY: 48, openingHeight: 28 },
+] as const;
+---
+
+<section
+  aria-labelledby="flash-sync"
+  class="mt-8 border-t border-neutral-300 pt-7 dark:border-neutral-700"
+>
+  <h2 id="flash-sync" tabindex="-1" class="scroll-mt-28 text-2xl font-bold">
+    {t.title}
+  </h2>
+  <p class="mt-3 max-w-3xl leading-7 text-neutral-700 dark:text-neutral-300">
+    {t.intro}
+  </p>
+  <p class="mt-2 text-sm font-semibold leading-6 text-neutral-700 dark:text-neutral-300">
+    {t.legend}
+  </p>
+  <div class="mt-4 grid gap-4 md:grid-cols-2">
+    {panels.map(({ id, openingY, openingHeight }) => {
+      const panel = t.panels[id];
+      const patternId = `flash-sync-lit-${id}`;
+      return (
+        <figure
+          data-flash-panel={id}
+          class="min-w-0 rounded-xl border border-neutral-300 bg-white p-3 sm:p-4 dark:border-neutral-600 dark:bg-neutral-950"
+        >
+          <h3 class="font-bold leading-6">{panel.title}</h3>
+          <svg
+            class="mx-auto mt-3 block w-full max-w-64"
+            viewBox="0 0 184 124"
+            role="img"
+            aria-label={panel.alt}
+          >
+            <defs>
+              <pattern
+                id={patternId}
+                width="8"
+                height="8"
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(45)"
+              >
+                <rect
+                  width="8"
+                  height="8"
+                  class="fill-amber-100 dark:fill-amber-800"
+                />
+                <path
+                  d="M4 0v8"
+                  stroke-width="1.5"
+                  class="stroke-amber-700 dark:stroke-amber-200"
+                />
+              </pattern>
+            </defs>
+            <rect
+              data-flash-frame
+              {...frame}
+              class="fill-neutral-600 dark:fill-neutral-800"
+            />
+            <rect
+              data-flash-opening
+              x={frame.x}
+              y={openingY}
+              width={frame.width}
+              height={openingHeight}
+              fill={`url(#${patternId})`}
+            />
+            <rect
+              {...frame}
+              fill="none"
+              vector-effect="non-scaling-stroke"
+              class="stroke-neutral-700 dark:stroke-neutral-300"
+            />
+          </svg>
+          <figcaption class="mt-3 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+            {panel.caption}
+          </figcaption>
+        </figure>
+      );
+    })}
+  </div>
+  <p class="mt-4 max-w-3xl text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+    {t.scope}
+  </p>
+  <dl class="mt-4 grid gap-4 rounded-xl border border-neutral-300 p-4 text-sm leading-6 sm:grid-cols-2 lg:grid-cols-3 dark:border-neutral-600">
+    {t.notes.map(note => (
+      <div>
+        <dt class="font-semibold">{note.title}</dt>
+        <dd class="mt-1 text-neutral-700 dark:text-neutral-300">{note.body}</dd>
+      </div>
+    ))}
+  </dl>
+  <details
+    data-flash-self-check
+    class="mt-5 rounded-xl border border-neutral-300 bg-neutral-100 p-4 dark:border-neutral-600 dark:bg-neutral-800/70"
+  >
+    <summary class="cursor-pointer rounded-sm font-semibold leading-7 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600 dark:focus-visible:outline-amber-400">
+      {t.question}
+    </summary>
+    <p class="mt-3 max-w-3xl leading-7 text-neutral-700 dark:text-neutral-300">
+      {t.answer}
+    </p>
+  </details>
+</section>

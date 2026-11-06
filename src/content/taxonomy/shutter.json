@@ -6,27 +6,71 @@
     "zh-cn": "快门系统"
   },
   "question": {
-    "en": "What controls exposure, and with what timing?",
-    "zh-cn": "什么控制曝光？采用什么时序？"
+    "en": "Why can a fast shutter still make a moving subject lean?",
+    "zh-cn": "为什么快门很快，运动物体仍可能变形？"
   },
   "summary": {
-    "en": "Ask about hardware, control and timing separately.",
-    "zh-cn": "分别询问机械结构、控制方式与曝光时序。"
+    "en": "Separate how long each row collects light from when the first and last rows start. A shorter exposure can reduce blur while a timing gap still produces skew.",
+    "zh-cn": "分清每行收集光线的时长，以及首末行开始曝光的时差。缩短曝光能减少拖影，行间时差仍可能让主体变形。"
   },
   "boundary": {
-    "en": "Mechanical/electronic, focal-plane/leaf, and rolling/global describe different aspects. Bulb is an operating mode.",
-    "zh-cn": "机械或电子、焦平面或镜间、卷帘或全局描述不同方面，B 门是一种操作模式。"
+    "en": "Shutter hardware and exposure timing describe different things. A mechanical focal-plane shutter can also expose the frame at staggered times when its curtains form a moving slit. Shutter modes and flash behavior depend on the camera.",
+    "zh-cn": "快门结构和曝光时序描述的是不同的属性。机械焦平面快门的帘幕形成移动狭缝时，画面各处也会错开曝光。实际快门模式与闪光表现要看具体机型。"
   },
-  "detailed": false,
+  "detailed": true,
   "explanation": {
-    "en": [],
-    "zh-cn": []
+    "en": [
+      "Exposure duration is how long a row collects light. During that interval a moving subject can travel across pixels, leaving a trail. A shorter duration can make that trail smaller.",
+      "With a typical rolling shutter, each row gets the same exposure duration but starts and ends at a different time. If a straight object moves sideways, later rows can record it farther across the frame. The image can show a tilted shape even when its edges look sharp.",
+      "A global shutter starts and ends exposure at the same time across the frame. Captured data can still be read out afterward. A long exposure can still blur motion even when the rows record the same interval."
+    ],
+    "zh-cn": [
+      "曝光时长是一行像素收集光线的时间。在这段时间里，运动主体可能跨过多个像素，留下拖影。缩短曝光能减少这种拖影。",
+      "典型的滚动快门（也叫卷帘快门）让各行曝光同样长，但起止时刻按行错开。直线物体横向移动时，晚曝光的行会记录到它更靠前的位置。即使边缘清晰，整体仍可能倾斜。",
+      "全局快门让整帧同时开始和结束曝光，随后仍可读出已记录的数据。即使各行记录的是同一段时间，曝光太长也可能留下运动拖影。"
+    ]
   },
   "relatedDimensionIds": ["sensor-architecture", "exposure-control"],
   "termIds": ["shutter-speed"],
-  "articleKeys": ["shutter-speed"],
+  "articleKeys": ["shutter-speed", "digital-camera-works"],
   "toolIds": [],
-  "lastReviewed": "2026-11-05",
-  "sources": [],
+  "lastReviewed": "2026-11-07",
+  "sources": [
+    {
+      "url": "https://docs.baslerweb.com/electronic-shutter-types",
+      "title": "Basler Product Documentation — Electronic Shutter Types",
+      "locator": "Global Shutter, Rolling Shutter, Possible Image Distortion",
+      "accessedOn": "2026-11-07",
+      "supports": "Aligned versus staggered exposure intervals, equal rolling exposure duration per row, and data readout after global exposure."
+    },
+    {
+      "url": "https://www.onsemi.com/download/application-notes/pdf/and9195-d.pdf",
+      "title": "onsemi — Shutter Operations for CCD and CMOS Image Sensors (AND9195/D)",
+      "locator": "Pages 1–2, CMOS Imager with Rolling Shutter and CMOS Imager with Global Shutter",
+      "accessedOn": "2026-11-07",
+      "supports": "Row timing can tilt a moving subject. A traveling mechanical focal-plane shutter can produce a similar effect."
+    },
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/photographing-still-life-subjects-using-flash",
+      "title": "Nikon — Photographing Still Life Subjects using Flash",
+      "locator": "Maximum normal sync speed and “What does all this technical information mean?”",
+      "accessedOn": "2026-11-07",
+      "supports": "Front and rear curtain travel, normal flash sync, and single-pulse coverage when the shutter forms a moving slit."
+    },
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/high-speed-sync-a-flash-technique-to-add-a-pro-touch-to-your-photographs",
+      "title": "Nikon — High Speed Sync",
+      "locator": "How It Works",
+      "accessedOn": "2026-11-07",
+      "supports": "High-speed sync uses a pulse train during curtain travel, with reduced effective flash output."
+    },
+    {
+      "url": "https://www.sony.com/electronics/support/articles/00018997",
+      "title": "Sony — What Is the e-Front Curtain Shutter function?",
+      "locator": "Operation with the Function Turned On",
+      "accessedOn": "2026-11-07",
+      "supports": "Electronic exposure start with a mechanical rear curtain and model-specific availability."
+    }
+  ],
   "reviewStatus": "published"
 }

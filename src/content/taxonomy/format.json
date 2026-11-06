@@ -26,7 +26,12 @@
       "APS-C 包含多种尺寸，应查具体相机规格。X-T5 使用 23.5 × 15.7 mm，GFX100RF 使用 43.8 × 32.9 mm。比较工具将注明来源的代表性成像区域放在同一比例尺下，对角线画幅系数不会改变镜头焦距，宽高比不同时也不保证两个方向视角同时相同。"
     ]
   },
-  "relatedDimensionIds": ["lens-system", "sensor-technology", "color-sampling"],
+  "relatedDimensionIds": [
+    "lens-system",
+    "sensor-technology",
+    "color-sampling",
+    "film-process"
+  ],
   "termIds": ["sensor", "full-frame", "aps-c", "crop-factor"],
   "articleKeys": ["sensor-formats", "equivalent-focal-length"],
   "toolIds": ["format-comparison", "crop-factor"],

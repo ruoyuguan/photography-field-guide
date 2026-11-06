@@ -6,27 +6,71 @@
     "zh-cn": "胶片类型与工艺"
   },
   "question": {
-    "en": "What film and processing route are used?",
-    "zh-cn": "使用什么胶片与处理工艺？"
+    "en": "What can the film box tell you?",
+    "zh-cn": "胶片盒上的标记分别说明什么？"
   },
   "summary": {
-    "en": "Keep film format, image type and chemistry in separate fields.",
-    "zh-cn": "分别记录胶片规格、影像类型与处理工艺。"
+    "en": "Read three things separately: the format that fits your camera, the image the film produces, and the process the lab uses.",
+    "zh-cn": "分开读懂三项信息：相机能装什么规格、冲洗后得到什么影像，以及冲洗店要用哪种工艺。"
   },
   "boundary": {
-    "en": "Negative/reversal describes the resulting image; C-41 names a processing route. Neither specifies the viewing path.",
-    "zh-cn": "负片或反转片描述成像结果，C-41 描述处理流程，二者都不能指定取景结构。"
+    "en": "Follow the process specified for the exact film you have. A black-and-white label or a format such as 135 is too little information to choose a process.",
+    "zh-cn": "按手上这款胶片指定的工艺送洗。只看到「黑白」或 135 这样的规格标记，还不足以判断冲洗工艺。"
   },
-  "detailed": false,
+  "detailed": true,
   "explanation": {
-    "en": [],
-    "zh-cn": []
+    "en": [
+      "Format tells you what the camera can load. The 135 designation refers to the familiar 35 mm still-camera cartridge. The 120 designation refers to a different roll-film format. Check your camera instructions before buying film.",
+      "Image type tells you what to expect after development. On a negative, brighter parts of the scene usually look darker on the strip. Reversal film produces a positive transparency that you can view with light behind it. You can scan either; the scanning workflow inverts a negative to produce a positive digital image.",
+      "The process tells the lab how to develop the film. Before you send a roll, check the box or manufacturer's sheet and give the lab the film name, format, and specified process. Ask about scanning if you also want digital files."
+    ],
+    "zh-cn": [
+      "规格告诉你相机能装什么。135 指常见的 35 mm 静态摄影胶卷暗盒，120 则是另一种卷片规格。买胶卷前先看相机说明书。",
+      "影像类型告诉你冲洗后会看到什么。负片上，场景较亮的部分通常在底片上显得较暗。反转片冲洗后得到正像透明片，可以透光观看。两种都能扫描；扫描负片时需要反相，才能得到正像数字图像。",
+      "工艺告诉冲洗店怎样冲洗这卷胶片。送洗前看包装或厂商技术资料，把胶卷名称、规格和指定工艺告诉店家。如果还想要数字文件，可以询问扫描服务。"
+    ]
   },
   "relatedDimensionIds": ["recording-medium", "format", "workflow"],
   "termIds": [],
-  "articleKeys": [],
+  "articleKeys": ["film-simulations"],
   "toolIds": [],
-  "lastReviewed": "2026-11-05",
-  "sources": [],
+  "lastReviewed": "2026-11-07",
+  "sources": [
+    {
+      "title": "KODAK PROFESSIONAL EKTAR 100 Film (E-4046)",
+      "url": "https://www.kodakprofessional.com/sites/default/files/wysiwyg/pro/resources/e4046_ektar_100.pdf",
+      "locator": "Technical Data; Sizes Available; Processing",
+      "supports": "Color negative film in several physical formats; Kodak specifies C-41.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "title": "KODAK PROFESSIONAL EKTACHROME Film E100 (E-4000)",
+      "url": "https://www.kodakprofessional.com/sites/default/files/wysiwyg/pro/resources/e4000_ektachrome_100.pdf",
+      "locator": "Color Transparency Film; Processing / Chemicals; Scanning Transparencies",
+      "supports": "Color positive transparency; Kodak specifies E-6 and describes scanning the result.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "title": "ILFORD HP5 PLUS technical information",
+      "url": "https://www.ilfordphoto.com/amfile/file/download/file/1903/product/693/",
+      "locator": "Technical Information; Choosing the Best ILFORD Developer",
+      "supports": "Black-and-white negative film with black-and-white development options.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "title": "ILFORD XP2 SUPER technical information",
+      "url": "https://www.ilfordphoto.com/amfile/file/download/file/1909/product/703/",
+      "locator": "Why XP2 Super is Different; Availability; Processing",
+      "supports": "Chromogenic black-and-white negative film available in 35 mm and 120; Ilford specifies C-41.",
+      "accessedOn": "2026-11-07"
+    },
+    {
+      "title": "KODAK VISION3 250D Color Negative Film 5207/7207 (H-1-5207)",
+      "url": "https://www.kodak.com/content/pdfs/KODAK-VISION3-250D-5207-7207-technical-information.pdf",
+      "locator": "Color Negative Film; Processing",
+      "supports": "Kodak specifies ECN-2 for this color negative stock.",
+      "accessedOn": "2026-11-07"
+    }
+  ],
   "reviewStatus": "published"
 }

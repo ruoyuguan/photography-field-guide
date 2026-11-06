@@ -23,12 +23,12 @@ AI assistants supported the development of this project. The project owner direc
 - Shared intent-based starting links, a compact six-task route map, browser-progress suggestions and contextual returns, with every mission freely available.
 - Six bilingual practice missions: light direction, subject–background framing, a three-photo neighborhood story, photo selection / review, safe backup / export, and lightweight editing. They include prediction, explanatory feedback, local observation or actions, self-review, and browser progress without accounts or aesthetic scores. C5 links to C6; the editing exercise compares brightness, white balance, and crop separately and permits an unchanged final version.
 - Three interactive tools explain crop factor and equivalent focal length, exposure stops, and physical format dimensions.
-- A Camera Taxonomy explorer introduces 16 dimensions, with seven detailed guides, a comparison of the X-T5, GFX100RF, and D200, a Pentax 17 half-frame example, and original viewfinding diagrams.
+- A Camera Taxonomy explorer introduces 16 dimensions, with eleven detailed guides, a comparison of the X-T5, GFX100RF, and D200, a Pentax 17 half-frame example, and original viewfinding diagrams.
 - A searchable bilingual glossary with 42 terms, eight of which have dedicated detail pages.
 - Camera and lens guides, three precisely scoped external gallery links, and 13 curated resources.
 - Localized navigation, language switching, documentation search, 404 pages, metadata, and root / subpath deployment checks.
 
-The current source includes 79 structured records and 128 HTML routes. The camera taxonomy and classification challenge are available on [GitHub Pages](https://ruoyuguan.github.io/photography-field-guide/cameras/). See the [current project status](docs/STATUS.md), [taxonomy coverage plan](docs/CAMERA_TAXONOMY_PLAN.md), and [first-batch taxonomy review](docs/CAMERA_TAXONOMY_REVIEW.md). The [C6 integration review](docs/C6_INTEGRATION_REVIEW.md) records that earlier batch.
+The current source includes 79 structured records and 136 HTML routes. The camera taxonomy and classification challenge are available on [GitHub Pages](https://ruoyuguan.github.io/photography-field-guide/cameras/). See the [current project status](docs/STATUS.md), [taxonomy coverage plan](docs/CAMERA_TAXONOMY_PLAN.md), and [first-batch taxonomy review](docs/CAMERA_TAXONOMY_REVIEW.md). The [C6 integration review](docs/C6_INTEGRATION_REVIEW.md) records that earlier batch.
 
 ### Routes
 

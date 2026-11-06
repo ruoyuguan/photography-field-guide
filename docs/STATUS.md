@@ -4,7 +4,7 @@
 
 ## 目录与版本
 
-开发目录为 `/Users/ruoyu/photography-field-guide`。相机分类首批以 `de29771` 提交并推送至 `origin/main`，随后由 [GitHub Pages 工作流 #3](https://github.com/ruoyuguan/photography-field-guide/actions/runs/42144652423) 发布。第二批源码以 `93d0ed3` 推送。三机对照与分类挑战随 `3adad67` 由 [GitHub Pages 工作流 #4](https://github.com/ruoyuguan/photography-field-guide/actions/runs/42214912860) 发布。Pentax 17 案例随本批源码归入 `main`，等待手动发布。更早的交接基线为 `95f19f4`，MVP 提交为 `e6087c5`。
+开发目录为 `/Users/ruoyu/photography-field-guide`。相机分类首批以 `de29771` 提交并推送至 `origin/main`，随后由 [GitHub Pages 工作流 #3](https://github.com/ruoyuguan/photography-field-guide/actions/runs/42144652423) 发布。第二批源码以 `93d0ed3` 推送。三机对照与分类挑战随 `3adad67` 由 [GitHub Pages 工作流 #4](https://github.com/ruoyuguan/photography-field-guide/actions/runs/42214912860) 发布。Pentax 17 案例以 `93c65be` 推送至 `origin/main`。本次发布批次包含 Pentax 17 档案和半格预设，以及即显流程、胶片工艺、快门、对焦和机身形态详情。发布记录见 [GitHub Pages 工作流](https://github.com/ruoyuguan/photography-field-guide/actions/workflows/pages.yml)。更早的交接基线为 `95f19f4`，MVP 提交为 `e6087c5`。
 
 Pages 工作流限定摄影仓库的 `main` 分支，采用手动触发。首发步骤见 [MVP 发布说明](MVP_RELEASE.md)。
 
@@ -12,7 +12,7 @@ Pages 工作流限定摄影仓库的 `main` 分支，采用手动触发。首发
 
 - 48 份中英 Learn 文档，包含 23 组主题教程和一组导览。
 - 79 条结构化记录，包括 42 个术语、16 个相机知识维度、13 个资源、4 台相机、1 支镜头和 3 条样片范围记录。
-- 128 个静态 HTML 页面，英文默认，中文位于 `/zh-cn/`。三个工具分别解释等效焦距、曝光档位和画幅尺寸。
+- 136 个静态 HTML 页面，英文默认，中文位于 `/zh-cn/`。三个工具分别解释等效焦距、曝光档位和画幅尺寸。
 - 六个双语练习任务依次覆盖光线、主体与背景、城市三张照片、筛选复盘、备份导出和轻量后期。目录建议基于当前浏览器的完成状态，读者可以直接进入任意任务。
 
 ## 相机分类首批（2026-11-06）
@@ -49,6 +49,49 @@ Pages 工作流限定摄影仓库的 `main` 分支，采用手动触发。首发
 - 预设对照以相机正常横持时的方向显示 Pentax 17 的 17 × 24 mm 与 X-T5 的 23.5 × 15.7 mm，同一比例尺。链接可直接分享，切换语言或关闭 JavaScript 仍保留这组起始尺寸。
 
 本地通过 100 项单测。根路径与项目子路径各构建 128 页，`test:smoke` 与 `test:build` 通过。根路径 Chrome 分类专项验证了双语档案往返、预设深层语言切换、无脚本预设、每种语言各 49 组画幅配对，以及 390 × 844、683 × 384 和 320 × 640 中文视口下的新页面布局。390 × 844 深色截图核对了竖幅实线与横幅虚线。
+
+## 胶卷、即显与混合记录流程（本地）
+
+- 现有双语 `/cameras/recording-medium/#instant-film-comparison` 按「什么记录场景、留下什么、怎样看到照片」比较 Pentax 17、instax mini 99 和 instax mini Evo。
+- 两台 instax 共用相纸规格。正文区分可见画面与整张相纸尺寸，并把 mini Evo 的 CMOS 拍摄、数码存储与可选打印分成三步。
+- 可从「胶片类型与工艺」或 Pentax 17 档案进入对照，对照卡可返回档案。自测答案通过原生展开控件阅读。
+
+100 项单测通过。根路径和 `/photography-field-guide` 各构建 128 页，`test:smoke` 与 `test:build` 通过。根路径 Chrome 分类专项验证了双语切换、键盘焦点与档案往返、关闭 JavaScript 时展开答案，以及 390 × 844 的中文触控。布局通过 320、390 和 683 px 宽度检查。1366 × 768 中文截图核对了三条并排的记录流程。真实读者试用待开展。
+
+## 胶片类型与工艺（本地）
+
+- 双语 `/cameras/film-process/` 分开解释胶片规格、显影后的正负像和厂商指定工艺。五种胶片示例核对了 Kodak 与 ILFORD 的技术资料。
+- 自测让读者根据 XP2 Super 的规格和 C-41 标识说明如何送洗。胶片工艺页可与记录介质、画幅两页往返，并可继续阅读数字胶片模拟。
+
+在 Node.js 24.22.1 和 pnpm 10.34.9 下，`format:check` 和 100 项单测通过。根路径和 `/photography-field-guide` 各构建 130 页，`test:smoke` 与 `test:build` 均通过。类型检查为 0 errors、0 warnings、5 个既有 hints。
+
+根路径 Chrome 分类专项验证了站内搜索「XP2 Super」和「胶片类型与工艺」的对应语言落点、深层语言切换、链接往返、键盘和关闭 JavaScript 时的自测。英文页面检查了 320 px 宽度，中文页面检查了 320、390 和 683 px 宽度，并在 390 × 844 深色触控视口展开答案。人工查看了中文 1366 × 768 和 390 × 844 的截图。两种语言的本地预览均返回 HTTP 200。真实读者试用待开展。
+
+## 快门时序（本地）
+
+双语 `/cameras/shutter/` 用同一时间尺度对照长、短两种滚动曝光与短时全局曝光。图中分开标出单行曝光持续时间与首末行曝光起点的间隔。自测用横向移动的竖杆区分拖影与形变，快门速度和数码成像教程可直接跳到图示。
+
+在 Node.js 24.22.1 和 pnpm 10.34.9 下，`format:check` 和 100 项单测通过。根路径和 `/photography-field-guide` 各构建 132 页，`test:smoke` 与 `test:build` 均通过。类型检查为 0 errors、0 warnings、5 个既有 hints。
+
+首次 Chrome 分类检查发现英文栏目名无法搜到详情，原因是详情正文没有栏目名。显示栏目名后，`shutter systems` 和「快门系统」均能找到对应语言页面。最终专项还通过了曝光图形关系、教程往返、语言切换、键盘与无脚本自测、双语 320／390／683 px 布局和中文 390 × 844 深色触控。人工核对了中文 1366 × 768 和 390 × 844 的图示截图。两个本地预览地址均返回 HTTP 200。读者试用待开展。
+
+## 机械帘幕与闪光同步（本地）
+
+双语 `/cameras/shutter/#flash-sync` 用同尺度图比较一次短促主闪在整帧敞开和狭缝扫过时的覆盖范围。自测让读者排查闪光暗带并找到机身与快门模式的普通同步上限。图后解释兼容设备的高速同步及有效距离取舍，也说明电子前帘怎样开始和结束曝光。快门详情与快门速度教程都有直达入口。
+
+`format:check` 与 100 项单测通过。根路径和 `/photography-field-guide` 各构建 132 页，`test:smoke`、`test:build` 均通过。Chrome 分类专项通过了受光区几何、键盘跳转与焦点、双语站内搜索、关闭 JavaScript 的自测和 390 × 844 深色触控。人工复核了中文 1366 × 768 与 390 × 844 的图示截图。两个本地预览地址均返回 HTTP 200。
+
+## 对焦系统（本地）
+
+双语 `/cameras/focusing/` 对照固定焦点的 QuickSnap、Pentax 17 标准模式的手动距离档，以及 X-T5 的 AF-S／AF-C。三个情境逐选项反馈拍摄距离、距离档与焦点更新的取舍。页面与 Pentax 17 的分类表及自动对焦教程双向衔接。
+
+`format:check` 和 100 项单测通过。根路径及 `/photography-field-guide` 各构建 134 页，`test:smoke` 和 `test:build` 均通过。类型检查为 0 errors、0 warnings、5 个既有 hints。根路径 Chrome 分类专项走过中英各六个选项及反馈、同题切换与不同题独立状态、搜索、语言切换和链接往返。还验证了 320／390／683 px 窄屏、无 JavaScript 的键盘反馈和 390 × 844 深色触控。人工复核中文 1366 × 768 和 390 × 844 截图，两个本地预览均返回 HTTP 200。读者试用待开展。
+
+## 机身与产品形态（本地）
+
+双语 `/cameras/form-factor/` 对照 RX100 VII、COOLPIX P950 与装上 XF16–50 mm 的 X-T5。三张卡片列出含电池、存储卡与镜头的携带重量、35 mm 等效光学变焦范围和拍摄示例。两个情境练习分别判断如何比较装包规格，以及如何查看同一支内置镜头能拍多宽或多窄。页面与镜头系统双向衔接，X-T5 套装可打开机身与镜头档案。
+
+`format:check` 和 100 项单测通过。根路径和 `/photography-field-guide` 各构建 136 页，`test:smoke` 与 `test:build` 均通过。类型检查为 0 errors、0 warnings、5 个既有 hints。首次中文搜索因浏览器与索引对「机身」的切词不同而失败。补上中文搜索别名后，用完整栏目名复测通过。最终 Chrome 分类专项还验证了重量条的比例、双语选项反馈、语言切换、档案与镜头系统往返、320／390／683 px 布局、无 JavaScript 自测与 390 × 844 深色触控。人工复核中文 1366 × 768 和 390 × 844 截图，两种本地预览均返回 HTTP 200。
 
 ## 练习与进度
 

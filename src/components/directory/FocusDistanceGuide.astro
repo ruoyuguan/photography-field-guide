@@ -1,0 +1,84 @@
+---
+import { focusDistanceCopy } from '@copy/focus-distance';
+import { localePath, type MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+}
+
+const { locale } = Astro.props;
+const t = focusDistanceCopy[locale];
+---
+
+<section
+  aria-labelledby="focus-distance"
+  class="mt-8 border-t border-neutral-300 pt-7 dark:border-neutral-700"
+>
+  <h2 id="focus-distance" tabindex="-1" class="scroll-mt-28 text-2xl font-bold">
+    {t.title}
+  </h2>
+  <p class="mt-3 max-w-3xl leading-7 text-neutral-700 dark:text-neutral-300">
+    {t.intro}
+  </p>
+  <div class="mt-5 grid gap-4 lg:grid-cols-3">
+    {t.methods.map(method => (
+      <div
+        data-focus-method={method.id}
+        class="min-w-0 rounded-xl border border-neutral-300 bg-white p-4 dark:border-neutral-600 dark:bg-neutral-950"
+      >
+        <h3 class="text-lg font-bold leading-6">{method.title}</h3>
+        <p class="mt-2 text-sm font-semibold leading-6 text-amber-800 dark:text-amber-300">
+          {method.example}
+        </p>
+        <p class="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">
+          {method.body}
+        </p>
+        {method.id === 'manual-zones' && (
+          <a
+            href={localePath(locale, '/gear/pentax-17/#classification')}
+            class="mt-2 inline-flex min-h-11 items-center rounded-sm font-semibold text-amber-800 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600 dark:text-amber-300 dark:focus-visible:outline-amber-400"
+          >
+            {t.pentaxLink}
+          </a>
+        )}
+      </div>
+    ))}
+  </div>
+  <section aria-labelledby="focus-check" class="mt-8 max-w-3xl">
+    <h3 id="focus-check" tabindex="-1" class="scroll-mt-28 text-xl font-bold">
+      {t.practiceTitle}
+    </h3>
+    <p class="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">
+      {t.practiceIntro}
+    </p>
+    <div class="mt-4 grid gap-4">
+      {t.cases.map(scenario => (
+        <article
+          aria-labelledby={`focus-case-${scenario.id}`}
+          data-focus-case={scenario.id}
+          class="min-w-0 rounded-xl border border-neutral-300 bg-neutral-100 p-3 sm:p-4 dark:border-neutral-600 dark:bg-neutral-800/70"
+        >
+          <h4 id={`focus-case-${scenario.id}`} class="font-semibold leading-7">
+            {scenario.prompt}
+          </h4>
+          <div class="mt-3 space-y-2">
+            {scenario.choices.map(choice => (
+              <details
+                name={`focus-check-${scenario.id}`}
+                data-focus-choice={choice.id}
+                class="rounded-lg border border-neutral-300 bg-white open:border-amber-600 dark:border-neutral-600 dark:bg-neutral-950 dark:open:border-amber-400"
+              >
+                <summary class="min-h-11 cursor-pointer rounded-lg px-3 py-2 font-medium leading-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 dark:focus-visible:outline-amber-400">
+                  {choice.label}
+                </summary>
+                <p class="border-t border-neutral-200 px-3 py-2 leading-7 text-neutral-700 dark:border-neutral-700 dark:text-neutral-300">
+                  <strong>{choice.result}</strong> {choice.feedback}
+                </p>
+              </details>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</section>

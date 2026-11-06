@@ -26,7 +26,12 @@
       "一体式镜头与可换镜头都可以是定焦或变焦。GFX100RF 使用一体式定焦镜头，不能换装 GF 镜头。还要分别检查镜头卡口的机械和电子兼容性，以及成像圈能否覆盖记录区域。"
     ]
   },
-  "relatedDimensionIds": ["optical-architecture", "format", "focusing"],
+  "relatedDimensionIds": [
+    "optical-architecture",
+    "format",
+    "focusing",
+    "form-factor"
+  ],
   "termIds": ["fixed-lens", "prime-lens", "focal-length", "perspective"],
   "articleKeys": ["equivalent-focal-length"],
   "toolIds": [],

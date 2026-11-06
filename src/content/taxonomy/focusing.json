@@ -6,27 +6,64 @@
     "zh-cn": "对焦系统"
   },
   "question": {
-    "en": "Who focuses, by what method, and when?",
-    "zh-cn": "谁来对焦？用什么方法？何时更新？"
+    "en": "Who sets the focus distance, and when can it change?",
+    "zh-cn": "谁决定对焦距离？什么时候需要更新？"
   },
   "summary": {
-    "en": "Distinguish focus operation, detection method and behavior over time.",
-    "zh-cn": "区分操作方式、检测原理与持续工作的模式。"
+    "en": "Compare a preset focus distance, manually selected distance zones, and autofocus. Then decide whether focus should hold or keep updating.",
+    "zh-cn": "先分清预设焦点、手动距离档和自动对焦，再判断焦点应该保持还是继续更新。"
   },
   "boundary": {
-    "en": "Manual/auto, phase/contrast and single/continuous AF answer separate questions. Depth of field is not an AF mode.",
-    "zh-cn": "手动或自动、相位或反差、单次或连续分别回答不同问题，景深不是自动对焦模式。"
+    "en": "A built-in lens describes how it attaches. A prime lens has one focal length. Fixed focus describes a preset focus distance. A distance zone on a focus ring and an autofocus zone in the frame describe different things.",
+    "zh-cn": "固定镜头描述镜头怎样与机身连接，定焦描述镜头只有一个焦距，固定焦点描述预设的对焦距离。对焦环上的距离档表示远近，自动对焦区域表示画面中的位置。"
   },
-  "detailed": false,
+  "detailed": true,
   "explanation": {
-    "en": [],
-    "zh-cn": []
+    "en": [
+      "The focus distance is where the camera is set to focus. Parts of the scene a little nearer or farther can still look acceptably sharp. With a fixed-focus camera, move yourself or the subject to work within the recommended distance range.",
+      "Manual focusing puts you in charge of the distance. Some cameras let you turn a ring continuously. Others, such as Pentax 17 in Standard mode, give you preset distance zones to choose from.",
+      "With autofocus, ask where the camera should look and when it should update. The focus area is the part of the frame it can use. On the X-T5 with shutter-button AF enabled, AF-S holds acquired focus during a half-press and AF-C keeps updating. Phase and contrast detection describe how the camera measures focus. The X-T5 uses both in its hybrid autofocus system."
+    ],
+    "zh-cn": [
+      "对焦距离是相机设定要对准的距离。比它稍近或稍远的东西，也可能看起来足够清晰。用固定焦点相机时，可以移动相机或主体，让拍摄距离落在厂商建议的范围内。",
+      "手动对焦由拍摄者决定距离。有些相机允许连续转动对焦环；像 Pentax 17 的标准模式，则让拍摄者从几个预设距离档中选择。",
+      "用自动对焦时，可以先问相机该到哪里找主体，再问何时要更新焦点。对焦区域是相机可以使用的画面范围。X-T5 启用半按快门对焦时，AF-S 合焦后在半按期间锁定，AF-C 则持续更新。相位检测和反差检测描述相机怎样测焦，X-T5 的混合自动对焦使用两种方法。"
+    ]
   },
   "relatedDimensionIds": ["lens-system", "optical-architecture"],
-  "termIds": ["autofocus", "manual-focus", "af-s", "af-c"],
+  "termIds": ["autofocus", "manual-focus", "focus-area", "af-s", "af-c"],
   "articleKeys": ["autofocus", "depth-of-field"],
   "toolIds": [],
-  "lastReviewed": "2026-11-05",
-  "sources": [],
+  "lastReviewed": "2026-11-07",
+  "sources": [
+    {
+      "url": "https://quicksnap.fujifilm.com/en/spec.html",
+      "title": "Fujifilm QuickSnap — Product Specifications",
+      "locator": "Lens and Subject-to-Lens Distance",
+      "accessedOn": "2026-11-07",
+      "supports": "Fixed-focus lens and recommended subject distances of 1 m onward for this QuickSnap."
+    },
+    {
+      "url": "https://www.ricoh-imaging.co.jp/english/support/man-pdf/pentax17_om_en_web.pdf",
+      "title": "Ricoh — Pentax 17 Operating Manual",
+      "locator": "Pages 22–23 and 27–28, Full Auto, Shooting Mode, and Shooting Range",
+      "accessedOn": "2026-11-07",
+      "supports": "Fixed focus in Full Auto, distance-ring operation in Standard, and the manufacturer’s shooting ranges."
+    },
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/x-t5/taking_photo/autofocus/",
+      "title": "Fujifilm X-T5 Owner’s Manual — Autofocus",
+      "locator": "Focus Mode and Autofocus Options",
+      "accessedOn": "2026-11-07",
+      "supports": "AF-S and AF-C under shutter-button AF and the separate autofocus area options."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/en-us/products/cameras/x-t5/specifications/",
+      "title": "Fujifilm X-T5 — Specifications",
+      "locator": "Focus, Mode and Type",
+      "accessedOn": "2026-11-07",
+      "supports": "Hybrid phase and contrast detection and the separately specified Single AF, Continuous AF, and manual focus modes."
+    }
+  ],
   "reviewStatus": "published"
 }
