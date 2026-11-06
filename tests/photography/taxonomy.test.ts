@@ -7,6 +7,7 @@ import {
   type TaxonomyReferenceInput,
 } from '../../src/utils/taxonomy-validation.ts';
 import { publicToolIds } from '../../src/data_files/tool-registry.ts';
+import { cameraSchema } from '../../src/utils/content-schema.ts';
 
 function fixture(): TaxonomyReferenceInput {
   return {
@@ -346,5 +347,51 @@ test('real taxonomy records resolve to the shared glossary, cameras, bilingual a
       toolIds: publicToolIds,
     }),
     []
+  );
+});
+
+test('camera records distinguish a built-in lens from an interchangeable mount', () => {
+  const cameras = readRecords('cameras');
+  const gfx = cameras.find(camera => camera.id === 'fujifilm-gfx100rf');
+  const d200 = cameras.find(camera => camera.id === 'nikon-d200');
+  assert.equal(cameraSchema.parse(gfx).lensSystem.type, 'fixed');
+  assert.equal(cameraSchema.parse(d200).lensSystem.type, 'interchangeable');
+
+  const fixedZoom = {
+    ...gfx,
+    lensSystem: {
+      ...gfx.lensSystem,
+      focalLengthMm: { min: 9, max: 72 },
+      maximumAperture: { wide: 2.8, tele: 4.5 },
+    },
+  };
+  assert.equal(cameraSchema.safeParse(fixedZoom).success, true);
+  assert.equal(
+    cameraSchema.safeParse({
+      ...fixedZoom,
+      lensSystem: {
+        ...fixedZoom.lensSystem,
+        focalLengthMm: { min: 72, max: 9 },
+      },
+    }).success,
+    false
+  );
+
+  assert.equal(
+    cameraSchema.safeParse({
+      ...gfx,
+      lensSystem: { ...gfx.lensSystem, mountId: 'fujifilm-g' },
+    }).success,
+    false
+  );
+  assert.equal(
+    cameraSchema.safeParse({
+      ...d200,
+      lensSystem: {
+        type: 'interchangeable',
+        mountName: d200.lensSystem.mountName,
+      },
+    }).success,
+    false
   );
 });

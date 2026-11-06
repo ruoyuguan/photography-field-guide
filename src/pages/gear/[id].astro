@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import GearDetailView from '@views/GearDetailView.astro';
+
+export async function getStaticPaths() {
+  const cameras = await getCollection(
+    'cameras',
+    ({ data }) => data.reviewStatus === 'published'
+  );
+  return cameras.map(item => ({ params: { id: item.id }, props: { item } }));
+}
+
+const { item } = Astro.props;
+---
+
+<GearDetailView locale="en" kind="camera" item={item} />

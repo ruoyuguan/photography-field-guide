@@ -321,6 +321,53 @@ export async function checkTaxonomy({
       'OK bilingual abbreviation/alias glossary search and native reset; seven X-T5 dimensions link to concepts'
     );
 
+    async function atCaseLink(path) {
+      await until(
+        `location.pathname + location.hash === ${JSON.stringify(path)} && document.readyState === 'complete'`
+      );
+    }
+    for (const prefix of ['', '/zh-cn']) {
+      await navigate(`${prefix}/cameras/`);
+      for (const model of [
+        'fujifilm-x-t5',
+        'fujifilm-gfx100rf',
+        'nikon-d200',
+      ]) {
+        assert.equal(
+          await evaluate(
+            `document.querySelectorAll('[data-camera-example="${model}"] dt').length`
+          ),
+          4
+        );
+      }
+      await click('[data-camera-example="fujifilm-gfx100rf"] a');
+      await atCaseLink(`${prefix}/gear/fujifilm-gfx100rf/#classification`);
+      assert.ok(
+        await evaluate(
+          `document.querySelector('main').innerText.includes('35 mm · f/4')`
+        )
+      );
+      assert.ok(
+        await evaluate(
+          `document.querySelector('main').innerText.includes('43.8 × 32.9 mm')`
+        )
+      );
+      await click('#classification a[href$="/cameras/#camera-examples"]');
+      await atCaseLink(`${prefix}/cameras/#camera-examples`);
+      await click('[data-camera-example="nikon-d200"] a');
+      await atCaseLink(`${prefix}/gear/nikon-d200/#classification`);
+      assert.ok(
+        await evaluate(
+          `document.querySelector('main').innerText.includes('23.6 × 15.8 mm')`
+        )
+      );
+      await click('#classification a[href$="/glossary/ccd/"]');
+      await atCaseLink(`${prefix}/glossary/ccd/`);
+      await click('main a[href$="/gear/nikon-d200/#classification"]');
+      await atCaseLink(`${prefix}/gear/nikon-d200/#classification`);
+    }
+    console.log('OK bilingual three-camera comparison and CCD example links');
+
     await search('/learn/', 'DSLR', '/glossary/dslr/');
     await search('/zh-cn/learn/', '单反', '/zh-cn/glossary/slr/');
     await search(
@@ -428,6 +475,8 @@ export async function checkTaxonomy({
         '/zh-cn/cameras/',
         '/zh-cn/cameras/lens-system/',
         '/zh-cn/glossary/prime-lens/',
+        '/zh-cn/gear/fujifilm-gfx100rf/',
+        '/zh-cn/gear/nikon-d200/',
         '/zh-cn/tools/format-comparison/',
         '/zh-cn/learn/sensor-lens/camera-viewfinding/',
       ]) {

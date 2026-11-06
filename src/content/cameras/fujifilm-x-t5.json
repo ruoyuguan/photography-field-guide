@@ -2,7 +2,6 @@
   "id": "fujifilm-x-t5",
   "brand": "FUJIFILM",
   "model": "X-T5",
-  "mountId": "fujifilm-x",
   "sensor": {
     "formatId": "aps-c",
     "widthMm": 23.5,
@@ -98,5 +97,25 @@
         "zh-cn": "机械与电子快门选项"
       }
     }
-  ]
+  ],
+  "lensSystem": {
+    "type": "interchangeable",
+    "mountId": "fujifilm-x",
+    "mountName": {
+      "en": "Fujifilm X mount",
+      "zh-cn": "富士 X 卡口"
+    }
+  },
+  "lessonNotes": {
+    "en": [
+      "Its 23.5 × 15.7 mm sensor is one real APS-C example, not a universal APS-C dimension. Use it to distinguish physical size, crop factor, and equivalent field of view.",
+      "The official specification lists a five-axis sensor-shift stabilization mechanism. It can compensate for some camera motion; it cannot freeze a moving subject.",
+      "JPEG, HEIF, RAW, and TIFF are listed separately. RAW conversion and EXIF metadata are not interchangeable with the image encoding itself."
+    ],
+    "zh-cn": [
+      "23.5 × 15.7 mm 传感器是一个真实的 APS-C 示例，不是所有 APS-C 的统一尺寸。可用它区分物理尺寸、画幅系数和等效视角。",
+      "官方规格列出五轴传感器位移防抖机构。它可补偿部分相机运动，但不能凝固移动的主体。",
+      "JPEG、HEIF、RAW 和 TIFF 分别列出。RAW 转换与 EXIF 元数据都不能和图像编码本身混为一谈。"
+    ]
+  }
 }

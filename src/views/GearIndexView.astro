@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import MainLayout from '@layouts/MainLayout.astro';
 import PageHeader from '@components/directory/PageHeader.astro';
 import { directoryCopy } from '@copy/directory';
+import { cameraLensLabel } from '@utils/camera-gear';
 import { localePath, type MarketingLocale } from '@utils/locale';
 
 interface Props {
@@ -18,6 +19,8 @@ const lenses = await getCollection(
   'lenses',
   ({ data }) => data.reviewStatus === 'published'
 );
+const pairCamera = cameras.find(item => item.id === 'fujifilm-x-t5');
+const pairLens = lenses.find(item => item.id === 'fujifilm-xf16-50');
 const items = [
   ...cameras.map(item => ({
     id: item.id,
@@ -25,7 +28,7 @@ const items = [
     model: item.data.model,
     description: item.data.description[locale],
     kind: t.camera,
-    detail: `${item.data.sensor.widthMm} × ${item.data.sensor.heightMm} mm · ${item.data.mountId}`,
+    detail: `${item.data.sensor.widthMm} × ${item.data.sensor.heightMm} mm · ${cameraLensLabel(item.data.lensSystem, locale)}`,
   })),
   ...lenses.map(item => ({
     id: item.id,
@@ -74,7 +77,7 @@ const items = [
         </a>
       ))}
     </div>
-    {cameras.length > 0 && lenses.length > 0 && (
+    {pairCamera && pairLens && (
       <section class="mt-12 rounded-3xl border border-neutral-300 bg-neutral-100 p-7 dark:border-neutral-700 dark:bg-neutral-900 sm:p-9">
         <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
           {t.pairTitle}
@@ -84,10 +87,10 @@ const items = [
         </p>
         <div class="mt-6 grid gap-4 sm:grid-cols-2">
           <p class="rounded-xl bg-white p-5 text-sm leading-6 dark:bg-neutral-950">
-            {cameras[0].data.model}: {t.pairCamera}
+            {pairCamera.data.model}: {t.pairCamera}
           </p>
           <p class="rounded-xl bg-white p-5 text-sm leading-6 dark:bg-neutral-950">
-            {lenses[0].data.model}: {t.pairLens}
+            {pairLens.data.model}: {t.pairLens}
           </p>
         </div>
         <a

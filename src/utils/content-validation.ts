@@ -334,8 +334,15 @@ async function runContentValidation(): Promise<void> {
       if (scope.type === 'combination') {
         const lens = lenses.find(item => item.id === scope.lensId);
         if (!lens) fail(where, `Unknown lens: ${scope.lensId}.`);
-        else if (camera && camera.data.mountId !== lens.data.mountId)
-          fail(where, 'The camera and lens mounts do not match.');
+        else if (
+          camera &&
+          (camera.data.lensSystem.type !== 'interchangeable' ||
+            camera.data.lensSystem.mountId !== lens.data.mountId)
+        )
+          fail(
+            where,
+            'A camera and lens combination needs compatible interchangeable mounts.'
+          );
       }
     }
     if (scope.type === 'lens' && !lenses.some(item => item.id === scope.lensId))

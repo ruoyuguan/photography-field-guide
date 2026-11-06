@@ -34,7 +34,7 @@
     ]
   },
   "lastReviewed": "2026-11-05",
-  "exampleCameraIds": ["fujifilm-x-t5"],
+  "exampleCameraIds": ["fujifilm-x-t5", "fujifilm-gfx100rf"],
   "relatedTerms": ["ccd", "x-trans", "sensor"],
   "sources": [
     {

@@ -4,6 +4,7 @@ import MainLayout from '@layouts/MainLayout.astro';
 import SourceLinks from '@components/directory/SourceLinks.astro';
 import { taxonomyCopy } from '@copy/taxonomy';
 import { directoryCopy } from '@copy/directory';
+import { cameraLensLabel } from '@utils/camera-gear';
 import { getArticleLinks, requiredArticle } from '@utils/catalog';
 import { localePath, type MarketingLocale } from '@utils/locale';
 
@@ -24,13 +25,20 @@ const tx = taxonomyCopy[locale];
 const dimensions = await getCollection('taxonomyDimensions');
 const glossary = await getCollection('glossary');
 const articles = await getArticleLinks(locale);
+const sensorFormat = camera?.data.classifications.find(
+  row => row.dimensionId === 'format'
+)?.value[locale];
+const ibis = camera?.data.specifications.hasIBIS;
 const specs = camera
   ? [
       [
         t.sensor,
-        `${camera.data.sensor.widthMm} × ${camera.data.sensor.heightMm} mm (${camera.data.sensor.formatId})`,
+        `${camera.data.sensor.widthMm} × ${camera.data.sensor.heightMm} mm · ${sensorFormat ?? camera.data.sensor.formatId}`,
       ],
-      [t.mount, camera.data.mountId],
+      [
+        camera.data.lensSystem.type === 'fixed' ? t.fixedLens : t.mount,
+        cameraLensLabel(camera.data.lensSystem, locale),
+      ],
       [
         t.pixels,
         camera.data.specifications.effectiveMegapixels
@@ -39,7 +47,7 @@ const specs = camera
       ],
       [
         t.ibis,
-        camera.data.specifications.hasIBIS ? common.yes : common.unknown,
+        ibis === undefined ? common.unknown : ibis ? common.yes : common.no,
       ],
       [t.formats, camera.data.specifications.fileFormats.join(' · ')],
     ]
@@ -65,7 +73,7 @@ const specs = camera
       ]
     : [];
 const lessons = camera
-  ? [t.cameraLessonOne, t.cameraLessonTwo, t.cameraLessonThree]
+  ? (camera.data.lessonNotes?.[locale] ?? [])
   : [t.lensLessonOne];
 ---
 
@@ -176,18 +184,26 @@ const lessons = camera
             );
           })}
         </dl>
+        <a
+          href={localePath(locale, '/cameras/#camera-examples')}
+          class="mt-5 inline-block font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+        >
+          {tx.example} →
+        </a>
       </section>
     )}
-    <section class="mt-12 rounded-2xl bg-neutral-100 p-7 dark:bg-neutral-900">
-      <h2 class="text-2xl font-bold">
-        {camera ? t.cameraLessonTitle : t.lensLessonTitle}
-      </h2>
-      <ul class="mt-5 list-disc space-y-4 pl-5 leading-7 text-neutral-700 dark:text-neutral-300">
-        {lessons.map(lesson => (
-          <li>{lesson}</li>
-        ))}
-      </ul>
-    </section>
+    {lessons.length > 0 && (
+      <section class="mt-12 rounded-2xl bg-neutral-100 p-7 dark:bg-neutral-900">
+        <h2 class="text-2xl font-bold">
+          {camera ? t.cameraLessonTitle : t.lensLessonTitle}
+        </h2>
+        <ul class="mt-5 list-disc space-y-4 pl-5 leading-7 text-neutral-700 dark:text-neutral-300">
+          {lessons.map(lesson => (
+            <li>{lesson}</li>
+          ))}
+        </ul>
+      </section>
+    )}
     <section class="mt-12">
       <h2 class="text-2xl font-bold">{t.learn}</h2>
       <div class="mt-5 flex flex-wrap gap-3">

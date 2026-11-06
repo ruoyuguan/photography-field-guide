@@ -11,10 +11,10 @@ const en = {
   start: 'Start with three questions',
   startIntro:
     'How is the image recorded? How do you see the scene? Can the lens be changed? Then add size, sensor and workflow details.',
-  example: 'Read one real specification sheet',
+  example: 'Compare three real cameras',
   exampleIntro:
-    'The X-T5 is digital, mirrorless, interchangeable-lens, APS-C, CMOS and X-Trans at the same time. Those labels belong to different dimensions.',
-  exampleLink: 'See the X-T5 classification',
+    'Read across the same four questions. Which cameras share the APS-C size family? Which use electronic viewing even though only one of them can change lenses?',
+  exampleLink: 'See full classifications',
   dimensions: 'Choose a question',
   scope:
     'This map introduces 16 dimensions. Follow the linked explanations for detail; the map is a guide to relationships, not an exhaustive list of every historical or scientific camera.',
@@ -57,10 +57,10 @@ const zh: TaxonomyCopy = {
   start: '先问三个问题',
   startIntro:
     '图像如何记录？你如何看到取景画面？镜头能否更换？然后再了解尺寸、传感器和工作流。',
-  example: '读懂一份真实规格表',
+  example: '三台相机，四个分类维度',
   exampleIntro:
-    'X-T5 可以同时是数码、无反、可换镜头、APS-C、CMOS 和 X-Trans 相机。这些名称属于不同维度。',
-  exampleLink: '查看 X-T5 的分类',
+    '对照相同的四个问题。哪两台相机都属于 APS-C 画幅？哪两台都用电子取景，却只有一台能换镜头？',
+  exampleLink: '查看完整分类',
   dimensions: '选择一个问题',
   scope:
     '这张地图介绍 16 个维度，可沿链接进一步阅读。它帮助理解概念之间的关系，不声称穷尽历史与科学成像中的全部设备。',

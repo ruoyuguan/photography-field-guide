@@ -95,11 +95,34 @@ export const glossarySchema = z.object({
   ...sourceFields,
 });
 
+const focalLengthRangeSchema = z.object({
+  min: z.number().positive(),
+  max: z.number().positive(),
+});
+const apertureRangeSchema = z.object({
+  wide: z.number().positive(),
+  tele: z.number().positive(),
+});
+
 export const cameraSchema = z.object({
   id: entityIdSchema,
   brand: nonEmpty,
   model: nonEmpty,
-  mountId: entityIdSchema,
+  lensSystem: z.discriminatedUnion('type', [
+    z.strictObject({
+      type: z.literal('interchangeable'),
+      mountId: entityIdSchema,
+      mountName: localizedTextSchema,
+    }),
+    z.strictObject({
+      type: z.literal('fixed'),
+      focalLengthMm: focalLengthRangeSchema.refine(
+        range => range.min <= range.max
+      ),
+      maximumAperture: apertureRangeSchema,
+    }),
+  ]),
+  lessonNotes: localizedListSchema.optional(),
   classifications: z
     .array(
       z.object({
@@ -132,17 +155,9 @@ export const lensSchema = z.object({
   model: nonEmpty,
   mountId: entityIdSchema,
   imageCircleFormatId: entityIdSchema,
-  focalLengthMm: z.object({
-    min: z.number().positive(),
-    max: z.number().positive(),
-  }),
-  maximumAperture: z.object({
-    wide: z.number().positive(),
-    tele: z.number().positive(),
-  }),
-  minimumAperture: z
-    .object({ wide: z.number().positive(), tele: z.number().positive() })
-    .optional(),
+  focalLengthMm: focalLengthRangeSchema,
+  maximumAperture: apertureRangeSchema,
+  minimumAperture: apertureRangeSchema.optional(),
   hasOIS: z.boolean().optional(),
   description: localizedTextSchema,
   manufacturerUrl: url,

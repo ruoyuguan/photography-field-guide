@@ -1,4 +1,4 @@
-import { taxonomyRoutes } from './taxonomy-routes.mjs';
+import { cameraGearRoutes, taxonomyRoutes } from './taxonomy-routes.mjs';
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve, sep } from 'node:path';
 
@@ -45,7 +45,7 @@ const LOCALIZED_ROUTES = [
   '/tools/exposure-stops/',
   '/glossary/',
   '/gear/',
-  '/gear/fujifilm-x-t5/',
+  ...cameraGearRoutes,
   '/gear/fujifilm-xf16-50/',
   '/galleries/',
   '/resources/',

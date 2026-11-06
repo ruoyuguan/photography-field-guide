@@ -1,4 +1,4 @@
-import { taxonomyRoutes } from './taxonomy-routes.mjs';
+import { cameraGearRoutes, taxonomyRoutes } from './taxonomy-routes.mjs';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { extname, isAbsolute, relative, resolve } from 'node:path';
@@ -47,7 +47,7 @@ const LOCALIZED_ROUTES = [
   '/tools/exposure-stops/',
   '/glossary/',
   '/gear/',
-  '/gear/fujifilm-x-t5/',
+  ...cameraGearRoutes,
   '/gear/fujifilm-xf16-50/',
   '/galleries/',
   '/resources/',
@@ -279,6 +279,18 @@ const EXPECTATIONS = {
     'https://fujifilm-dsc.com/en/manual/x-t5/',
   ],
   '/zh-cn/gear/fujifilm-x-t5/': ['五轴传感器位移防抖', '传感器与画幅'],
+  '/gear/fujifilm-gfx100rf/': [
+    '43.8 × 32.9 mm',
+    'Built-in lens',
+    '35 mm · f/4',
+  ],
+  '/zh-cn/gear/fujifilm-gfx100rf/': [
+    '43.8 × 32.9 mm',
+    '一体式镜头',
+    '拜耳彩色滤光阵列',
+  ],
+  '/gear/nikon-d200/': ['23.6 × 15.8 mm', 'Nikon F mount', 'CCD'],
+  '/zh-cn/gear/nikon-d200/': ['23.6 × 15.8 mm', '尼康 F 卡口', 'CCD'],
   '/gear/fujifilm-xf16-50/': ['16–50 mm', 'F2.8–F4.8', '24–76 mm'],
   '/zh-cn/gear/fujifilm-xf16-50/': ['实际焦距', '最小光圈', '等效焦距'],
   '/galleries/': [

@@ -36,11 +36,11 @@ const en = {
   gear: {
     metaTitle: 'Camera & Lens Learning Guides',
     metaDescription:
-      'Verified Fujifilm X-T5 and XF16–50mm specifications, explained through practical photography lessons and compatible-pair examples.',
+      'Source-checked camera and lens specifications with examples of viewing systems, sensor formats, and lens attachment.',
     eyebrow: 'Use equipment to understand principles',
     title: 'Camera and lens guides',
     intro:
-      'A small, sourced equipment library—not a ranking or shopping list. The first examples are the Fujifilm X-T5 and XF16–50mmF2.8–4.8 R LM WR.',
+      'Read specifications alongside examples that explain how cameras record images, how you compose, and whether a lens can be changed.',
     camera: 'Camera',
     lens: 'Lens',
     open: 'Open equipment guide',
@@ -57,6 +57,7 @@ const en = {
     specifications: 'Verified specifications',
     sensor: 'Sensor',
     mount: 'Mount',
+    fixedLens: 'Built-in lens',
     pixels: 'Effective pixels',
     ibis: 'In-body stabilization',
     formats: 'Still-image formats',
@@ -68,12 +69,6 @@ const en = {
     notListed:
       'Not listed as an OIS lens; the camera’s IBIS is a separate mechanism.',
     cameraLessonTitle: 'What this camera helps you learn',
-    cameraLessonOne:
-      'Its 23.5 × 15.7 mm sensor is one real APS-C example, not a universal APS-C dimension. Use it to distinguish physical size, crop factor, and equivalent field of view.',
-    cameraLessonTwo:
-      'The official specification lists a five-axis sensor-shift stabilization mechanism. It can compensate for some camera motion; it cannot freeze a moving subject.',
-    cameraLessonThree:
-      'JPEG, HEIF, RAW, and TIFF are listed separately. RAW conversion and EXIF metadata are not interchangeable with the image encoding itself.',
     lensLessonTitle: 'Read the name without guessing',
     lensLessonOne:
       '16–50 mm is the physical zoom range. F2.8–4.8 gives only the maximum aperture at the wide and telephoto ends; intermediate values must not be invented by interpolation. F22 is the minimum aperture, so the lens is not limited to F2.8–4.8.',
@@ -220,11 +215,10 @@ const zhCN: DirectoryCopy = {
   gear: {
     metaTitle: '相机与镜头学习指南',
     metaDescription:
-      '经官方资料核查的富士 X-T5 与 XF16–50mm 规格，以及结合摄影原理的器材学习入口。',
+      '可溯源的相机与镜头规格，配有取景系统、传感器画幅和镜头连接方式的实例。',
     eyebrow: '用具体器材理解通用原理',
     title: '相机与镜头指南',
-    intro:
-      '一个小型、可溯源的器材资料库，不做排名或购买导向。首批示例为富士 X-T5 与 XF16–50mmF2.8–4.8 R LM WR。',
+    intro: '对照规格和实例，了解相机怎样记录图像、怎样取景，以及镜头能否更换。',
     camera: '相机',
     lens: '镜头',
     open: '打开器材指南',
@@ -239,6 +233,7 @@ const zhCN: DirectoryCopy = {
     specifications: '已核实规格',
     sensor: '传感器',
     mount: '卡口',
+    fixedLens: '一体式镜头',
     pixels: '有效像素',
     ibis: '机身防抖',
     formats: '静态图像格式',
@@ -249,12 +244,6 @@ const zhCN: DirectoryCopy = {
     ois: '镜头 OIS',
     notListed: '此镜头未标为 OIS 镜头；相机机内防抖是另一套独立机制。',
     cameraLessonTitle: '可以用它理解哪些概念',
-    cameraLessonOne:
-      '23.5 × 15.7 mm 传感器是一个真实的 APS-C 示例，不是所有 APS-C 的统一尺寸。可用它区分物理尺寸、画幅系数和等效视角。',
-    cameraLessonTwo:
-      '官方规格列出五轴传感器位移防抖机构。它可补偿部分相机运动，但不能凝固移动的主体。',
-    cameraLessonThree:
-      'JPEG、HEIF、RAW 和 TIFF 分别列出。RAW 转换与 EXIF 元数据都不能和图像编码本身混为一谈。',
     lensLessonTitle: '读懂名称，不靠猜测',
     lensLessonOne:
       '16–50 mm 是实际变焦范围。F2.8–4.8 只表示广角端与长焦端的最大光圈，不能插值编造中间焦距的数值。最小光圈为 F22，因此镜头并不是只能在 F2.8–4.8 之间使用。',

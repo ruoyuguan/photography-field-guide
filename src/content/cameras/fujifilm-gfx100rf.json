@@ -1,0 +1,136 @@
+{
+  "id": "fujifilm-gfx100rf",
+  "brand": "FUJIFILM",
+  "model": "GFX100RF",
+  "lensSystem": {
+    "type": "fixed",
+    "focalLengthMm": { "min": 35, "max": 35 },
+    "maximumAperture": { "wide": 4, "tele": 4 }
+  },
+  "sensor": {
+    "formatId": "digital-medium-format",
+    "widthMm": 43.8,
+    "heightMm": 32.9
+  },
+  "specifications": {
+    "effectiveMegapixels": 102,
+    "hasIBIS": false,
+    "fileFormats": ["JPEG", "HEIF", "RAW"]
+  },
+  "description": {
+    "en": "A digital medium-format camera with a built-in prime lens and an electronic viewfinder, an example of a fixed-lens mirrorless design.",
+    "zh-cn": "这是一台配备内置定焦镜头和电子取景器的数码中画幅相机，也是固定镜头无反相机的一个实例。"
+  },
+  "lessonNotes": {
+    "en": [
+      "The built-in 35 mm f/4 lens supports autofocus and manual focus. Fixed lens describes how the lens is attached, and prime describes its single focal length.",
+      "Fujifilm lists this 35 mm lens as equivalent to 28 mm on full frame. The digital teleconverter narrows the framing by cropping. The physical focal length stays at 35 mm.",
+      "The GFX100RF and X-T5 both use electronic viewfinders and CMOS sensors. The GFX100RF has a larger recording area and a Bayer color filter array, while the X-T5 uses APS-C and an X-Trans array."
+    ],
+    "zh-cn": [
+      "这支内置 35 mm f/4 定焦镜头支持自动和手动对焦。固定镜头说的是能否更换，定焦说的是镜头只有一个焦距。",
+      "富士标注这支 35 mm 镜头的全画幅等效焦距为 28 mm。数字增距功能通过裁切收窄取景范围，镜头的实际焦距仍为 35 mm。",
+      "GFX100RF 和 X-T5 都采用电子取景器与 CMOS 传感器。GFX100RF 的成像面积更大，采用拜耳彩色滤光阵列，X-T5 则采用 APS-C 画幅和 X-Trans 阵列。"
+    ]
+  },
+  "manufacturerUrl": "https://www.fujifilm-x.com/global/products/cameras/gfx100rf/",
+  "documentationUrl": "https://fujifilm-dsc.com/en/manual/gfx100rf/technical_notes/spec/",
+  "articleKeys": [
+    "sensor-formats",
+    "equivalent-focal-length",
+    "camera-viewfinding",
+    "autofocus"
+  ],
+  "sources": [
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/",
+      "title": "Fujifilm GFX100RF specifications",
+      "locator": "Image Sensor, Lens, Shutter Type, File Format of Still Image",
+      "accessedOn": "2026-11-06",
+      "supports": "43.8 × 32.9 mm GFX 102MP CMOS II sensor and 102 effective megapixels. 35 mm actual focal length, 28 mm equivalent and f/4 maximum aperture. Lens shutter and electronic shutter, plus JPEG, HEIF and RAF RAW still capture."
+    },
+    {
+      "url": "https://fujifilm-dsc.com/en/manual/gfx100rf/technical_notes/spec/",
+      "title": "Fujifilm GFX100RF owner’s manual specifications",
+      "locator": "System table, Image sensor, Focus and Electronic viewfinder rows",
+      "accessedOn": "2026-11-06",
+      "supports": "Bayer color filter array. Autofocus and manual focus. Electronic viewfinder."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/gfx100rf/",
+      "title": "Fujifilm GFX100RF product overview",
+      "locator": "Newly Designed 35mmF4 Lens and Digital Teleconverter",
+      "accessedOn": "2026-11-06",
+      "supports": "Mechanical leaf shutter. The digital teleconverter crops the frame."
+    },
+    {
+      "url": "https://shopusa.fujifilm-x.com/discover/fujifilm-gfx100rf-frequently-asked-questions/",
+      "title": "Fujifilm GFX100RF frequently asked questions",
+      "locator": "Questions 2 and 4",
+      "accessedOn": "2026-11-06",
+      "supports": "The built-in 35 mm lens cannot be changed. No in-body image stabilization."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "Fujifilm X-T5 specifications",
+      "locator": "Image Sensor and Viewfinder",
+      "accessedOn": "2026-11-06",
+      "supports": "X-T5 uses an APS-C X-Trans CMOS sensor and an electronic viewfinder."
+    }
+  ],
+  "reviewStatus": "published",
+  "classifications": [
+    {
+      "dimensionId": "recording-medium",
+      "value": {
+        "en": "Digital",
+        "zh-cn": "数码"
+      }
+    },
+    {
+      "dimensionId": "optical-architecture",
+      "conceptId": "mirrorless",
+      "value": {
+        "en": "Mirrorless with an electronic viewfinder",
+        "zh-cn": "无反，使用电子取景器"
+      }
+    },
+    {
+      "dimensionId": "lens-system",
+      "conceptId": "fixed-lens",
+      "value": {
+        "en": "Built-in 35 mm f/4 prime lens",
+        "zh-cn": "内置 35 mm f/4 定焦镜头"
+      }
+    },
+    {
+      "dimensionId": "format",
+      "value": {
+        "en": "Digital medium format",
+        "zh-cn": "数码中画幅"
+      }
+    },
+    {
+      "dimensionId": "sensor-technology",
+      "conceptId": "cmos",
+      "value": {
+        "en": "GFX 102MP CMOS II",
+        "zh-cn": "GFX 102MP CMOS II"
+      }
+    },
+    {
+      "dimensionId": "color-sampling",
+      "value": {
+        "en": "Bayer color filter array",
+        "zh-cn": "拜耳彩色滤光阵列"
+      }
+    },
+    {
+      "dimensionId": "shutter",
+      "value": {
+        "en": "Mechanical leaf shutter and electronic shutter",
+        "zh-cn": "机械镜间快门与电子快门"
+      }
+    }
+  ]
+}

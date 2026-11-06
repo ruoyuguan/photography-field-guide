@@ -1,0 +1,117 @@
+{
+  "id": "nikon-d200",
+  "brand": "Nikon",
+  "model": "D200",
+  "lensSystem": {
+    "type": "interchangeable",
+    "mountId": "nikon-f",
+    "mountName": {
+      "en": "Nikon F mount",
+      "zh-cn": "尼康 F 卡口"
+    }
+  },
+  "sensor": {
+    "formatId": "aps-c",
+    "widthMm": 23.6,
+    "heightMm": 15.8
+  },
+  "specifications": {
+    "effectiveMegapixels": 10.2,
+    "fileFormats": ["JPEG", "NEF (RAW)"]
+  },
+  "description": {
+    "en": "A digital SLR with a Nikon DX CCD sensor, an optical pentaprism viewfinder and an interchangeable Nikon F lens mount.",
+    "zh-cn": "一台采用尼康 DX 画幅 CCD 传感器的数码单反，配备五棱镜光学取景器，可更换尼康 F 卡口镜头。"
+  },
+  "lessonNotes": {
+    "en": [
+      "CCD describes the sensor technology. DSLR describes the camera’s reflex viewing design. The D200 belongs to both categories.",
+      "While you frame a shot, a reflex mirror and pentaprism direct light from the taking lens to your eye. The finder gives you an optical view of the scene and the CCD captures light during exposure.",
+      "Nikon F names the connection between camera and lens. Check which lens functions the D200 supports and whether the lens covers its DX image area."
+    ],
+    "zh-cn": [
+      "CCD 描述传感器技术，数码单反描述相机的反光取景结构。D200 同时符合这两种分类。",
+      "构图时，反光镜和五棱镜将拍摄镜头的光线引向眼睛，你在取景器里直接看到场景；曝光时，CCD 接收光线。",
+      "尼康 F 指机身和镜头之间的接口。选用镜头时，分别确认 D200 支持哪些镜头功能，以及镜头的成像范围能否覆盖 DX 画幅。"
+    ]
+  },
+  "manufacturerUrl": "https://www.nikonusa.com/p/d200/25235/overview",
+  "documentationUrl": "https://downloadcenter.nikonimglib.com/en/products/10/D200.html",
+  "articleKeys": [
+    "camera-viewfinding",
+    "digital-camera-works",
+    "sensor-formats",
+    "shutter-speed"
+  ],
+  "sources": [
+    {
+      "url": "https://cdn-10.nikon-cdn.com/pdf/manuals/dslr/D200_en.pdf",
+      "title": "Nikon D200 User’s Manual",
+      "locator": "Image Quality and Size (pp. 28–31), Camera Lenses (pp. 174–176), Specifications (pp. 203–205)",
+      "accessedOn": "2026-11-06",
+      "supports": "JPEG and NEF (RAW), compatible lens functions, Nikon F mount, 23.6 × 15.8 mm CCD, 10.2 million effective pixels, optical pentaprism and reflex mirror, and electronically controlled vertical-travel focal-plane shutter."
+    },
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/the-dx-and-fx-formats",
+      "title": "Nikon: The DX and FX Formats",
+      "locator": "What is camera format? What does camera format mean? / Is FX full frame?",
+      "accessedOn": "2026-11-06",
+      "supports": "The DX size family and the distinction between lens image-circle coverage and camera format."
+    },
+    {
+      "url": "https://www.nikonusa.com/redirect/en/learn-and-explore/photography-glossary/n/1/perspective-control.html",
+      "title": "Nikon Photography Glossary",
+      "locator": "APS-C",
+      "accessedOn": "2026-11-06",
+      "supports": "Nikon DX belongs to the APS-C sensor-size family."
+    }
+  ],
+  "reviewStatus": "published",
+  "classifications": [
+    {
+      "dimensionId": "recording-medium",
+      "value": {
+        "en": "Digital",
+        "zh-cn": "数码"
+      }
+    },
+    {
+      "dimensionId": "optical-architecture",
+      "conceptId": "dslr",
+      "value": {
+        "en": "DSLR · optical pentaprism viewfinder",
+        "zh-cn": "数码单反 · 五棱镜光学取景器"
+      }
+    },
+    {
+      "dimensionId": "lens-system",
+      "value": {
+        "en": "Interchangeable lens · Nikon F mount",
+        "zh-cn": "可换镜头 · 尼康 F 卡口"
+      }
+    },
+    {
+      "dimensionId": "format",
+      "conceptId": "aps-c",
+      "value": {
+        "en": "Nikon DX (APS-C)",
+        "zh-cn": "尼康 DX（APS-C）"
+      }
+    },
+    {
+      "dimensionId": "sensor-technology",
+      "conceptId": "ccd",
+      "value": {
+        "en": "CCD",
+        "zh-cn": "CCD"
+      }
+    },
+    {
+      "dimensionId": "shutter",
+      "value": {
+        "en": "Electronically controlled mechanical focal-plane shutter",
+        "zh-cn": "电子控制的机械焦平面快门"
+      }
+    }
+  ]
+}

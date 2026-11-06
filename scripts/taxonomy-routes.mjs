@@ -13,6 +13,10 @@ async function publishedIds(directory, predicate) {
     .map(row => row.id)
     .sort();
 }
+export const cameraGearRoutes = (await publishedIds('cameras', () => true)).map(
+  id => `/gear/${id}/`
+);
+
 export const taxonomyRoutes = [
   '/cameras/',
   ...(await publishedIds('taxonomy', row => row.detailed)).map(
