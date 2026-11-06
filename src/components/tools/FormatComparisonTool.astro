@@ -1,0 +1,383 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import {
+  formatComparisonCopy,
+  formatDimensionSources,
+} from '@copy/format-comparison';
+import {
+  FORMAT_PRESETS,
+  compareFormats,
+} from '@utils/photography/format-comparison';
+import { localePath, type MarketingLocale } from '@utils/locale';
+interface Props {
+  locale: MarketingLocale;
+}
+const { locale } = Astro.props;
+const t = formatComparisonCopy[locale];
+const a = FORMAT_PRESETS[2];
+const b = FORMAT_PRESETS[3];
+const calculated = compareFormats(a, b);
+if (!calculated.ok) throw new Error('Invalid default format dimensions.');
+const value = calculated.value;
+const number = (n: number, digits = 2) =>
+  n.toLocaleString(locale === 'en' ? 'en-US' : 'zh-CN', {
+    maximumFractionDigits: digits,
+  });
+const summary = t.summary
+  .replace('{a}', t.labels[a.id].title)
+  .replace('{b}', t.labels[b.id].title)
+  .replace('{ratio}', number(value.areaRatioBtoA));
+---
+
+<MainLayout
+  searchable
+  title={t.metaTitle}
+  description={t.description}
+  section={t.title}
+>
+  <article
+    data-format-tool
+    data-locale={locale}
+    class="mx-auto max-w-5xl py-8 sm:py-12"
+  >
+    <a
+      href={localePath(locale, '/tools/')}
+      class="text-sm font-semibold text-neutral-600 underline underline-offset-4 hover:text-amber-700 dark:text-neutral-400 dark:hover:text-amber-300"
+    >
+      ← {t.back}
+    </a>
+    <header class="mt-6 max-w-3xl">
+      <h1 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-neutral-100">
+        {t.title}
+      </h1>
+      <p class="mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-300">
+        {t.intro}
+      </p>
+    </header>
+    <section
+      class="mt-8 rounded-3xl border border-neutral-300 bg-neutral-50 p-4 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
+      aria-label={t.diagram}
+    >
+      <div data-format-controls hidden>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {(['a', 'b'] as const).map(side => (
+            <div>
+              <label
+                for={`format-${side}`}
+                class="block text-base font-bold text-neutral-900 dark:text-neutral-100"
+              >
+                {t[side]}
+              </label>
+              <select
+                id={`format-${side}`}
+                data-format-select={side}
+                class="mt-2 w-full min-w-0 rounded-lg border border-neutral-400 bg-white px-3 py-3 text-sm text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600 dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-100"
+              >
+                {FORMAT_PRESETS.map(format => (
+                  <option
+                    value={format.id}
+                    selected={format.id === (side === 'a' ? a.id : b.id)}
+                  >
+                    {t.labels[format.id].title}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        class="mt-5 rounded-xl bg-amber-100 p-4 text-base font-bold leading-7 text-neutral-900 dark:bg-amber-300/15 dark:text-amber-200"
+      >
+        <p data-format-summary>{summary}</p>
+        <p class="mt-2 text-sm font-normal">
+          {t.ratio}:{' '}
+          <span data-format-ratio>{number(value.areaRatioBtoA, 3)}</span>×
+        </p>
+      </div>
+      <figure class="mt-4">
+        <svg
+          data-format-diagram
+          viewBox={value.overlay.viewBox}
+          role="img"
+          aria-labelledby="format-diagram-title format-diagram-description"
+          class="mx-auto block w-full max-w-xl"
+        >
+          <title id="format-diagram-title">{t.diagram}</title>
+          <desc id="format-diagram-description">{t.diagramDescription}</desc>
+          <rect
+            x="0"
+            y="0"
+            width="400"
+            height="260"
+            rx="8"
+            class="fill-white dark:fill-neutral-950"
+          />
+          <rect
+            data-format-rect="a"
+            {...value.overlay.a}
+            fill="none"
+            class="stroke-amber-700 dark:stroke-amber-300"
+            stroke-width="3"
+            vector-effect="non-scaling-stroke"
+          />
+          <rect
+            data-format-rect="b"
+            {...value.overlay.b}
+            fill="none"
+            class="stroke-sky-700 dark:stroke-sky-300"
+            stroke-width="3"
+            stroke-dasharray="9 5"
+            vector-effect="non-scaling-stroke"
+          />
+        </svg>
+        <figcaption class="mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+          {t.scaleNote}
+        </figcaption>
+      </figure>
+      <p
+        data-format-error
+        hidden
+        role="alert"
+        class="mt-4 font-semibold text-red-700 dark:text-red-300"
+      >
+        {t.error}
+      </p>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        {(['a', 'b'] as const).map(side => {
+          const preset = side === 'a' ? a : b;
+          const metrics = value[side];
+          return (
+            <section
+              data-format-result={side}
+              class="min-w-0 rounded-xl border border-neutral-300 p-4 dark:border-neutral-700"
+              aria-labelledby={`result-${side}`}
+            >
+              <h2
+                id={`result-${side}`}
+                class="text-lg font-bold text-neutral-900 dark:text-neutral-100"
+              >
+                {t[side]}
+                <span
+                  data-format-title
+                  class="mt-1 block text-base font-medium"
+                >
+                  {t.labels[preset.id].title}
+                </span>
+              </h2>
+              <dl class="mt-4 space-y-3 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+                <div>
+                  <dt>{t.dimensions}</dt>
+                  <dd
+                    data-format-metric="dimensions"
+                    class="font-semibold tabular-nums"
+                  >
+                    {number(metrics.widthMm)} × {number(metrics.heightMm)} mm
+                  </dd>
+                </div>
+                <div>
+                  <dt>{t.area}</dt>
+                  <dd
+                    data-format-metric="area"
+                    class="font-semibold tabular-nums"
+                  >
+                    {number(metrics.areaMm2)} mm²
+                  </dd>
+                </div>
+                <div>
+                  <dt>{t.aspect}</dt>
+                  <dd
+                    data-format-metric="aspect"
+                    class="font-semibold tabular-nums"
+                  >
+                    {number(metrics.aspectRatio, 3)} : 1
+                  </dd>
+                </div>
+                <div>
+                  <dt>{t.crop}</dt>
+                  <dd
+                    data-format-metric="crop"
+                    class="font-semibold tabular-nums"
+                  >
+                    {number(metrics.diagonalCropFactor, 3)}×
+                  </dd>
+                </div>
+              </dl>
+              <p
+                data-format-note
+                class="mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400"
+              >
+                {t.labels[preset.id].note}
+              </p>
+            </section>
+          );
+        })}
+      </div>
+      <noscript>
+        <p class="mt-5 rounded-lg border border-neutral-300 p-4 leading-7 dark:border-neutral-700">
+          {t.noScript}
+        </p>
+      </noscript>
+    </section>
+    <details class="mt-6 rounded-2xl border border-neutral-300 p-5 dark:border-neutral-700">
+      <summary class="cursor-pointer text-lg font-bold text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600 dark:text-neutral-100">
+        {t.fallback}
+      </summary>
+      <div class="mt-4 space-y-3">
+        {FORMAT_PRESETS.map(format => (
+          <p class="text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+            <strong>{t.labels[format.id].title}</strong>
+            <br />
+            {format.widthMm} × {format.heightMm} mm ·{' '}
+            {number(format.widthMm * format.heightMm)} mm²
+            <br />
+            {t.labels[format.id].note}
+          </p>
+        ))}
+      </div>
+    </details>
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+        {t.assumptions}
+      </h2>
+      <ul class="mt-4 list-disc space-y-3 ps-5 text-base leading-7 text-neutral-600 dark:text-neutral-300">
+        {t.notes.map(note => (
+          <li>{note}</li>
+        ))}
+      </ul>
+    </section>
+    <details class="mt-6 rounded-2xl border border-neutral-300 p-5 dark:border-neutral-700">
+      <summary class="cursor-pointer font-bold text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600 dark:text-neutral-100">
+        {t.formulas}
+      </summary>
+      <p class="mt-4 text-base leading-7 text-neutral-700 dark:text-neutral-300">
+        {t.formulaText}
+      </p>
+    </details>
+    <a
+      href={localePath(locale, '/tools/crop-factor/')}
+      class="mt-6 inline-block font-bold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+    >
+      {t.continue} →
+    </a>
+    <section class="mt-8 border-t border-neutral-300 pt-6 dark:border-neutral-700">
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">
+        {t.sources}
+      </h2>
+      <p class="mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        {t.checked}
+      </p>
+      <ul class="mt-4 list-disc space-y-3 ps-5 text-sm leading-6">
+        {formatDimensionSources.map(source => (
+          <li>
+            <a
+              href={source.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-amber-700 underline underline-offset-4 dark:text-amber-300"
+            >
+              {source.title} ↗
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </article>
+</MainLayout>
+
+<script>
+  import { formatComparisonCopy } from '@copy/format-comparison';
+  import {
+    compareFormats,
+    findFormat,
+  } from '@utils/photography/format-comparison';
+  function initializeFormatTools() {
+    document
+      .querySelectorAll<HTMLElement>('[data-format-tool]')
+      .forEach(root => {
+        if (root.dataset.initialized) return;
+        const locale = root.dataset.locale === 'zh-cn' ? 'zh-cn' : 'en';
+        const t = formatComparisonCopy[locale];
+        const a = root.querySelector<HTMLSelectElement>(
+          '[data-format-select="a"]'
+        );
+        const b = root.querySelector<HTMLSelectElement>(
+          '[data-format-select="b"]'
+        );
+        const controls = root.querySelector<HTMLElement>(
+          '[data-format-controls]'
+        );
+        if (!a || !b || !controls) return;
+        const number = (n: number, digits = 2) =>
+          n.toLocaleString(locale === 'en' ? 'en-US' : 'zh-CN', {
+            maximumFractionDigits: digits,
+          });
+        const render = () => {
+          const first = findFormat(a.value);
+          const second = findFormat(b.value);
+          const result =
+            first && second ? compareFormats(first, second) : undefined;
+          const error = root.querySelector<HTMLElement>('[data-format-error]');
+          if (!first || !second || !result?.ok) {
+            if (error) error.hidden = false;
+            return;
+          }
+          if (error) error.hidden = true;
+          const value = result.value;
+          const summary = root.querySelector<HTMLElement>(
+            '[data-format-summary]'
+          );
+          if (summary)
+            summary.textContent = t.summary
+              .replace('{a}', t.labels[first.id].title)
+              .replace('{b}', t.labels[second.id].title)
+              .replace('{ratio}', number(value.areaRatioBtoA));
+          const ratio = root.querySelector<HTMLElement>('[data-format-ratio]');
+          if (ratio) ratio.textContent = number(value.areaRatioBtoA, 3);
+          for (const side of ['a', 'b'] as const) {
+            const preset = side === 'a' ? first : second;
+            const metrics = value[side];
+            const card = root.querySelector<HTMLElement>(
+              `[data-format-result="${side}"]`
+            );
+            const set = (selector: string, text: string) => {
+              const node = card?.querySelector<HTMLElement>(selector);
+              if (node) node.textContent = text;
+            };
+            set('[data-format-title]', t.labels[preset.id].title);
+            set('[data-format-note]', t.labels[preset.id].note);
+            set(
+              '[data-format-metric="dimensions"]',
+              `${number(metrics.widthMm)} × ${number(metrics.heightMm)} mm`
+            );
+            set(
+              '[data-format-metric="area"]',
+              `${number(metrics.areaMm2)} mm²`
+            );
+            set(
+              '[data-format-metric="aspect"]',
+              `${number(metrics.aspectRatio, 3)} : 1`
+            );
+            set(
+              '[data-format-metric="crop"]',
+              `${number(metrics.diagonalCropFactor, 3)}×`
+            );
+            const rect = root.querySelector<SVGRectElement>(
+              `[data-format-rect="${side}"]`
+            );
+            for (const [attribute, n] of Object.entries(value.overlay[side]))
+              rect?.setAttribute(attribute, String(n));
+          }
+        };
+        a.addEventListener('change', render);
+        b.addEventListener('change', render);
+        render();
+        controls.hidden = false;
+        root.dataset.initialized = 'true';
+      });
+  }
+  initializeFormatTools();
+  document.addEventListener('astro:page-load', initializeFormatTools);
+</script>

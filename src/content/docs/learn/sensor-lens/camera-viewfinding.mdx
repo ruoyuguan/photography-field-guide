@@ -1,0 +1,126 @@
+---
+title: 'SLR, TLR, Rangefinder, and Mirrorless: Follow the Viewing Path'
+description: 'Trace the light and image signal to distinguish viewing architecture from recording medium, body shape, and lens interchangeability.'
+translationKey: camera-viewfinding
+category: sensor-lens
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [digital-camera-works]
+relatedConcepts: [sensor, manual-focus, autofocus]
+relatedTools: []
+lastReviewed: '2026-11-05'
+sources:
+  - url: 'https://global.canon/en/technology/canon-tech/tech/dslr/'
+    title: 'Digital SLR Cameras — Canon'
+    locator: 'How a digital SLR camera works; differences in mirrors'
+    accessedOn: '2026-11-05'
+    supports: 'The lens, reflex mirror, focusing/finder optics, and sensor occupy distinct parts of the normal DSLR viewing and recording paths.'
+  - url: 'https://global.canon/en/c-museum/product/film49.html'
+    title: 'Canon FX — Canon Camera Museum'
+    locator: 'Type; Viewfinder; Film Loading & Advance'
+    accessedOn: '2026-11-05'
+    supports: 'The Canon FX is a film single-lens reflex camera; SLR is not synonymous with digital.'
+  - url: 'https://www.cameramanuals.org/rolleiflex/Rolleiflex_2_8_fx.pdf'
+    title: 'Rolleiflex 2.8 FX / 4.0 FW original user manual — Rollei Fototechnic'
+    locator: 'Technical data, printed page 36; focusing and framing sections'
+    accessedOn: '2026-11-05'
+    supports: 'The manufacturer manual distinguishes the taking lens, viewfinder lens, focusing screens, and distance-dependent parallax compensation. This is an archive copy hosted by Camera Manuals, not a current manufacturer download.'
+  - url: 'https://leica-camera.com/en-int/technical-specs-leica-m6'
+    title: 'Leica M6 Technical Data — Leica Camera AG'
+    locator: 'Viewfinder; Wide-base rangefinder; Focusing'
+    accessedOn: '2026-11-05'
+    supports: 'This analogue rangefinder model uses a split/superimposed measuring patch, manual focus, and focus-dependent parallax compensation.'
+  - url: 'https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences'
+    title: 'Mirrorless vs. DSLR Cameras: Exploring the Key Differences — Nikon'
+    locator: 'Anatomy of the camera'
+    accessedOn: '2026-11-05'
+    supports: 'A normal moving-mirror DSLR raises its mirror for recording; a digital mirrorless camera uses sensor information for its EVF and/or rear-screen preview.'
+  - url: 'https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/'
+    title: 'FUJIFILM GFX100RF Specifications'
+    locator: 'Lens; Focus; Viewfinder; Fixed Lens Camera navigation'
+    accessedOn: '2026-11-05'
+    supports: 'The GFX100RF is a fixed-lens camera with a single-focal-length 35 mm lens, electronic finder, and hybrid autofocus; a rangefinder-style body is not proof of coupled optical rangefinding.'
+sidebar:
+  order: 0
+head:
+  - tag: meta
+    attrs:
+      data-pagefind-meta: search_aliases[content]
+      content: 'SLR DSLR TLR OVF EVF mirrorless rangefinder optical viewfinder camera anatomy'
+---
+
+import CameraOpticalPaths from '@components/learn/CameraOpticalPaths.astro';
+
+**Short answer:** ask **how the scene reaches your eye**, then separately ask **what records it** and **whether the lens changes**. Those are different questions. A film SLR and a digital SLR share a reflex viewing principle; a fixed-lens camera can still use a sensor-fed electronic finder.
+
+**Try first:** without pointing at the sun or another intense light source, look through your camera finder and read its manual. Is it an optical view or a display? A top hump or an offset eyepiece alone cannot establish the answer. Start from the [camera classification overview](../../../cameras/) if the names are unfamiliar.
+
+## 1 · SLR: one taking lens, two moments
+
+In a typical **single-lens reflex (SLR)**, the taking lens also supplies the normal optical finder view. The diagram groups the focusing screen and finder optics; it does not trace the internal prism reflections.
+
+<CameraOpticalPaths locale="en" kind="slr" />
+
+<details>
+<summary>What changes when the shutter is released?</summary>
+
+<CameraOpticalPaths locale="en" kind="slr" state="exposure" />
+
+The mirror moves clear before recording; opening the shutter permits exposure at the recording plane. Mirror motion and shutter timing are distinct actions. This illustrates a conventional moving-mirror design, not every historical reflex variant or every camera mode.
+
+</details>
+
+**SLR does not mean digital.** Canon FX is a film SLR; DSLR adds “digital” to describe the recording system. Changing film to a sensor does not, by itself, define the finder path.
+
+## 2 · TLR: two lenses do different jobs
+
+A **twin-lens reflex (TLR)** uses one lens for viewing and another for taking the photograph. In the Rolleiflex 2.8 FX example, the top focusing screen supports waist-level viewing; alternative finder attachments exist.
+
+<CameraOpticalPaths locale="en" kind="tlr" />
+
+The two viewpoints can produce **parallax**: close subjects do not occupy precisely the same position in both views. Framing compensation is model-dependent. “Waist-level” describes how you look into a finder; it is not a synonym for TLR.
+
+## 3 · Coupled rangefinder: measure separately from taking
+
+In a **coupled rangefinder**, adjusting lens focus is linked to a measuring system. On the Leica M6, you align a split or superimposed image patch. The normal finder view is separate from the taking lens, so its framing also needs parallax compensation.
+
+<CameraOpticalPaths locale="en" kind="rangefinder" />
+
+An offset finder or a rectangular “rangefinder-style” body does not prove that this measuring mechanism exists. A simple direct optical finder may help compose without measuring focus. **An optical viewfinder alone does not make a camera an SLR.**
+
+## 4 · Digital mirrorless: light becomes information, then a display
+
+A modern digital **mirrorless** camera does not use an SLR reflex mirror to form its normal preview. The sensor supplies image information to an electronic finder (EVF), a rear screen, or both.
+
+<CameraOpticalPaths locale="en" kind="mirrorless" />
+
+The dashed path is electronic information, not scene light reflected to your eye. The display emits new light. Preview appearance depends on camera settings and display limits; it is not a guarantee of the final image.
+
+**Mirrorless and interchangeable-lens are separate descriptions.** GFX100RF, for example, has an electronic finder and a fixed, single-focal-length lens. **Fixed lens** means the lens is not user-interchangeable; **prime lens** means its focal length does not zoom. Neither expression means fixed focus. The Chinese market term “微单” (weidan) is common in everyday usage; check the viewing architecture and lens system separately rather than treating that label as an additional optical mechanism.
+
+## Check the distinction before looking at the answer
+
+**A camera has an EVF and a non-interchangeable 35 mm autofocus lens. Must it be a DSLR, or must its focus be fixed?**
+
+<details>
+<summary>Reveal the reasoning</summary>
+
+Neither conclusion follows. The finder, lens interchangeability, focal-length range, and focusing method describe different properties. Read each relevant specification separately. GFX100RF is a concrete example of why an EVF and a fixed prime lens do not imply a reflex mirror or fixed focus.
+
+</details>
+
+For your own camera, find three manual entries: **finder type**, **recording medium**, and **lens system**. Explain each in one sentence. You can do this entirely on paper; this page stores no answers and requires no account or photographs.
+
+## Continue and sources
+
+Return to [Camera Taxonomy](../../../cameras/), compare [sensor formats](../sensor-formats/), or review [how a digital camera records light](../../getting-started/digital-camera-works/). These diagrams describe functional paths, not engineering drawings or sample photographs.
+
+The following sources were opened on **2026-11-05**. The Rollei document is the original manufacturer manual hosted by a third-party archive; the other links are manufacturer pages. The drawings and check question are original educational material.
+
+- [Canon: Digital SLR Cameras](https://global.canon/en/technology/canon-tech/tech/dslr/) — reflex viewing architecture.
+- [Canon Camera Museum: FX](https://global.canon/en/c-museum/product/film49.html) — a film SLR example.
+- [Rollei: Rolleiflex 2.8 FX / 4.0 FW manual, printed p. 36](https://www.cameramanuals.org/rolleiflex/Rolleiflex_2_8_fx.pdf) — separate lenses, finder, and parallax compensation.
+- [Leica: M6 technical data](https://leica-camera.com/en-int/technical-specs-leica-m6) — optical rangefinder and focusing.
+- [Nikon: Mirrorless vs. DSLR](https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences) — mirror movement and electronic preview.
+- [Fujifilm: GFX100RF specifications](https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/) — fixed prime lens, EVF, and autofocus.

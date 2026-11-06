@@ -1,0 +1,20 @@
+
+> photography-field-guide@0.0.1 test:browser /Users/ruoyu/photography-field-guide
+> node scripts/browser-check.mjs
+
+START taxonomy browser checks: overview loaded
+OK native taxonomy overview disclosure opens and closes with Space
+OK taxonomy16 axes, native keyboard disclosure, fixed-lens→prime distinction and deep Chinese switch
+file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:338
+    throw new Error(
+          ^
+
+Error: Timed out waiting for: [...document.querySelectorAll('[data-filter-item]')].filter(item => !item.hidden).length === 42
+Page: {"href":"http://127.0.0.1:59540/glossary/","lang":"en"}
+Exceptions: 
+    at until (file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:338:11)
+    at async checkTaxonomy (file:///Users/ruoyu/photography-field-guide/scripts/browser-taxonomy-checks.mjs:251:7)
+    at async file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:448:5
+
+Node.js v24.22.1
+ ELIFECYCLE  Command failed with exit code 1.

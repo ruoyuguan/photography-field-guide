@@ -25,6 +25,8 @@ interface Props {
   kind?: PageKind;
   hideFooter?: boolean;
   noIndex?: boolean;
+  /** Include this page in the same search index as the Learn guides. */
+  searchable?: boolean;
 }
 
 const {
@@ -35,6 +37,7 @@ const {
   kind,
   hideFooter = false,
   noIndex = false,
+  searchable = false,
 } = Astro.props;
 const { locale, copy: t } = Astro.locals;
 
@@ -90,7 +93,10 @@ const metadata = buildPageMetadata({
     */}
     <div class="mx-auto w-full max-w-(--breakpoint-2xl) grow px-4 sm:px-6 lg:px-8">
       <Navbar />
-      <main id="main-content">
+      <main
+        id="main-content"
+        data-pagefind-body={searchable && !noIndex ? '' : undefined}
+      >
         <slot />
       </main>
     </div>

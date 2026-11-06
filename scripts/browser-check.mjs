@@ -1,3 +1,4 @@
+import { checkTaxonomy } from './browser-taxonomy-checks.mjs';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { mkdtemp, rm } from 'node:fs/promises';
@@ -243,6 +244,9 @@ try {
       '--no-first-run',
       '--no-default-browser-check',
       '--disable-background-networking',
+      '--disable-background-timer-throttling',
+      '--disable-renderer-backgrounding',
+      '--disable-backgrounding-occluded-windows',
       '--disable-component-update',
       '--no-proxy-server',
       '--remote-debugging-port=0',
@@ -280,9 +284,16 @@ try {
   });
   checkNotStopping();
   const send = cdp(socket);
-  const { targetId } = await send('Target.createTarget', {
-    url: 'about:blank',
-  });
+  // Keep the isolated browser on its initial tab so a second blank tab cannot
+  // take focus from native keyboard controls or suspend the tested document.
+  const { targetInfos } = await send('Target.getTargets', {});
+  const initialTab = targetInfos.find(
+    target => target.type === 'page' && target.url === 'about:blank'
+  );
+  const targetId =
+    initialTab?.targetId ??
+    (await send('Target.createTarget', { url: 'about:blank' })).targetId;
+  await send('Target.activateTarget', { targetId });
   const { sessionId } = await send('Target.attachToTarget', {
     targetId,
     flatten: true,
@@ -349,21 +360,32 @@ try {
     });
   }
   async function click(selector) {
-    const point = await evaluate(`new Promise(resolve => {
+    const point = await evaluate(`(async () => {
       const element = document.querySelector(${JSON.stringify(selector)});
-      if (!element) return resolve(null);
+      if (!element) return null;
       element.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'center' });
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        const rect = element.getBoundingClientRect();
-        resolve({
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2,
-          visible: rect.width > 0 && rect.height > 0,
-        });
-      }));
-    })`);
+      // Let layout settle, with a timer fallback for hidden browser targets.
+      await Promise.race([
+        new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+        new Promise(resolve => setTimeout(resolve, 100)),
+      ]);
+      const rect = element.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      const hit = document.elementFromPoint(x, y);
+      return {
+        x, y,
+        visible: rect.width > 0 && rect.height > 0,
+        target: element.contains(hit),
+        hit: hit?.outerHTML.slice(0, 200),
+      };
+    })()`);
     assert.ok(point, `Missing click target: ${selector}`);
     assert.ok(point.visible, `Click target is hidden: ${selector}`);
+    assert.ok(
+      point.target,
+      `Click target ${selector} is covered by ${point.hit}`
+    );
     for (const type of ['mousePressed', 'mouseReleased']) {
       await call('Input.dispatchMouseEvent', {
         type,
@@ -436,11 +458,28 @@ try {
       const link = [...document.querySelectorAll('dialog[open] .pagefind-ui__result-link')].find(a => new URL(a.href, location.origin).pathname === ${JSON.stringify(expectedPath)});
       link.click();
     })()`);
-    await until(`location.pathname === ${JSON.stringify(expectedPath)}`);
+    await until(
+      `location.pathname === ${JSON.stringify(expectedPath)} &&
+        document.readyState === 'complete' &&
+        !document.documentElement.hasAttribute('data-astro-transition')`
+    );
     console.log(`OK search ${JSON.stringify(query)} → ${expectedPath}`);
   }
 
-  if (process.env.PFG_BROWSER_SCOPE === 'learning-paths') {
+  if (process.env.PFG_BROWSER_SCOPE === 'taxonomy') {
+    await checkTaxonomy({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      search,
+      until,
+      viewport,
+    });
+    assert.deepEqual(errors, [], 'Browser exceptions: ' + errors.join('\n'));
+    console.log('OK focused taxonomy checks without page exceptions.');
+  } else if (process.env.PFG_BROWSER_SCOPE === 'learning-paths') {
     await checkLearningPaths({
       call,
       click,
@@ -471,6 +510,7 @@ try {
     );
 
     await viewport(1440, 900);
+    await navigate('/');
     await click('.language-picker summary');
     await until(
       `document.querySelector('a[href="/zh-cn/"]')?.getBoundingClientRect().width > 0`
@@ -578,6 +618,16 @@ try {
       '安全备份',
       '/zh-cn/learn/workflow/backup-and-export/'
     );
+    await checkTaxonomy({
+      call,
+      click,
+      evaluate,
+      navigate,
+      noOverflow,
+      search,
+      until,
+      viewport,
+    });
     await checkDirectories({
       call,
       click,

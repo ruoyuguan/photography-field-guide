@@ -1,0 +1,51 @@
+{
+  "id": "sensor-architecture",
+  "order": 6,
+  "title": {
+    "en": "Sensor construction & readout",
+    "zh-cn": "传感器结构与读出"
+  },
+  "question": {
+    "en": "Where are the circuits, and when is exposure?",
+    "zh-cn": "电路在哪里？何时曝光？"
+  },
+  "summary": {
+    "en": "Construction, pixel design and exposure timing describe different aspects.",
+    "zh-cn": "器件结构、像素设计和曝光时序描述不同方面。"
+  },
+  "boundary": {
+    "en": "BSI and stacked describe construction. Rolling and global shutter describe exposure timing; stacked does not automatically mean global shutter.",
+    "zh-cn": "BSI 和堆栈描述器件结构，卷帘与全局快门描述曝光时序；堆栈不自动等于全局快门。"
+  },
+  "detailed": true,
+  "explanation": {
+    "en": [
+      "Front- and back-illumination describe the layout through which light reaches the photosensitive region. Stacked structures place pixel and circuit functions on separate layers. These can coexist. Exposure timing is a separate specification: consult the device documentation instead of inferring it from a construction label."
+    ],
+    "zh-cn": [
+      "前照式与背照式描述光到达感光区域时的器件布局，堆栈结构将像素和电路功能安排在不同层上，这些属性可以同时存在。曝光时序是独立规格，应查器件文档，不能根据结构名称推断。"
+    ]
+  },
+  "relatedDimensionIds": ["sensor-technology", "shutter", "color-sampling"],
+  "termIds": ["cmos"],
+  "articleKeys": [],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [
+    {
+      "url": "https://www.sony-semicon.com/en/technology/is/back-illuminated.html",
+      "title": "Sony Semiconductor Solutions — Back-illuminated Structure",
+      "locator": "Front-illuminated and back-illuminated diagrams",
+      "accessedOn": "2026-11-05",
+      "supports": "Location of wiring relative to incident light in front- and back-illuminated CMOS structures."
+    },
+    {
+      "url": "https://www.sony-semicon.com/en/technology/is/stacked.html",
+      "title": "Sony Semiconductor Solutions — Stacked Structure",
+      "locator": "Pixel section and circuit section",
+      "accessedOn": "2026-11-05",
+      "supports": "Stacking pixel and circuit sections; this does not by itself specify exposure timing."
+    }
+  ],
+  "reviewStatus": "published"
+}

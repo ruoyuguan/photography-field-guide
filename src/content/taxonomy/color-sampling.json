@@ -1,0 +1,55 @@
+{
+  "id": "color-sampling",
+  "order": 7,
+  "title": {
+    "en": "Color sampling",
+    "zh-cn": "彩色采样"
+  },
+  "question": {
+    "en": "How is color sampled?",
+    "zh-cn": "如何采样颜色？"
+  },
+  "summary": {
+    "en": "A filter arrangement describes the samples available to reconstruct color.",
+    "zh-cn": "滤色排列描述用于重建颜色的采样。"
+  },
+  "boundary": {
+    "en": "X-Trans and Bayer describe color sampling; X-Trans is not a third semiconductor technology alongside CCD and CMOS.",
+    "zh-cn": "X-Trans 与 Bayer 描述彩色采样。X-Trans 不是与 CCD、CMOS 并列的第三种半导体技术。"
+  },
+  "detailed": true,
+  "explanation": {
+    "en": [
+      "A conventional Bayer array repeats over 2 × 2 samples; X-Trans uses a 6 × 6 pattern. Reconstruction estimates missing color components from those samples. CMOS describes the sensor technology, while X-Trans describes sampling. A different layout alone cannot determine the quality or style of a finished photograph."
+    ],
+    "zh-cn": [
+      "常见 Bayer 阵列以 2 × 2 采样区块重复，X-Trans 使用 6 × 6 排列，重建过程据此估计缺少的颜色分量。CMOS 描述传感器技术，X-Trans 描述采样方式，仅凭排列不同不能决定最终照片的质量或风格。"
+    ]
+  },
+  "relatedDimensionIds": [
+    "sensor-technology",
+    "sensor-architecture",
+    "workflow"
+  ],
+  "termIds": ["x-trans", "cmos"],
+  "articleKeys": ["digital-camera-works"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [
+    {
+      "url": "https://registry.khronos.org/DataFormat/specs/1.4/dataformat.1.4.html",
+      "title": "Khronos — Data Format Specification v1.4.0",
+      "locator": "Section 2, Figures 17–18",
+      "accessedOn": "2026-11-05",
+      "supports": "Bayer 2 × 2 and X-Trans 6 × 6 color-sample layouts, a separate description from semiconductor technology."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor; Lens Mount; Shutter Speed; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "X-T5 APS-C dimensions, CMOS product name, X mount, shutter options and electronic viewfinder."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import TaxonomyView from '@views/TaxonomyView.astro';
+export async function getStaticPaths() {
+  return (
+    await getCollection(
+      'taxonomyDimensions',
+      ({ data }) => data.reviewStatus === 'published' && data.detailed
+    )
+  ).map(dimension => ({ params: { id: dimension.id }, props: { dimension } }));
+}
+const { dimension } = Astro.props;
+---
+
+<TaxonomyView locale="zh-cn" dimension={dimension} />

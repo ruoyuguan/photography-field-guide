@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import GlossaryDetailView from '@views/GlossaryDetailView.astro';
+export async function getStaticPaths() {
+  return (
+    await getCollection(
+      'glossary',
+      ({ data }) => data.reviewStatus === 'published' && !!data.explanation
+    )
+  ).map(term => ({ params: { id: term.id }, props: { term } }));
+}
+const { term } = Astro.props;
+---
+
+<GlossaryDetailView locale="zh-cn" term={term} />

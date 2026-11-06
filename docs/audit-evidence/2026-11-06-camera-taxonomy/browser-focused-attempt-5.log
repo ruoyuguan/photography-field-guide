@@ -1,0 +1,26 @@
+
+> photography-field-guide@0.0.1 test:browser /Users/ruoyu/photography-field-guide
+> node scripts/browser-check.mjs
+
+START taxonomy browser checks: overview loaded
+OK native taxonomy overview disclosure opens and closes with Space
+OK taxonomy16 axes, native keyboard disclosure, fixed-lens→prime distinction and deep Chinese switch
+OK filtered glossary link reveals and focuses APS-C, clears its obstructing query, and preserves Back
+OK bilingual abbreviation/alias glossary search and native reset; seven X-T5 dimensions link to concepts
+OK search "DSLR" → /glossary/dslr/
+OK search "单反" → /zh-cn/glossary/slr/
+OK search "取景光路" → /zh-cn/learn/sensor-lens/camera-viewfinding/
+OK actual Pagefind abbreviation, Chinese concept and optical-guide queries reach corresponding pages
+file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:338
+    throw new Error(
+          ^
+
+Error: Timed out waiting for: document.querySelector('[data-format-select="a"]').value === 'digital-medium' && document.querySelector('[data-format-ratio]').textContent === '1'
+Page: {"href":"http://127.0.0.1:60178/tools/format-comparison/","lang":"en"}
+Exceptions: InvalidStateError: Transition was aborted because of invalid state. Document hidden
+    at until (file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:338:11)
+    at async checkTaxonomy (file:///Users/ruoyu/photography-field-guide/scripts/browser-taxonomy-checks.mjs:329:7)
+    at async file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:448:5
+
+Node.js v24.22.1
+ ELIFECYCLE  Command failed with exit code 1.

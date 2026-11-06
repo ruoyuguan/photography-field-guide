@@ -1,0 +1,126 @@
+---
+title: '单反、双反、旁轴与无反：沿着取景光路理解相机'
+description: '追踪光和电子图像信号，区分取景结构、记录介质、机身外形与镜头能否更换。'
+translationKey: camera-viewfinding
+category: sensor-lens
+difficulty: beginner
+reviewStatus: published
+draft: false
+prerequisites: [digital-camera-works]
+relatedConcepts: [sensor, manual-focus, autofocus]
+relatedTools: []
+lastReviewed: '2026-11-05'
+sources:
+  - url: 'https://global.canon/en/technology/canon-tech/tech/dslr/'
+    title: 'Digital SLR Cameras — Canon'
+    locator: 'How a digital SLR camera works; differences in mirrors'
+    accessedOn: '2026-11-05'
+    supports: 'The lens, reflex mirror, focusing/finder optics, and sensor occupy distinct parts of the normal DSLR viewing and recording paths.'
+  - url: 'https://global.canon/en/c-museum/product/film49.html'
+    title: 'Canon FX — Canon Camera Museum'
+    locator: 'Type; Viewfinder; Film Loading & Advance'
+    accessedOn: '2026-11-05'
+    supports: 'The Canon FX is a film single-lens reflex camera; SLR is not synonymous with digital.'
+  - url: 'https://www.cameramanuals.org/rolleiflex/Rolleiflex_2_8_fx.pdf'
+    title: 'Rolleiflex 2.8 FX / 4.0 FW original user manual — Rollei Fototechnic'
+    locator: 'Technical data, printed page 36; focusing and framing sections'
+    accessedOn: '2026-11-05'
+    supports: 'The manufacturer manual distinguishes the taking lens, viewfinder lens, focusing screens, and distance-dependent parallax compensation. This is an archive copy hosted by Camera Manuals, not a current manufacturer download.'
+  - url: 'https://leica-camera.com/en-int/technical-specs-leica-m6'
+    title: 'Leica M6 Technical Data — Leica Camera AG'
+    locator: 'Viewfinder; Wide-base rangefinder; Focusing'
+    accessedOn: '2026-11-05'
+    supports: 'This analogue rangefinder model uses a split/superimposed measuring patch, manual focus, and focus-dependent parallax compensation.'
+  - url: 'https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences'
+    title: 'Mirrorless vs. DSLR Cameras: Exploring the Key Differences — Nikon'
+    locator: 'Anatomy of the camera'
+    accessedOn: '2026-11-05'
+    supports: 'A normal moving-mirror DSLR raises its mirror for recording; a digital mirrorless camera uses sensor information for its EVF and/or rear-screen preview.'
+  - url: 'https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/'
+    title: 'FUJIFILM GFX100RF Specifications'
+    locator: 'Lens; Focus; Viewfinder; Fixed Lens Camera navigation'
+    accessedOn: '2026-11-05'
+    supports: 'The GFX100RF is a fixed-lens camera with a single-focal-length 35 mm lens, electronic finder, and hybrid autofocus; a rangefinder-style body is not proof of coupled optical rangefinding.'
+sidebar:
+  order: 0
+head:
+  - tag: meta
+    attrs:
+      data-pagefind-meta: search_aliases[content]
+      content: '单反 双反 旁轴 无反 微单 取景 光路 SLR DSLR TLR OVF EVF mirrorless rangefinder'
+---
+
+import CameraOpticalPaths from '@components/learn/CameraOpticalPaths.astro';
+
+**先记一句话：**先问**景物如何到达眼睛**，再分别问**用什么记录**、**镜头能否更换**。这是不同的问题。胶片单反和数码单反可共享反光取景原理；固定镜头相机也能用传感器供图的电子取景器。
+
+**先做一个观察：**避开太阳或其他强光源，看看自己相机的取景器，再查说明书：里面是光学景象，还是显示器？机顶凸起或目镜偏在一侧，都不足以下结论。名词不熟悉时，先看[相机分类总览](../../../cameras/)。
+
+## 1 · 单反：同一摄影镜头，两个时刻
+
+典型的**单镜头反光相机（SLR）**在正常光学取景时，也用摄影镜头提供景象。图中合并表示对焦屏和取景光学系统，省略棱镜内部的多次反射。
+
+<CameraOpticalPaths locale="zh-cn" kind="slr" />
+
+<details>
+<summary>按下快门后，什么发生变化？</summary>
+
+<CameraOpticalPaths locale="zh-cn" kind="slr" state="exposure" />
+
+记录前反光镜移开，快门打开后感光面开始曝光。反光镜动作与快门时序是两件事。这里说明常见的可动反光镜设计，不代表所有历史单反变体或相机的全部工作模式。
+
+</details>
+
+**单反不等于数码。**Canon FX 是胶片单反；DSLR 中的 D 才补充说明数码记录。把胶片换成传感器，本身并不能定义取景光路。
+
+## 2 · 双反：两支镜头分工
+
+**双镜头反光相机（TLR）**用一支镜头取景，另一支镜头摄影。以 Rolleiflex 2.8 FX 为例，顶部对焦屏支持腰平取景，也可换装其他取景附件。
+
+<CameraOpticalPaths locale="zh-cn" kind="tlr" />
+
+两个观察位置会产生**视差**：近处主体在取景和实际记录中，位置并不完全重合。取景补偿取决于具体机型。“腰平”描述从什么位置看取景器，并不是双反的同义词。
+
+## 3 · 联动测距旁轴：测距与摄影分开
+
+**联动测距旁轴相机**把镜头对焦位置与测距机构关联。Leica M6 通过取景器中的裂像或叠像测距斑帮助判断合焦；正常取景不通过摄影镜头，所以构图也需要考虑视差补偿。
+
+<CameraOpticalPaths locale="zh-cn" kind="rangefinder" />
+
+目镜偏置或“旁轴造型”的方正机身，并不能证明里面有联动测距机构。简单的直接光学取景器可以帮助构图，却不一定能测距。**有光学取景器，也不一定是单反。**
+
+## 4 · 数码无反：光变为信息，再送到显示器
+
+现代数码**无反相机（mirrorless）**不靠单反反光镜形成正常预览。传感器把图像信息送往电子取景器（EVF）、后屏，或两者。
+
+<CameraOpticalPaths locale="zh-cn" kind="mirrorless" />
+
+虚线是电子信息，不是景物光被反射到眼睛。显示器会重新发光；预览还受相机设置和显示器限制，不能保证最终照片完全相同。
+
+**无反与可换镜头是两种描述。**例如 GFX100RF 有电子取景器，却使用固定的单一焦距镜头。**固定镜头**指镜头不可由用户更换；**定焦镜头**指焦距不变焦。两者都不等于固定焦点。“微单”常用于中文市场和日常交流，读规格时仍应分别核对取景结构与镜头系统。
+
+## 先判断，再看解释
+
+**一台相机有 EVF，以及不可更换的 35 mm 自动对焦镜头。它一定是数码单反，或者一定不能对焦吗？**
+
+<details>
+<summary>查看判断依据</summary>
+
+都不能这样推断。取景方式、镜头能否更换、焦距是否能变和如何对焦，是不同属性，应分别读规格。GFX100RF 是一个具体例子：电子取景器加固定定焦镜头，并不意味着有反光镜或固定焦点。
+
+</details>
+
+查自己相机说明书中的三项：**取景器类型**、**记录介质**和**镜头系统**，分别用一句话解释。可以只在纸上完成；本页不保存答案，不需要账号或照片。
+
+## 继续与来源
+
+返回[相机分类总览](../../../cameras/)，比较[传感器画幅](../sensor-formats/)，或复习[数码相机如何记录光](../../getting-started/digital-camera-works/)。图示说明功能路径，不是工程图，也不是实拍样片。
+
+以下资料于 **2026-11-05** 实际打开。Rollei 文档为第三方档案站托管的原厂说明书，其余为厂商网页；图解与判断题为本站原创教学内容。
+
+- [Canon：数码单反原理](https://global.canon/en/technology/canon-tech/tech/dslr/)——反光取景结构。
+- [Canon Camera Museum：FX](https://global.canon/en/c-museum/product/film49.html)——胶片单反实例。
+- [Rollei：Rolleiflex 2.8 FX / 4.0 FW 说明书，印刷页码第 36 页](https://www.cameramanuals.org/rolleiflex/Rolleiflex_2_8_fx.pdf)——两支镜头、取景器和视差补偿。
+- [Leica：M6 技术资料](https://leica-camera.com/en-int/technical-specs-leica-m6)——光学测距旁轴与对焦。
+- [Nikon：无反与数码单反的区别](https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences)——反光镜动作与电子预览。
+- [Fujifilm：GFX100RF 规格](https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/)——固定定焦镜头、EVF 与自动对焦。

@@ -1,0 +1,55 @@
+{
+  "id": "slr",
+  "term": {
+    "en": "Single-lens reflex",
+    "zh-cn": "单镜头反光相机"
+  },
+  "aliases": {
+    "en": ["SLR", "single lens reflex"],
+    "zh-cn": ["单反"]
+  },
+  "shortDefinition": {
+    "en": "A camera whose reflex viewing path uses the taking lens and a mirror.",
+    "zh-cn": "通过拍摄镜头与反光镜进行反光取景的相机。"
+  },
+  "misconceptions": {
+    "en": [
+      "SLR can be film or digital; the D in DSLR specifies digital recording."
+    ],
+    "zh-cn": ["单反可以是胶片或数码，DSLR 中的 D 才表示数码。"]
+  },
+  "example": {
+    "en": "Canon FX is a film SLR.",
+    "zh-cn": "Canon FX 是胶片单反。"
+  },
+  "dimensionIds": ["optical-architecture"],
+  "explanation": {
+    "en": [
+      "In the conventional design, a mirror directs taking-lens light to a focusing screen during viewing and moves clear for exposure. The name identifies the viewing architecture, not the recording medium, format or professional status."
+    ],
+    "zh-cn": [
+      "常见结构在取景时用反光镜把拍摄镜头中的光导向对焦屏，曝光时让它离开光路。名称描述取景结构，不指定记录介质、画幅或专业等级。"
+    ]
+  },
+  "lastReviewed": "2026-11-05",
+  "exampleCameraIds": [],
+  "articleKey": "camera-viewfinding",
+  "relatedTerms": ["dslr", "mirrorless"],
+  "sources": [
+    {
+      "url": "https://global.canon/en/c-museum/product/film49.html",
+      "title": "Canon Camera Museum — FX",
+      "locator": "Type; Picture Size; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "A 35 mm film single-lens reflex camera; SLR does not imply digital."
+    },
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences",
+      "title": "Nikon — Mirrorless versus DSLR",
+      "locator": "The difference between DSLR and mirrorless cameras",
+      "accessedOn": "2026-11-05",
+      "supports": "A DSLR's reflex viewing path and electronic viewing in modern digital mirrorless cameras."
+    }
+  ],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "lens-system",
+  "order": 3,
+  "title": {
+    "en": "Lens system",
+    "zh-cn": "镜头系统"
+  },
+  "question": {
+    "en": "Can you change the lens, or its focal length?",
+    "zh-cn": "能换镜头吗？能改变焦距吗？"
+  },
+  "summary": {
+    "en": "Lens attachment and focal-length range are separate questions.",
+    "zh-cn": "镜头连接方式与焦距变化范围是两个问题。"
+  },
+  "boundary": {
+    "en": "Fixed-lens means built into the camera; prime means one focal length. Neither means fixed focus. Mount compatibility and image-circle coverage also need separate checks.",
+    "zh-cn": "固定镜头表示镜头与机身一体，定焦表示只有一个焦距，都不等于固定焦点。卡口兼容与成像圈覆盖也需要分别检查。"
+  },
+  "detailed": true,
+  "explanation": {
+    "en": [
+      "A built-in lens and an interchangeable lens can each be prime or zoom. GFX100RF illustrates the first combination: a built-in single-focal-length lens, not a body accepting GF lenses. Separately check whether a lens mount works mechanically and electronically, and whether its image circle covers the recording area."
+    ],
+    "zh-cn": [
+      "一体式镜头与可换镜头都可以是定焦或变焦。GFX100RF 使用一体式定焦镜头，不能换装 GF 镜头。还要分别检查镜头卡口的机械和电子兼容性，以及成像圈能否覆盖记录区域。"
+    ]
+  },
+  "relatedDimensionIds": ["optical-architecture", "format", "focusing"],
+  "termIds": ["fixed-lens", "prime-lens", "focal-length", "perspective"],
+  "articleKeys": ["equivalent-focal-length"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [
+    {
+      "url": "https://cipa.jp/stats/documents/common/cr300.pdf",
+      "title": "CIPA — Digital Still Cameras Classified by Type",
+      "locator": "Page 1: Cameras with Built-in Lens; Cameras with Interchangeable Lens",
+      "accessedOn": "2026-11-05",
+      "supports": "Lens-system categories in this statistical series; this is not a universal taxonomy of all historical cameras."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/",
+      "title": "FUJIFILM GFX100RF Specifications",
+      "locator": "Image Sensor; Lens; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "43.8 × 32.9 mm sensor, single-focal-length built-in lens and electronic viewfinder; a counterexample to equating mirrorless with interchangeable lenses."
+    }
+  ],
+  "reviewStatus": "published"
+}

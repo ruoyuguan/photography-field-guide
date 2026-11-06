@@ -1,0 +1,32 @@
+{
+  "id": "focusing",
+  "order": 9,
+  "title": {
+    "en": "Focusing systems",
+    "zh-cn": "对焦系统"
+  },
+  "question": {
+    "en": "Who focuses, by what method, and when?",
+    "zh-cn": "谁来对焦？用什么方法？何时更新？"
+  },
+  "summary": {
+    "en": "Distinguish focus operation, detection method and behavior over time.",
+    "zh-cn": "区分操作方式、检测原理与持续工作的模式。"
+  },
+  "boundary": {
+    "en": "Manual/auto, phase/contrast and single/continuous AF answer separate questions. Depth of field is not an AF mode.",
+    "zh-cn": "手动或自动、相位或反差、单次或连续分别回答不同问题，景深不是自动对焦模式。"
+  },
+  "detailed": false,
+  "explanation": {
+    "en": [],
+    "zh-cn": []
+  },
+  "relatedDimensionIds": ["lens-system", "optical-architecture"],
+  "termIds": ["autofocus", "manual-focus", "af-s", "af-c"],
+  "articleKeys": ["autofocus", "depth-of-field"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [],
+  "reviewStatus": "published"
+}

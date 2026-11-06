@@ -1,0 +1,56 @@
+{
+  "id": "x-trans",
+  "term": {
+    "en": "X-Trans color filter array",
+    "zh-cn": "X-Trans 彩色滤色阵列"
+  },
+  "aliases": {
+    "en": ["X-Trans", "X Trans"],
+    "zh-cn": ["X-Trans", "富士滤色阵列"]
+  },
+  "shortDefinition": {
+    "en": "Fujifilm's color-sampling arrangement with a repeating 6 × 6 filter pattern.",
+    "zh-cn": "富士采用的一种以 6 × 6 滤色区块重复的彩色采样排列。"
+  },
+  "misconceptions": {
+    "en": [
+      "X-Trans is a filter arrangement used with CMOS sensors, not a competing base sensor technology."
+    ],
+    "zh-cn": [
+      "X-Trans 是用于 CMOS 传感器的滤色排列，不是与其竞争的基础传感器技术。"
+    ]
+  },
+  "example": {
+    "en": "The official X-T5 specification names an X-Trans CMOS 5 HR sensor.",
+    "zh-cn": "X-T5 官方规格将其传感器命名为 X-Trans CMOS 5 HR。"
+  },
+  "dimensionIds": ["color-sampling"],
+  "explanation": {
+    "en": [
+      "Each filtered sample supplies one color component; reconstruction estimates other components. X-Trans and conventional Bayer differ in spatial arrangement. Do not infer that every Fujifilm camera uses X-Trans, or that a filter pattern alone guarantees a particular final look."
+    ],
+    "zh-cn": [
+      "每个滤色采样点提供一个颜色分量，重建过程据此估计其他分量。X-Trans 与常见 Bayer 的区别在空间排列。不能据此认为所有富士相机都使用 X-Trans，也不能认为排列本身保证最终风格。"
+    ]
+  },
+  "lastReviewed": "2026-11-05",
+  "exampleCameraIds": ["fujifilm-x-t5"],
+  "relatedTerms": ["cmos", "sensor"],
+  "sources": [
+    {
+      "url": "https://registry.khronos.org/DataFormat/specs/1.4/dataformat.1.4.html",
+      "title": "Khronos — Data Format Specification v1.4.0",
+      "locator": "Section 2, Figures 17–18",
+      "accessedOn": "2026-11-05",
+      "supports": "Bayer 2 × 2 and X-Trans 6 × 6 color-sample layouts, a separate description from semiconductor technology."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor; Lens Mount; Shutter Speed; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "X-T5 APS-C dimensions, CMOS product name, X mount, shutter options and electronic viewfinder."
+    }
+  ],
+  "reviewStatus": "published"
+}

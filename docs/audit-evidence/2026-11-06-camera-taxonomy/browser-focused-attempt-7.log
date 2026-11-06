@@ -1,0 +1,38 @@
+
+> photography-field-guide@0.0.1 test:browser /Users/ruoyu/photography-field-guide
+> node scripts/browser-check.mjs
+
+START taxonomy browser checks: overview loaded
+OK native taxonomy overview disclosure opens and closes with Space
+OK taxonomy16 axes, native keyboard disclosure, fixed-lens→prime distinction and deep Chinese switch
+OK filtered glossary link reveals and focuses APS-C, clears its obstructing query, and preserves Back
+OK bilingual abbreviation/alias glossary search and native reset; seven X-T5 dimensions link to concepts
+OK search "DSLR" → /glossary/dslr/
+OK search "单反" → /zh-cn/glossary/slr/
+OK search "取景光路" → /zh-cn/learn/sensor-lens/camera-viewfinding/
+OK actual Pagefind abbreviation, Chinese concept and optical-guide queries reach corresponding pages
+OK native keyboard format selection and all36 pairs in both languages: physical dimensions, area, crop factor and two visible outlines at one SVG scale
+OK all4 optical paths, native SLR exposure disclosure, and text alternatives in both languages
+OK actual dark mobile format tool with both outlines, 320px and 200%-equivalent layout
+OK no-JavaScript taxonomy disclosure, physical dimensions/default comparison and optical exposition
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: No trusted touch arrived at [data-taxonomy-dimension] details > summary
+
+false !== true
+
+    at tap (file:///Users/ruoyu/photography-field-guide/scripts/browser-touch.mjs:32:10)
+    at async checkTaxonomy (file:///Users/ruoyu/photography-field-guide/scripts/browser-taxonomy-checks.mjs:520:5)
+    at async file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:458:5 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+ ELIFECYCLE  Command failed with exit code 1.

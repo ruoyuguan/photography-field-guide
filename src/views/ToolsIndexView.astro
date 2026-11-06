@@ -1,5 +1,6 @@
 ---
 import MainLayout from '@layouts/MainLayout.astro';
+import { formatComparisonCopy } from '@copy/format-comparison';
 import { toolsCopy } from '@copy/tools';
 import { localePath, type MarketingLocale } from '@utils/locale';
 
@@ -22,6 +23,13 @@ const tools = [
     title: t.exposureTitle,
     description: t.exposureDescription,
     formula: 'Δ stops = log₂(ratio)',
+  },
+  {
+    number: '03',
+    path: '/tools/format-comparison/',
+    title: formatComparisonCopy[locale].title,
+    description: formatComparisonCopy[locale].intro,
+    formula: 'A = w × h',
   },
 ];
 ---

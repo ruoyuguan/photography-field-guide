@@ -1,0 +1,17 @@
+
+> photography-field-guide@0.0.1 test:browser /Users/ruoyu/photography-field-guide
+> node scripts/browser-check.mjs
+
+START taxonomy browser checks: overview loaded
+OK native taxonomy overview disclosure opens and closes with Space
+file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:125
+        reject(new Error(`CDP timed out: ${method}`));
+               ^
+
+Error: CDP timed out: Runtime.evaluate
+    at Timeout._onTimeout (file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:125:16)
+    at listOnTimeout (node:internal/timers:685:17)
+    at process.processTimers (node:internal/timers:618:7)
+
+Node.js v24.22.1
+ ELIFECYCLE  Command failed with exit code 1.

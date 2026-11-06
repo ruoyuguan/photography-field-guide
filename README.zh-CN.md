@@ -2,7 +2,7 @@
 
 **[English](README.md)** | **简体中文**
 
-一个面向摄影新手的中英双语学习网站，使用 Astro、Starlight 和 Tailwind CSS 构建。默认语言为英文；简体中文内容位于 `/zh-cn/`。
+一个面向摄影新手的中英双语学习网站，使用 Astro、Starlight 和 Tailwind CSS 构建。英文为默认语言。简体中文内容位于 `/zh-cn/`。
 
 本项目基于开源的 [ScrewFast](https://github.com/mearashadowfax/ScrewFast) 模板构建，并保留其 MIT 许可证。
 
@@ -19,31 +19,34 @@ AI 助手为本项目的开发提供支持。项目负责人主导工作，并�
 
 ## 当前范围
 
-- 英文与简体中文学习路径：22 篇主题教程加 1 篇导览，按 23 组双语配对维护，共 46 份 MDX 文档。
+- 英文与简体中文学习路径包含 23 篇主题教程和 1 篇导览，按 24 组双语配对维护，共 48 份 MDX 文档。
 - 按学习意图提供共享起点链接、精简的六任务路线图、基于浏览器进度的建议与情境化返回入口；所有任务均可自由进入。
 - 六个双语实践任务：光线方向、主体与背景取景、用三张照片讲述街区故事、照片筛选与复盘、安全备份与导出，以及轻量后期。任务包括预测、解释性反馈、本地观察或操作、自我复盘和无需账号的浏览器进度，不进行审美评分。C5 与 C6 相连；后期练习分别比较亮度、白平衡与裁切，并允许保留未修改的最终版本。
-- 两个互动工具：画幅／等效焦距与曝光档位；使用无障碍原生输入控件，并配有经过测试的计算逻辑。
-- 可搜索的双语术语表，收录 34 个术语。
+- 三个互动工具分别解释画幅系数与等效焦距、曝光档位，以及不同画幅的物理尺寸。
+- 相机分类总览介绍 16 个维度，提供 7 个维度详情、X-T5 分类案例和原创取景光路图的入口。
+- 可搜索的双语术语词典收录 42 个术语，其中 8 个有独立详情页。
 - 相机与镜头指南、三个范围明确的外部样片链接，以及 13 个精选资源。
 - 本地化导航、语言切换、文档搜索、404 页面、元数据，以及根路径／子路径部署检查。
 
-当前源码包含 52 条结构化记录和 84 个 HTML 路由。经审查的交接检查点为 `95f19f4`；本 MVP 提交在此基础上加入 C5、C6、学习路径改进、审查修复和手动发布准备。当前验证结果记录于 [docs/STATUS.md](docs/STATUS.md)。已执行的检查及限制见 [C6 集成审查](docs/C6_INTEGRATION_REVIEW.md)。历史报告仅为当时快照，不代表当前功能清单。
+当前源码包含 76 条结构化记录和 120 个 HTML 路由。MVP 提交 `e6087c5` 在 `95f19f4` 交接基线上加入 C5、C6、学习路径改进和手动发布准备。参见 [当前项目状态](docs/STATUS.md)、[相机分类覆盖计划](docs/CAMERA_TAXONOMY_PLAN.md) 与 [分类首批验收](docs/CAMERA_TAXONOMY_REVIEW.md)。既有 [C6 集成审查](docs/C6_INTEGRATION_REVIEW.md) 记录当时的检查。
 
 ### 路由
 
-| 板块     | 英文                     | 简体中文                       |
-| -------- | ------------------------ | ------------------------------ |
-| 首页     | `/`                      | `/zh-cn/`                      |
-| 学习     | `/learn/`                | `/zh-cn/learn/`                |
-| 练习     | `/practice/`             | `/zh-cn/practice/`             |
-| 工具     | `/tools/`                | `/zh-cn/tools/`                |
-| 画幅系数 | `/tools/crop-factor/`    | `/zh-cn/tools/crop-factor/`    |
-| 曝光档位 | `/tools/exposure-stops/` | `/zh-cn/tools/exposure-stops/` |
-| 术语     | `/glossary/`             | `/zh-cn/glossary/`             |
-| 器材     | `/gear/`                 | `/zh-cn/gear/`                 |
-| 样片     | `/galleries/`            | `/zh-cn/galleries/`            |
-| 资源     | `/resources/`            | `/zh-cn/resources/`            |
-| 关于     | `/about/`                | `/zh-cn/about/`                |
+| 板块     | 英文                        | 简体中文                          |
+| -------- | --------------------------- | --------------------------------- |
+| 首页     | `/`                         | `/zh-cn/`                         |
+| 学习     | `/learn/`                   | `/zh-cn/learn/`                   |
+| 练习     | `/practice/`                | `/zh-cn/practice/`                |
+| 工具     | `/tools/`                   | `/zh-cn/tools/`                   |
+| 画幅系数 | `/tools/crop-factor/`       | `/zh-cn/tools/crop-factor/`       |
+| 曝光档位 | `/tools/exposure-stops/`    | `/zh-cn/tools/exposure-stops/`    |
+| 画幅比较 | `/tools/format-comparison/` | `/zh-cn/tools/format-comparison/` |
+| 相机分类 | `/cameras/`                 | `/zh-cn/cameras/`                 |
+| 术语     | `/glossary/`                | `/zh-cn/glossary/`                |
+| 器材     | `/gear/`                    | `/zh-cn/gear/`                    |
+| 样片     | `/galleries/`               | `/zh-cn/galleries/`               |
+| 资源     | `/resources/`               | `/zh-cn/resources/`               |
+| 关于     | `/about/`                   | `/zh-cn/about/`                   |
 
 ## 本地开发
 
@@ -79,9 +82,9 @@ pnpm test:smoke
 pnpm test:build
 ```
 
-`pnpm test:unit` 当前包含 80 项用例，涵盖摄影公式、单位与边界输入、任务反馈、练习进度持久化／恢复／独立重置，以及 C1–C6 综合目录。执行结果以当前验证记录为准。`pnpm build` 会运行类型检查、验证内容、在 `dist/` 中生成静态网站，并压缩 HTML。smoke 测试检查所有当前公开页面及已停用／未知路由。产物测试检查内部链接与资源、canonical／hreflang URL、404 `noindex`、manifest、robots、sitemap 和搜索产物。
+`pnpm test:unit` 覆盖摄影公式、单位与边界输入、分类关系、任务反馈、练习进度保存与重置，以及 C1–C6 综合目录。执行结果以当前验证记录为准。`pnpm build` 会运行类型检查、验证内容、在 `dist/` 中生成静态网站，并压缩 HTML。smoke 测试检查所有当前公开页面及已停用／未知路由。产物测试检查内部链接与资源、canonical／hreflang URL、404 `noindex`、manifest、robots、sitemap 和搜索产物。
 
-完成根路径生产构建后，可选的真实浏览器检查会验证语言菜单、中文导航、中英文搜索、按比例绘制的画幅图、计算器结果、滑块与输入同步、键盘操作、重置与错误状态、无 JavaScript 回退、移动端溢出、任务反馈、本地进度、备份／导出学习、受限存储下的主题控件、六任务目录、C5 → C6 导航、两个进度命名空间，以及共享的后期练习场景几何：
+完成根路径生产构建后，可选的真实浏览器检查会验证语言菜单、中文导航、中英文搜索、按比例绘制的画幅图、计算器结果、滑块与输入同步、键盘操作、重置与错误状态、无 JavaScript 回退、移动端溢出、任务反馈、本地进度、备份／导出学习、受限存储下的主题控件、六任务目录、C5 → C6 导航、两个进度命名空间，共享的后期练习场景几何、分类阅读路径和画幅比较。
 
 ```bash
 pnpm build
@@ -104,9 +107,9 @@ SITE_BASE=/photography-field-guide pnpm test:build
 
 - `src/pages/` 和 `src/pages/zh-cn/` — 营销页面路由；Starlight 提供 Learn 路由。
 - `src/content/docs/learn/` 和 `src/content/docs/zh-cn/learn/` — 双语配对文章。
-- `src/content/{glossary,cameras,lenses,resources,galleries}/` — 结构化记录。
+- `src/content/{taxonomy,glossary,cameras,lenses,resources,galleries}/` — 结构化记录。
 - `src/utils/content-schema.ts` — 共享 Zod schema 和严格的 ISO 日期验证。
-- `src/utils/content-validation.ts` — 双语配对、发布、引用、前置条件、挂载点和资源核查检查。
+- `src/utils/content-validation.ts` 和 `src/utils/taxonomy-validation.ts` — 双语配对、发表状态、跨实体引用、前置条件、卡口与资源核查。
 - `src/content/i18n/zh-CN.yml` — 本地化 Starlight／Pagefind 界面文本。
 - `src/components/tools/` 和 `src/views/ToolsIndexView.astro` — 本地化工具界面和客户端控制器。
 - `src/utils/photography/` 和 `tests/photography/` — 纯摄影计算与公式测试。
@@ -122,9 +125,9 @@ SITE_BASE=/photography-field-guide pnpm test:build
 
 输出为静态网站，适合部署到 GitHub Pages、Vercel 或 Netlify 等服务。`SITE_ORIGIN` 控制公开源站（默认 `https://ruoyuguan.github.io`）；`SITE_BASE` 独立控制部署前缀（默认 `/`）。不要将前缀合并进源站。
 
-MVP 已在 `/photography-field-guide/` 准备好仅手动触发的 GitHub Pages 工作流。它不会因推送或拉取请求自动部署。发布范围和步骤见 [MVP 发布范围与步骤](docs/MVP_RELEASE.md)；目前尚未发布网站。根路径静态托管可以为缺失页面提供 `404.html`。系统也会生成 `/zh-cn/404/`，但特定语言的回退行为取决于最终托管平台；不得将有效中文页面重写到该页面。
+MVP 已在 `/photography-field-guide/` 准备好仅手动触发的 GitHub Pages 工作流。它不会因推送或拉取请求自动部署。发布范围和步骤见 [MVP 发布说明](docs/MVP_RELEASE.md)。公网状态以摄影仓库的 Pages 部署记录为准。根路径静态托管可以为缺失页面提供 `404.html`。系统也会生成 `/zh-cn/404/`，但特定语言的回退行为取决于最终托管平台；不得将有效中文页面重写到该页面。
 
-由于网站尚未发布，旧的 `/start-here/` 与 `/basics/...` 路由已停用且未设置重定向。今后更改公开 URL 前，应重新评估这一决定。
+旧的 `/start-here/` 与 `/basics/...` 路由在发布准备阶段已停用，未设置重定向。今后改动读者已使用的网址前，先评估是否需要重定向。
 
 开发期间仓库可以保持私有。公开仓库与本地运行是两个独立决定。
 
@@ -140,6 +143,6 @@ python scripts/generate_brand_assets.py
 
 MIT。见 [`LICENSE`](LICENSE)。保留 ScrewFast 的原始版权与许可证声明。
 
-如果希望在不公开开发仓库、也不要求第三方访问 GitHub 的情况下与朋友分享，请参阅[分享方案](docs/SHARING_WITHOUT_GITHUB_ACCESS.md)。本次本地审查未进行公开部署。
+如果希望在不公开开发仓库、也不要求第三方访问 GitHub 的情况下与朋友分享，请参阅[分享方案](docs/SHARING_WITHOUT_GITHUB_ACCESS.md)。
 
-内容审查日期采用维护者在 Asia/Shanghai 时区的创作日期，包括 UTC 环境下的 CI 构建。当前入口路径审查与限制见 [学习路径 UX 审查](docs/LEARNING_PATH_UX_REVIEW.md)。如需针对浏览器开发进行重点检查，使用 `PFG_BROWSER_SCOPE=learning-paths pnpm test:browser`；默认命令仍运行完整测试套件。
+内容审查日期采用维护者在 Asia/Shanghai 时区的创作日期，包括 UTC 环境下的 CI 构建。当前入口路径审查与限制见 [学习路径 UX 审查](docs/LEARNING_PATH_UX_REVIEW.md)。可用 `PFG_BROWSER_SCOPE=learning-paths pnpm test:browser` 检查学习路径，或用 `PFG_BROWSER_SCOPE=taxonomy pnpm test:browser` 检查相机分类。默认命令运行完整套件。

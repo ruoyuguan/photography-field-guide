@@ -1,0 +1,45 @@
+
+> photography-field-guide@0.0.1 test:browser /Users/ruoyu/photography-field-guide
+> node scripts/browser-check.mjs
+
+START taxonomy browser checks: overview loaded
+OK native taxonomy overview disclosure opens and closes with Space
+OK taxonomy16 axes, native keyboard disclosure, fixed-lens→prime distinction and deep Chinese switch
+OK filtered glossary link reveals and focuses APS-C, clears its obstructing query, and preserves Back
+OK bilingual abbreviation/alias glossary search and native reset; seven X-T5 dimensions link to concepts
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: No search result for DSLR points to /glossary/dslr/ after loading up to four pages: [{"text":"SLR, TLR, Rangefinder, and Mirrorless: Follow the Viewing Path","href":"/learn/sensor-lens/camera-viewfinding/"},{"text":"1 · SLR: one taking lens, two moments","href":"/learn/sensor-lens/camera-viewfinding/#1--slr-one-taking-lens-two-moments"},{"text":"Check the distinction before looking at the answer","href":"/learn/sensor-lens/camera-viewfinding/#check-the-distinction-before-looking-at-the-answer"},{"text":"Continue and sources","href":"/learn/sensor-lens/camera-viewfinding/#continue-and-sources"}]. Search UI: Clear
+
+1 result for DSLR
+
+SLR, TLR, Rangefinder, and Mirrorless: Follow the Viewing Path
+
+1 · SLR: one taking lens, two moments
+
+Canon FX is a film SLR; DSLR adds “digital” to describe the
+
+Check the distinction before looking at the answer
+
+autofocus lens. Must it be a DSLR, or must its focus be
+
+Continue and sources
+
+rangefinder and focusing. Nikon: Mirrorless vs. DSLR — mirror movement and electronic
+
+Search_aliases: SLR DSLR TLR OVF EVF mirrorless rangefinder optical viewfinder camera anatomy
+    at search (file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:435:12)
+    at async checkTaxonomy (file:///Users/ruoyu/photography-field-guide/scripts/browser-taxonomy-checks.mjs:312:5)
+    at async file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:448:5 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+ ELIFECYCLE  Command failed with exit code 1.

@@ -1,0 +1,44 @@
+{
+  "id": "sensor-technology",
+  "order": 5,
+  "title": {
+    "en": "Sensor technology",
+    "zh-cn": "传感器基础技术"
+  },
+  "question": {
+    "en": "How is the electronic signal collected and read?",
+    "zh-cn": "电子信号如何收集与读出？"
+  },
+  "summary": {
+    "en": "CCD and CMOS describe sensor technologies, not body shapes or guaranteed looks.",
+    "zh-cn": "CCD 与 CMOS 描述传感器技术，不是机身外形或固定影像风格。"
+  },
+  "boundary": {
+    "en": "Separate sensor technology from size, color sampling and processing. A “CCD look” claim needs more than the sensor-family name.",
+    "zh-cn": "把传感器技术与尺寸、彩色采样和图像处理分开。“CCD 风格”不能只凭技术名称成立。"
+  },
+  "detailed": true,
+  "explanation": {
+    "en": [
+      "Both CCD and CMOS convert light into electrical signals. Conventional CCDs transfer accumulated charge through the device toward readout; CMOS designs integrate active circuitry and different addressing arrangements. Specific implementations, filters, exposure and processing also affect the result, so the family name is not a color or noise ranking."
+    ],
+    "zh-cn": [
+      "CCD 与 CMOS 都把光转为电信号。常见 CCD 将积累的电荷通过器件逐级转移至读出端；CMOS 集成有源电路并采用不同寻址方式。具体实现、滤色、曝光与处理同样影响结果，技术家族名称不是色彩或噪声排名。"
+    ]
+  },
+  "relatedDimensionIds": ["sensor-architecture", "color-sampling", "format"],
+  "termIds": ["ccd", "cmos", "sensor"],
+  "articleKeys": ["digital-camera-works"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [
+    {
+      "url": "https://hub.hamamatsu.com/us/en/technical-notes/image-sensors/advances-in-cmos-image-sensors.html",
+      "title": "Hamamatsu — Advances in CMOS image sensors",
+      "locator": "CCD and CMOS working principles and characteristics",
+      "accessedOn": "2026-11-05",
+      "supports": "Sensor/readout technologies and application-dependent performance; not a guaranteed camera appearance or color ranking."
+    }
+  ],
+  "reviewStatus": "published"
+}

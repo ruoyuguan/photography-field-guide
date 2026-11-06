@@ -1,0 +1,246 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import PageHeader from '@components/directory/PageHeader.astro';
+import SourceLinks from '@components/directory/SourceLinks.astro';
+import { taxonomyCopy } from '@copy/taxonomy';
+import { getArticleLinks } from '@utils/catalog';
+import { localePath, type MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+  dimension?: CollectionEntry<'taxonomyDimensions'>;
+}
+const { locale, dimension } = Astro.props;
+const t = taxonomyCopy[locale];
+const dimensions = (
+  await getCollection(
+    'taxonomyDimensions',
+    ({ data }) => data.reviewStatus === 'published'
+  )
+).sort((a, b) => a.data.order - b.data.order);
+const terms = await getCollection(
+  'glossary',
+  ({ data }) => data.reviewStatus === 'published'
+);
+const articles = await getArticleLinks(locale);
+const dimensionPath = (entry: CollectionEntry<'taxonomyDimensions'>) =>
+  localePath(
+    locale,
+    entry.data.detailed ? `/cameras/${entry.id}/` : `/cameras/#${entry.id}`
+  );
+const termPath = (entry: CollectionEntry<'glossary'>) =>
+  localePath(
+    locale,
+    entry.data.explanation ? `/glossary/${entry.id}/` : `/glossary/#${entry.id}`
+  );
+const shown = dimension ? [dimension] : dimensions;
+---
+
+<MainLayout
+  searchable
+  title={dimension ? dimension.data.title[locale] : t.metaTitle}
+  description={dimension ? dimension.data.summary[locale] : t.intro}
+  section={t.back}
+>
+  <div class="mx-auto max-w-5xl py-12 sm:py-16 text-neutral-900 dark:text-neutral-100">
+    {dimension && (
+      <nav aria-label={t.back} class="mb-8 text-sm">
+        <a
+          href={localePath(locale, '/cameras/')}
+          class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+        >
+          ← {t.back}
+        </a>
+      </nav>
+    )}
+    <PageHeader
+      eyebrow={t.eyebrow}
+      title={dimension ? dimension.data.question[locale] : t.title}
+      intro={dimension ? dimension.data.summary[locale] : t.intro}
+    />
+    {!dimension && (
+      <>
+        <section class="mt-8 rounded-2xl bg-neutral-100 p-6 dark:bg-neutral-900">
+          <h2 class="text-xl font-bold">{t.start}</h2>
+          <p class="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">
+            {t.startIntro}
+          </p>
+          <nav class="mt-5 flex flex-wrap gap-3" aria-label={t.start}>
+            {dimensions.slice(0, 3).map(entry => (
+              <a
+                class="rounded-xl border border-neutral-400 px-4 py-3 text-sm font-semibold hover:border-amber-500 dark:border-neutral-600"
+                href={dimensionPath(entry)}
+              >
+                {entry.data.title[locale]} →
+              </a>
+            ))}
+          </nav>
+        </section>
+        <section class="mt-8 border-l-4 border-amber-500 pl-5">
+          <h2 class="text-xl font-bold">{t.example}</h2>
+          <p class="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">
+            {t.exampleIntro}
+          </p>
+          <a
+            href={localePath(locale, '/gear/fujifilm-x-t5/#classification')}
+            class="mt-4 inline-block font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+          >
+            {t.exampleLink} →
+          </a>
+        </section>
+        <h2 class="mt-12 text-2xl font-bold">{t.dimensions}</h2>
+        <p class="mt-3 max-w-3xl leading-7 text-neutral-600 dark:text-neutral-400">
+          {t.scope}
+        </p>
+      </>
+    )}
+    <div class:list={['mt-8 grid gap-5', !dimension && 'md:grid-cols-2']}>
+      {shown.map(entry => (
+        <article
+          id={entry.id}
+          class="scroll-mt-28 rounded-2xl border border-neutral-300 bg-neutral-50 p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
+          data-taxonomy-dimension={entry.id}
+        >
+          {!dimension && (
+            <>
+              <p class="text-xs font-bold tracking-wide text-amber-700 dark:text-amber-300">
+                {String(entry.data.order).padStart(2, '0')} ·{' '}
+                {entry.data.title[locale]}
+              </p>
+              <h3 class="mt-3 text-xl font-bold">
+                {entry.data.question[locale]}
+              </h3>
+              <p class="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">
+                {entry.data.summary[locale]}
+              </p>
+            </>
+          )}
+          {dimension ? (
+            <>
+              <h2 class="text-xl font-bold">{t.explanation}</h2>
+              {entry.data.explanation[locale].map(p => (
+                <p class="mt-4 leading-8 text-neutral-700 dark:text-neutral-300">
+                  {p}
+                </p>
+              ))}
+              <h2 class="mt-7 text-xl font-bold">{t.boundary}</h2>
+              <p class="mt-3 leading-8 text-neutral-700 dark:text-neutral-300">
+                {entry.data.boundary[locale]}
+              </p>
+            </>
+          ) : (
+            <details class="mt-5">
+              <summary class="cursor-pointer font-semibold text-neutral-800 dark:text-neutral-200">
+                {t.expand}
+              </summary>
+              <p class="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">
+                {entry.data.boundary[locale]}
+              </p>
+            </details>
+          )}
+          {entry.data.termIds.length > 0 && (
+            <div class="mt-6">
+              {dimension ? (
+                <h2 class="font-semibold">{t.terms}</h2>
+              ) : (
+                <h4 class="text-sm font-semibold">{t.terms}</h4>
+              )}
+              <ul class="mt-3 flex flex-wrap gap-3">
+                {entry.data.termIds.map(id => {
+                  const term = terms.find(x => x.id === id)!;
+                  return (
+                    <li>
+                      <a
+                        class="text-sm font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+                        href={termPath(term)}
+                      >
+                        {term.data.term[locale]}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+          <ul class="mt-5 space-y-3">
+            {entry.data.articleKeys.map(key => {
+              const article = articles.get(key)!;
+              return (
+                <li>
+                  <a
+                    class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+                    href={article.path}
+                  >
+                    {article.title} →
+                  </a>
+                </li>
+              );
+            })}
+            {entry.data.toolIds.map(id => (
+              <li>
+                <a
+                  class="font-semibold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+                  href={localePath(locale, `/tools/${id}/`)}
+                >
+                  {id === 'format-comparison'
+                    ? t.formatTool
+                    : id === 'crop-factor'
+                      ? t.cropTool
+                      : t.exposureTool}{' '}
+                  →
+                </a>
+              </li>
+            ))}
+          </ul>
+          {!dimension && entry.data.detailed && (
+            <a
+              class="mt-6 inline-block rounded-xl border border-neutral-400 px-4 py-3 text-sm font-bold hover:border-amber-500 dark:border-neutral-600"
+              href={dimensionPath(entry)}
+            >
+              {t.deeper} →
+            </a>
+          )}
+          {dimension && (
+            <>
+              <h2 class="mt-8 text-xl font-bold">{t.related}</h2>
+              <ul class="mt-4 flex flex-wrap gap-4">
+                {entry.data.relatedDimensionIds.map(id => {
+                  const target = dimensions.find(d => d.id === id)!;
+                  return (
+                    <li>
+                      <a
+                        class="text-amber-700 underline underline-offset-4 dark:text-amber-300"
+                        href={dimensionPath(target)}
+                      >
+                        {target.data.title[locale]}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+              <h2 class="mt-10 text-xl font-bold">{t.references}</h2>
+              <div class="mt-4">
+                <SourceLinks
+                  sources={entry.data.sources}
+                  checkedLabel={t.checked}
+                  externalLabel={t.external}
+                />
+              </div>
+            </>
+          )}
+        </article>
+      ))}
+    </div>
+    <section class="mt-10 max-w-3xl rounded-2xl bg-amber-50 p-6 dark:bg-amber-400/10">
+      <h2 class="text-xl font-bold">{t.selfCheck}</h2>
+      <p class="mt-3 leading-7">{t.selfCheckText}</p>
+      <a
+        class="mt-4 inline-block font-semibold text-amber-700 underline dark:text-amber-300"
+        href={localePath(locale, '/glossary/')}
+      >
+        {t.glossary} →
+      </a>
+    </section>
+  </div>
+</MainLayout>

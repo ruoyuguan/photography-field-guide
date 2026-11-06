@@ -1,3 +1,4 @@
+import { taxonomyRoutes } from './taxonomy-routes.mjs';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { extname, isAbsolute, relative, resolve } from 'node:path';
@@ -9,6 +10,7 @@ const BASE = process.env.SITE_BASE
 const withBase = route =>
   BASE === '/' ? route : `${BASE}${route === '/' ? '/' : route}`;
 const LOCALIZED_ROUTES = [
+  ...taxonomyRoutes,
   '/',
   '/learn/',
   '/learn/getting-started/what-is-photography/',

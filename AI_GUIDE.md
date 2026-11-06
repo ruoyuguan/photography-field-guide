@@ -4,13 +4,13 @@ This file records the project structure and conventions for coding assistants. S
 
 ## Project overview
 
-Photography Field Guide is a bilingual learning site based on ScrewFast. The active stack is Astro 7, Starlight, Tailwind CSS 4, TypeScript, and Preline. The current site includes bilingual Learn content, six Practice missions (C1–C6), two interactive tools, Glossary, Gear, Galleries, Resources, and About. Read `docs/STATUS.md` for the latest verified inventory and review results. Do not expose unfinished features as working functionality.
+Photography Field Guide is a bilingual learning site based on ScrewFast. The active stack is Astro 7, Starlight, Tailwind CSS 4, TypeScript, and Preline. The current site includes bilingual Learn content, six Practice missions (C1–C6), three interactive tools, Camera Taxonomy, Glossary, Gear, Galleries, Resources, and About. Read `docs/STATUS.md` for the latest verified inventory and review results. Do not expose unfinished features as working functionality.
 
 Marketing locales are **en** (default, no prefix) and **zh-cn** (`/zh-cn/`). Shared views receive the locale explicitly; middleware exposes it as `Astro.locals.locale` and its strings as `Astro.locals.copy`. Locale routing helpers belong only in `src/utils/locale.ts`.
 
 ## Development workflow and project memory
 
-For the next content and practice iteration, read [the development workflow prompt](docs/DEVELOPMENT_WORKFLOW_PROMPT.md), [the user question bank](docs/QUESTION_BANK.md), and [the reference link inventory](docs/REFERENCE_LINKS.md). The workflow prompt retains historical proposals; use its current-state note and the latest user request. Current implementation and verification remain in `docs/STATUS.md`. Follow the current user request when it limits the execution scope.
+For the next content and practice iteration, read [the development workflow prompt](docs/DEVELOPMENT_WORKFLOW_PROMPT.md), [the user question bank](docs/QUESTION_BANK.md), and [the reference link inventory](docs/REFERENCE_LINKS.md). The workflow prompt retains historical proposals; use its current-state note and the latest user request. Current implementation and verification remain in `docs/STATUS.md`. Follow the current user request when it limits the execution scope. For Camera Taxonomy, consult the [coverage plan](docs/CAMERA_TAXONOMY_PLAN.md) and [first-batch review](docs/CAMERA_TAXONOMY_REVIEW.md).
 
 ## Local working directory and reading experience
 
@@ -39,6 +39,11 @@ Use the aliases defined in `tsconfig.json`:
 - `src/pages/index.astro` and `src/pages/zh-cn/index.astro` are thin shells around `src/views/HomeView.astro`.
 - `src/copy/en.ts` defines the `Copy` shape. `src/copy/zh-cn.ts` explicitly translates every active string and may inherit unused optional template modules from English.
 - `src/content/docs/` contains Starlight MDX guides. Chinese guides mirror English slugs under `zh-cn/`, so language switching preserves the current guide.
+- `src/content/taxonomy/` stores the bilingual Camera Taxonomy dimensions. `/cameras/` renders published dimensions. Individual dimension pages also require `detailed: true` and sourced explanations in both languages.
+- `src/content/glossary/` supplies both the searchable glossary and its enriched term pages. Use stable IDs in dimension and camera references. Published terms with explanations get detail pages. Other published terms have an anchor on the index.
+- `src/content/cameras/` remains the source for gear specifications and camera classifications. `src/utils/taxonomy-validation.ts` checks entity relationships and is called from `src/utils/content-validation.ts` at build time.
+- `src/utils/photography/format-comparison.ts` holds format presets, metrics and common-scale geometry for the bilingual `/tools/format-comparison/` page. Keep nominal film formats distinct from actual image areas.
+- `scripts/taxonomy-routes.mjs` supplies new routes to the smoke and build checks. `scripts/browser-taxonomy-checks.mjs` covers the taxonomy, glossary, example camera and format tool in the browser.
 - `src/components/BrandLogo.astro`, `src/images/icon*`, and `src/images/social.png` hold project branding.
 - `src/data_files/constants.ts` and `astro.config.mjs` contain public-site metadata. Keep their URLs aligned.
 - `src/data_files/practice-catalog.ts` supplies the C1–C6 navigation catalog. C1–C5 retain the shared mission store; C6 retains its dedicated content, controller, and version-1 storage key. Do not register C6 in the shared store or migrate its saved progress merely to expose it in navigation.

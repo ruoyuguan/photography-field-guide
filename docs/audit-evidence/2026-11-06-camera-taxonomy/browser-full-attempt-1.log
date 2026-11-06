@@ -1,0 +1,17 @@
+
+> photography-field-guide@0.0.1 test:browser /Users/ruoyu/photography-field-guide
+> node scripts/browser-check.mjs
+
+OK proportional sensor diagram and home page at 1440 px / 390 px
+file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:344
+    throw new Error(
+          ^
+
+Error: Timed out waiting for: location.pathname === '/zh-cn/' && document.documentElement.lang === 'zh-CN'
+Page: {"href":"http://127.0.0.1:53733/","lang":"en","target":"<a class=\"block rounded-lg px-3 py-2 text-sm text-neutral-800 hover:bg-amber-100 focus-visible:outline-2 dark:text-neutral-100 dark:hover:bg-neutral-700\" href=\"/zh-cn/\" hreflang=\"zh-CN\" lang=\"zh-CN\">简体中文</a>"}
+Exceptions: 
+    at until (file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:344:11)
+    at async file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:506:5
+
+Node.js v24.22.1
+ ELIFECYCLE  Command failed with exit code 1.

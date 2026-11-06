@@ -5,6 +5,7 @@
  * a path and code never keys on a translated label.
  */
 export type NavLinkId =
+  | 'cameras'
   | 'home'
   | 'learn'
   | 'practice'
@@ -22,6 +23,7 @@ export const navLinks: { id: NavLinkId; path: string }[] = [
 ];
 
 export const exploreLinks: { id: NavLinkId; path: string }[] = [
+  { id: 'cameras', path: '/cameras/' },
   { id: 'glossary', path: '/glossary/' },
   { id: 'gear', path: '/gear/' },
   { id: 'galleries', path: '/galleries/' },

@@ -1,0 +1,32 @@
+{
+  "id": "applications",
+  "order": 13,
+  "title": {
+    "en": "Photographic applications",
+    "zh-cn": "摄影用途"
+  },
+  "question": {
+    "en": "What is the image for?",
+    "zh-cn": "影像用于什么目的？"
+  },
+  "summary": {
+    "en": "A subject or professional field describes the task.",
+    "zh-cn": "题材或专业领域描述拍摄任务。"
+  },
+  "boundary": {
+    "en": "Portrait, documentary, science and cinema can overlap. A purpose does not uniquely determine format or optical architecture.",
+    "zh-cn": "人像、纪实、科学成像与电影可以交叉，用途不能唯一决定画幅或光学结构。"
+  },
+  "detailed": false,
+  "explanation": {
+    "en": [],
+    "zh-cn": []
+  },
+  "relatedDimensionIds": ["form-factor", "specialized-imaging"],
+  "termIds": [],
+  "articleKeys": ["what-is-photography", "neighborhood-story"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [],
+  "reviewStatus": "published"
+}

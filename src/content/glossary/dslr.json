@@ -1,0 +1,55 @@
+{
+  "id": "dslr",
+  "term": {
+    "en": "Digital single-lens reflex",
+    "zh-cn": "数码单镜头反光相机"
+  },
+  "aliases": {
+    "en": ["DSLR", "digital SLR"],
+    "zh-cn": ["数码单反"]
+  },
+  "shortDefinition": {
+    "en": "A single-lens reflex camera with digital image recording.",
+    "zh-cn": "采用数码影像记录的单镜头反光相机。"
+  },
+  "misconceptions": {
+    "en": [
+      "A digital camera is not necessarily a DSLR; a film SLR is not a DSLR."
+    ],
+    "zh-cn": ["数码相机不一定是单反，胶片单反不是 DSLR。"]
+  },
+  "example": {
+    "en": "DSLR and digital mirrorless differ in reflex viewing architecture.",
+    "zh-cn": "DSLR 与数码无反的关键区别在于反光取景结构。"
+  },
+  "dimensionIds": ["recording-medium", "optical-architecture"],
+  "explanation": {
+    "en": [
+      "Read the two parts separately: digital specifies recording and single-lens reflex specifies viewing. Live view can use the sensor display even on a DSLR; distinguish the camera design from its current operating state."
+    ],
+    "zh-cn": [
+      "分开读名称的两部分：数码描述记录方式，单镜头反光描述取景路径。单反实时取景也可能使用传感器画面，需要区分机身设计与当前工作状态。"
+    ]
+  },
+  "lastReviewed": "2026-11-05",
+  "exampleCameraIds": [],
+  "articleKey": "camera-viewfinding",
+  "relatedTerms": ["slr", "mirrorless"],
+  "sources": [
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences",
+      "title": "Nikon — Mirrorless versus DSLR",
+      "locator": "The difference between DSLR and mirrorless cameras",
+      "accessedOn": "2026-11-05",
+      "supports": "A DSLR's reflex viewing path and electronic viewing in modern digital mirrorless cameras."
+    },
+    {
+      "url": "https://onlinemanual.nikonimglib.com/d780/en/04_basic_photography_and_playback_01.html",
+      "title": "Nikon D780 Online Manual - Taking Photographs",
+      "locator": "Framing Photographs in the Monitor (Live View)",
+      "accessedOn": "2026-11-05",
+      "supports": "A DSLR live-view mode raises the mirror and shows the scene on the monitor."
+    }
+  ],
+  "reviewStatus": "published"
+}

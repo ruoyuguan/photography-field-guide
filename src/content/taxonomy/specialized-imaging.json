@@ -1,0 +1,32 @@
+{
+  "id": "specialized-imaging",
+  "order": 14,
+  "title": {
+    "en": "Specialized imaging",
+    "zh-cn": "特殊成像系统"
+  },
+  "question": {
+    "en": "What information is being measured?",
+    "zh-cn": "系统测量什么信息？"
+  },
+  "summary": {
+    "en": "Consider spectral, spatial and temporal information as additional descriptions.",
+    "zh-cn": "把光谱、空间与时间信息作为额外描述。"
+  },
+  "boundary": {
+    "en": "Infrared, depth, event and line-scan describe different measurement approaches, not positions on a consumer-camera ladder.",
+    "zh-cn": "红外、深度、事件与线扫描描述不同测量方式，不是消费相机的优劣等级。"
+  },
+  "detailed": false,
+  "explanation": {
+    "en": [],
+    "zh-cn": []
+  },
+  "relatedDimensionIds": ["applications", "sensor-technology"],
+  "termIds": [],
+  "articleKeys": [],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [],
+  "reviewStatus": "published"
+}

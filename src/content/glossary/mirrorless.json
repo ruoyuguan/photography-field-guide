@@ -1,0 +1,66 @@
+{
+  "id": "mirrorless",
+  "term": {
+    "en": "Mirrorless camera",
+    "zh-cn": "无反相机"
+  },
+  "aliases": {
+    "en": ["mirrorless"],
+    "zh-cn": ["无反", "微单", "无反光镜相机"]
+  },
+  "shortDefinition": {
+    "en": "In modern digital-camera usage, a camera without the SLR reflex viewing mechanism.",
+    "zh-cn": "在现代数码相机语境中，不采用单反反光取景机构的相机。"
+  },
+  "misconceptions": {
+    "en": [
+      "Mirrorless does not logically mean interchangeable-lens. MILC explicitly adds that condition; “微单” is market language, not another optical principle."
+    ],
+    "zh-cn": [
+      "无反不等于可换镜头，MILC 明确附加这一条件。“微单”是市场用语，不是另一种光学原理。"
+    ]
+  },
+  "example": {
+    "en": "X-T5 has interchangeable lenses; GFX100RF has a built-in lens. Both use electronic viewing without a reflex mirror.",
+    "zh-cn": "X-T5 可以换镜头，GFX100RF 使用一体式镜头，二者都通过没有反光取景镜的电子路径取景。"
+  },
+  "dimensionIds": ["optical-architecture", "lens-system"],
+  "explanation": {
+    "en": [
+      "Modern digital mirrorless cameras generally display a sensor-derived image on an EVF or rear screen. “No mirror” alone is too broad to place every historical camera in that modern product category. Check lens attachment separately. A rangefinder-style silhouette does not establish coupled optical rangefinding.",
+      "MILC means Mirrorless Interchangeable-Lens Camera; unlike mirrorless alone, the full name explicitly states that the lens can be changed."
+    ],
+    "zh-cn": [
+      "现代数码无反通常通过 EVF 或后屏显示传感器画面，仅凭“没有反光镜”不能把所有历史相机都归入现代无反产品类别。镜头连接方式需单独检查；旁轴外形也不能证明存在联动光学测距器。",
+      "MILC 是 Mirrorless Interchangeable-Lens Camera 的缩写，即无反可换镜头相机；全称明确了镜头可换的条件。"
+    ]
+  },
+  "lastReviewed": "2026-11-05",
+  "exampleCameraIds": ["fujifilm-x-t5"],
+  "articleKey": "camera-viewfinding",
+  "relatedTerms": ["slr", "dslr", "fixed-lens"],
+  "sources": [
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences",
+      "title": "Nikon — Mirrorless versus DSLR",
+      "locator": "The difference between DSLR and mirrorless cameras",
+      "accessedOn": "2026-11-05",
+      "supports": "A DSLR's reflex viewing path and electronic viewing in modern digital mirrorless cameras."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/",
+      "title": "FUJIFILM GFX100RF Specifications",
+      "locator": "Image Sensor; Lens; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "43.8 × 32.9 mm sensor, single-focal-length built-in lens and electronic viewfinder; a counterexample to equating mirrorless with interchangeable lenses."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor; Lens Mount; Shutter Speed; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "X-T5 APS-C dimensions, CMOS product name, X mount, shutter options and electronic viewfinder."
+    }
+  ],
+  "reviewStatus": "published"
+}

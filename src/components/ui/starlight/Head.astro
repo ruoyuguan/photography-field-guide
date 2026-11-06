@@ -28,6 +28,13 @@ await validateContent();
 </style>
 
 <script>
+  // A hidden document cannot render an Astro view transition. Use the
+  // browser's normal navigation for hidden pages and reduced-motion readers.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.addEventListener('astro:before-preparation', event => {
+    if (document.hidden || reduceMotion.matches) event.preventDefault();
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     const siteSearch = document.querySelector(
       'site-search'

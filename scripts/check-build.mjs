@@ -1,3 +1,4 @@
+import { taxonomyRoutes } from './taxonomy-routes.mjs';
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve, sep } from 'node:path';
 
@@ -7,6 +8,7 @@ const ORIGIN = (
 ).replace(/\/+$/, '');
 const BASE = normalizeBase(process.env.SITE_BASE);
 const LOCALIZED_ROUTES = [
+  ...taxonomyRoutes,
   '/',
   '/learn/',
   '/learn/getting-started/what-is-photography/',

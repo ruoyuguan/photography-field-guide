@@ -87,6 +87,10 @@ export const glossarySchema = z.object({
   misconceptions: localizedListSchema,
   example: localizedTextSchema,
   articleKey: entityIdSchema.optional(),
+  dimensionIds: z.array(entityIdSchema).default([]),
+  explanation: localizedListSchema.optional(),
+  lastReviewed: isoDateSchema.optional(),
+  exampleCameraIds: z.array(entityIdSchema).default([]),
   relatedTerms: z.array(entityIdSchema).default([]),
   ...sourceFields,
 });
@@ -96,6 +100,15 @@ export const cameraSchema = z.object({
   brand: nonEmpty,
   model: nonEmpty,
   mountId: entityIdSchema,
+  classifications: z
+    .array(
+      z.object({
+        dimensionId: entityIdSchema,
+        conceptId: entityIdSchema.optional(),
+        value: localizedTextSchema,
+      })
+    )
+    .default([]),
   sensor: z.object({
     formatId: entityIdSchema,
     widthMm: z.number().positive(),
@@ -179,4 +192,22 @@ export const gallerySchema = z.object({
   imageRightsNote: localizedTextSchema,
   verification: verificationSchema,
   reviewStatus: reviewStatusSchema,
+});
+
+/** Dimensions are questions; terms and model attributes refer to them by stable ID. */
+export const taxonomyDimensionSchema = z.object({
+  id: entityIdSchema,
+  order: z.number().int().positive(),
+  title: localizedTextSchema,
+  question: localizedTextSchema,
+  summary: localizedTextSchema,
+  boundary: localizedTextSchema,
+  detailed: z.boolean().default(false),
+  explanation: localizedListSchema,
+  relatedDimensionIds: z.array(entityIdSchema).default([]),
+  termIds: z.array(entityIdSchema).default([]),
+  articleKeys: z.array(entityIdSchema).default([]),
+  toolIds: z.array(entityIdSchema).default([]),
+  lastReviewed: isoDateSchema,
+  ...sourceFields,
 });

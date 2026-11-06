@@ -1,0 +1,32 @@
+{
+  "id": "shutter",
+  "order": 8,
+  "title": {
+    "en": "Shutter systems",
+    "zh-cn": "快门系统"
+  },
+  "question": {
+    "en": "What controls exposure, and with what timing?",
+    "zh-cn": "什么控制曝光？采用什么时序？"
+  },
+  "summary": {
+    "en": "Ask about hardware, control and timing separately.",
+    "zh-cn": "分别询问机械结构、控制方式与曝光时序。"
+  },
+  "boundary": {
+    "en": "Mechanical/electronic, focal-plane/leaf, and rolling/global describe different aspects. Bulb is an operating mode.",
+    "zh-cn": "机械或电子、焦平面或镜间、卷帘或全局描述不同方面，B 门是一种操作模式。"
+  },
+  "detailed": false,
+  "explanation": {
+    "en": [],
+    "zh-cn": []
+  },
+  "relatedDimensionIds": ["sensor-architecture", "exposure-control"],
+  "termIds": ["shutter-speed"],
+  "articleKeys": ["shutter-speed"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [],
+  "reviewStatus": "published"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "recording-medium",
+  "order": 1,
+  "title": {
+    "en": "Recording medium",
+    "zh-cn": "记录介质"
+  },
+  "question": {
+    "en": "What records the image?",
+    "zh-cn": "什么记录了图像？"
+  },
+  "summary": {
+    "en": "Separate the capture medium from the way a finished picture is delivered.",
+    "zh-cn": "把拍摄时的记录介质与成品输出方式分开。"
+  },
+  "boundary": {
+    "en": "Film, digital capture and instant output can overlap in a hybrid system. Pinhole describes an image-forming opening, not a recording medium.",
+    "zh-cn": "混合系统可以同时数码拍摄与即时胶片输出。针孔描述成像孔口，不是一种记录介质。"
+  },
+  "detailed": true,
+  "explanation": {
+    "en": [
+      "A film camera records a latent image for chemical development. A digital camera converts an electronic sensor signal into data. These descriptions do not specify how the photographer views the scene. The instax mini Evo combines digital capture with instant-film output, showing why both stages should be recorded."
+    ],
+    "zh-cn": [
+      "胶片相机记录供化学显影使用的潜影，数码相机把电子传感器信号转为数据。这些描述不指定摄影者如何取景。instax mini Evo 把数码拍摄与即时胶片输出结合起来，说明需要同时描述两个阶段。"
+    ]
+  },
+  "relatedDimensionIds": ["optical-architecture", "film-process", "workflow"],
+  "termIds": [],
+  "articleKeys": ["digital-camera-works"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [
+    {
+      "url": "https://www.instax.com/mini_evo/en/spec.html",
+      "title": "FUJIFILM instax mini Evo Specifications",
+      "locator": "Camera functions; Printing functions",
+      "accessedOn": "2026-11-05",
+      "supports": "Digital CMOS capture and output onto instax mini instant film coexist in a hybrid system."
+    },
+    {
+      "url": "https://global.canon/en/c-museum/product/film49.html",
+      "title": "Canon Camera Museum — FX",
+      "locator": "Type; Picture Size; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "A 35 mm film single-lens reflex camera; SLR does not imply digital."
+    }
+  ],
+  "reviewStatus": "published"
+}

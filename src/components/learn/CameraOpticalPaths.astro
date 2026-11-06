@@ -1,0 +1,334 @@
+---
+import {
+  cameraOpticalPathsCopy,
+  type OpticalPathKind,
+} from '@copy/camera-optical-paths';
+import type { MarketingLocale } from '@utils/locale';
+
+interface Props {
+  locale: MarketingLocale;
+  kind: OpticalPathKind;
+  state?: 'viewing' | 'exposure';
+}
+const { locale, kind, state = 'viewing' } = Astro.props;
+const copy = cameraOpticalPathsCopy[locale];
+const content = copy[kind];
+const exposure = kind === 'slr' && state === 'exposure';
+const title = exposure ? content.exposureTitle : content.viewingTitle;
+const description = exposure
+  ? content.exposureDescription
+  : content.viewingDescription;
+const labels = exposure ? content.exposureLabels : content.viewingLabels;
+const uid = `optical-${locale}-${kind}-${state}`;
+const points = {
+  slr: [
+    [80, 187],
+    [211, exposure ? 104 : 166],
+    [167, 43],
+    [371, 43],
+    [329, 187],
+  ],
+  tlr: [
+    [73, 74],
+    [210, 117],
+    [223, 45],
+    [74, 195],
+    [348, 179],
+  ],
+  rangefinder: [
+    [74, 52],
+    [73, 113],
+    [298, 53],
+    [79, 201],
+    [345, 186],
+  ],
+  mirrorless: [
+    [77, 173],
+    [209, 170],
+    [282, 157],
+    [350, 45],
+    [253, 88],
+  ],
+}[kind];
+---
+
+<figure
+  class="optical-path"
+  data-optical-kind={kind}
+  data-optical-state={state}
+>
+  <figcaption>
+    <strong>{title}</strong>
+    <p>{description}</p>
+  </figcaption>
+  <svg
+    viewBox="0 0 420 230"
+    role="img"
+    aria-labelledby={`${uid}-title ${uid}-desc`}
+  >
+    <title id={`${uid}-title`}>{title}</title>
+    <desc id={`${uid}-desc`}>{description}</desc>
+    <defs>
+      <marker
+        id={`${uid}-light`}
+        markerWidth="7"
+        markerHeight="7"
+        refX="6"
+        refY="3.5"
+        orient="auto"
+        markerUnits="strokeWidth"
+      >
+        <path d="M0 0 L7 3.5 L0 7 Z" class="light-head" />
+      </marker>
+      <marker
+        id={`${uid}-signal`}
+        markerWidth="7"
+        markerHeight="7"
+        refX="6"
+        refY="3.5"
+        orient="auto"
+        markerUnits="strokeWidth"
+      >
+        <path d="M0 0 L7 3.5 L0 7 Z" class="signal-head" />
+      </marker>
+    </defs>
+    {kind === 'slr' && (
+      <>
+        <path class="body" d="M125 96 H348 V198 H125 Z M166 96 V22 H313 V96" />
+        <ellipse class="lens" cx="80" cy="142" rx="10" ry="34" />
+        <path class="part" d="M170 79 H212 M335 113 V176 M365 40 V56" />
+        {exposure ? (
+          <>
+            <path class="part" d="M167 103 H217" />
+            <path
+              class="light"
+              d="M23 142 H329"
+              marker-end={`url(#${uid}-light)`}
+            />
+            <path class="interrupted" d="M264 46 L280 62 M280 46 L264 62" />
+          </>
+        ) : (
+          <>
+            <path class="part" d="M170 162 L210 122 M305 113 V176" />
+            <path
+              class="light"
+              d="M23 142 H190 V49 H355"
+              marker-end={`url(#${uid}-light)`}
+            />
+          </>
+        )}
+      </>
+    )}
+    {kind === 'tlr' && (
+      <>
+        <rect class="body" x="120" y="34" width="225" height="167" rx="8" />
+        <ellipse class="lens" cx="77" cy="100" rx="10" ry="24" />
+        <ellipse class="lens" cx="77" cy="168" rx="10" ry="24" />
+        <path
+          class="part"
+          d="M171 120 L211 80 M169 51 H214 M326 143 V190 M304 143 V151 M304 185 V193"
+        />
+        <path
+          class="light"
+          d="M24 100 H191 V25"
+          marker-end={`url(#${uid}-light)`}
+        />
+        <path
+          class="light"
+          d="M24 168 H321"
+          marker-end={`url(#${uid}-light)`}
+        />
+      </>
+    )}
+    {kind === 'rangefinder' && (
+      <>
+        <rect class="body" x="119" y="29" width="239" height="173" rx="8" />
+        <path
+          class="part"
+          d="M89 60 V90 M89 109 V138 M272 60 V91 M341 146 V191 M370 62 V89"
+        />
+        <ellipse class="lens" cx="80" cy="174" rx="10" ry="21" />
+        <path class="light" d="M24 76 H363" marker-end={`url(#${uid}-light)`} />
+        <path
+          class="light"
+          d="M24 122 H159 L271 76"
+          marker-end={`url(#${uid}-light)`}
+        />
+        <path
+          class="light"
+          d="M24 174 H334"
+          marker-end={`url(#${uid}-light)`}
+        />
+        <path class="linkage" d="M100 183 H149 V135 H173" />
+      </>
+    )}
+    {kind === 'mirrorless' && (
+      <>
+        <rect class="body" x="122" y="29" width="247" height="167" rx="8" />
+        <ellipse class="lens" cx="79" cy="133" rx="10" ry="28" />
+        <path class="part" d="M207 105 V161 M341 49 V84 M387 53 V80" />
+        <rect class="part" x="269" y="113" width="41" height="30" rx="3" />
+        <path
+          class="light"
+          d="M24 133 H201"
+          marker-end={`url(#${uid}-light)`}
+        />
+        <path
+          class="signal"
+          d="M215 133 H264"
+          marker-end={`url(#${uid}-signal)`}
+        />
+        <path
+          class="signal"
+          d="M288 109 V66 H332"
+          marker-end={`url(#${uid}-signal)`}
+        />
+        <path
+          class="light"
+          d="M348 66 H379"
+          marker-end={`url(#${uid}-light)`}
+        />
+      </>
+    )}
+    {points.map(([x, y], index) => (
+      <g class="number" transform={`translate(${x} ${y})`}>
+        <circle r="12" />
+        <text text-anchor="middle" dominant-baseline="central">
+          {index + 1}
+        </text>
+      </g>
+    ))}
+  </svg>
+  <p class="path-key">
+    {copy.light}
+    {kind === 'mirrorless' && ` · ${copy.signal}`}
+    {kind === 'rangefinder' && ` · ${copy.linkage}`}
+  </p>
+  <ol class="path-labels">
+    {labels.map(label => (
+      <li>{label}</li>
+    ))}
+  </ol>
+  <p class="scope">{copy.scope}</p>
+</figure>
+
+<style>
+  .optical-path {
+    --path-light: #9a5700;
+    --path-signal: #006b88;
+    --path-part: #525252;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px solid #a3a3a3;
+    border-radius: 0.75rem;
+    background: #fafafa;
+    color: #262626;
+  }
+  :global(:root[data-theme='dark']) .optical-path {
+    --path-light: #fbbf24;
+    --path-signal: #67e8f9;
+    --path-part: #d4d4d4;
+    border-color: #737373;
+    background: #171717;
+    color: #e5e5e5;
+  }
+  figcaption strong {
+    font-size: 1rem;
+  }
+  figcaption p,
+  .scope {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 0.5rem;
+  }
+  .body {
+    fill: none;
+    stroke: var(--path-part);
+    stroke-width: 1.5;
+    opacity: 0.55;
+  }
+  .part {
+    fill: none;
+    stroke: var(--path-part);
+    stroke-width: 4;
+    stroke-linecap: round;
+  }
+  .lens {
+    fill: none;
+    stroke: var(--path-part);
+    stroke-width: 3;
+  }
+  .light,
+  .signal,
+  .linkage {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+  }
+  .light {
+    stroke: var(--path-light);
+  }
+  .signal {
+    stroke: var(--path-signal);
+    stroke-dasharray: 7 4;
+  }
+  .linkage {
+    stroke: var(--path-part);
+    stroke-dasharray: 2 5;
+    stroke-linecap: round;
+  }
+  .light-head {
+    fill: var(--path-light);
+  }
+  .signal-head {
+    fill: var(--path-signal);
+  }
+  .interrupted {
+    fill: none;
+    stroke: var(--path-part);
+    stroke-width: 4;
+  }
+  .number circle {
+    fill: #fff;
+    stroke: #525252;
+    stroke-width: 1;
+  }
+  .number text {
+    fill: #171717;
+    font:
+      700 15px system-ui,
+      sans-serif;
+  }
+  .path-key {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .path-labels {
+    display: grid;
+    list-style: decimal;
+    gap: 0.35rem;
+    padding-left: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .path-labels li {
+    margin: 0;
+  }
+  .scope {
+    border-top: 1px solid #737373;
+    padding-top: 0.5rem;
+  }
+  @media (min-width: 40rem) {
+    .path-labels {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2rem;
+    }
+  }
+</style>

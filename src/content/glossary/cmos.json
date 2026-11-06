@@ -1,0 +1,56 @@
+{
+  "id": "cmos",
+  "term": {
+    "en": "CMOS image sensor",
+    "zh-cn": "CMOS 图像传感器"
+  },
+  "aliases": {
+    "en": ["CMOS", "complementary metal-oxide-semiconductor"],
+    "zh-cn": ["互补金属氧化物半导体"]
+  },
+  "shortDefinition": {
+    "en": "An image sensor implemented using CMOS technology, commonly with active pixel circuitry.",
+    "zh-cn": "采用 CMOS 技术实现、通常集成有源像素电路的图像传感器。"
+  },
+  "misconceptions": {
+    "en": [
+      "CMOS alone does not specify Bayer, X-Trans, BSI, stacked construction or global-shutter timing."
+    ],
+    "zh-cn": [
+      "CMOS 不能单独指定 Bayer、X-Trans、背照式、堆栈结构或全局快门时序。"
+    ]
+  },
+  "example": {
+    "en": "The X-T5's X-Trans CMOS name combines sensor technology and color sampling.",
+    "zh-cn": "X-T5 的 X-Trans CMOS 名称同时包含传感器技术与彩色采样方式。"
+  },
+  "dimensionIds": ["sensor-technology", "sensor-architecture"],
+  "explanation": {
+    "en": [
+      "CMOS technology permits integration of amplification, addressing and readout circuitry. Implementation choices matter. Read construction, color sampling and exposure timing as separate fields; the acronym alone cannot predict image quality or color."
+    ],
+    "zh-cn": [
+      "CMOS 技术允许集成放大、寻址与读出电路，实际实现方式很重要。应把器件结构、彩色采样和曝光时序视为独立字段，不能只用缩写预测画质或色彩。"
+    ]
+  },
+  "lastReviewed": "2026-11-05",
+  "exampleCameraIds": ["fujifilm-x-t5"],
+  "relatedTerms": ["ccd", "x-trans", "sensor"],
+  "sources": [
+    {
+      "url": "https://hub.hamamatsu.com/us/en/technical-notes/image-sensors/advances-in-cmos-image-sensors.html",
+      "title": "Hamamatsu — Advances in CMOS image sensors",
+      "locator": "CCD and CMOS working principles and characteristics",
+      "accessedOn": "2026-11-05",
+      "supports": "Sensor/readout technologies and application-dependent performance; not a guaranteed camera appearance or color ranking."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor; Lens Mount; Shutter Speed; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "X-T5 APS-C dimensions, CMOS product name, X mount, shutter options and electronic viewfinder."
+    }
+  ],
+  "reviewStatus": "published"
+}

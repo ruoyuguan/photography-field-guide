@@ -4,15 +4,17 @@ import MainLayout from '@layouts/MainLayout.astro';
 import PageHeader from '@components/directory/PageHeader.astro';
 import FilterBar from '@components/directory/FilterBar.astro';
 import SourceLinks from '@components/directory/SourceLinks.astro';
+import { taxonomyCopy } from '@copy/taxonomy';
 import { directoryCopy } from '@copy/directory';
 import { getArticleLinks } from '@utils/catalog';
-import { type MarketingLocale } from '@utils/locale';
+import { localePath, type MarketingLocale } from '@utils/locale';
 
 interface Props {
   locale: MarketingLocale;
 }
 const { locale } = Astro.props;
 const t = directoryCopy[locale];
+const tx = taxonomyCopy[locale];
 const terms = (
   await getCollection(
     'glossary',
@@ -20,7 +22,7 @@ const terms = (
   )
 ).sort((a, b) => a.data.term[locale].localeCompare(b.data.term[locale]));
 const articles = await getArticleLinks(locale);
-const labels = new Map(terms.map(term => [term.id, term.data.term[locale]]));
+const termById = new Map(terms.map(term => [term.id, term]));
 ---
 
 <MainLayout
@@ -53,6 +55,8 @@ const labels = new Map(terms.map(term => [term.id, term.data.term[locale]]));
               : undefined;
             return (
               <article
+                id={term.id}
+                tabindex="-1"
                 data-filter-item
                 data-search={[
                   data.term.en,
@@ -60,7 +64,7 @@ const labels = new Map(terms.map(term => [term.id, term.data.term[locale]]));
                   ...data.aliases.en,
                   ...data.aliases['zh-cn'],
                 ].join(' ')}
-                class="rounded-2xl border border-neutral-300 bg-neutral-50 p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
+                class="scroll-mt-28 rounded-2xl border border-neutral-300 bg-neutral-50 p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
               >
                 <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
                   {data.term[locale]}
@@ -79,6 +83,14 @@ const labels = new Map(terms.map(term => [term.id, term.data.term[locale]]));
                 <p class="mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
                   <strong>{t.glossary.example}:</strong> {data.example[locale]}
                 </p>
+                {data.explanation && (
+                  <a
+                    class="mt-5 inline-block text-sm font-bold text-amber-700 underline underline-offset-4 dark:text-amber-300"
+                    href={localePath(locale, `/glossary/${term.id}/`)}
+                  >
+                    {tx.detail} →
+                  </a>
+                )}
                 {article && (
                   <a
                     class="mt-5 inline-block text-sm font-bold text-amber-700 hover:underline dark:text-amber-300"
@@ -90,10 +102,22 @@ const labels = new Map(terms.map(term => [term.id, term.data.term[locale]]));
                 {data.relatedTerms.length > 0 && (
                   <p class="mt-4 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
                     {t.glossary.related}:{' '}
-                    {data.relatedTerms
-                      .map(id => labels.get(id))
-                      .filter(Boolean)
-                      .join(' · ')}
+                    {data.relatedTerms.map(id => {
+                      const other = termById.get(id)!;
+                      return (
+                        <a
+                          class="mr-3 inline-block underline underline-offset-4"
+                          href={localePath(
+                            locale,
+                            other.data.explanation
+                              ? `/glossary/${id}/`
+                              : `/glossary/#${id}`
+                          )}
+                        >
+                          {other.data.term[locale]}
+                        </a>
+                      );
+                    })}
                   </p>
                 )}
                 <details class="mt-5 text-sm">

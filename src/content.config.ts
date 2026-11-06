@@ -12,6 +12,7 @@ import {
   glossarySchema,
   lensSchema,
   resourceSchema,
+  taxonomyDimensionSchema,
 } from '@utils/content-schema';
 
 const productsCollection = defineCollection({
@@ -117,6 +118,10 @@ export const collections = {
     schema: docsSchema({ extend: articleMetadataSchema }),
   }),
   i18n: defineCollection({ loader: i18nLoader(), schema: i18nSchema() }),
+  taxonomyDimensions: defineCollection({
+    loader: glob({ pattern: '**/*.json', base: './src/content/taxonomy' }),
+    schema: taxonomyDimensionSchema,
+  }),
   glossary: defineCollection({
     loader: glob({ pattern: '**/*.json', base: './src/content/glossary' }),
     schema: glossarySchema,

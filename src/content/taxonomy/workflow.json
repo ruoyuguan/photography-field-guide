@@ -1,0 +1,37 @@
+{
+  "id": "workflow",
+  "order": 15,
+  "title": {
+    "en": "Image files & workflow",
+    "zh-cn": "影像文件与工作流"
+  },
+  "question": {
+    "en": "What happens to the recorded data?",
+    "zh-cn": "记录的数据如何处理与交付？"
+  },
+  "summary": {
+    "en": "Separate capture data, processing and delivery formats.",
+    "zh-cn": "把拍摄数据、处理方式与交付格式分开。"
+  },
+  "boundary": {
+    "en": "RAW does not promise lossless compression. Film simulation is not film. Log encoding and a LUT serve different roles.",
+    "zh-cn": "RAW 不保证无损压缩。胶片模拟不等于胶片，Log 编码与 LUT 的作用不同。"
+  },
+  "detailed": false,
+  "explanation": {
+    "en": [],
+    "zh-cn": []
+  },
+  "relatedDimensionIds": ["color-sampling", "exposure-control", "film-process"],
+  "termIds": ["raw", "jpeg", "film-simulation", "lut", "exif"],
+  "articleKeys": [
+    "raw-jpeg-exif",
+    "film-simulations",
+    "lightweight-editing",
+    "backup-and-export"
+  ],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [],
+  "reviewStatus": "published"
+}

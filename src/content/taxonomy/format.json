@@ -1,0 +1,51 @@
+{
+  "id": "format",
+  "order": 4,
+  "title": {
+    "en": "Sensor & film format",
+    "zh-cn": "传感器与胶片画幅"
+  },
+  "question": {
+    "en": "How large is the image-recording area?",
+    "zh-cn": "实际记录图像的区域有多大？"
+  },
+  "summary": {
+    "en": "Use physical image width and height, with the specific format or equipment stated.",
+    "zh-cn": "比较实际成像宽高，并注明具体格式或设备。"
+  },
+  "boundary": {
+    "en": "Full frame refers to the familiar 36 × 24 mm reference, not a maximum size. Film stock names, sheet sizes and exposed image areas are different measurements.",
+    "zh-cn": "全画幅指常见的 36 × 24 mm 参考规格，不表示最大画幅。胶卷名称、片材尺寸和实际曝光区域是不同信息。"
+  },
+  "detailed": true,
+  "explanation": {
+    "en": [
+      "APS-C is a family of dimensions; read the actual camera specification. The X-T5 uses 23.5 × 15.7 mm, while the GFX100RF uses 43.8 × 32.9 mm. The comparison tool uses stated representative image areas on one scale. Its diagonal crop factor does not change lens focal length or match both axes when aspect ratios differ."
+    ],
+    "zh-cn": [
+      "APS-C 包含多种尺寸，应查具体相机规格。X-T5 使用 23.5 × 15.7 mm，GFX100RF 使用 43.8 × 32.9 mm。比较工具将注明来源的代表性成像区域放在同一比例尺下，对角线画幅系数不会改变镜头焦距，宽高比不同时也不保证两个方向视角同时相同。"
+    ]
+  },
+  "relatedDimensionIds": ["lens-system", "sensor-technology", "color-sampling"],
+  "termIds": ["sensor", "full-frame", "aps-c", "crop-factor"],
+  "articleKeys": ["sensor-formats", "equivalent-focal-length"],
+  "toolIds": ["format-comparison", "crop-factor"],
+  "lastReviewed": "2026-11-05",
+  "sources": [
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor; Lens Mount; Shutter Speed; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "X-T5 APS-C dimensions, CMOS product name, X mount, shutter options and electronic viewfinder."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/",
+      "title": "FUJIFILM GFX100RF Specifications",
+      "locator": "Image Sensor; Lens; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "43.8 × 32.9 mm sensor, single-focal-length built-in lens and electronic viewfinder; a counterexample to equating mirrorless with interchangeable lenses."
+    }
+  ],
+  "reviewStatus": "published"
+}

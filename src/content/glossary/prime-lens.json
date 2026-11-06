@@ -1,0 +1,47 @@
+{
+  "id": "prime-lens",
+  "term": {
+    "en": "Prime lens",
+    "zh-cn": "定焦镜头"
+  },
+  "aliases": {
+    "en": ["prime lens", "single focal length"],
+    "zh-cn": ["定焦", "定焦镜头"]
+  },
+  "shortDefinition": {
+    "en": "A lens with one nominal focal length rather than a zoom range.",
+    "zh-cn": "只有一个标称焦距、而非一个变焦范围的镜头。"
+  },
+  "misconceptions": {
+    "en": [
+      "Prime does not mean fixed focus. Focus distance and focal length are different quantities."
+    ],
+    "zh-cn": ["定焦不等于不能对焦，对焦距离与焦距是不同物理量。"]
+  },
+  "example": {
+    "en": "Built-in and detachable primes share the focal-length description, but attach differently.",
+    "zh-cn": "一体式定焦与可拆卸定焦都符合定焦描述，但连接方式不同。"
+  },
+  "dimensionIds": ["lens-system"],
+  "explanation": {
+    "en": [
+      "A prime is designed around one nominal focal length, while a zoom covers a focal-length range. Neither description specifies focus distance or lens attachment. Moving the camera changes viewpoint; that is a different operation from zooming at a fixed viewpoint."
+    ],
+    "zh-cn": [
+      "定焦镜头围绕一个标称焦距设计，变焦镜头则覆盖一段焦距范围。两者都不直接指定对焦距离或镜头连接方式。移动相机改变观察位置，与固定机位变焦是不同操作。"
+    ]
+  },
+  "lastReviewed": "2026-11-05",
+  "exampleCameraIds": [],
+  "relatedTerms": ["fixed-lens", "focal-length", "perspective"],
+  "sources": [
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/",
+      "title": "FUJIFILM GFX100RF Specifications",
+      "locator": "Image Sensor; Lens; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "43.8 × 32.9 mm sensor, single-focal-length built-in lens and electronic viewfinder; a counterexample to equating mirrorless with interchangeable lenses."
+    }
+  ],
+  "reviewStatus": "published"
+}

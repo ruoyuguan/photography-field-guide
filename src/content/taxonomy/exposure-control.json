@@ -1,0 +1,32 @@
+{
+  "id": "exposure-control",
+  "order": 11,
+  "title": {
+    "en": "Exposure, control & stabilization",
+    "zh-cn": "曝光、控制与防抖"
+  },
+  "question": {
+    "en": "Which decisions does the camera make?",
+    "zh-cn": "哪些决定交给相机？"
+  },
+  "summary": {
+    "en": "Separate hardware from exposure choices and stabilization behavior.",
+    "zh-cn": "把硬件与曝光操作、防抖行为分开。"
+  },
+  "boundary": {
+    "en": "P/A/S/M are operating modes. IBIS addresses camera movement, not subject movement. ISO alone does not add incoming photons.",
+    "zh-cn": "P/A/S/M 是操作模式。机身防抖针对相机运动，不能冻结主体；只提高 ISO 不会增加入射光子。"
+  },
+  "detailed": false,
+  "explanation": {
+    "en": [],
+    "zh-cn": []
+  },
+  "relatedDimensionIds": ["shutter", "focusing", "workflow"],
+  "termIds": ["exposure-mode", "iso", "ibis"],
+  "articleKeys": ["pasm-modes", "iso", "shutter-speed"],
+  "toolIds": ["exposure-stops"],
+  "lastReviewed": "2026-11-05",
+  "sources": [],
+  "reviewStatus": "published"
+}

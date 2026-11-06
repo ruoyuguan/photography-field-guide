@@ -2,7 +2,7 @@
 
 **English** | **[简体中文 →](README.zh-CN.md)**
 
-A bilingual photography learning site for beginners, built with Astro, Starlight, and Tailwind CSS. English is the default language; Simplified Chinese is available under `/zh-cn/`.
+A bilingual photography learning site for beginners, built with Astro, Starlight, and Tailwind CSS. English is the default language. Simplified Chinese is available under `/zh-cn/`.
 
 The project is based on the open-source [ScrewFast](https://github.com/mearashadowfax/ScrewFast) template and retains its MIT license.
 
@@ -19,31 +19,34 @@ AI assistants supported the development of this project. The project owner direc
 
 ## Current scope
 
-- English and Simplified Chinese learning paths: 22 subject tutorials plus orientation, maintained as 46 MDX documents in 23 bilingual pairs.
+- English and Simplified Chinese learning paths with 23 subject tutorials and an orientation, maintained as 48 MDX documents in 24 bilingual pairs.
 - Shared intent-based starting links, a compact six-task route map, browser-progress suggestions and contextual returns, with every mission freely available.
 - Six bilingual practice missions: light direction, subject–background framing, a three-photo neighborhood story, photo selection / review, safe backup / export, and lightweight editing. They include prediction, explanatory feedback, local observation or actions, self-review, and browser progress without accounts or aesthetic scores. C5 links to C6; the editing exercise compares brightness, white balance, and crop separately and permits an unchanged final version.
-- Two interactive tools for sensor formats / equivalent focal length and exposure stops, with accessible native inputs and tested calculations.
-- A searchable bilingual glossary with 34 terms.
+- Three interactive tools explain crop factor and equivalent focal length, exposure stops, and physical format dimensions.
+- A Camera Taxonomy explorer introduces 16 dimensions, with seven detailed guides, an X-T5 example, and links to original viewfinding diagrams.
+- A searchable bilingual glossary with 42 terms, eight of which have dedicated detail pages.
 - Camera and lens guides, three precisely scoped external gallery links, and 13 curated resources.
 - Localized navigation, language switching, documentation search, 404 pages, metadata, and root / subpath deployment checks.
 
-The current source inventory includes 52 structured records and 84 HTML routes. The reviewed handoff checkpoint is `95f19f4`; this MVP commit includes C5, C6, learning-path improvements, review fixes, and manual publishing preparation on that baseline. Current validation results are recorded in [docs/STATUS.md](docs/STATUS.md). See [the C6 integration review](docs/C6_INTEGRATION_REVIEW.md) for executed checks and limitations. Historical reports remain snapshots rather than current feature inventories.
+The current inventory includes 76 structured records and 120 HTML routes. The MVP commit `e6087c5` added C5, C6, learning-path improvements, and manual publishing preparation on the `95f19f4` handoff baseline. See the [current project status](docs/STATUS.md), [taxonomy coverage plan](docs/CAMERA_TAXONOMY_PLAN.md), and [first-batch taxonomy review](docs/CAMERA_TAXONOMY_REVIEW.md). The [C6 integration review](docs/C6_INTEGRATION_REVIEW.md) records that earlier batch.
 
 ### Routes
 
-| Section        | English                  | 简体中文                       |
-| -------------- | ------------------------ | ------------------------------ |
-| Home           | `/`                      | `/zh-cn/`                      |
-| Learn          | `/learn/`                | `/zh-cn/learn/`                |
-| Practice       | `/practice/`             | `/zh-cn/practice/`             |
-| Tools          | `/tools/`                | `/zh-cn/tools/`                |
-| Crop factor    | `/tools/crop-factor/`    | `/zh-cn/tools/crop-factor/`    |
-| Exposure stops | `/tools/exposure-stops/` | `/zh-cn/tools/exposure-stops/` |
-| Glossary       | `/glossary/`             | `/zh-cn/glossary/`             |
-| Gear           | `/gear/`                 | `/zh-cn/gear/`                 |
-| Galleries      | `/galleries/`            | `/zh-cn/galleries/`            |
-| Resources      | `/resources/`            | `/zh-cn/resources/`            |
-| About          | `/about/`                | `/zh-cn/about/`                |
+| Section           | English                     | 简体中文                          |
+| ----------------- | --------------------------- | --------------------------------- |
+| Home              | `/`                         | `/zh-cn/`                         |
+| Learn             | `/learn/`                   | `/zh-cn/learn/`                   |
+| Practice          | `/practice/`                | `/zh-cn/practice/`                |
+| Tools             | `/tools/`                   | `/zh-cn/tools/`                   |
+| Crop factor       | `/tools/crop-factor/`       | `/zh-cn/tools/crop-factor/`       |
+| Exposure stops    | `/tools/exposure-stops/`    | `/zh-cn/tools/exposure-stops/`    |
+| Format comparison | `/tools/format-comparison/` | `/zh-cn/tools/format-comparison/` |
+| Camera Taxonomy   | `/cameras/`                 | `/zh-cn/cameras/`                 |
+| Glossary          | `/glossary/`                | `/zh-cn/glossary/`                |
+| Gear              | `/gear/`                    | `/zh-cn/gear/`                    |
+| Galleries         | `/galleries/`               | `/zh-cn/galleries/`               |
+| Resources         | `/resources/`               | `/zh-cn/resources/`               |
+| About             | `/about/`                   | `/zh-cn/about/`                   |
 
 ## Local development
 
@@ -79,9 +82,9 @@ pnpm test:smoke
 pnpm test:build
 ```
 
-`pnpm test:unit` currently contains 80 cases for photography formulas, units and boundary inputs, task feedback, practice persistence / recovery / isolated reset, and the combined C1–C6 catalog. Execution results belong to the current validation record. `pnpm build` runs type checking, validates content, creates the static site in `dist/`, and minifies its HTML. The smoke test checks all current public pages and retired/unknown routes. The artifact test checks internal links and assets, canonical/hreflang URLs, 404 `noindex`, manifest, robots, sitemap, and search artifacts.
+`pnpm test:unit` covers photography formulas, units and boundary inputs, taxonomy relationships, task feedback, practice persistence and reset, and the combined C1–C6 catalog. Execution results belong to the current validation record. `pnpm build` runs type checking, validates content, creates the static site in `dist/`, and minifies its HTML. The smoke test checks all current public pages and retired/unknown routes. The artifact test checks internal links and assets, canonical/hreflang URLs, 404 `noindex`, manifest, robots, sitemap, and search artifacts.
 
-After a root-path production build, an optional real-browser check verifies the language menu, Chinese navigation, English and Chinese search, proportional sensor diagram, calculator results, slider/input synchronization, keyboard operation, reset and error states, no-JavaScript fallbacks, mobile overflow, mission feedback, local progress, backup/export learning, restricted-storage theme controls, the six-task catalog, C5 → C6 navigation, both progress namespaces, and the shared editing-scene geometry:
+After a root-path production build, an optional real-browser check verifies the language menu, Chinese navigation, English and Chinese search, proportional sensor diagram, calculator results, slider/input synchronization, keyboard operation, reset and error states, no-JavaScript fallbacks, mobile overflow, mission feedback, local progress, backup/export learning, restricted-storage theme controls, the six-task catalog, C5 → C6 navigation, both progress namespaces, the shared editing-scene geometry, and the taxonomy reading paths and format comparison.
 
 ```bash
 pnpm build
@@ -104,9 +107,9 @@ Run the ordinary root-path build again after a subpath test so `dist/` matches t
 
 - `src/pages/` and `src/pages/zh-cn/` — marketing routes; Starlight supplies the Learn routes.
 - `src/content/docs/learn/` and `src/content/docs/zh-cn/learn/` — paired articles.
-- `src/content/{glossary,cameras,lenses,resources,galleries}/` — structured records.
+- `src/content/{taxonomy,glossary,cameras,lenses,resources,galleries}/` — structured records.
 - `src/utils/content-schema.ts` — shared Zod schemas and strict ISO-date validation.
-- `src/utils/content-validation.ts` — bilingual pairing, publishing, reference, prerequisite, mount, and resource-verification checks.
+- `src/utils/content-validation.ts` and `src/utils/taxonomy-validation.ts` — bilingual pairing, publishing, cross-entity references, prerequisites, mounts, and resource verification.
 - `src/content/i18n/zh-CN.yml` — localized Starlight/Pagefind interface text.
 - `src/components/tools/` and `src/views/ToolsIndexView.astro` — localized tool interfaces and client controllers.
 - `src/utils/photography/` and `tests/photography/` — pure photography calculations and formula tests.
@@ -122,9 +125,9 @@ Published non-orientation articles need real sources and a review date. Unpublis
 
 The output is a static site suitable for services such as GitHub Pages, Vercel, or Netlify. `SITE_ORIGIN` controls the public origin (default `https://ruoyuguan.github.io`); `SITE_BASE` independently controls the deployment prefix (default `/`). Do not combine the base into the origin.
 
-A manual-only GitHub Pages workflow is prepared for the MVP at `/photography-field-guide/`. It does not deploy on push or pull requests. See [the MVP release scope and steps](docs/MVP_RELEASE.md); no site has been published. The root static host can serve `404.html` for missing pages. `/zh-cn/404/` is also generated, but locale-specific fallback behavior depends on the eventual host; valid Chinese pages must not be rewritten to it.
+A manual-only GitHub Pages workflow is prepared for the MVP at `/photography-field-guide/`. It does not deploy on push or pull requests. See [the MVP release scope and steps](docs/MVP_RELEASE.md). The repository's Pages deployment record shows the status of the public site. The root static host can serve `404.html` for missing pages. `/zh-cn/404/` is also generated, but locale-specific fallback behavior depends on the eventual host; valid Chinese pages must not be rewritten to it.
 
-Because the site has not been published, the old `/start-here/` and `/basics/...` routes were retired without redirects. Revisit that decision before changing public URLs later.
+The old `/start-here/` and `/basics/...` routes were retired without redirects during pre-release development. Check redirect needs before changing URLs readers already use.
 
 The repository may remain private during development. Making it public is a separate decision from running it locally.
 
@@ -140,6 +143,6 @@ python scripts/generate_brand_assets.py
 
 MIT. See [`LICENSE`](LICENSE). ScrewFast's original copyright and license notices are preserved.
 
-For sharing with friends while keeping the development repository private and avoiding third-party GitHub access, see [the sharing options](docs/SHARING_WITHOUT_GITHUB_ACCESS.md). No public deployment has been made in this local review.
+For sharing with friends while keeping the development repository private and avoiding third-party GitHub access, see [the sharing options](docs/SHARING_WITHOUT_GITHUB_ACCESS.md).
 
-Content review dates use the maintainer’s Asia/Shanghai authoring day, including in UTC CI builds. The current entry-path review and limits are in [docs/LEARNING_PATH_UX_REVIEW.md](docs/LEARNING_PATH_UX_REVIEW.md). For focused browser development checks, use `PFG_BROWSER_SCOPE=learning-paths pnpm test:browser`; the default command still runs the full suite.
+Content review dates use the maintainer’s Asia/Shanghai authoring day, including in UTC CI builds. The current entry-path review and limits are in [docs/LEARNING_PATH_UX_REVIEW.md](docs/LEARNING_PATH_UX_REVIEW.md). Use `PFG_BROWSER_SCOPE=learning-paths pnpm test:browser` or `PFG_BROWSER_SCOPE=taxonomy pnpm test:browser` to check one area. The default command runs the full suite.

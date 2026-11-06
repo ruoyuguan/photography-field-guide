@@ -3,7 +3,11 @@
   "brand": "FUJIFILM",
   "model": "X-T5",
   "mountId": "fujifilm-x",
-  "sensor": { "formatId": "aps-c", "widthMm": 23.5, "heightMm": 15.7 },
+  "sensor": {
+    "formatId": "aps-c",
+    "widthMm": 23.5,
+    "heightMm": 15.7
+  },
   "specifications": {
     "effectiveMegapixels": 40.2,
     "hasIBIS": true,
@@ -30,7 +34,69 @@
       "locator": "Image Sensor; Number Of Effective Pixels; Lens Mount; Image Stabilizer; File Format Of Still Image",
       "accessedOn": "2026-10-28",
       "supports": "The 23.5 × 15.7 mm sensor, 40.2 million effective pixels, X mount, sensor-shift stabilization, and listed still-image formats."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/x-t5/specifications/",
+      "title": "FUJIFILM X-T5 Specifications",
+      "locator": "Image Sensor; Lens Mount; Shutter Speed; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "X-T5 APS-C dimensions, CMOS product name, X mount, shutter options and electronic viewfinder."
     }
   ],
-  "reviewStatus": "published"
+  "reviewStatus": "published",
+  "classifications": [
+    {
+      "dimensionId": "recording-medium",
+      "value": {
+        "en": "Digital",
+        "zh-cn": "数码"
+      }
+    },
+    {
+      "dimensionId": "optical-architecture",
+      "conceptId": "mirrorless",
+      "value": {
+        "en": "Mirrorless · electronic viewfinder",
+        "zh-cn": "无反 · 电子取景器"
+      }
+    },
+    {
+      "dimensionId": "lens-system",
+      "value": {
+        "en": "Interchangeable lens · X mount",
+        "zh-cn": "可换镜头 · X 卡口"
+      }
+    },
+    {
+      "dimensionId": "format",
+      "conceptId": "aps-c",
+      "value": {
+        "en": "APS-C",
+        "zh-cn": "APS-C"
+      }
+    },
+    {
+      "dimensionId": "sensor-technology",
+      "conceptId": "cmos",
+      "value": {
+        "en": "CMOS",
+        "zh-cn": "CMOS"
+      }
+    },
+    {
+      "dimensionId": "color-sampling",
+      "conceptId": "x-trans",
+      "value": {
+        "en": "X-Trans",
+        "zh-cn": "X-Trans"
+      }
+    },
+    {
+      "dimensionId": "shutter",
+      "value": {
+        "en": "Mechanical and electronic options",
+        "zh-cn": "机械与电子快门选项"
+      }
+    }
+  ]
 }

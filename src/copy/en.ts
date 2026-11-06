@@ -35,6 +35,7 @@ export const en = {
   nav: {
     /** Labels for `navLinks` in `@data/navigation`, keyed by id. */
     labels: {
+      cameras: 'Camera taxonomy',
       home: 'Home',
       learn: 'Learn',
       practice: 'Practice',

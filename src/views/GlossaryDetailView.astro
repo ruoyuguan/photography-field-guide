@@ -1,0 +1,137 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import SourceLinks from '@components/directory/SourceLinks.astro';
+import { taxonomyCopy } from '@copy/taxonomy';
+import { getArticleLinks } from '@utils/catalog';
+import { localePath, type MarketingLocale } from '@utils/locale';
+interface Props {
+  locale: MarketingLocale;
+  term: CollectionEntry<'glossary'>;
+}
+const { locale, term } = Astro.props;
+const t = taxonomyCopy[locale],
+  data = term.data;
+const terms = await getCollection(
+  'glossary',
+  ({ data }) => data.reviewStatus === 'published'
+);
+const dimensions = await getCollection(
+  'taxonomyDimensions',
+  ({ data }) => data.reviewStatus === 'published'
+);
+const cameras = await getCollection(
+  'cameras',
+  ({ data }) => data.reviewStatus === 'published'
+);
+const articles = await getArticleLinks(locale);
+const article = data.articleKey ? articles.get(data.articleKey) : undefined;
+---
+
+<MainLayout
+  searchable
+  title={data.term[locale]}
+  description={data.shortDefinition[locale]}
+  section={t.glossary}
+>
+  <article class="mx-auto max-w-3xl py-12 sm:py-16 text-neutral-900 dark:text-neutral-100">
+    <nav aria-label={t.glossary}>
+      <a
+        class="text-sm font-semibold text-amber-700 underline dark:text-amber-300"
+        href={localePath(locale, `/glossary/#${term.id}`)}
+      >
+        ← {t.termBack}
+      </a>
+    </nav>
+    <p class="mt-8 text-sm font-bold text-amber-700 dark:text-amber-300">
+      {t.detail}
+    </p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-5xl">{data.term[locale]}</h1>
+    <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+      {locale === 'en' ? data.term['zh-cn'] : data.term.en} ·{' '}
+      {data.aliases[locale].join(' · ')}
+    </p>
+    <h2 class="mt-10 text-xl font-bold">{t.definition}</h2>
+    <p class="mt-3 text-lg leading-8">{data.shortDefinition[locale]}</p>
+    <h2 class="mt-10 text-xl font-bold">{t.explanation}</h2>
+    {data.explanation?.[locale].map(p => (
+      <p class="mt-3 leading-8 text-neutral-700 dark:text-neutral-300">{p}</p>
+    ))}
+    <section class="mt-8 rounded-2xl bg-amber-50 p-6 dark:bg-amber-400/10">
+      <h2 class="text-xl font-bold">{t.misconception}</h2>
+      {data.misconceptions[locale].map(p => (
+        <p class="mt-3 leading-7">{p}</p>
+      ))}
+    </section>
+    <h2 class="mt-10 text-xl font-bold">{t.exampleLabel}</h2>
+    <p class="mt-3 leading-8">{data.example[locale]}</p>
+    {data.exampleCameraIds.map(id => {
+      const model = cameras.find(c => c.id === id)!;
+      return (
+        <a
+          class="mt-4 inline-block font-semibold text-amber-700 underline dark:text-amber-300"
+          href={localePath(locale, `/gear/${id}/#classification`)}
+        >
+          {model.data.brand} {model.data.model} →
+        </a>
+      );
+    })}
+    <h2 class="mt-10 text-xl font-bold">{t.dimensionLabel}</h2>
+    <ul class="mt-4 flex flex-wrap gap-4">
+      {data.dimensionIds.map(id => {
+        const d = dimensions.find(x => x.id === id)!;
+        return (
+          <li>
+            <a
+              class="text-amber-700 underline underline-offset-4 dark:text-amber-300"
+              href={localePath(
+                locale,
+                d.data.detailed ? `/cameras/${id}/` : `/cameras/#${id}`
+              )}
+            >
+              {d.data.title[locale]}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+    <h2 class="mt-10 text-xl font-bold">{t.terms}</h2>
+    <ul class="mt-4 flex flex-wrap gap-4">
+      {data.relatedTerms.map(id => {
+        const other = terms.find(x => x.id === id)!;
+        return (
+          <li>
+            <a
+              class="text-amber-700 underline underline-offset-4 dark:text-amber-300"
+              href={localePath(
+                locale,
+                other.data.explanation ? `/glossary/${id}/` : `/glossary/#${id}`
+              )}
+            >
+              {other.data.term[locale]}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+    {article && (
+      <a
+        class="mt-8 inline-block rounded-xl border border-neutral-400 px-5 py-3 font-semibold dark:border-neutral-600"
+        href={article.path}
+      >
+        {article.title} →
+      </a>
+    )}
+    <h2 class="mt-12 text-xl font-bold">{t.references}</h2>
+    <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+      {t.checked}: {data.lastReviewed}
+    </p>
+    <div class="mt-5">
+      <SourceLinks
+        sources={data.sources}
+        checkedLabel={t.checked}
+        externalLabel={t.external}
+      />
+    </div>
+  </article>
+</MainLayout>

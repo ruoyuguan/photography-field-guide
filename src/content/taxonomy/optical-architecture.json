@@ -1,0 +1,51 @@
+{
+  "id": "optical-architecture",
+  "order": 2,
+  "title": {
+    "en": "Viewfinding & optical architecture",
+    "zh-cn": "取景与光学结构"
+  },
+  "question": {
+    "en": "How do you see and focus the scene?",
+    "zh-cn": "你如何取景并判断焦点？"
+  },
+  "summary": {
+    "en": "Follow the viewing path separately from the path that records the image.",
+    "zh-cn": "分别追踪取景路径与记录图像的路径。"
+  },
+  "boundary": {
+    "en": "SLR can use film or a digital sensor. An optical finder need not be reflex; a rangefinder-style body need not have coupled rangefinding.",
+    "zh-cn": "单反可用胶片或数码传感器。有光学取景器不等于单反，旁轴外形也不等于联动测距。"
+  },
+  "detailed": true,
+  "explanation": {
+    "en": [
+      "The conventional SLR mirror directs taking-lens light toward a focusing screen during viewing and moves clear for exposure. Modern digital mirrorless viewing usually uses an image-sensor signal and display. A separate optical finder or coupled rangefinder follows another path; see the diagrams before identifying it by body shape."
+    ],
+    "zh-cn": [
+      "常见单反在取景时用反光镜把拍摄镜头中的光导向对焦屏，曝光时让反光镜离开光路。现代数码无反通常用传感器信号与电子显示取景，独立光学取景器或联动测距则有另一条路径。判断结构前先看图解，不能只认外形。"
+    ]
+  },
+  "relatedDimensionIds": ["recording-medium", "lens-system"],
+  "termIds": ["slr", "dslr", "mirrorless"],
+  "articleKeys": ["camera-viewfinding"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences",
+      "title": "Nikon — Mirrorless versus DSLR",
+      "locator": "The difference between DSLR and mirrorless cameras",
+      "accessedOn": "2026-11-05",
+      "supports": "A DSLR's reflex viewing path and electronic viewing in modern digital mirrorless cameras."
+    },
+    {
+      "url": "https://global.canon/en/c-museum/product/film49.html",
+      "title": "Canon Camera Museum — FX",
+      "locator": "Type; Picture Size; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "A 35 mm film single-lens reflex camera; SLR does not imply digital."
+    }
+  ],
+  "reviewStatus": "published"
+}

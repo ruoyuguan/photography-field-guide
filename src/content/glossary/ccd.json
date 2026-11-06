@@ -1,0 +1,47 @@
+{
+  "id": "ccd",
+  "term": {
+    "en": "CCD image sensor",
+    "zh-cn": "CCD 图像传感器"
+  },
+  "aliases": {
+    "en": ["CCD", "charge-coupled device"],
+    "zh-cn": ["电荷耦合器件", "CCD相机"]
+  },
+  "shortDefinition": {
+    "en": "An image-sensor technology that transfers collected signal charge through charge-coupled structures for readout.",
+    "zh-cn": "通过电荷耦合结构转移已收集信号电荷以供读出的图像传感器技术。"
+  },
+  "misconceptions": {
+    "en": [
+      "CCD is not a compact-camera body category or a guarantee of film-like color."
+    ],
+    "zh-cn": ["CCD 不是卡片机外形类别，也不保证胶片般的色彩。"]
+  },
+  "example": {
+    "en": "A scientific sensor and an older compact camera may both use CCD technology for very different purposes.",
+    "zh-cn": "科学传感器与老式卡片机可以都使用 CCD，但用途相差很大。"
+  },
+  "dimensionIds": ["sensor-technology"],
+  "explanation": {
+    "en": [
+      "The transfer mechanism describes sensor operation. Specific designs differ in readout, noise and spectral response. In Chinese camera discussions “CCD” sometimes abbreviates an older CCD-equipped compact; expand that shorthand before attributing its appearance to the sensor alone."
+    ],
+    "zh-cn": [
+      "电荷转移机制描述传感器工作方式，具体设计在读出、噪声与光谱响应方面存在差异。中文讨论有时用“CCD”简称搭载 CCD 的老式卡片机，应先还原具体设备，再讨论其风格来自哪些因素。"
+    ]
+  },
+  "lastReviewed": "2026-11-05",
+  "exampleCameraIds": [],
+  "relatedTerms": ["cmos", "sensor"],
+  "sources": [
+    {
+      "url": "https://hub.hamamatsu.com/us/en/technical-notes/image-sensors/advances-in-cmos-image-sensors.html",
+      "title": "Hamamatsu — Advances in CMOS image sensors",
+      "locator": "CCD and CMOS working principles and characteristics",
+      "accessedOn": "2026-11-05",
+      "supports": "Sensor/readout technologies and application-dependent performance; not a guaranteed camera appearance or color ranking."
+    }
+  ],
+  "reviewStatus": "published"
+}

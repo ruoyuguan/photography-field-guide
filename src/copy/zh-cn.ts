@@ -28,6 +28,7 @@ export const zhCN: Copy = {
     ...en.nav,
     labels: {
       ...en.nav.labels,
+      cameras: '相机分类',
       home: '首页',
       learn: '学习',
       practice: '练习',

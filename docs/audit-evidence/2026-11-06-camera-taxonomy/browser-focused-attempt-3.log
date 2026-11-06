@@ -1,0 +1,35 @@
+
+> photography-field-guide@0.0.1 test:browser /Users/ruoyu/photography-field-guide
+> node scripts/browser-check.mjs
+
+START taxonomy browser checks: overview loaded
+OK native taxonomy overview disclosure opens and closes with Space
+OK taxonomy16 axes, native keyboard disclosure, fixed-lens→prime distinction and deep Chinese switch
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
++   focus: '',
++   query: 'Full frame',
++   targetHidden: true
+-   focus: 'aps-c',
+-   query: '',
+-   targetHidden: false
+  }
+
+    at checkTaxonomy (file:///Users/ruoyu/photography-field-guide/scripts/browser-taxonomy-checks.mjs:279:12)
+    at async file:///Users/ruoyu/photography-field-guide/scripts/browser-check.mjs:448:5 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: { targetHidden: true, focus: '', query: 'Full frame' },
+  expected: { targetHidden: false, focus: 'aps-c', query: '' },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+ ELIFECYCLE  Command failed with exit code 1.

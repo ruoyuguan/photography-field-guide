@@ -2,11 +2,12 @@ import { getCollection } from 'astro:content';
 import { publicToolIds } from '@data/tool-registry';
 import { missions } from '@data/practice';
 import { practiceCatalog } from '@data/practice-catalog';
+import { validateTaxonomyReferences } from '@utils/taxonomy-validation';
 import { contentReviewDate } from '@utils/review-date';
 
 /** Cross-entity rules that Zod schemas cannot enforce on their own. */
 async function runContentValidation(): Promise<void> {
-  const [docs, glossary, cameras, lenses, resources, galleries] =
+  const [docs, glossary, cameras, lenses, resources, galleries, dimensions] =
     await Promise.all([
       getCollection('docs'),
       getCollection('glossary'),
@@ -14,6 +15,7 @@ async function runContentValidation(): Promise<void> {
       getCollection('lenses'),
       getCollection('resources'),
       getCollection('galleries'),
+      getCollection('taxonomyDimensions'),
     ]);
   const errors: string[] = [];
   const today = contentReviewDate();
@@ -220,16 +222,42 @@ async function runContentValidation(): Promise<void> {
       entry.data.reviewStatus === 'published'
     );
   };
+  const publishedArticleKeys = new Set(
+    docs
+      .filter(
+        entry => entry.data.reviewStatus === 'published' && !entry.data.draft
+      )
+      .map(entry => entry.data.translationKey)
+  );
+  errors.push(
+    ...validateTaxonomyReferences({
+      dimensions: dimensions.map(entry => entry.data),
+      terms: glossary.map(entry => entry.data),
+      cameras: cameras.map(entry => entry.data),
+      articleKeys: publishedArticleKeys,
+      toolIds: publicToolIds,
+    })
+  );
+  for (const dimension of dimensions) {
+    const where = 'taxonomy/' + dimension.id;
+    if (dimension.id !== dimension.data.id)
+      fail(where, 'Filename ID and data.id must match.');
+    checkDate(where, 'lastReviewed', dimension.data.lastReviewed);
+    checkSources(
+      where,
+      dimension.data.sources,
+      dimension.data.reviewStatus === 'published',
+      dimension.data.detailed
+    );
+  }
   for (const term of glossary) {
     checkEntity('glossary', term);
+    checkDate('glossary/' + term.id, 'lastReviewed', term.data.lastReviewed);
     if (term.data.articleKey && !articleKeys.has(term.data.articleKey))
       fail(
         `glossary/${term.id}`,
         `Unknown articleKey: ${term.data.articleKey}.`
       );
-    for (const related of term.data.relatedTerms)
-      if (!glossary.some(other => other.id === related))
-        fail(`glossary/${term.id}`, `Unknown related term: ${related}.`);
   }
   for (const camera of cameras) {
     checkEntity('cameras', camera);
@@ -326,7 +354,7 @@ async function runContentValidation(): Promise<void> {
       `Content validation failed:\n${errors.map(error => `- ${error}`).join('\n')}`
     );
   console.info(
-    `[content] ${docs.length} articles and ${glossary.length + cameras.length + lenses.length + resources.length + galleries.length} structured entries validated.`
+    `[content] ${docs.length} articles and ${glossary.length + cameras.length + lenses.length + resources.length + galleries.length} structured entries and ${dimensions.length} taxonomy dimensions validated.`
   );
 }
 

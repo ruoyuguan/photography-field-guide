@@ -1,0 +1,32 @@
+{
+  "id": "history",
+  "order": 16,
+  "title": {
+    "en": "Systems & history",
+    "zh-cn": "系统与历史"
+  },
+  "question": {
+    "en": "Why do these names coexist?",
+    "zh-cn": "这些名称为什么并存？"
+  },
+  "summary": {
+    "en": "Use history to understand naming and compatibility rather than rank eras.",
+    "zh-cn": "通过历史理解名称与兼容性，不把年代当作优劣排名。"
+  },
+  "boundary": {
+    "en": "New formats and architectures coexist with older systems. A film-era reference in a name does not make actual formats identical.",
+    "zh-cn": "新画幅和结构会与旧系统共存，名称沿用胶片时代的参照不表示实际规格完全相同。"
+  },
+  "detailed": false,
+  "explanation": {
+    "en": [],
+    "zh-cn": []
+  },
+  "relatedDimensionIds": ["recording-medium", "format", "optical-architecture"],
+  "termIds": [],
+  "articleKeys": ["sensor-formats"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [],
+  "reviewStatus": "published"
+}

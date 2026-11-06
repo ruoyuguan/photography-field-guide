@@ -12,6 +12,9 @@ export async function checkDirectories({
 }) {
   await viewport(1440, 900);
   await navigate('/glossary/');
+  const glossaryCount = await evaluate(
+    'document.querySelectorAll("[data-filter-item]").length'
+  );
   await evaluate(`(() => {
     const input = document.querySelector('[data-filter-query]');
     input.value = '半画幅';
@@ -31,7 +34,7 @@ export async function checkDirectories({
   );
   await evaluate(`document.querySelector('[data-filter-form]').reset()`);
   await until(
-    `[...document.querySelectorAll('[data-filter-item]')].filter(item => !item.hidden).length === 34`
+    `[...document.querySelectorAll('[data-filter-item]')].filter(item => !item.hidden).length === ${glossaryCount}`
   );
   console.log('OK bilingual glossary aliases and native reset');
 

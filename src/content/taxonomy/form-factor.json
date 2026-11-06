@@ -1,0 +1,32 @@
+{
+  "id": "form-factor",
+  "order": 10,
+  "title": {
+    "en": "Body & product form",
+    "zh-cn": "机身与产品形态"
+  },
+  "question": {
+    "en": "How is the camera packaged and used?",
+    "zh-cn": "相机以什么形态使用？"
+  },
+  "summary": {
+    "en": "Product form helps explain handling and use.",
+    "zh-cn": "产品形态帮助理解操作与使用场景。"
+  },
+  "boundary": {
+    "en": "Compact, bridge, action and smartphone are product descriptions, not one image-quality ladder. “Professional” is not a sensor dimension.",
+    "zh-cn": "卡片、桥式、运动相机与手机是产品描述，不是一条画质等级阶梯。“专业”不是传感器尺寸。"
+  },
+  "detailed": false,
+  "explanation": {
+    "en": [],
+    "zh-cn": []
+  },
+  "relatedDimensionIds": ["lens-system", "applications"],
+  "termIds": [],
+  "articleKeys": ["what-is-photography"],
+  "toolIds": [],
+  "lastReviewed": "2026-11-05",
+  "sources": [],
+  "reviewStatus": "published"
+}

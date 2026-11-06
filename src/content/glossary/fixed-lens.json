@@ -1,0 +1,54 @@
+{
+  "id": "fixed-lens",
+  "term": {
+    "en": "Fixed-lens camera",
+    "zh-cn": "固定镜头相机"
+  },
+  "aliases": {
+    "en": ["fixed lens", "built-in lens"],
+    "zh-cn": ["固定镜头", "一体式镜头相机"]
+  },
+  "shortDefinition": {
+    "en": "A camera whose lens is built in rather than normally exchanged by the user.",
+    "zh-cn": "镜头与机身一体、通常不由用户更换镜头的相机。"
+  },
+  "misconceptions": {
+    "en": [
+      "Fixed-lens does not mean prime or fixed focus: a built-in lens can zoom and autofocus."
+    ],
+    "zh-cn": ["固定镜头不等于定焦或固定焦点，一体式镜头也可以变焦和自动对焦。"]
+  },
+  "example": {
+    "en": "GFX100RF has a built-in single-focal-length lens, not an interchangeable GF lens.",
+    "zh-cn": "GFX100RF 使用一体式定焦镜头，不能像 GF 卡口镜头那样更换。"
+  },
+  "dimensionIds": ["lens-system"],
+  "explanation": {
+    "en": [
+      "This category answers how a lens attaches. Ask separately whether its focal length changes and how it focuses. A brand or product-family name cannot establish lens compatibility; consult the specific model documentation."
+    ],
+    "zh-cn": [
+      "这个类别回答镜头如何连接机身，是否改变焦距与如何对焦是另外的问题。品牌或产品系列名称不能证明镜头兼容性，应查具体型号文档。"
+    ]
+  },
+  "lastReviewed": "2026-11-05",
+  "exampleCameraIds": [],
+  "relatedTerms": ["prime-lens", "mirrorless", "focal-length"],
+  "sources": [
+    {
+      "url": "https://cipa.jp/stats/documents/common/cr300.pdf",
+      "title": "CIPA — Digital Still Cameras Classified by Type",
+      "locator": "Page 1: Cameras with Built-in Lens; Cameras with Interchangeable Lens",
+      "accessedOn": "2026-11-05",
+      "supports": "Lens-system categories in this statistical series; this is not a universal taxonomy of all historical cameras."
+    },
+    {
+      "url": "https://www.fujifilm-x.com/global/products/cameras/gfx100rf/specifications/",
+      "title": "FUJIFILM GFX100RF Specifications",
+      "locator": "Image Sensor; Lens; Viewfinder",
+      "accessedOn": "2026-11-05",
+      "supports": "43.8 × 32.9 mm sensor, single-focal-length built-in lens and electronic viewfinder; a counterexample to equating mirrorless with interchangeable lenses."
+    }
+  ],
+  "reviewStatus": "published"
+}
